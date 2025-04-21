@@ -68,7 +68,8 @@
   <h2>Projects</h2>
   <ul>
     <li>
-      <a href="docs/cyber-threat-map.html" target="_blank">🔍 Cyber Threat Map – Real-time threat intel visualization</a>
+      <a href="docs/cyber-threat-map.html" target="_blank">Cyber Threat Map</a>
+
     </li>
     <li>
       <a href="docs/phishing-detector.html" target="_blank">📮 Phishing Detector – Email analysis & response tool</a>
