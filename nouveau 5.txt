@@ -61,36 +61,36 @@
 <body>
   <h1>Stella Barbarella</h1>
 
-  <!-- Portfolio PDF -->
-  <a href="Stella_Barbarella_SOC_Portfolio.pdf" target="_blank" download>
-    📁 View My Cyber Portfolio
-  </a>
+  <a href="Stella_Barbarella_SOC_Portfolio.pdf" target="_blank" download>📁 View My Cyber Portfolio</a>
+  <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank">🔗 LinkedIn Profile</a>
 
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank">
-    🔗 LinkedIn Profile
-  </a>
-  <!-- Project Links -->
-<section>
-  <h2>My Projects</h2>
+ <section id="projects">
+  <h2>Projects</h2>
   <ul>
     <li>
-<a href="cyber-threat-map.html" target="_blank">
-
-        🔍 Cyber Threat Map – Real-time threat intel visualization
-      </a>
+      <a href="docs/cyber-threat-map.html" target="_blank">🔍 Cyber Threat Map – Real-time threat intel visualization</a>
     </li>
     <li>
-   <a href="phishing-detector.html" target="_blank">
-
-        📩 Phishing Detector – Email analysis & response tool
-      </a>
+      <a href="docs/phishing-detector.html" target="_blank">📮 Phishing Detector – Email analysis & response tool</a>
+    </li>
+    <li>
+      <a href="docs/threat-hunting.html" target="_blank">🧠 Threat Hunting – Detection logic & hunting queries</a>
     </li>
   </ul>
 </section>
 
-<!-- QR Code -->
-<img src="qr-code.png" alt="QR Code" />
+
+  <img src="qr-code.png" alt="QR Code" />
+
+  <section>
+    <h2>About Me</h2>
+    <p>I’m Stella Barbarella – SOC Analyst passionate about turning alerts into actions...</p>
+  </section>
+</body>
+
+
+
+
 
   <!-- QR Code -->
   <img src="qr-code.png" alt="QR Code" />
