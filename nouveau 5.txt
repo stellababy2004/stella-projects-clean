@@ -5,7 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stella Barbarella</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <style>
+<style>
+.refresh-btn {
+  background-color: #00ffee;
+  color: #000;
+  border: 2px solid #00ffee;
+  border-radius: 10px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ffee80;
+}
+
+.refresh-btn:hover {
+  background-color: #000;
+  color: #00ffee;
+  box-shadow: 0 0 20px #00ffee;
+  transform: scale(1.05);
+}
+</style>
+
     body {
       background-color: #040d0d;
       color: #00ffff;
@@ -60,9 +81,39 @@
 
 <body>
   <h1>Stella Barbarella</h1>
+  <button onclick="refreshCache()" style="margin: 1em; padding: 0.5em 1em;">🔄 Refresh Cache</button>
+  <button onclick="refreshCache()">🔄 Refresh Cache</button>
+  <button class="refresh-btn" onclick="refreshCache()">
+  🔁 Refresh Cache
+</button>
+<style>
+.refresh-btn {
+  background-color: #00ffee;
+  color: #000;
+  border: 2px solid #00ffee;
+  border-radius: 10px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ffee80;
+}
+
+.refresh-btn:hover {
+  background-color: #000;
+  color: #00ffee;
+  box-shadow: 0 0 20px #00ffee;
+  transform: scale(1.05);
+}
+</style>
+
+
+
 
   <a href="Stella_Barbarella_SOC_Portfolio.pdf" target="_blank" download>📁 View My Cyber Portfolio</a>
   <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank">🔗 LinkedIn Profile</a>
+
 
  <section id="projects">
   <h2>Projects</h2>
@@ -87,9 +138,22 @@
     <h2>About Me</h2>
     <p>I’m Stella Barbarella – SOC Analyst passionate about turning alerts into actions...</p>
   </section>
+  <script>
+  function refreshCache() {
+    const url = window.location.href.split("?")[0];
+    const cacheBuster = new Date().getTime();
+    window.location.href = url + "?refresh=" + cacheBuster;
+  }
+</script>
+
 </body>
-
-
+<script>
+function refreshCache() {
+  const url = window.location.href.split("?")[0];
+  const cacheBuster = new Date().getTime();
+  window.location.href = url + "?refresh=" + cacheBuster;
+}
+</script>
 
 
 
