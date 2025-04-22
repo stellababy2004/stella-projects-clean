@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stella Barbarella</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <!-- AOS CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 <style>
 .refresh-btn {
   background-color: #00ffee;
@@ -73,19 +76,14 @@
       text-align: center;
       color: #00ffff;
     }
+	
   </style>
 
   <!-- Plausible Analytics -->
   <script async defer data-domain="stellabarbarella.com" src="https://plausible.io/js/script.js"></script>
 </head>
 
-<body>
-  <h1>Stella Barbarella</h1>
-  <button onclick="refreshCache()" style="margin: 1em; padding: 0.5em 1em;">🔄 Refresh Cache</button>
-  <button onclick="refreshCache()">🔄 Refresh Cache</button>
-  <button class="refresh-btn" onclick="refreshCache()">
-  🔁 Refresh Cache
-</button>
+
 <style>
 .refresh-btn {
   background-color: #00ffee;
@@ -106,6 +104,8 @@
   box-shadow: 0 0 20px #00ffee;
   transform: scale(1.05);
 }
+data-aos="fade-up"
+
 </style>
 
 
@@ -138,15 +138,6 @@
     <h2>About Me</h2>
     <p>I’m Stella Barbarella – SOC Analyst passionate about turning alerts into actions...</p>
   </section>
-  <script>
-  function refreshCache() {
-    const url = window.location.href.split("?")[0];
-    const cacheBuster = new Date().getTime();
-    window.location.href = url + "?refresh=" + cacheBuster;
-  }
-</script>
-
-</body>
 <script>
 function refreshCache() {
   const url = window.location.href.split("?")[0];
@@ -154,7 +145,13 @@ function refreshCache() {
   window.location.href = url + "?refresh=" + cacheBuster;
 }
 </script>
+<!-- AOS Script -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 
+</body>
 
 
   <!-- QR Code -->
@@ -165,5 +162,19 @@ function refreshCache() {
     <h2>About Me</h2>
     <p>I’m Stella Barbarella – SOC Analyst passionate about turning alerts into actions. I thrive in blue team ops, threat hunting, and building clean, efficient workflows. I’m all about quick eyes and strategic response.</p>
   </section>
+  
+  </section>  <!-- завършва "About Me" секцията -->
+<button onclick="refreshCache()" class="refresh-btn">
+  🔁 Refresh Cache
+</button>
+<!-- AOS Script -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
 </body>
 </html>
+
+
+
