@@ -56,17 +56,22 @@
       font-weight: bold;
       cursor: pointer;
     }
+	
+
   </style>
+  <!-- AOS Animation Library -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 </head>
 <body>
 
 <h1>Stella Barbarella</h1>
 
-<section>
-  <p>I’m Stella Barbarella – SOC Analyst passionate about turning alerts into actions.</p>
+<sec<section id="about" data-aos="fade-up">
+  <h2>About Me</h2>
+  <p>I'm Stella Barbarella – SOC Analyst passionate about turning alerts into actions...</p>
 </section>
 
-<section id="projects"></section>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -107,6 +112,9 @@
 
     section.appendChild(list);
   });
+</script>
+<script>
+  AOS.init();
 </script>
 
 </body>
