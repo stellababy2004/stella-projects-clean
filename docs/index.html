@@ -56,7 +56,22 @@
       font-weight: bold;
       cursor: pointer;
     }
-	
+	#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  background-color: #00ffff;
+  color: #000;
+  border: none;
+  padding: 12px 16px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #00ffff;
+  z-index: 1000;
+}
+
 
   </style>
   <!-- AOS Animation Library -->
@@ -116,6 +131,19 @@
 <script>
   AOS.init();
 </script>
+<button id="backToTop" title="Back to Top">⬆️</button>
+<script>
+  const backToTop = document.getElementById("backToTop");
+
+  window.onscroll = function () {
+    backToTop.style.display = window.scrollY > 200 ? "block" : "none";
+  };
+
+  backToTop.onclick = function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+</script>
+
 
 </body>
 </html>
