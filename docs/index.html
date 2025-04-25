@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stella Barbarella</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      background-color: #040d0d;
+      color: #00ffee;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2em;
+      text-shadow: 0 0 10px #00ffee;
+    }
+
+    section {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #00ffee;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .refresh-btn {
+      background-color: #00ffee;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Stella Barbarella</h1>
+
+<section>
+  <p>I’m Stella Barbarella – SOC Analyst passionate about turning alerts into actions.</p>
+</section>
+
+<section id="projects"></section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const projects = [
+      {
+        title: "Cyber Threat Map",
+        url: "cyber-threat-map.html",
+        desc: "🔍 Real-time threat intel visualization"
+      },
+      {
+        title: "Phishing Detector",
+        url: "phishing-detector.html",
+        desc: "📮 Email analysis & response tool"
+      },
+      {
+        title: "Threat Hunting",
+        url: "threat-hunting.html",
+        desc: "🧠 Detection logic & hunting queries"
+      }
+    ];
+
+    const section = document.getElementById("projects");
+    const heading = document.createElement("h2");
+    heading.textContent = "Projects";
+    section.appendChild(heading);
+
+    const list = document.createElement("ul");
+
+    projects.forEach(project => {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = project.url;
+      link.textContent = `${project.title} – ${project.desc}`;
+      link.target = "_blank";
+      item.appendChild(link);
+      list.appendChild(item);
+    });
+
+    section.appendChild(list);
+  });
+</script>
+
+</body>
+</html>
