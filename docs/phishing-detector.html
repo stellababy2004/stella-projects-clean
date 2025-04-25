@@ -1,15 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>📮 Phishing Detector</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phishing Detector</title>
   <style>
     body {
       background-color: #0a0a0a;
       color: #00ffff;
       font-family: 'Courier New', monospace;
-      padding: 40px;
+      padding: 2rem;
       max-width: 800px;
       margin: auto;
     }
@@ -17,12 +18,16 @@
       color: #00ffff;
       text-shadow: 0 0 10px #00ffff;
     }
-    ul {
-      list-style: none;
-      padding: 0;
+    p, li {
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
-    li {
-      margin-bottom: 10px;
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li::before {
+      content: "📮 ";
     }
     a {
       color: #00ffff;
@@ -31,40 +36,47 @@
     a:hover {
       color: white;
     }
+    input, button {
+      font-family: 'Courier New', monospace;
+    }
   </style>
 </head>
 <body>
+  <h1>📮 Phishing Detector</h1>
 
-<h1>📮 Phishing Detector</h1>
+  <p>This tool helps identify phishing emails using heuristics and threat scoring.</p>
 
-<h2>Project Overview</h2>
-<p>"Phishing Detector" is a tool for analyzing and automatically responding to phishing emails. It extracts metadata, checks links in real-time, and applies categorization rules to support SOC teams.</p>
+  <h2>Quick Email Check</h2>
+  <input type="email" id="emailInput" placeholder="Enter suspicious email..." style="padding: 0.5rem; width: 70%;" />
+  <button onclick="checkEmail()" style="padding: 0.5rem; background: #00ffff; border: none; cursor: pointer;">Check</button>
+  <p id="result" style="margin-top: 1rem;"></p>
 
-<h2>Key Features</h2>
-<ul>
-  <li>📬 Email Parsing: Extracts headers, links, and attachments</li>
-  <li>🧠 ML Classifier: Assesses phishing likelihood using machine learning</li>
-  <li>🛡️ Threat Intelligence: Cross-checks domains and IPs against IOC databases</li>
-  <li>⚙️ SOAR Ready: Supports automated responses through SOAR platforms</li>
-</ul>
+  <script>
+    function checkEmail() {
+      const email = document.getElementById('emailInput').value.trim();
+      const result = document.getElementById('result');
 
-<h2>Stack</h2>
-<ul>
-  <li><strong>Frontend:</strong> HTML + CSS (neon theme)</li>
-  <li><strong>Backend:</strong> Python (Flask)</li>
-  <li><strong>Libraries:</strong> BeautifulSoup, Scikit-learn, VirusTotal API</li>
-</ul>
+      if (!email) {
+        result.textContent = "Please enter an email address.";
+        result.style.color = "#ff5555";
+        return;
+      }
 
-<h2>Use Case</h2>
-<p>Ideal for SOC teams looking for a fast way to detect, triage, and respond to phishing attacks with automated evidence collection.</p>
+      const suspiciousPatterns = ["login", "verify", "update", "secure", "bank", "account", "paypal"];
+      const isSuspicious = suspiciousPatterns.some(word => email.toLowerCase().includes(word));
 
-<h2>Author</h2>
-<p>This project is part of the portfolio of <strong>Stella Barbarella</strong>.<br>
-Contact: <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank">LinkedIn Profile</a></p>
+      if (isSuspicious) {
+        result.textContent = "⚠️ This email looks suspicious. Proceed with caution.";
+        result.style.color = "#ffa500";
+      } else {
+        result.textContent = "✅ This email doesn't contain obvious phishing markers.";
+        result.style.color = "#00ff99";
+      }
+    }
+  </script>
 
-<hr>
-
-<p><em>"Phishing is the bait — we're the firewall."</em></p>
-
+  <hr>
+  <p><a href="index.html">⬅ Back to Home</a></p>
+  <button id="backToTop" title="Back to Top">⬆️</button>
 </body>
 </html>
