@@ -1,82 +1,96 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Phishing Detector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <style>
     body {
-      background-color: #0a0a0a;
-      color: #00ffff;
+      background-color: #040d0d;
+      color: #00ffee;
       font-family: 'Courier New', monospace;
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
     }
     h1, h2 {
-      color: #00ffff;
-      text-shadow: 0 0 10px #00ffff;
+      color: #00ffee;
+      text-shadow: 0 0 10px #00ffee;
     }
     p, li {
-      font-size: 1.1rem;
+      font-size: 1.1em;
+      margin: 10px 0;
       line-height: 1.6;
     }
     ul {
       list-style-type: none;
       padding-left: 0;
     }
-    li::before {
-      content: "📮 ";
+    ul li::before {
+      content: "➤ ";
+      color: #00ffee;
+      margin-right: 8px;
     }
     a {
-      color: #00ffff;
+      color: #00ffee;
       text-decoration: underline;
     }
     a:hover {
-      color: white;
+      color: #ffffff;
     }
-    input, button {
-      font-family: 'Courier New', monospace;
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: 2px solid #00ffee;
+      background: transparent;
+      color: #00ffee;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .button:hover {
+      background: #00ffee;
+      color: #040d0d;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <h1>📮 Phishing Detector</h1>
 
-  <p>This tool helps identify phishing emails using heuristics and threat scoring.</p>
+  <h1 data-aos="fade-up">📮 Phishing Detector</h1>
 
-  <h2>Quick Email Check</h2>
-  <input type="email" id="emailInput" placeholder="Enter suspicious email..." style="padding: 0.5rem; width: 70%;" />
-  <button onclick="checkEmail()" style="padding: 0.5rem; background: #00ffff; border: none; cursor: pointer;">Check</button>
-  <p id="result" style="margin-top: 1rem;"></p>
+  <p data-aos="fade-up" data-aos-delay="100">
+    A fast, automated tool for analyzing suspicious emails and helping security teams triage threats efficiently.
+  </p>
 
+  <h2 data-aos="fade-right" data-aos-delay="200">Key Features</h2>
+  <ul data-aos="fade-up" data-aos-delay="300">
+    <li>📬 Email Parsing: Extracts headers, links, and attachments</li>
+    <li>🧠 ML Classifier: Detects phishing patterns with machine learning</li>
+    <li>🛡️ Threat Intelligence Lookup: Validates domains/IPs in real-time</li>
+    <li>⚙️ SOAR Integration Ready: Supports automated incident response</li>
+  </ul>
+
+  <h2 data-aos="fade-right" data-aos-delay="400">Tech Stack</h2>
+  <ul data-aos="fade-up" data-aos-delay="500">
+    <li>Frontend: HTML + CSS (neon-themed)</li>
+    <li>Backend: Python (Flask)</li>
+    <li>APIs: VirusTotal, PhishTank, Custom IOC Feeds</li>
+  </ul>
+
+  <a href="index.html" class="button" data-aos="zoom-in" data-aos-delay="600">⬅️ Back to Portfolio</a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    function checkEmail() {
-      const email = document.getElementById('emailInput').value.trim();
-      const result = document.getElementById('result');
-
-      if (!email) {
-        result.textContent = "Please enter an email address.";
-        result.style.color = "#ff5555";
-        return;
-      }
-
-      const suspiciousPatterns = ["login", "verify", "update", "secure", "bank", "account", "paypal"];
-      const isSuspicious = suspiciousPatterns.some(word => email.toLowerCase().includes(word));
-
-      if (isSuspicious) {
-        result.textContent = "⚠️ This email looks suspicious. Proceed with caution.";
-        result.style.color = "#ffa500";
-      } else {
-        result.textContent = "✅ This email doesn't contain obvious phishing markers.";
-        result.style.color = "#00ff99";
-      }
-    }
+    AOS.init();
   </script>
 
-  <hr>
-  <p><a href="index.html">⬅ Back to Home</a></p>
-  <button id="backToTop" title="Back to Top">⬆️</button>
 </body>
 </html>
