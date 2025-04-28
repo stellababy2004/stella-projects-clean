@@ -21,75 +21,56 @@
     </style>
 </body>
 </html>
+body {
+    background-color: #111111; /* Тъмен фон */
+    color: #ffffff; /* Бял текст */
+    font-family: 'Arial', sans-serif; /* Променен шрифт */
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+}
 
+h1, h2 {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+a {
+    color: #00cfff; /* Приятен син цвят за линкове */
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #ffffff; /* Промяна на цвета при hover */
+}
+
+.button {
+    background-color: #00cfff; /* Светлосиньо за бутона */
+    color: #111111;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #ffffff;
+    color: #00cfff;
+}
+@media (max-width: 600px) {
     body {
-      background-color: #0a0a0a;
-      color: #00ffff;
-      font-family: 'Courier New', monospace;
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
-    }
-    h1, h2 {
-      color: #00ffff;
-      text-shadow: 0 0 10px #00ffff;
-    }
-    a {
-      color: #00ffff;
-      text-decoration: underline;
-    }
-    a:hover {
-      color: white;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    li::before {
-      content: "➤ ";
-      color: #00ffff;
-    }
-    .back {
-      margin-top: 40px;
-      display: inline-block;
-      background: #00ffff20;
-      padding: 0.5em 1em;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .back:hover {
-      background: #00ffff50;
+        padding: 20px;
     }
 
-    #backToTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: none;
-      background-color: #00ffff;
-      color: #000;
-      border: none;
-      padding: 12px 16px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      border-radius: 50%;
-      box-shadow: 0 0 12px #00ffff;
-      z-index: 1000;
-      transition: opacity 0.3s ease;
+    h1 {
+        font-size: 1.5rem;
     }
 
-    .button {
-      background: #00ffff;
-      padding: 0.5em 1em;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
+    h2 {
+        font-size: 1.2rem;
     }
+}
 
-    .button:hover {
-      background: #00ffff50;
-    }
   </style>
 </head>
 
