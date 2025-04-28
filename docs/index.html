@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stella Barbarella</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ffff;
+      font-family: 'Courier New', monospace;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: white;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li::before {
+      content: "➤ ";
+      color: #00ffff;
+    }
+    .back {
+      margin-top: 40px;
+      display: inline-block;
+      background: #00ffff20;
+      padding: 0.5em 1em;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .back:hover {
+      background: #00ffff50;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background-color: #00ffff;
+      color: #000;
+      border: none;
+      padding: 12px 16px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #00ffff;
+      z-index: 1000;
+      transition: opacity 0.3s ease;
+    }
+
+    .button {
+      background: #00ffff;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: #00ffff50;
+    }
+  </style>
+</head>
+
+<body data-aos="fade-up">
+  <h1>🔍 Cyber Threat Map</h1>
+
+  <p>A real-time visualization tool that displays ongoing cyber attacks.</p>
+
+  <h2>⚙️ Features</h2>
+  <ul>
+    <li>🌍 Geolocation of attack sources and targets</li>
+    <li>🧠 TTP tagging based on MITRE ATT&CK</li>
+    <li>📊 Visual data from threat intelligence feeds</li>
+    <li>🔗 Integration with SIEM/ELK</li>
+  </ul>
+
+  <h2>💻 Tech Stack</h2>
+  <p>HTML, CSS, JS, D3.js, APIs (AlienVault OTX, MISP)</p>
+
+  <a href="index.html" class="back">⬅ Back to portfolio</a>
+
+  <a href="Stella_Barbarella_Portfolio.pdf" download class="button" data-aos="zoom-in" data-aos-delay="500">📥 Download My Portfolio</a>
+
+  <button id="backToTop">⬆️</button>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const backToTop = document.getElementById("backToTop");
+    window.onscroll = () => {
+      backToTop.style.display = window.scrollY > 200 ? "block" : "none";
+    };
+    backToTop.onclick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const projects = [
+        {
+          title: "Cyber Threat Map",
+          url: "cyber-threat-map.html",
+          desc: "🔍 Real-time threat intel visualization"
+        },
+        {
+          title: "Phishing Detector",
+          url: "phishing-detector.html",
+          desc: "📮 Email analysis & response tool"
+        },
+        {
+          title: "Threat Hunting",
+          url: "threat-hunting.html",
+          desc: "🧠 Detection logic & hunting queries"
+        }
+      ];
+
+      const section = document.getElementById("projects");
+      const heading = document.createElement("h2");
+      heading.textContent = "Projects";
+      section.appendChild(heading);
+
+      const list = document.createElement("ul");
+
+      projects.forEach(project => {
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = project.url;
+        link.textContent = `${project.title} – ${project.desc}`;
+        link.target = "_blank";
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+
+      section.appendChild(list);
+    });
+  </script>
+</body>
+</html>
