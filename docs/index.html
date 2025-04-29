@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="favicon.ico" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <section class="section" id="chart" data-aos="fade-up">
+  <h2>Cyber Threat Analysis</h2>
+  <iframe src="https://threatmap.bitdefender.com/" id="threatChart" style="width: 100%; height: 600px; border: none;"></iframe>
+
+</section>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     html {
@@ -132,7 +138,8 @@ canvas {
   <section class="section" id="projects" data-aos="fade-up">
     <h2>Projects</h2>
     <ul style="list-style:none;padding:0;">
-      <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li><br>
+      <a href="cyber-threat-map.html" class="button" target="_blank">🔍 Cyber Threat Map</a>
+
       <li><a href="phishing-detector.html" class="button">📮 Phishing Detector</a></li><br>
       <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
     </ul>
