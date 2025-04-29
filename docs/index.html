@@ -1,229 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<header>
-    <nav>
-        <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
 <head>
-    <meta charset="UTF-8" />
-    <title>Stella Barbarella</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
-
-
-<link rel="stylesheet" href="styles.css" />
-##about {
-    padding: 50px 0;
-    background-color: #f4f4f4;
-    text-align: center;
-}
-
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 1.1rem;
-    color: #666;
-}
-
-
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-</head>
-<body>
-    <h1>Welcome to my portfolio!</h1>
-    <p>This is a test page.</p>
-
-  
-    <style>
-   body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212;
-    color: #f4f4f4;
-    line-height: 1.6;
-}
-
-h1, h2 {
-    color: #00bfff; /* Неоново синьо */
-    text-shadow: 0 0 10px rgba(0, 191, 255, 0.7); /* Лека неонова анимация */
-}
-
-
-</style>
-
-</body>
-</html>
-body {
-    background-color: #f4f4f4;
-    color: #333333;
-    font-family: 'Roboto', sans-serif;
-    padding: 40px;
-    max-width: 900px;
-    margin: auto;
-}
-
-h1, h2 {
-    color: #333333;
-    text-shadow: none;
-    margin-bottom: 20px;
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #0056b3;
-}
-
-button {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-@media (max-width: 600px) {
+  <meta charset="UTF-8">
+  <title>Stella Barbarella – Cybersecurity Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
-        padding: 20px;
+      background-color: #040d0d;
+      color: #00ffee;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
     }
-    h1 {
-        font-size: 1.5rem;
+    h1, h2 {
+      color: #00ffee;
+      text-shadow: 0 0 10px #00ffee;
     }
-    h2 {
-        font-size: 1.2rem;
+    .section {
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: auto;
     }
-}
-
-
+    .button {
+      padding: 10px 20px;
+      border: 2px solid #00ffee;
+      background: transparent;
+      color: #00ffee;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      display: inline-block;
+      margin: 10px;
+      text-shadow: 0 0 5px #00ffee;
+      box-shadow: 0 0 10px #00ffee;
+    }
+    .button:hover {
+      background: #00ffee;
+      color: #040d0d;
+      box-shadow: 0 0 20px #00ffee, 0 0 30px #00ffee;
+      transform: scale(1.05);
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #555;
+    }
   </style>
 </head>
 
-<body data-aos="fade-up">
-  <h1>🔍 Cyber Threat Map</h1>
+<body id="top">
 
-  <p>A real-time visualization tool that displays ongoing cyber attacks.</p>
+  <section class="section" id="about" data-aos="fade-up">
+    <h1>Stella Barbarella</h1>
+    <p>SOC Analyst | Cybersecurity Enthusiast | Threat Hunter</p>
+  </section>
 
-  <h2>⚙️ Features</h2>
-  <ul>
-    <li>🌍 Geolocation of attack sources and targets</li>
-    <li>🧠 TTP tagging based on MITRE ATT&CK</li>
-    <li>📊 Visual data from threat intelligence feeds</li>
-    <li>🔗 Integration with SIEM/ELK</li>
-  </ul>
+  <section class="section" id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <ul style="list-style:none;padding:0;">
+      <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li><br>
+      <li><a href="phishing-detector.html" class="button">📮 Phishing Detector</a></li><br>
+      <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
+    </ul>
+  </section>
 
-  <h2>💻 Tech Stack</h2>
-  <p>HTML, CSS, JS, D3.js, APIs (AlienVault OTX, MISP)</p>
+  <section class="section" id="testimonials" data-aos="fade-up">
+    <h2>Testimonials</h2>
+    <p>"Stella is a rockstar SOC analyst. Fast, focused, and professional."</p>
+    <p>"A true cybersecurity shield – turning alerts into decisive action!"</p>
+  </section>
 
-  <a href="index.html" class="back">⬅ Back to portfolio</a>
+  <section class="section" id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <a href="docs/Stella_Barbarella_SOC_Portfolio.pdf" class="button" download>📥 Download Portfolio</a><br><br>
+    <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank" class="button">🔗 LinkedIn</a>
+  </section>
 
-  <a href="Stella_Barbarella_Portfolio.pdf" download class="button" data-aos="zoom-in" data-aos-delay="500">📥 Download My Portfolio</a>
+  <footer class="section" data-aos="fade-up">
+    <p>&copy; 2025 Stella Barbarella – Cybersecurity Portfolio</p>
+  </footer>
 
-  <button id="backToTop">⬆️</button>
+  <!-- Back to Top button -->
+  <a href="#top" id="backToTop" class="button" style="position: fixed; bottom: 40px; right: 30px; display: none;">⬆️ Top</a>
 
-  <!-- AOS Script -->
+  <!-- JS Libraries -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({ duration: 1000 });
 
-    const backToTop = document.getElementById("backToTop");
-    window.onscroll = () => {
-      backToTop.style.display = window.scrollY > 200 ? "block" : "none";
-    };
-    backToTop.onclick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const projects = [
-        {
-          title: "Cyber Threat Map",
-          url: "cyber-threat-map.html",
-          desc: "🔍 Real-time threat intel visualization"
-        },
-        {
-          title: "Phishing Detector",
-          url: "phishing-detector.html",
-          desc: "📮 Email analysis & response tool"
-        },
-        {
-          title: "Threat Hunting",
-          url: "threat-hunting.html",
-          desc: "🧠 Detection logic & hunting queries"
-        }
-      ];
-
-      const section = document.getElementById("projects");
-      const heading = document.createElement("h2");
-      heading.textContent = "Projects";
-      section.appendChild(heading);
-
-      const list = document.createElement("ul");
-
-      projects.forEach(project => {
-        const item = document.createElement("li");
-        const link = document.createElement("a");
-        link.href = project.url;
-        link.textContent = `${project.title} – ${project.desc}`;
-        link.target = "_blank";
-        item.appendChild(link);
-        list.appendChild(item);
-      });
-
-      section.appendChild(list);
+    window.addEventListener('scroll', function() {
+      const backToTop = document.getElementById('backToTop');
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
     });
   </script>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lazy Loading Example</title>
-</head>
-<body>
-    <h1>Lazy Loading Image Example</h1>
-
-    <!-- Image with lazy loading -->
-    <img src="image.jpg" loading="lazy" alt="description">
-
-
-  
-  <script>
-  document.addEventListener('scroll', function() {
-    const aboutSection = document.getElementById('about');
-    const rect = aboutSection.getBoundingClientRect();
-    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-      aboutSection.classList.add('visible');
-    }
-  });
-</script>
-
-
-
-
 
 </body>
 </html>
-
