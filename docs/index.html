@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <h1>Welcome to my portfolio!</h1>
@@ -22,54 +24,53 @@
 </body>
 </html>
 body {
-    background-color: #111111; /* Тъмен фон */
-    color: #ffffff; /* Бял текст */
-    font-family: 'Arial', sans-serif; /* Променен шрифт */
+    background-color: #f4f4f4; /* Светлосив фон */
+    color: #333333; /* Тъмно сив текст за по-добър контраст */
+    font-family: 'Roboto', sans-serif; /* Модерен шрифт */
     padding: 40px;
     max-width: 900px;
     margin: auto;
 }
 
 h1, h2 {
-    color: #ffffff;
-    text-shadow: 0 0 10px #ffffff;
+    color: #333333; /* Тъмно сиво за заглавията */
+    text-shadow: none;
+    margin-bottom: 20px;
 }
 
 a {
-    color: #00cfff; /* Приятен син цвят за линкове */
-    text-decoration: underline;
+    color: #007bff; /* Син цвят за линкове */
+    text-decoration: none;
 }
 
 a:hover {
-    color: #ffffff; /* Промяна на цвета при hover */
+    color: #0056b3; /* Променяме цвета при hover на по-тъмно синьо */
 }
 
-.button {
-    background-color: #00cfff; /* Светлосиньо за бутона */
-    color: #111111;
-    padding: 10px 20px;
-    border-radius: 10px;
+button {
+    background-color: #007bff; /* Светлосин фон на бутоните */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
 }
 
-.button:hover {
-    background-color: #ffffff;
-    color: #00cfff;
+button:hover {
+    background-color: #0056b3; /* По-тъмен син при hover */
 }
+
 @media (max-width: 600px) {
     body {
         padding: 20px;
     }
-
     h1 {
         font-size: 1.5rem;
     }
-
     h2 {
-        font-size: 1.2rem;
-    }
-}
+        font-size: 1.2
+
 
   </style>
 </head>
