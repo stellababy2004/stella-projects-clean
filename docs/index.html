@@ -54,16 +54,69 @@
       font-size: 0.9em;
       color: #555;
     }
+
+    /* Fixed Navigation Bar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #121212;
+      padding: 10px 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #00ffee;
+      text-decoration: none;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    nav ul li a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* Add padding to the content to prevent overlap with the fixed header */
+    .section {
+      padding-top: 80px;
+    }
   </style>
 </head>
 
 <body id="top">
 
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Me Section -->
   <section class="section" id="about" data-aos="fade-up">
     <h1>Stella Barbarella</h1>
     <p>SOC Analyst | Cybersecurity Enthusiast | Threat Hunter</p>
   </section>
 
+  <!-- Projects Section -->
   <section class="section" id="projects" data-aos="fade-up">
     <h2>Projects</h2>
     <ul style="list-style:none;padding:0;">
@@ -73,21 +126,45 @@
     </ul>
   </section>
 
+  <!-- Testimonials Section -->
   <section class="section" id="testimonials" data-aos="fade-up">
     <h2>Testimonials</h2>
     <p>"Stella is a rockstar SOC analyst. Fast, focused, and professional."</p>
     <p>"A true cybersecurity shield – turning alerts into decisive action!"</p>
   </section>
 
+  <!-- Contact Section -->
   <section class="section" id="contact" data-aos="fade-up">
     <h2>Contact</h2>
     <a href="docs/Stella_Barbarella_SOC_Portfolio.pdf" class="button" download>📥 Download Portfolio</a><br><br>
     <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank" class="button">🔗 LinkedIn</a>
   </section>
 
+  <!-- Footer Section -->
   <footer class="section" data-aos="fade-up">
     <p>&copy; 2025 Stella Barbarella – Cybersecurity Portfolio</p>
   </footer>
+
+  <!-- Back to Top button -->
+  <a href="#top" id="backToTop" class="button" style="position: fixed; bottom: 40px; right: 30px; display: none;">⬆️ Top</a>
+
+  <!-- JS Libraries -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+
+    window.addEventListener('scroll', function() {
+      const backToTop = document.getElementById('backToTop');
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
 
   <!-- Back to Top button -->
   <a href="#top" id="backToTop" class="button" style="position: fixed; bottom: 40px; right: 30px; display: none;">⬆️ Top</a>
