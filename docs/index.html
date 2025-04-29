@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="favicon.ico" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     html {
       scroll-behavior: smooth;
@@ -93,6 +94,17 @@
     .section {
       padding-top: 80px;
     }
+	#chart {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+canvas {
+  width: 100% !important;
+  height: 400px !important;
+}
+
   </style>
 </head>
 
@@ -139,6 +151,10 @@
     <a href="docs/Stella_Barbarella_SOC_Portfolio.pdf" class="button" download>📥 Download Portfolio</a><br><br>
     <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank" class="button">🔗 LinkedIn</a>
   </section>
+<section class="section" id="chart" data-aos="fade-up">
+  <h2>Cyber Threat Analysis</h2>
+  <canvas id="threatChart"></canvas> <!-- Това е мястото, където ще се рендира графиката -->
+</section>
 
   <!-- Footer Section -->
   <footer class="section" data-aos="fade-up">
