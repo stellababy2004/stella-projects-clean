@@ -114,7 +114,6 @@ canvas {
 }
 .map-container {
   overflow: hidden;
-  /* височината е колкото искаш – тук 550px, за да скриеш логото */
   height: 550px;
   position: relative;
 }
@@ -125,6 +124,21 @@ canvas {
   /* трябва да е малко по-голяма от контейнера */
   height: 650px;
   border: none;
+}
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 500px;      /* регулирай височината според нуждите */
+  overflow: hidden;   /* скрива излишното */
+  margin: auto;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: -60px;         /* с това режем синята лента отгоре */
+  left: 0;
+  width: 100%;
+  height: calc(100% + 60px);
 }
 
   </style>
@@ -204,16 +218,16 @@ canvas {
     });
   </script>
   <!-- Chart Section -->
- <section class="section" id="chart" data-aos="fade-up">
+ <!-- Interactive Map Section -->
+<section class="section" id="chart" data-aos="fade-up">
   <h2>Cyber Threat Analysis</h2>
   <div class="map-container">
-    <iframe
-      src="https://threatmap.bitdefender.com/"
-      id="threatChart"
-      frameborder="0"
-    ></iframe>
+    <iframe src="https://threatmap.bitdefender.com/"
+            id="threatChart"
+            style="border:none;"></iframe>
   </div>
 </section>
+
 
   <!-- Back to Top, footer и т.н. -->
 
