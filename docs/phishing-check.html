@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Check – Stella Barbarella</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="button">← Back to Home</a>
+    </nav>
+  </header>
+
+  <main class="section">
+    <h1>Phishing Check</h1>
+    <p>
+      This tool will check a submitted email address or URL against public threat intelligence APIs  
+      (e.g. PhishTank, VirusTotal) to see if it’s been reported in phishing campaigns.
+    </p>
+    <form id="checkForm">
+      <input type="text" id="target" placeholder="Enter email or URL" required
+             style="padding:10px; width:80%; max-width:400px; margin:20px 0;">
+      <button type="submit" class="button">Run Check</button>
+    </form>
+
+    <div id="result" style="margin-top:30px;"></div>
+  </main>
+
+  <script>
+    document.getElementById('checkForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const target = document.getElementById('target').value;
+      const resultEl = document.getElementById('result');
+      resultEl.textContent = 'Checking…';
+
+      // Примерен fetch към бекенд API (трябва да имаш сървърна логика отделно)
+      try {
+        const resp = await fetch(`/api/check?target=${encodeURIComponent(target)}`);
+        const data = await resp.json();
+        if (data.safe) {
+          resultEl.innerHTML = `<p style="color:#0f0;">No phishing reports found for ${target}.</p>`;
+        } else {
+          resultEl.innerHTML = `<p style="color:#f00;">⚠️ ${target} has been flagged for phishing!</p>
+                                <pre>${JSON.stringify(data.reports, null, 2)}</pre>`;
+        }
+      } catch (err) {
+        resultEl.innerHTML = `<p style="color:#f00;">Error: ${err.message}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>
