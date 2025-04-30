@@ -1,0 +1,27 @@
+/* Animated Neon Gradient Background */
+@keyframes neonGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  background: linear-gradient(270deg,
+    #040d0d,
+    #001f3f,
+    #0f3057,
+    #2c3e50,
+    #040d0d
+  );
+  background-size: 1000% 1000%;
+  animation: neonGradient 15s ease infinite;
+
+  color: #00ffee;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* тук добавяш останалите си стилове... */
