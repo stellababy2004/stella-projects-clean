@@ -31,3 +31,22 @@ body {
 }
 
 /* тук добавяш останалите си стилове... */
+/* particles.js фон */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Съдържанието да е над частиците */
+body > header,
+body > .section,
+body > footer,
+#backToTop {
+  position: relative;
+  z-index: 10;
+}
