@@ -2,95 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Phishing Detector</title>
+  <title>Phishing Email Check</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      background-color: #040d0d;
-      color: #00ffee;
-      font-family: 'Courier New', monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0;
+    .form-section {
+      max-width: 500px;
+      margin: 80px auto;
+      background: rgba(0,0,0,0.6);
       padding: 20px;
-      min-height: 100vh;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00ffee;
     }
-    h1, h2 {
-      color: #00ffee;
-      text-shadow: 0 0 10px #00ffee;
-    }
-    p, li {
-      font-size: 1.1em;
+    .form-section input {
+      width: 100%;
+      padding: 10px;
       margin: 10px 0;
-      line-height: 1.6;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    ul li::before {
-      content: "➤ ";
+      border: 1px solid #00ffee;
+      border-radius: 4px;
+      background: #121212;
       color: #00ffee;
-      margin-right: 8px;
     }
-    a {
-      color: #00ffee;
-      text-decoration: underline;
-    }
-    a:hover {
-      color: #ffffff;
-    }
-    .button {
-      margin-top: 20px;
-      padding: 10px 20px;
+    .form-section button {
+      width: 100%;
+      padding: 10px;
       border: 2px solid #00ffee;
       background: transparent;
       color: #00ffee;
-      border-radius: 10px;
-      font-size: 1em;
+      border-radius: 4px;
       cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
+      transition: 0.3s;
     }
-    .button:hover {
+    .form-section button:hover {
       background: #00ffee;
-      color: #040d0d;
-      transform: scale(1.05);
+      color: #121212;
+    }
+    #result {
+      margin-top: 15px;
+      font-size: 1.1em;
     }
   </style>
 </head>
-<body>
+<body id="top">
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="phishing-check.html">Phishing Check</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <h1 data-aos="fade-up">📮 Phishing Detector</h1>
+  <section class="form-section" data-aos="fade-up">
+    <h2>Phishing Email Check</h2>
+    <p>Въведи адреса на подател или URL за проверка:</p>
+    <input type="text" id="inputValue" placeholder="example@domain.com или https://..." />
+    <button id="checkBtn">Провери за фишинг</button>
+    <div id="result"></div>
+  </section>
 
-  <p data-aos="fade-up" data-aos-delay="100">
-    A fast, automated tool for analyzing suspicious emails and helping security teams triage threats efficiently.
-  </p>
-
-  <h2 data-aos="fade-right" data-aos-delay="200">Key Features</h2>
-  <ul data-aos="fade-up" data-aos-delay="300">
-    <li>📬 Email Parsing: Extracts headers, links, and attachments</li>
-    <li>🧠 ML Classifier: Detects phishing patterns with machine learning</li>
-    <li>🛡️ Threat Intelligence Lookup: Validates domains/IPs in real-time</li>
-    <li>⚙️ SOAR Integration Ready: Supports automated incident response</li>
-  </ul>
-
-  <h2 data-aos="fade-right" data-aos-delay="400">Tech Stack</h2>
-  <ul data-aos="fade-up" data-aos-delay="500">
-    <li>Frontend: HTML + CSS (neon-themed)</li>
-    <li>Backend: Python (Flask)</li>
-    <li>APIs: VirusTotal, PhishTank, Custom IOC Feeds</li>
-  </ul>
-
-  <a href="index.html" class="button" data-aos="zoom-in" data-aos-delay="600">⬅️ Back to Portfolio</a>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
-  </script>
+    document.getElementById('checkBtn').addEventListener('click', () => {
+      const val = document.getElementById('inputValue').value.trim();
+      const resultEl = document.getElementById('result');
+      if (!val) {
+        resultEl.textContent = 'Моля, въведи валиден адрес.';
+        return;
+      }
+      resultEl.textContent = 'Провеждам проверка…';
 
+      // TODO: Тук можеш да интегрираш реално API (PhishTank, VirusTotal и т.н.)
+      // За демонстрация – ще покажем фиктивен отговор:
+      setTimeout(() => {
+        const isPhish = Math.random() < 0.3;  // 30% шанс „фишинг“
+        if (isPhish) {
+          resultEl.innerHTML = '<span style="color:#ff4d4d;">⚠️ Възможен фишинг!</span>';
+        } else {
+          resultEl.innerHTML = '<span style="color:#4dff4d;">✅ Няма признаци на фишинг.</span>';
+        }
+      }, 1200);
+    });
+  </script>
 </body>
 </html>
