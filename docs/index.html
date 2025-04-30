@@ -45,6 +45,7 @@
 }
 
 body {
+   
   /* Заменяме статичния тъмен фон */
   background: linear-gradient(270deg,
     #040d0d,
@@ -185,8 +186,12 @@ canvas {
 </head>
 
 <body id="top">
+<!-- Particles background -->
+
+
 
   <!-- Navigation Bar -->
+  <div id="particles-js"></div>
   <header>
   
     <nav>
@@ -487,6 +492,44 @@ const threatChart = new Chart(ctx, {
       }
     });
   </script>
+<!-- particles.js библиотека -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+<script>
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: 80 },
+      color: { value: '#00ffee' },
+      shape: { type: 'circle' },
+      opacity: { value: 0.5 },
+      size: { value: 3 },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: '#00ffee',
+        opacity: 0.4,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 2,
+        direction: 'none',
+        out_mode: 'bounce'
+      }
+    },
+    interactivity: {
+      detect_on: 'canvas',
+      events: {
+        onhover: { enable: true, mode: 'grab' },
+        onclick: { enable: true, mode: 'push' }
+      },
+      modes: {
+        grab: { distance: 140, line_linked: { opacity: 1 } },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
+</script>
 
 </body>
 </html>
