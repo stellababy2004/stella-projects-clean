@@ -557,9 +557,30 @@ const threatChart = new Chart(ctx, {
     }
   });
 </script>
-
+  <!-- Three.js (за Vanta.js фон) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <!-- Vanta.js net ефект -->
+  <script src="https://unpkg.com/vanta@0.5.21/dist/vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+      el: "#top",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x00ffee,
+      backgroundColor: 0x040d0d,
+      points: 6.00,
+      maxDistance: 20.00,
+      spacing: 20.00
+    });
+  </script>
 </body>
-</html>
+
+
 
   <!-- Back to Top button -->
   <a href="#top" id="backToTop" class="button" style="position: fixed; bottom: 40px; right: 30px; display: none;">⬆️ Top</a>
