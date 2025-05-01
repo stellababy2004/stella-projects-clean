@@ -50,3 +50,15 @@ body > footer,
   position: relative;
   z-index: 10;
 }
+/* QR код в секцията Contact */
+.qr-code {
+  display: block;
+  margin: 20px auto 0;
+  width: 150px;
+  height: auto;
+  border: 2px solid #00ffee;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 238, 0.5);
+  z-index: 10;       /* за да е над частиците */
+  position: relative;
+}
