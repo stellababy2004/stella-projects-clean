@@ -1,291 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Основни мета тагове -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Заглавие и описание -->
-  <title>Stella Barbarella – SOC Analyst & Cybersecurity Portfolio</title>
-  <meta name="description"
-        content="Stella Barbarella – SOC Analyst, Threat Hunter и Cybersecurity Enthusiast. Разгледайте проекти като Cyber Threat Map, Phishing Detector и Threat Hunting." />
-
-  <!-- Краулер инструкции -->
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://stellabarbarella.com/" />
-
-  <!-- OpenGraph за социални мрежи -->
-  <meta property="og:title" content="Stella Barbarella – Cybersecurity Portfolio" />
-  <meta property="og:description"
-        content="Проекти и инструменти на Stella Barbarella – SOC Analyst и Threat Hunter в реално време" />
-  <meta property="og:image" content="https://stellabarbarella.com/images/og-image.png" />
-  <meta property="og:url" content="https://stellabarbarella.com/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Stella Barbarella – Cybersecurity Portfolio" />
-  <meta name="twitter:description"
-        content="Разгледайте инструментите и проекти на Stella Barbarella – SOC Analyst и Threat Hunter" />
-  <meta name="twitter:image" content="https://stellabarbarella.com/images/twitter-card.png" />
-
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Stella Barbarella",
-    "url": "https://stellabarbarella.com/",
-    "jobTitle": "SOC Analyst",
-    "description": "Cybersecurity Enthusiast и Threat Hunter",
-    "sameAs": [
-      "https://www.linkedin.com/in/stella-s-95ba5683/",
-      "https://github.com/stellababy2004"
-    ]
-  }
-  </script>
-
-  <!-- favicon и CSS -->
-  <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <link rel="stylesheet" href="styles.css" />
-  <!-- в <head> след останалите <link> -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-o9N1j8zq1Vn8nUHIeS1D5v6O1iGvdw+5U4XhJcJOSmI="
-  crossorigin=""
-/>
-<script
-  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-XQoYMqMTK8LvdlDXvXO1rOVa6hYc0OKam5Q+XvY1w3s="
-  crossorigin=""
-></script>
-
-</head>
-
-
- <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Stella Barbarella – Cybersecurity Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- favicon -->
   <link rel="icon" href="favicon.ico" />
 
-  <!-- AOS стили -->
+  <!-- AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
-  <!-- Твоите основни CSS правила -->
+  <!-- Leaflet CSS (for maps) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-o9N1jBzq1Vn8nUHIeS1D5v601iGvdw+5U4XhJcJOSmI="
+    crossorigin=""
+  />
+
+  <!-- Your main stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Chart.js (може и преди края на body, ако искаш по-бързо рендериране) -->
+  <!-- Chart.js (for bar chart) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
-
-  <section class="section" id="chart" data-aos="fade-up">
-  <h2>Cyber Threat Analysis</h2>
-  <div class="map-container">
--   <iframe
--     src="https://threatmap.bitdefender.com/"
--     id="threatChart"
--     frameborder="0"
--   ></iframe>
-
-  + <canvas id="threatChart" width="800" height="400"></canvas>
-
-  </div>
-
-
-</section>
-  </section>
-
-
-<!-- Инициализация на Leaflet картата -->
-<script>
-  const map = L.map('map').setView([51.505, -0.09], 2);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-</script>
-</body>
-
-</body>
-</html>
-
-
- 
-    html {
-	
-      scroll-behavior: smooth;
-	  /* Animated Neon Gradient Background */
-@keyframes neonGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-body {
-   
-  /* Заменяме статичния тъмен фон */
-  background: linear-gradient(270deg,
-    #040d0d,
-    #001f3f,
-    #0f3057,
-    #2c3e50,
-    #040d0d
-  );
-  background-size: 1000% 1000%;     /* много по-широк градиент за анимация */
-  animation: neonGradient 15s ease infinite;
-}
-
-    }
-    body {
-      background-color: #040d0d;
-      color: #00ffee;
-      font-family: 'Courier New', monospace;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #00ffee;
-      text-shadow: 0 0 10px #00ffee;
-    }
-    .section {
-      padding: 50px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .button {
-      padding: 10px 20px;
-      border: 2px solid #00ffee;
-      background: transparent;
-      color: #00ffee;
-      border-radius: 8px;
-      font-size: 1em;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s;
-      display: inline-block;
-      margin: 10px;
-      text-shadow: 0 0 5px #00ffee;
-      box-shadow: 0 0 10px #00ffee;
-    }
-    .button:hover {
-      background: #00ffee;
-      color: #040d0d;
-      box-shadow: 0 0 20px #00ffee, 0 0 30px #00ffee;
-      transform: scale(1.05);
-    }
-    footer {
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #555;
-    }
-
-    /* Fixed Navigation Bar */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #121212;
-      padding: 10px 0;
-      z-index: 100;
-    }
-
-    nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      padding: 0;
-    }
-
-    nav ul li {
-      margin: 0 15px;
-    }
-
-    nav ul li a {
-      color: #00ffee;
-      text-decoration: none;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-    }
-
-    nav ul li a:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-
-    /* Add padding to the content to prevent overlap with the fixed header */
-    .section {
-      padding-top: 80px;
-    }
-	#chart {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-}
-
-canvas {
-  width: 100% !important;
-  height: 400px !important;
-}
-.map-container {
-  overflow: hidden;
-  height: 550px;
-  position: relative;
-}
-.map-container iframe {
-  /* изместваме iframe-а нагоре, за да скрием header-а */
-  margin-top: -50px;
-  width: 100%;
-  /* трябва да е малко по-голяма от контейнера */
-  height: 650px;
-  border: none;
-}
-.map-container {
-  position: relative;
-  width: 100%;
-  height: 500px;      /* регулирай височината според нуждите */
-  overflow: hidden;   /* скрива излишното */
-  margin: auto;
-}
-
-.map-container iframe {
-  position: absolute;
-  top: -60px;         /* с това режем синята лента отгоре */
-  left: 0;
-  width: 100%;
-  height: calc(100% + 60px);
-}
-
-  </style>
-  
-</head>
-
 <body id="top">
--  <!-- Navigation Bar -->
--  <header> … </header>
-+  <!-- Particles Background -->
-+  <div id="particles-js"></div>
-+
-+  <!-- Navigation Bar -->
-+  <header> … </header>
-<!-- Particles background -->
+
+  <!-- Vanta.js animated background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://unpkg.com/vanta@0.5.21/dist/vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+      el: "#top",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x00ffee,
+      backgroundColor: 0x040d0d,
+      points: 6.0,
+      maxDistance: 20.0,
+      spacing: 20.0
+    });
+  </script>
 
   <!-- Navigation Bar -->
-  <div id="particles-js"></div>
   <header>
-  
     <nav>
       <ul>
         <li><a href="#about">About Me</a></li>
@@ -296,7 +60,7 @@ canvas {
     </nav>
   </header>
 
-  <!-- About Me Section -->
+  <!-- About Section -->
   <section class="section" id="about" data-aos="fade-up">
     <h1>Stella Barbarella</h1>
     <p>SOC Analyst | Cybersecurity Enthusiast | Threat Hunter</p>
@@ -306,26 +70,44 @@ canvas {
   <section class="section" id="projects" data-aos="fade-up">
     <h2>Projects</h2>
     <ul style="list-style:none;padding:0;">
-      <a href="cyber-threat-map.html" class="button" target="_blank">🔍 Cyber Threat Map</a>
-    - <a href="phishing-check.html" class="button">Check for Phishing</a>
-+ <a href="phishing-check.html" class="button" target="_blank">Check for Phishing</a>
-
-
-      <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
+      <li>
+        <a href="cyber-threat-map.html" class="button" target="_blank">
+          🔍 Cyber Threat Map
+        </a>
+      </li><br>
+      <li>
+        <a href="phishing-check.html" class="button" target="_blank">
+          📧 Check for Phishing
+        </a>
+      </li><br>
+      <li>
+        <a href="threat-hunting.html" class="button">
+          🧠 Threat Hunting
+        </a>
+      </li>
     </ul>
-    <ul style="list-style:none;padding:0;">
- 
-	  </section>
-	<!-- Phishing Detector Embed Section -->
-	
-	<section class="section" id="map-section" data-aos="fade-up">
-  <h2>Live Threat Map</h2>
-  <div id="map" style="width:100%; height:400px; border:2px solid #00ffee;"></div>
-</section>
+  </section>
 
+  <!-- Interactive Chart Section -->
+  <section class="section" id="chart" data-aos="fade-up">
+    <h2>Cyber Threat Analysis</h2>
+    <canvas id="threatChart" style="max-width:800px;margin:auto;"></canvas>
+  </section>
 
+  <!-- Live Map Embed Section -->
+  <section class="section" id="map-section" data-aos="fade-up">
+    <h2>Live Threat Map</h2>
+    <iframe
+      src="https://threatmap.bitdefender.com/"
+      style="width:100%;height:600px;border:none;"
+    ></iframe>
+  </section>
 
-
+  <!-- Leaflet Map Section -->
+  <section class="section" id="live-map" data-aos="fade-up">
+    <h2>Global Threat Locations</h2>
+    <div id="map" style="width:100%;height:400px;border:2px solid #00ffee;"></div>
+  </section>
 
   <!-- Testimonials Section -->
   <section class="section" id="testimonials" data-aos="fade-up">
@@ -333,189 +115,61 @@ canvas {
     <p>"Stella is a rockstar SOC analyst. Fast, focused, and professional."</p>
     <p>"A true cybersecurity shield – turning alerts into decisive action!"</p>
   </section>
-  
-<!-- Contact Section -->
-<section class="section" id="contact" data-aos="fade-up">
-  <h2>Contact</h2>
-  <p class="section-subtitle">Connect with me</p>
 
-  <ul class="contact-list">
-    <li>
-      <a href="docs/Stella_Barbarella_SOC_Portfolio.pdf" class="button" download>
-        📥 Download Portfolio
-      </a>
-    </li>
-    <li>
-      <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank" class="button">
-        🔗 LinkedIn
-      </a>
-    </li>
-  </ul>
-
-  <div class="qr-container">
-    <img src="images/linkedin-qr.png" alt="LinkedIn QR Code" class="qr-code" />
-    <p class="qr-label">Scan me</p>
-  </div>
-</section>
-
-
-  <!-- Добавяме заглавие и QR код -->
-  <h3 style="margin-top: 30px; color: #00ffee;">Connect with me</h3>
-  <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank">
+  <!-- Contact Section -->
+  <section class="section" id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <h3>Connect with me</h3>
     <img
       src="images/linkedin-qr.png"
       alt="LinkedIn QR Code"
       class="qr-code"
-    />
-  </a>
-</section>
+    /><br>
+    <a
+      href="docs/Stella_Barbarella_SOC_Portfolio.pdf"
+      class="button"
+      download
+    >
+      📥 Download Portfolio
+    </a><br><br>
+    <a
+      href="https://www.linkedin.com/in/stella-s-95ba5683/"
+      target="_blank"
+      class="button"
+    >
+      🔗 LinkedIn
+    </a>
+  </section>
 
-
-<section class="section" id="chart" data-aos="fade-up">
-  <h2>Cyber Threat Analysis</h2>
-  <canvas id="threatChart"></canvas> <!-- Това е мястото, където ще се рендира графиката -->
-</section>
-
-  <!-- Footer Section -->
+  <!-- Footer -->
   <footer class="section" data-aos="fade-up">
     <p>&copy; 2025 Stella Barbarella – Cybersecurity Portfolio</p>
   </footer>
 
-  <!-- Back to Top button -->
-  <a href="#top" id="backToTop" class="button" style="position: fixed; bottom: 40px; right: 30px; display: none;">⬆️ Top</a>
+  <!-- Back to Top Button -->
+  <a
+    href="#top"
+    id="backToTop"
+    class="button"
+    style="position:fixed;bottom:40px;right:30px;display:none;"
+  >
+    ⬆️ Top
+  </a>
 
   <!-- JS Libraries -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000 });
 
-    window.addEventListener('scroll', function() {
-      const backToTop = document.getElementById('backToTop');
-      if (window.scrollY > 300) {
-        backToTop.style.display = 'block';
-      } else {
-        backToTop.style.display = 'none';
-      }
+    // Back to top visibility
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('backToTop');
+      btn.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
   </script>
-  
-</section>
 
-
-  <!-- Back to Top, footer и т.н. -->
-
-  <!-- JS Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js Initialization -->
   <script>
-    const ctx = document.getElementById('threatChart').getContext('2d');
-    const threatChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
-        datasets: [{
-          label: 'Cyber Threats (in %)',
-          data: [35, 25, 20, 15, 5],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.6)',
-            'rgba(54, 162, 235, 0.6)',
-            'rgba(255, 206, 86, 0.6)',
-            'rgba(75, 192, 192, 0.6)',
-            'rgba(153, 102, 255, 0.6)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: { beginAtZero: true }
-        }
-      }
-    });
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-  const ctx = document.getElementById('threatChart').getContext('2d');
-  const threatChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
-      datasets: [{
-        label: 'Cyber Threats (in %)',
-        data: [35,25,20,15,5],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(153, 102, 255, 0.6)'
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: { beginAtZero: true }
-      }
-    }
-  });
-</script>
-<!-- Chart.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-<script>
-const ctx = document.getElementById('threatChart').getContext('2d');
-const threatChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
-    datasets: [{
-      label: 'Cyber Threats (in %)',
-      data: [35, 25, 20, 15, 5],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.6)',
-        'rgba(54, 162, 235, 0.6)',
-        'rgba(255, 206, 86, 0.6)',
-        'rgba(75, 192, 192, 0.6)',
-        'rgba(153, 102, 255, 0.6)'
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)'
-      ],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: { beginAtZero: true }
-    }
-  }
-});
-</script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
     const ctx = document.getElementById('threatChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
@@ -523,7 +177,7 @@ const threatChart = new Chart(ctx, {
         labels: ['Ransomware','Phishing','DDoS','Malware','Spyware'],
         datasets: [{
           label: 'Cyber Threats (%)',
-          data: [35, 25, 20, 15, 5],
+          data: [35,25,20,15,5],
           backgroundColor: [
             'rgba(255,99,132,0.6)',
             'rgba(54,162,235,0.6)',
@@ -543,133 +197,22 @@ const threatChart = new Chart(ctx, {
       },
       options: {
         responsive: true,
-        scales: {
-          y: { beginAtZero: true }
-        }
-      }
-    });
-  });
-</script>
-
-
-</body>
-</html>
-<script>
-  const ctx = document.getElementById('threatChart').getContext('2d');
-  const threatChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Ransomware','Phishing','DDoS','Malware','Spyware'],
-      datasets: [{
-        label: 'Cyber Threats (%)',
-        data: [35, 25, 20, 15, 5],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(153, 102, 255, 0.6)'
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
-  <!-- Three.js (за Vanta.js фон) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-  <!-- Vanta.js net ефект -->
-  <script src="https://unpkg.com/vanta@0.5.21/dist/vanta.net.min.js"></script>
-  <script>
-    VANTA.NET({
-      el: "#top",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0x00ffee,
-      backgroundColor: 0x040d0d,
-      points: 6.00,
-      maxDistance: 20.00,
-      spacing: 20.00
-    });
-  </script>
-</body>
-
-
-
-  <!-- Back to Top button -->
-  <a href="#top" id="backToTop" class="button" style="position: fixed; bottom: 40px; right: 30px; display: none;">⬆️ Top</a>
-
-  <!-- JS Libraries -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000 });
-
-    window.addEventListener('scroll', function() {
-      const backToTop = document.getElementById('backToTop');
-      if (window.scrollY > 300) {
-        backToTop.style.display = 'block';
-      } else {
-        backToTop.style.display = 'none';
+        scales: { y: { beginAtZero: true } }
       }
     });
   </script>
-<!-- particles.js библиотека -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-<script>
-  particlesJS('particles-js', {
-    particles: {
-      number: { value: 80 },
-      color: { value: '#00ffee' },
-      shape: { type: 'circle' },
-      opacity: { value: 0.5 },
-      size: { value: 3 },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: '#00ffee',
-        opacity: 0.4,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 2,
-        direction: 'none',
-        out_mode: 'bounce'
-      }
-    },
-    interactivity: {
-      detect_on: 'canvas',
-      events: {
-        onhover: { enable: true, mode: 'grab' },
-        onclick: { enable: true, mode: 'push' }
-      },
-      modes: {
-        grab: { distance: 140, line_linked: { opacity: 1 } },
-        push: { particles_nb: 4 }
-      }
-    },
-    retina_detect: true
-  });
-</script>
 
+  <!-- Leaflet JS (for map) -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-XQoYMqMTK8LvdlDxvX0lrdV/a6HiytOOKam5Q+Xv1w3s="
+    crossorigin=""
+  ></script>
+  <script>
+    const map = L.map('map').setView([51.505, -0.09], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+  </script>
 </body>
 </html>
