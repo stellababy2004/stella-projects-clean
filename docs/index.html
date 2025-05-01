@@ -23,21 +23,44 @@
 
 <!-- Your main stylesheet -->
 <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="top">
+<section class="section" id="map-section" data-aos="fade-up">
+    <h2>Global Threat Locations</h2>
+    <div id="map"></div>
+  </section>
 
+ <!-- … other scripts like Chart.js, AOS init … -->
 
-  <!-- Leaflet CSS (for maps) -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-o9N1jBzq1Vn8nUHIeS1D5v601iGvdw+5U4XhJcJOSmI="
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-VlzpAocxLpstJvPo5DjXr7bTyc6xaG4gzWc0nYB0+4U="
     crossorigin=""
-  />
+  ></script>
+  <!-- Map Initialization -->
+  <script>
+    const map = L.map('map').setView([20, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+  </script>
+</body>
+</html>
 
   <!-- Your main stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Chart.js (for bar chart) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Leaflet CSS (for maps) -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-o9N1jBzqlVn8nUHIeS1D5v601iGvdw+5U4XhJcJOSmI="
+  crossorigin=""
+/>
+
 </head>
 <body id="top">
 
