@@ -10,6 +10,20 @@
 
   <!-- AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <!-- AOS CSS -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+<!-- Leaflet CSS (for maps) -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-o9N1jBzq1Vn8nUHIeSlD5v601iGvdw+5U4XhJcJOSmI="
+  crossorigin=""
+/>
+
+<!-- Your main stylesheet -->
+<link rel="stylesheet" href="styles.css" />
+
 
   <!-- Leaflet CSS (for maps) -->
   <link
@@ -214,5 +228,24 @@
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
   </script>
+  <!-- Leaflet JS -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-VlzpAocxLpstJvPo5DjXr7bTyc6xaG4gzWc0nYB0+4U="
+  crossorigin=""
+></script>
+
+<!-- Leaflet map init -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const map = L.map('map').setView([51.505, -0.09], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+  });
+</script>
+</body>
+</html>
+
 </body>
 </html>
