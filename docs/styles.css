@@ -6,7 +6,50 @@
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}/* Contact Section Styling */
+#contact .section-subtitle {
+  margin: 0 0 30px;
+  color: #00ffee;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px #00ffee;
 }
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 40px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-list li {
+  margin: 0;
+}
+
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.qr-code {
+  width: 150px;
+  border: 2px solid #00ffee;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 238, 0.5);
+  pointer-events: none;
+}
+
+.qr-label {
+  margin-top: 10px;
+  color: #00ffee;
+  font-size: 0.9rem;
+  text-shadow: 0 0 5px #00ffee;
+}
+
 
 body {
   background: linear-gradient(270deg, #040d0d, #001f1f, #040d0d);
