@@ -26,19 +26,48 @@
   <meta name="twitter:image" content="https://www.stellabarbarella.com/images/twitter-card.png" />
 
   <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Stella Barbarella",
-    "url": "https://www.stellabarbarella.com/",
-    "jobTitle": "SOC Analyst & Threat Hunter",
-    "sameAs": [
-      "https://www.linkedin.com/in/stella-s-95ba5683/",
-      "https://github.com/stellababy2004"
-    ]
-  }
-  </script>
+<script>
+// 1) Инициализация на картата
+const map = L.map('map').setView([20, 0], 2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+// 2) Създаваме MarkerCluster група
+const markers = L.markerClusterGroup();
+
+// 3) Добавяме няколко статични marker-а (пример)
+const staticPoints = [
+  { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
+  { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
+  { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
+];
+staticPoints.forEach(p => {
+  L.marker(p.coords)
+    .bindPopup(`<strong>${p.popup}</strong>`)
+    .addTo(markers);
+});
+
+// 4) Зареждаме реалните GeoJSON данни
+fetch('threats.geojson')
+  .then(res => res.json())
+  .then(data => {
+    L.geoJSON(data, {
+      onEachFeature: (feature, layer) => {
+        if (feature.properties?.name) {
+          layer.bindPopup(
+            `<strong>${feature.properties.name}</strong><br>` +
+            `Count: ${feature.properties.count}`
+          );
+        }
+      }
+    }).addTo(markers);
+  });
+
+// 5) Добавяме MarkerCluster групата към картата
+map.addLayer(markers);
+</script>
+
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" />
