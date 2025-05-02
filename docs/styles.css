@@ -172,3 +172,14 @@ nav ul li a:hover,
 nav ul li a:active {
   color: #00ffee;
 }
+/* Бутони – нормално и visited */
+.button,
+.button:visited {
+  color: #00ffee;
+}
+
+/* При hover/active запазва неоновото синьо */
+.button:hover,
+.button:active {
+  color: #00ffee;
+}
