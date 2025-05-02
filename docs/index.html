@@ -20,7 +20,46 @@
   integrity="sha256-o9N1jBzq1Vn8nUHIeSlD5v601iGvdw+5U4XhJcJOSmI="
   crossorigin=""
 />
+</head>
+<!-- Leaflet CSS (for maps) -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-VlzpAocxLpstJvPo5DjXr7bTyc6xaG4gzWc0nYB0+4U="
+  crossorigin=""
+/>
 
+<!-- Leaflet.markercluster CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"
+/>
+
+<!-- Your main stylesheet -->
+<link rel="stylesheet" href="styles.css" />
+
+<!-- Chart.js (for bar chart) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Leaflet JS -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-VlzpAocxLpstJvPo5DjXr7bTyc6xaG4gzWc0nYB0+4U="
+  crossorigin=""
+></script>
+
+<!-- Leaflet.markercluster JS -->
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+<body id="top">
+<section id="map-section" class="section" data-aos="fade-up">
+    <h2>Global Threat Locations</h2>
+    <div id="map"></div>
+  </section>
 <!-- Your main stylesheet -->
 <link rel="stylesheet" href="styles.css" />
 </head>
@@ -38,6 +77,7 @@
     integrity="sha256-VlzpAocxLpstJvPo5DjXr7bTyc6xaG4gzWc0nYB0+4U="
     crossorigin=""
   ></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <!-- Map Initialization -->
   <script>
     const map = L.map('map').setView([20, 0], 2);
@@ -132,13 +172,54 @@
   </section>
 
   <!-- Live Map Embed Section -->
-  <section class="section" id="map-section" data-aos="fade-up">
-    <h2>Live Threat Map</h2>
-    <iframe
-      src="https://threatmap.bitdefender.com/"
-      style="width:100%;height:600px;border:none;"
-    ></iframe>
-  </section>
+  <!-- Leaflet map init -->
+<section class="section" id="map-section" data-aos="fade-up">
+  <h2>Global Threat Locations</h2>
+  <div id="map" style="width:100%; height:400px;"></div>
+</section>
+
+<script>
+  // 1) Инициализираме картата
+  const map = L.map('map').setView([20, 0], 2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // 2) Създаваме клъстър група
+  const markers = L.markerClusterGroup();
+
+  // 3) Добавяме статични marker-и
+  const staticPoints = [
+    { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
+    { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
+    { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
+  ];
+  staticPoints.forEach(p => {
+    L.marker(p.coords)
+      .bindPopup(`<strong>${p.popup}</strong>`)
+      .addTo(markers);
+  });
+
+  // 4) Зареждаме GeoJSON (файл threats.geojson в същата папка)
+  fetch('threats.geojson')
+    .then(res => res.json())
+    .then(data => {
+      L.geoJSON(data, {
+        onEachFeature: (feature, layer) => {
+          if (feature.properties?.name) {
+            layer.bindPopup(
+              `<strong>${feature.properties.name}</strong><br>` +
+              `Count: ${feature.properties.count}`
+            );
+          }
+        }
+      }).addTo(markers);
+    });
+
+  // 5) Добавяме клъстъра на картата
+  map.addLayer(markers);
+</script>
+
 
   <!-- Leaflet Map Section -->
   <section class="section" id="live-map" data-aos="fade-up">
@@ -259,14 +340,53 @@
 ></script>
 
 <!-- Leaflet map init -->
+<section class="section" id="map-section" data-aos="fade-up">
+  <h2>Global Threat Locations</h2>
+  <div id="map" style="width:100%; height:400px;"></div>
+</section>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const map = L.map('map').setView([51.505, -0.09], 2);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+  // 1) Инициализация на картата
+  const map = L.map('map').setView([20, 0], 2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // 2) Създаваме MarkerClusterGroup
+  const markers = L.markerClusterGroup();
+
+  // 3) Добавяме няколко статични маркера с popups
+  const staticPoints = [
+    { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
+    { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
+    { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
+  ];
+  staticPoints.forEach(p => {
+    L.marker(p.coords)
+      .bindPopup(`<strong>${p.popup}</strong>`)
+      .addTo(markers);
   });
+
+  // 4) Зареждаме GeoJSON данни (примерен файл threats.geojson)
+  fetch('threats.geojson')
+    .then(res => res.json())
+    .then(data => {
+      L.geoJSON(data, {
+        onEachFeature: (feature, layer) => {
+          if (feature.properties && feature.properties.name) {
+            layer.bindPopup(
+              `<strong>${feature.properties.name}</strong><br>` +
+              `Count: ${feature.properties.count}`
+            );
+          }
+        }
+      }).addTo(markers);
+    });
+
+  // 5) Добавяме всичко към картата като един слой
+  map.addLayer(markers);
 </script>
+
 </body>
 </html>
 
