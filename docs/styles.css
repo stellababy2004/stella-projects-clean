@@ -1,5 +1,23 @@
 /* Animated Neon Gradient Background */
 
+/* Основен контейнер за секции */
+.section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
+
+/* Гарантира, че canvas & iframe не излизат от рамките */
+canvas,
+iframe {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  display: block;
+  margin: 0 auto;
+}
 
 
   @keyframes gradientBG {
