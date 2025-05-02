@@ -160,3 +160,15 @@ body > footer,
   border: 2px solid #00ffee;
 }
 
+/* … твоите вече съществуващи правила … */
+
+/* Навигационни линкове – добави това накрая на файла */
+nav ul li a,
+nav ul li a:visited {
+  color: #00ffee;
+}
+
+nav ul li a:hover,
+nav ul li a:active {
+  color: #00ffee;
+}
