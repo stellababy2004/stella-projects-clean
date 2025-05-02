@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stella Barbarella – Cybersecurity Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- favicon -->
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- AOS CSS -->
+  <link rel="stylesheet" 
+  href="https://unpkg.com/aos@2.3.1/dist/aos.css" 
+  />
+
+<!-- Leaflet CSS (for maps) -->
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-o9N1jBzq1Vn8nUHIeSlD5v601iGvdw+5U4XhJcJOSmI="
+  crossorigin=""
+/>
+</head>
+<!-- Leaflet CSS (for maps) -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-VlzpAocxLpstJvPo5DjXr7bTyc6xaG4gzWc0nYB0+4U="
+  crossorigin=""
+/>
+
+<!-- Leaflet.markercluster CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"
+/>
+
+<!-- Your main stylesheet -->
+<link rel="stylesheet" href="styles.css" />
+
+<!-- Chart.js (for bar chart) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Leaflet JS -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-VlzpAocxLpstJvPo5DjXr7bTyc6xaG4gzWc0nYB0+4U="
+  crossorigin=""
+></script>
+
+<!-- Leaflet.markercluster JS -->
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+<body id="top">
+<section id="map-section" class="section" data-aos="fade-up">
+    <h2>Global Threat Locations</h2>
+    <div id="map"></div>
+  </section>
+<!-- Your main stylesheet -->
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body id="top">
+<section class="section" id="map-section" data-aos="fade-up">
+    <h2>Global Threat Locations</h2>
+    <div id="map"></div>
+  </section>
+
+ <!-- … other scripts like Chart.js, AOS init … -->
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-VlzpAocxLpstJvPo5DjXr7bTyc6xaG4gzWc0nYB0+4U="
+    crossorigin=""
+  ></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <!-- Map Initialization -->
+  <script>
+    const map = L.map('map').setView([20, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+  </script>
+</body>
+</html>
+
+  <!-- Your main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Chart.js (for bar chart) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Leaflet CSS (for maps) -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-o9N1jBzqlVn8nUHIeS1D5v601iGvdw+5U4XhJcJOSmI="
+  crossorigin=""
+/>
+
+</head>
+<body id="top">
+
+  <!-- Vanta.js animated background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://unpkg.com/vanta@0.5.21/dist/vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+      el: "#top",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x00ffee,
+      backgroundColor: 0x040d0d,
+      points: 6.0,
+      maxDistance: 20.0,
+      spacing: 20.0
+    });
+  </script>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section class="section" id="about" data-aos="fade-up">
+    <h1>Stella Barbarella</h1>
+    <p>SOC Analyst | Cybersecurity Enthusiast | Threat Hunter</p>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section" id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <ul style="list-style:none;padding:0;">
+      <li>
+        <a href="cyber-threat-map.html" class="button" target="_blank">
+          🔍 Cyber Threat Map
+        </a>
+      </li><br>
+      <li>
+        <a href="phishing-check.html" class="button" target="_blank">
+          📧 Check for Phishing
+        </a>
+      </li><br>
+      <li>
+        <a href="threat-hunting.html" class="button" target="_blank">
+          🧠 Threat Hunting
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Interactive Chart Section -->
+  <section class="section" id="chart" data-aos="fade-up">
+    <h2>Cyber Threat Analysis</h2>
+    <canvas id="threatChart" style="max-width:800px;margin:auto;"></canvas>
+  </section>
+
+  <!-- Live Map Embed Section -->
+  <!-- Leaflet map init -->
+<section class="section" id="map-section" data-aos="fade-up">
+  <h2>Global Threat Locations</h2>
+  <div id="map" style="width:100%; height:400px;"></div>
+</section>
+
+<script>
+  // 1) Инициализираме картата
+  const map = L.map('map').setView([20, 0], 2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // 2) Създаваме клъстър група
+  const markers = L.markerClusterGroup();
+
+  // 3) Добавяме статични marker-и
+  const staticPoints = [
+    { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
+    { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
+    { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
+  ];
+  staticPoints.forEach(p => {
+    L.marker(p.coords)
+      .bindPopup(`<strong>${p.popup}</strong>`)
+      .addTo(markers);
+  });
+
+  // 4) Зареждаме GeoJSON (файл threats.geojson в същата папка)
+  fetch('threats.geojson')
+    .then(res => res.json())
+    .then(data => {
+      L.geoJSON(data, {
+        onEachFeature: (feature, layer) => {
+          if (feature.properties?.name) {
+            layer.bindPopup(
+              `<strong>${feature.properties.name}</strong><br>` +
+              `Count: ${feature.properties.count}`
+            );
+          }
+        }
+      }).addTo(markers);
+    });
+
+  // 5) Добавяме клъстъра на картата
+  map.addLayer(markers);
+</script>
+
+
+  <!-- Leaflet Map Section -->
+  <section class="section" id="live-map" data-aos="fade-up">
+    <h2>Global Threat Locations</h2>
+    <div id="map" style="width:100%;height:400px;border:2px solid #00ffee;"></div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section" id="testimonials" data-aos="fade-up">
+    <h2>Testimonials</h2>
+    <p>"Stella is a rockstar SOC analyst. Fast, focused, and professional."</p>
+    <p>"A true cybersecurity shield – turning alerts into decisive action!"</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <h3>Connect with me</h3>
+    <img
+      src="images/linkedin-qr.png"
+      alt="LinkedIn QR Code"
+      class="qr-code"
+    /><br>
+    <a
+      href="docs/Stella_Barbarella_SOC_Portfolio.pdf"
+      class="button"
+      download
+    >
+      📥 Download Portfolio
+    </a><br><br>
+    <a
+      href="https://www.linkedin.com/in/stella-s-95ba5683/"
+      target="_blank"
+      class="button"
+    >
+      🔗 LinkedIn
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="section" data-aos="fade-up">
+    <p>&copy; 2025 Stella Barbarella – Cybersecurity Portfolio</p>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a
+    href="#top"
+    id="backToTop"
+    class="button"
+    style="position:fixed;bottom:40px;right:30px;display:none;"
+  >
+    ⬆️ Top
+  </a>
+
+  <!-- JS Libraries -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+
+    // Back to top visibility
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('backToTop');
+      btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+  </script>
+
+  <!-- Chart.js Initialization -->
+  <script>
+    const ctx = document.getElementById('threatChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Ransomware','Phishing','DDoS','Malware','Spyware'],
+        datasets: [{
+          label: 'Cyber Threats (%)',
+          data: [35,25,20,15,5],
+          backgroundColor: [
+            'rgba(255,99,132,0.6)',
+            'rgba(54,162,235,0.6)',
+            'rgba(255,206,86,0.6)',
+            'rgba(75,192,192,0.6)',
+            'rgba(153,102,255,0.6)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54,162,235,1)',
+            'rgba(255,206,86,1)',
+            'rgba(75,192,192,1)',
+            'rgba(153,102,255,1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  </script>
+
+  <!-- Leaflet JS (for map) -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-XQoYMqMTK8LvdlDxvX0lrdV/a6HiytOOKam5Q+Xv1w3s="
+    crossorigin=""
+  ></script>
+  <script>
+    const map = L.map('map').setView([51.505, -0.09], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+  </script>
+  
+
+<!-- Leaflet map init -->
+<section class="section" id="map-section" data-aos="fade-up">
+  <h2>Global Threat Locations</h2>
+  <div id="map" style="width:100%; height:400px;"></div>
+</section>
+
+<script>
+  // 1) Инициализация на картата
+  const map = L.map('map').setView([20, 0], 2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // 2) Създаваме MarkerClusterGroup
+  const markers = L.markerClusterGroup();
+
+  // 3) Добавяме няколко статични маркера с popups
+  const staticPoints = [
+    { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
+    { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
+    { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
+  ];
+  staticPoints.forEach(p => {
+    L.marker(p.coords)
+      .bindPopup(`<strong>${p.popup}</strong>`)
+      .addTo(markers);
+  });
+
+  // 4) Зареждаме GeoJSON данни (примерен файл threats.geojson)
+  fetch('threats.geojson')
+    .then(res => res.json())
+    .then(data => {
+      L.geoJSON(data, {
+        onEachFeature: (feature, layer) => {
+          if (feature.properties && feature.properties.name) {
+            layer.bindPopup(
+              `<strong>${feature.properties.name}</strong><br>` +
+              `Count: ${feature.properties.count}`
+            );
+          }
+        }
+      }).addTo(markers);
+    });
+
+  // 5) Добавяме всичко към картата като един слой
+  map.addLayer(markers);
+</script>
+
+</body>
+</html>
+
