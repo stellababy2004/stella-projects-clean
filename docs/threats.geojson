@@ -1,0 +1,30 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Moscow – Ransomware", "count": 12 },
+      "geometry": { "type": "Point", "coordinates": [37.6, 55.7] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Berlin – Phishing", "count": 7 },
+      "geometry": { "type": "Point", "coordinates": [13.4, 52.5] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "London", "count": 5000 },
+      "geometry": { "type": "Point", "coordinates": [-0.09, 51.5] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "New York", "count": 3000 },
+      "geometry": { "type": "Point", "coordinates": [-74.0, 40.7] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Tokyo", "count": 4000 },
+      "geometry": { "type": "Point", "coordinates": [139.7, 35.7] }
+    }
+  ]
+}
