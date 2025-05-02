@@ -237,5 +237,49 @@
     // 5) Add cluster layer to map
     map.addLayer(markers);
   </script>
+  <!-- Map Initialization with MarkerCluster and GeoJSON -->
+<script>
+  // 1) Инициализираме картата
+  const map = L.map('map').setView([20, 0], 2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  // 2) Създаваме MarkerCluster групата
+  const markers = L.markerClusterGroup();
+
+  // 3) Добавяме няколко статични маркера
+  const staticPoints = [
+    { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
+    { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
+    { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
+  ];
+  staticPoints.forEach(p => {
+    L.marker(p.coords)
+     .bindPopup(`<strong>${p.popup}</strong>`)
+     .addTo(markers);
+  });
+
+  // 4) Зареждаме GeoJSON данни
+  fetch('threats.geojson')
+    .then(res => res.json())
+    .then(data => {
+      L.geoJSON(data, {
+        onEachFeature: (feature, layer) => {
+          if (feature.properties?.name) {
+            layer.bindPopup(
+              `<strong>${feature.properties.name}</strong><br>` +
+              `Count: ${feature.properties.count}`
+            );
+          }
+        }
+      }).addTo(markers);
+    });
+
+  // 5) Добавяме клъстъра на картата
+  map.addLayer(markers);
+</script>
+
+
 </body>
 </html>
