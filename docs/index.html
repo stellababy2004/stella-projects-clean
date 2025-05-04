@@ -187,8 +187,8 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script>
-    // Map Initialization with MarkerCluster and GeoJSON
-    const map = L.map('map').setView([20, 0], 2);
+    // Map Initialization with European Capitals
+    const map = L.map('map').setView([50, 15], 4); // Centered over Europe
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
@@ -196,31 +196,56 @@
     const markers = L.markerClusterGroup();
     map.addLayer(markers);
 
-    const staticPoints = [
-      { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
-      { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
-      { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
+    const europeanCapitals = [
+      { name: "София", coords: [42.6977, 23.3219] },
+      { name: "Лондон", coords: [51.5074, -0.1278] },
+      { name: "Париж", coords: [48.8566, 2.3522] },
+      { name: "Берлин", coords: [52.5200, 13.4050] },
+      { name: "Рим", coords: [41.9028, 12.4964] },
+      { name: "Мадрид", coords: [40.4168, -3.7038] },
+      { name: "Атина", coords: [37.9838, 23.7275] },
+      { name: "Виена", coords: [48.2082, 16.3738] },
+      { name: "Будапеща", coords: [47.4979, 19.0402] },
+      { name: "Букурещ", coords: [44.4268, 26.1025] },
+      { name: "Прага", coords: [50.0755, 14.4378] },
+      { name: "Варшава", coords: [52.2297, 21.0122] },
+      { name: "Копенхаген", coords: [55.6761, 12.5683] },
+      { name: "Стокхолм", coords: [59.3293, 18.0686] },
+      { name: "Осло", coords: [59.9139, 10.7522] },
+      { name: "Москва", coords: [55.7558, 37.6173] },
+      { name: "Минск", coords: [53.9006, 27.5590] },
+      { name: "Хелзинки", coords: [60.1695, 24.9354] },
+      { name: "Рига", coords: [56.9496, 24.1052] },
+      { name: "Талин", coords: [59.4370, 24.7536] },
+      { name: "Вилнюс", coords: [54.6872, 25.2797] },
+      { name: "Любляна", coords: [46.0569, 14.5058] },
+      { name: "Загреб", coords: [45.8150, 15.9819] },
+      { name: "Белград", coords: [44.8176, 20.4569] },
+      { name: "Скопие", coords: [41.9981, 21.4254] },
+      { name: "Тирана", coords: [41.3275, 19.8189] },
+      { name: "Подгорица", coords: [42.4410, 19.2627] },
+      { name: "Сараево", coords: [43.8563, 18.4131] },
+      { name: "Прищина", coords: [42.6629, 21.1655] },
+      { name: "Дъблин", coords: [53.3498, -6.2603] },
+      { name: "Рейкявик", coords: [64.1355, -21.8954] },
+      { name: "Братислава", coords: [48.1486, 17.1077] },
+      { name: "Люксембург", coords: [49.6117, 6.1319] },
+      { name: "Амстердам", coords: [52.3676, 4.9041] },
+      { name: "Брюксел", coords: [50.8503, 4.3517] },
+      { name: "Лисабон", coords: [38.7169, -9.1390] },
+      { name: "Вадуц", coords: [47.1416, 9.5215] },
+      { name: "Сан Марино", coords: [43.9336, 12.4484] },
+      { name: "Андора ла Веля", coords: [42.5078, 1.5211] },
+      { name: "Ватикана", coords: [41.9029, 12.4534] }
     ];
-    staticPoints.forEach(p => {
-      L.marker(p.coords).bindPopup(`<strong>${p.popup}</strong>`).addTo(markers);
+
+    europeanCapitals.forEach(capital => {
+      L.marker(capital.coords)
+        .bindPopup(`<strong>${capital.name}</strong>`)
+        .addTo(markers);
     });
 
-    fetch('threats.geojson')
-      .then(res => res.json())
-      .then(data => {
-        L.geoJSON(data, {
-          onEachFeature: (feature, layer) => {
-            if (feature.properties?.name) {
-              layer.bindPopup(
-                `<strong>${feature.properties.name}</strong><br>` +
-                `Count: ${feature.properties.count}`
-              );
-            }
-          }
-        }).addTo(markers);
-
-        map.fitBounds(markers.getBounds(), { padding: [50, 50] });
-      });
+    map.fitBounds(markers.getBounds(), { padding: [50, 50] });
   </script>
 </body>
 </html>
