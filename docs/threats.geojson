@@ -26,8 +26,86 @@
       "properties": { "name": "Tokyo", "count": 4000 },
       "geometry": { "type": "Point", "coordinates": [139.7, 35.7] }
     }
-  ]
-}
+	{
+      "type": "Feature",
+      "properties": { "name": "Kabul" },
+      "geometry": { "type": "Point", "coordinates": [69.2075, 34.5553] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Tirana" },
+      "geometry": { "type": "Point", "coordinates": [19.8170, 41.3275] }
+    },
+  ]{
+      "type": "Feature",
+      "properties": { "name": "Algiers" },
+      "geometry": { "type": "Point", "coordinates": [3.0588, 36.7538] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Luanda" },
+      "geometry": { "type": "Point", "coordinates": [13.2343, -8.8390] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Buenos Aires" },
+      "geometry": { "type": "Point", "coordinates": [-58.3816, -34.6037] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Canberra" },
+      "geometry": { "type": "Point", "coordinates": [149.1300, -35.2809] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Beijing" },
+      "geometry": { "type": "Point", "coordinates": [116.4074, 39.9042] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Cairo" },
+      "geometry": { "type": "Point", "coordinates": [31.2357, 30.0444] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "New Delhi" },
+      "geometry": { "type": "Point", "coordinates": [77.2090, 28.6139] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Jakarta" },
+      "geometry": { "type": "Point", "coordinates": [106.8456, -6.2088] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Rome" },
+      "geometry": { "type": "Point", "coordinates": [12.4964, 41.9028] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Tokyo" },
+      "geometry": { "type": "Point", "coordinates": [139.6917, 35.6895] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Mexico City" },
+      "geometry": { "type": "Point", "coordinates": [-99.1332, 19.4326] }
+    },
+}{
+      "type": "Feature",
+      "properties": { "name": "Ottawa" },
+      "geometry": { "type": "Point", "coordinates": [-75.6972, 45.4215] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Washington, D.C." },
+      "geometry": { "type": "Point", "coordinates": [-77.0369, 38.9072] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Brasília" },
+      "geometry": { "type": "Point", "coordinates": [-47.8825, -15.7942] }
+    },                                    
 const map     = L.map('map').setView([20, 0], 2);
 const markers = L.markerClusterGroup();
 // 3) добавяне на статични:
@@ -55,3 +133,21 @@ fetch('threats.geojson')
     // ➡️ след като са заредени *всички* маркери, правим fitBounds
     map.fitBounds(markers.getBounds(), { padding: [50, 50] });
   });
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 50 },
+      "color": { "value": "#00ffee" },
+      "shape": { "type": "circle" },
+      "line_linked": {
+        "enable": true,
+        "distance": 200,
+        "color": "#00ffee",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": { "speed": 1 }
+    }
+  });
+</script>

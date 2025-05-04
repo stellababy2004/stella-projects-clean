@@ -112,7 +112,7 @@ iframe {
   border:2px solid #00ffee; border-radius:8px;
   box-shadow:0 0 10px rgba(0,255,238,0.5);
   position:relative; z-index:10;
-}
+}                                                                                                                    
 .qr-label {
   margin-top: 10px;
   color: #00ffee;

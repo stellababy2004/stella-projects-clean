@@ -311,7 +311,92 @@
       console.log('particles.js loaded');
     });
   </script>
-</body>
+  <!-- … предишни секции … -->
+
+  <!-- Live Map Embed Section -->
+  <section class="section" id="map-section" data-aos="fade-up">
+    <h2>Global Threat Locations</h2>
+    <div id="map" style="width:100%; height:400px;"></div>
+  </section>
+
+  <!-- ЗАДЪЛЖИТЕЛНО: Leaflet CSS (в <head>) -->
+  <!--
+  <link 
+    rel="stylesheet" 
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-o9N1jBzq1Vn8nUH1Es1D5v601iGvdw+5U4XhJcJOSmI="
+    crossorigin=""
+  />
+  <link 
+    rel="stylesheet" 
+    href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" 
+  />
+  <link 
+    rel="stylesheet" 
+    href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" 
+  />
+  -->
+
+  <!-- JS библиотеките – задължително в края на body -->
+  <script 
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-XQoYMqMTK8LvdlD/XvXR1rdV/a6HiytOOKam5Q+XvI="
+    crossorigin=""
+  ></script>
+  <script 
+    src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"
+  ></script>
+
+  <!-- Твоят Map Init скрипт -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1) Инициализирай картата в div#map
+      const map = L.map('map').setView([20, 0], 2);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      // 2) Създай MarkerCluster група и я добави веднага
+      const markers = L.markerClusterGroup();
+      map.addLayer(markers);
+
+      // 3) Зареди статични точки (пример)
+      const staticPoints = [
+        { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
+        { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
+        { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
+      ];
+      staticPoints.forEach(p => {
+        L.marker(p.coords)
+         .bindPopup(`<strong>${p.popup}</strong>`)
+         .addTo(markers);
+      });
+
+      // 4) Зареди GeoJSON (файлът threats.geojson трябва да е в същата папка като index.html)
+      fetch('threats.geojson')
+        .then(res => {
+          if (!res.ok) throw new Error('Не мога да заредя threats.geojson');
+          return res.json();
+        })
+        .then(data => {
+          L.geoJSON(data, {
+            onEachFeature: (feature, layer) => {
+              if (feature.properties?.name) {
+                layer.bindPopup(
+                  `<strong>${feature.properties.name}</strong><br>` +
+                  `Count: ${feature.properties.count || 'n/a'}`
+                );
+              }
+            }
+          }).addTo(markers);
+
+          // 5) Автоматично прецени zoom и център, за да виждаме всички маркери
+          map.fitBounds(markers.getBounds(), { padding: [50, 50] });
+        })
+        .catch(err => console.error(err));
+    });
+  </script>
 
 </body>
 </html>
