@@ -67,20 +67,31 @@ iframe {
   font-size: 0.9rem;
   text-shadow: 0 0 5px #00ffee;
 }
-
-
+/* Full-page cyber-punk background */
 body {
-  background: linear-gradient(270deg, #040d0d, #001f1f, #040d0d);
-  background-size: 600% 600%;
-  animation: gradientBG 20s ease infinite;
+  background-image: url('images/cyber-punk.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
+b/* Full-page cyber-punk background */
+body {
+  background-image: url('images/cyber-punk.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* ако искаш фонът да не се мести при скрол: */
+  /* background-attachment: fixed; */
   color: #00ffee;
   font-family: 'Courier New', monospace;
   text-align: center;
   margin: 0;
   padding: 20px;
   line-height: 1.6;
-
 }
+
 
 
   color: #00ffee;
