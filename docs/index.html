@@ -209,47 +209,7 @@
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 
   <!-- Map Initialization with MarkerCluster and GeoJSON -->
-  <script>
-    // 1) Initialize map
-    const map = L.map('map').setView([20, 0], 2);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    // 2) Create cluster group
-    const markers = L.markerClusterGroup();
-
-    // 3) Add some static markers
-    const staticPoints = [
-      { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
-      { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
-      { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
-    ];
-    staticPoints.forEach(p => {
-      L.marker(p.coords)
-        .bindPopup(`<strong>${p.popup}</strong>`)
-        .addTo(markers);
-    });
-
-    // 4) Load GeoJSON data (threats.geojson must be next to index.html)
-    fetch('threats.geojson')
-      .then(res => res.json())
-      .then(data => {
-        L.geoJSON(data, {
-          onEachFeature: (feature, layer) => {
-            if (feature.properties?.name) {
-              layer.bindPopup(
-                `<strong>${feature.properties.name}</strong><br/>Count: ${feature.properties.count}`
-              );
-            }
-          }
-        }).addTo(markers);
-      });
-
-    // 5) Add cluster layer to map
-    map.addLayer(markers);
-  </script>
-  <!-- Map Initialization with MarkerCluster and GeoJSON -->
+<!-- Map Initialization with MarkerCluster and GeoJSON -->
 <script>
   // 1) Инициализираме картата
   const map = L.map('map').setView([20, 0], 2);
@@ -257,8 +217,9 @@
     attribution: '© OpenStreetMap contributors'
   }).addTo(map);
 
-  // 2) Създаваме MarkerCluster групата
+  // 2) Създаваме MarkerCluster групата и я добавяме веднага към картата
   const markers = L.markerClusterGroup();
+  map.addLayer(markers);
 
   // 3) Добавяме няколко статични маркера
   const staticPoints = [
@@ -272,7 +233,7 @@
      .addTo(markers);
   });
 
-  // 4) Зареждаме GeoJSON данни
+  // 4) Зареждаме GeoJSON данни и ги добавяме към групата
   fetch('threats.geojson')
     .then(res => res.json())
     .then(data => {
@@ -286,12 +247,10 @@
           }
         }
       }).addTo(markers);
+
+      // 5) След като всички маркери са заредени, разпъваме картата върху тях
+      map.fitBounds(markers.getBounds(), { padding: [50, 50] });
     });
-
-  // 5) Добавяме клъстъра на картата
-  map.addLayer(markers);
 </script>
-
-
 </body>
 </html>
