@@ -51,10 +51,16 @@
 
   <!-- Your Main Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
-                                                                                                                                                                                         
+                                                                                                                                                                                        
 </head>
 
 <body id="top">
+<script>
+  // Пренасочваме deprecated .setDynamic() към .setUsage()
+  if (THREE && THREE.BufferAttribute) {
+    THREE.BufferAttribute.prototype.setUsage = THREE.BufferAttribute.prototype.setUsage || THREE.BufferAttribute.prototype.setDynamic;
+  }
+</script>
   <!-- 1) Зареждаш Three.js и Vanta.net -->
   <<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script>
