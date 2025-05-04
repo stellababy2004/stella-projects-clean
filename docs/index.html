@@ -51,14 +51,39 @@
 
   <!-- Your Main Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- External JS Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://unpkg.com/vanta@0.5.21/dist/vanta.net.min.js"></script>
+ 
 </head>
 
 <body id="top">
+  <!-- 1) Зареждаш Three.js и Vanta.net -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://unpkg.com/vanta@0.5.21/dist/vanta.net.min.js"></script>
+
+  <!-- 2) Пусни инициализацията тук -->
+  <script>
+    VANTA.NET({
+      el: "#top",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x00ffee,
+      backgroundColor: 0x040d0d,
+      points: 6.0,
+      maxDistance: 20.0,
+      spacing: 20.0
+    });
+  </script>
+
+  <!-- 3) После идва всичкото ти съдържание -->
+  <header data-aos="fade-down">
+    …
+  </header>
+  <section id="about">…
+
 <div id="particles-js"></div>
   <!-- Vanta.js Animated Background -->
   <script>
