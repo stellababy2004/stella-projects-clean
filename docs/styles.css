@@ -1,3 +1,29 @@
+/* 1) Reset & глобални стилове */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  background: linear-gradient(270deg, #040d0d, #001f1f, #040d0d);
+  background-size: 600% 600%;
+  animation: neonGradient 20s ease infinite;
+  font-family: 'Courier New', monospace;
+  color: #00ffee;
+  line-height: 1.6;
+}
+
+/* 2) Анимация на градиента */
+@keyframes neonGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* … останалите ти правила … */
+
 /* Animated Neon Gradient Background */
 
 /* Основен контейнер за секции */
