@@ -7,7 +7,7 @@
 
   <!-- SEO Meta Tags -->
   <title>Stella Barbarella – SOC Analyst & Cybersecurity Portfolio</title>
-  <meta name="description" content="Stella Barbarella – SOC Analyst, Threat Hunter & Cybersecurity Enthusiast. Explore projects like Cyber Threat Map, Phishing Detector, Threat Hunting, and live threat visualizations." />
+  <meta name="description" content="Stella Barbarella – SOC Analyst, Threat Hunter & Cybersecurity Enthusiast. Explore projects like Cyber Threat Map, Phishing Detector, Threat Hunting, and live threat analysis." />
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Live Map, Charts, Leaflet, AOS, Vanta.js" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.stellabarbarella.com/" />
@@ -25,7 +25,8 @@
   <meta name="twitter:description" content="Real-time threat mapping, phishing detection, threat hunting, interactive charts, and live global threat locations by Stella Barbarella." />
   <meta name="twitter:image" content="https://www.stellabarbarella.com/images/twitter-card.png" />
 
- <script type="application/ld+json">
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -39,44 +40,26 @@
   }
   </script>
 
-  <!-- favicon и CSS -->
-  <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Chart.js (bar chart) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-
-
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" />
 
-  <!-- AOS CSS (scroll animations) -->
+  <!-- External CSS Libraries -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
-  <!-- Leaflet CSS (maps) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-V1zpAocxLpstJvPo5DjXr7bTyc6xaG4gzWc0nYB0+4U=" crossorigin="" />
-
-  <!-- MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
 
   <!-- Your Main Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Chart.js (bar chart) -->
+  <!-- External JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://unpkg.com/vanta@0.5.21/dist/vanta.net.min.js"></script>
 </head>
 
 <body id="top">
   <!-- Vanta.js Animated Background -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://unpkg.com/vanta@0.5.21/dist/vanta.net.min.js"></script>
   <script>
     VANTA.NET({
       el: "#top",
@@ -147,7 +130,7 @@
   <!-- Contact Section -->
   <section class="section" id="contact" data-aos="fade-up">
     <h2>Contact</h2>
-   <a href="Stella_Barbarella_SOC_Portfolio.pdf" download class="button">📥 Download Portfolio</a>
+    <a href="Stella_Barbarella_SOC_Portfolio.pdf" download class="button">📥 Download Portfolio</a>
     <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank" class="button">🔗 LinkedIn</a>
     <h3>Connect with me</h3>
     <img src="images/linkedin-qr.png" alt="LinkedIn QR Code" class="qr-code" />
@@ -156,7 +139,7 @@
   <!-- Back to Top Button -->
   <a href="#top" id="backToTop" class="button" style="display:none; position:fixed; bottom:40px; right:30px;">⬆️ Top</a>
 
-  <!-- JS Libraries & Initialization -->
+  <!-- JS Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000 });
@@ -166,18 +149,16 @@
       const btn = document.getElementById('backToTop');
       btn.style.display = (window.scrollY > 300) ? 'block' : 'none';
     });
-  </script>
 
-  <!-- Chart.js Initialization -->
-  <script>
+    // Chart.js Initialization
     const ctx = document.getElementById('threatChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Ransomware','Phishing','DDoS','Malware','Spyware'],
+        labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
         datasets: [{
           label: 'Cyber Threats (%)',
-          data: [35,25,20,15,5],
+          data: [35, 25, 20, 15, 5],
           backgroundColor: [
             'rgba(255,99,132,0.6)',
             'rgba(54,162,235,0.6)',
@@ -203,54 +184,43 @@
   </script>
 
   <!-- Leaflet JS (maps) -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-VlzpAocxLpstJvPo5DjXr7bTyc6xaG4gzWc0nYB0+4U="
-          crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <script>
+    // Map Initialization with MarkerCluster and GeoJSON
+    const map = L.map('map').setView([20, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
-  <!-- Map Initialization with MarkerCluster and GeoJSON -->
-<!-- Map Initialization with MarkerCluster and GeoJSON -->
-<script>
-  // 1) Инициализираме картата
-  const map = L.map('map').setView([20, 0], 2);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
+    const markers = L.markerClusterGroup();
+    map.addLayer(markers);
 
-  // 2) Създаваме MarkerCluster групата и я добавяме веднага към картата
-  const markers = L.markerClusterGroup();
-  map.addLayer(markers);
-
-  // 3) Добавяме няколко статични маркера
-  const staticPoints = [
-    { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
-    { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
-    { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
-  ];
-  staticPoints.forEach(p => {
-    L.marker(p.coords)
-     .bindPopup(`<strong>${p.popup}</strong>`)
-     .addTo(markers);
-  });
-
-  // 4) Зареждаме GeoJSON данни и ги добавяме към групата
-  fetch('threats.geojson')
-    .then(res => res.json())
-    .then(data => {
-      L.geoJSON(data, {
-        onEachFeature: (feature, layer) => {
-          if (feature.properties?.name) {
-            layer.bindPopup(
-              `<strong>${feature.properties.name}</strong><br>` +
-              `Count: ${feature.properties.count}`
-            );
-          }
-        }
-      }).addTo(markers);
-
-      // 5) След като всички маркери са заредени, разпъваме картата върху тях
-      map.fitBounds(markers.getBounds(), { padding: [50, 50] });
+    const staticPoints = [
+      { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
+      { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
+      { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
+    ];
+    staticPoints.forEach(p => {
+      L.marker(p.coords).bindPopup(`<strong>${p.popup}</strong>`).addTo(markers);
     });
-</script>
+
+    fetch('threats.geojson')
+      .then(res => res.json())
+      .then(data => {
+        L.geoJSON(data, {
+          onEachFeature: (feature, layer) => {
+            if (feature.properties?.name) {
+              layer.bindPopup(
+                `<strong>${feature.properties.name}</strong><br>` +
+                `Count: ${feature.properties.count}`
+              );
+            }
+          }
+        }).addTo(markers);
+
+        map.fitBounds(markers.getBounds(), { padding: [50, 50] });
+      });
+  </script>
 </body>
 </html>
