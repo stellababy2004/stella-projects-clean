@@ -59,24 +59,18 @@
 </head>
 
 <body id="top">
+  <div id="particles-js"></div>
   <!-- Vanta.js Animated Background -->
   <script>
-    VANTA.NET({
-      el: "#top",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.0,
-      minWidth: 200.0,
-      scale: 1.0,
-      scaleMobile: 1.0,
-      color: 0x00ffee,
-      backgroundColor: 0x040d0d,
-      points: 6.0,
-      maxDistance: 20.0,
-      spacing: 20.0
-    });
-  </script>
+  VANTA.GLOBE({
+    el: "#top",
+    color: 0x00ffee,
+    backgroundColor: 0x040d0d,
+    size: 1.2,
+    scale: 1.0,
+    scaleMobile: 1.0
+  });
+</script>
 
   <!-- Header & Navigation -->
   <header data-aos="fade-down">
