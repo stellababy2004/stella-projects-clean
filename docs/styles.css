@@ -67,14 +67,6 @@ iframe {
   font-size: 0.9rem;
   text-shadow: 0 0 5px #00ffee;
 }
-/* Full-page cyber-punk background */
-body {
-  background-image: url('images/cyber-punk.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
 
 b/* Full-page cyber-punk background */
 body {
