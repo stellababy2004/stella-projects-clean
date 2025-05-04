@@ -233,14 +233,16 @@
       { name: "Ватикана", coords: [41.9029, 12.4534] }
     ];
 
-    europeanCapitals.forEach(capital => {
-      L.marker(capital.coords)
-        .bindPopup(`<strong>${capital.name}</strong>`)
-        .addTo(markers);
-    });
-
+  fetch('capitals.geojson')
+  .then(res => res.json())
+  .then(data => {
+    L.geoJSON(data, {
+      onEachFeature: (feature, layer) => {
+        layer.bindPopup(`<strong>${feature.properties.name}</strong>`);
+      }
+    }).addTo(markers);
     map.fitBounds(markers.getBounds(), { padding: [50, 50] });
-  </script>
+  });
     <!-- particles.js -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
