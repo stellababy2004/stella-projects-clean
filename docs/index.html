@@ -59,6 +59,7 @@
 </head>
 
 <body id="top">
+<div id="particles-js"></div>
   <!-- Vanta.js Animated Background -->
   <script>
   VANTA.GLOBE({
@@ -240,5 +241,14 @@
 
     map.fitBounds(markers.getBounds(), { padding: [50, 50] });
   </script>
+    <!-- particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS.load('particles-js','particles.json',function(){
+      console.log('particles.js loaded');
+    });
+  </script>
+</body>
+
 </body>
 </html>
