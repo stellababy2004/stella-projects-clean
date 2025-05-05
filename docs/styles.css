@@ -111,3 +111,27 @@ body > * {
   border-radius: 5px;
   cursor: pointer;
 }
+#my-cv input[type="password"] {
+  padding: 10px;
+  border: 2px solid #00ffee;
+  background: black;
+  color: #00ffee;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  margin-right: 10px;
+}
+
+#my-cv button {
+  padding: 10px 20px;
+  background: transparent;
+  color: #00ffee;
+  border: 2px solid #00ffee;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  transition: background 0.3s;
+}
+
+#my-cv button:hover {
+  background: rgba(0, 255, 238, 0.1);
+}
