@@ -150,3 +150,51 @@ nav ul li a:active,
   color: #00ffee !important;
   text-shadow: 0 0 5px #00ffee;
 }
+canvas {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  display: block;
+  margin: 0 auto;
+}
+/* Canvas стилове – гарантира видимост и центриране */
+canvas {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto 40px;
+  border: 2px solid #00ffee;
+  box-shadow: 0 0 10px rgba(0, 255, 238, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  position: relative;
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('threatChart')?.getContext('2d');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
+        datasets: [{
+          label: 'Cyber Threats (%)',
+          data: [35, 25, 20, 15, 5],
+          backgroundColor: [
+            'rgba(255,99,132,0.6)',
+            'rgba(54,162,235,0.6)',
+            'rgba(255,206,86,0.6)',
+            'rgba(75,192,192,0.6)',
+            'rgba(153,102,255,0.6)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  }
+</script>
