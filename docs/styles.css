@@ -135,3 +135,8 @@ body > * {
 #my-cv button:hover {
   background: rgba(0, 255, 238, 0.1);
 }
+nav ul li a,
+nav ul li a:visited {
+  color: #00ffee;
+  text-decoration: underline;
+}
