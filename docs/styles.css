@@ -1,4 +1,28 @@
 /* 1) Reset & глобални стилове */
+/* Позиционираме particles.js зад останалото съдържание */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+/* Всички останали елементи са върху фона */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Global reset + fullscreen за фон */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* скриваме хоризонталния скрол */
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
