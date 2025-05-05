@@ -51,31 +51,12 @@
 
   <!-- Your Main Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://unpkg.com/vanta@0.5.21/dist/vanta.net.min.js"></script>
-                                                                                                                                                                                        
 </head>
 
 <body id="top">
-<script>
-  // Пренасочваме deprecated .setDynamic() към .setUsage()
-  if (THREE && THREE.BufferAttribute) {
-    THREE.BufferAttribute.prototype.setUsage = THREE.BufferAttribute.prototype.setUsage || THREE.BufferAttribute.prototype.setDynamic;
-  }
-</script>
-  <!-- 1) Зареждаш Three.js и Vanta.net -->
-  <<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script>
-  // Пренасочваме deprecated .setDynamic() към .setUsage()
-  if (THREE && THREE.BufferAttribute) {
-    THREE.BufferAttribute.prototype.setUsage = THREE.BufferAttribute.prototype.setUsage || THREE.BufferAttribute.prototype.setDynamic;
-  }
-</script>
-
+  <!-- Vanta.js Animated Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://unpkg.com/vanta@0.5.21/dist/vanta.net.min.js"></script>
-
-  <!-- 2) Пусни инициализацията тук -->
   <script>
     VANTA.NET({
       el: "#top",
@@ -92,25 +73,6 @@
       maxDistance: 20.0,
       spacing: 20.0
     });
-  </script>
-
-  <!-- 3) После идва всичкото ти съдържание -->
-  <header data-aos="fade-down">
-    …
-  </header>
-  <section id="about">…
-
-<div id="particles-js"></div>
-  <!-- Vanta.js Animated Background -->
-  <script>
-  VANTA.GLOBE({
-    el: "#top",
-    color: 0x00ffee,
-    backgroundColor: 0x040d0d,
-    size: 1.2,
-    scale: 1.0,
-    scaleMobile: 1.0
-  });
   </script>
 
   <!-- Header & Navigation -->
@@ -132,22 +94,6 @@
     <h1>Stella Barbarella</h1>
     <p>SOC Analyst | Cybersecurity Enthusiast | Threat Hunter</p>
   </section>
-  <!-- Bio Section -->
-<section id="bio" class="section" data-aos="fade-up">
-  <h2>Bio</h2>
-  <p>  Passionnée par la&nbsp;cyber&nbsp;sécurité, je suis une Analyste SOC (Security Operations Center) spécialisée dans la détection, l’analyse et la réponse aux menaces informatiques. Mon expertise couvre la surveillance proactive des environnements IT, l’investigation des incidents de sécurité, et l’amélioration continue des processus pour renforcer la résilience des entreprises face aux cyberattaques.</p>
-  <h3> Compétences clés :</h3>
-  <ul>
-    <li>Surveillance en temps réel avec SIEM (Splunk, QRadar, Elastic Stack, etc.)</li>
-    <li>Analyse des alertes de sécurité et gestion des incidents</li>
-    <li>Investigation de menaces et réponse aux cyberattaques</li>
-    <li>Application des Framework de sécurité (MITRE ATT&amp;CK, NIST, ISO&nbsp;27001)</li>
-    <li>Collaboration inter-équipes pour améliorer les politiques de sécurité</li>
-  </ul>
-  <p> Mon objectif : Contribuer à protéger les organisations contre les cyber menaces en mettant en œuvre des solutions innovantes et en partageant mes connaissances avec les équipes pour améliorer continuellement notre posture de sécurité.</p>
-</section>
-
- …  
 
   <!-- Projects Section -->
   <section class="section" id="projects" data-aos="fade-up">
@@ -159,23 +105,59 @@
     </ul>
   </section>
 
-  <!-- Interactive Chart Section -->
+  <!-- Chart Section -->
   <section class="section" id="chart" data-aos="fade-up">
     <h2>Cyber Threat Analysis</h2>
     <canvas id="threatChart" style="max-width:800px; margin:auto;"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById('threatChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
+          datasets: [{
+            label: 'Cyber Threats (%)',
+            data: [35, 25, 20, 15, 5],
+            backgroundColor: [
+              'rgba(255,99,132,0.6)',
+              'rgba(54,162,235,0.6)',
+              'rgba(255,206,86,0.6)',
+              'rgba(75,192,192,0.6)',
+              'rgba(153,102,255,0.6)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54,162,235,1)',
+              'rgba(255,206,86,1)',
+              'rgba(75,192,192,1)',
+              'rgba(153,102,255,1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+    </script>
   </section>
 
-  <!-- Live Map Embed Section -->
+  <!-- Map Section -->
   <section class="section" id="map-section" data-aos="fade-up">
     <h2>Global Threat Locations</h2>
     <div id="map" style="width:100%; height:400px; border:2px solid #00ffee;"></div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="section" id="testimonials" data-aos="fade-up">
-    <h2>Testimonials</h2>
-    <blockquote>“Stella is a rockstar SOC analyst. Fast, focused, and professional.”</blockquote>
-    <blockquote>“A true cybersecurity shield – turning alerts into decisive action!”</blockquote>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script>
+      const map = L.map('map').setView([50, 15], 4);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+      const markers = L.markerClusterGroup();
+      map.addLayer(markers);
+    </script>
   </section>
 
   <!-- Contact Section -->
@@ -183,216 +165,19 @@
     <h2>Contact</h2>
     <a href="Stella_Barbarella_SOC_Portfolio.pdf" download class="button">📥 Download Portfolio</a>
     <a href="https://www.linkedin.com/in/stella-s-95ba5683/" target="_blank" class="button">🔗 LinkedIn</a>
-    <h3>Connect with me</h3>
-    <img src="images/linkedin-qr.png" alt="LinkedIn QR Code" class="qr-code" />
   </section>
 
   <!-- Back to Top Button -->
   <a href="#top" id="backToTop" class="button" style="display:none; position:fixed; bottom:40px; right:30px;">⬆️ Top</a>
-
-  <!-- JS Scripts -->
+  
+  <!-- AOS Animation -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000 });
-
-    // Back-to-top toggle
     window.addEventListener('scroll', () => {
       const btn = document.getElementById('backToTop');
       btn.style.display = (window.scrollY > 300) ? 'block' : 'none';
     });
-
-    // Chart.js Initialization
-    const ctx = document.getElementById('threatChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
-        datasets: [{
-          label: 'Cyber Threats (%)',
-          data: [35, 25, 20, 15, 5],
-          backgroundColor: [
-            'rgba(255,99,132,0.6)',
-            'rgba(54,162,235,0.6)',
-            'rgba(255,206,86,0.6)',
-            'rgba(75,192,192,0.6)',
-            'rgba(153,102,255,0.6)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54,162,235,1)',
-            'rgba(255,206,86,1)',
-            'rgba(75,192,192,1)',
-            'rgba(153,102,255,1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: { y: { beginAtZero: true } }
-      }
-    });
   </script>
-
-  <!-- Leaflet JS (maps) -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-  <script>
-    // Map Initialization with European Capitals
-    const map = L.map('map').setView([50, 15], 4); // Centered over Europe
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    const markers = L.markerClusterGroup();
-    map.addLayer(markers);
-
-    const europeanCapitals = [
-      { name: "София", coords: [42.6977, 23.3219] },
-      { name: "Лондон", coords: [51.5074, -0.1278] },
-      { name: "Париж", coords: [48.8566, 2.3522] },
-      { name: "Берлин", coords: [52.5200, 13.4050] },
-      { name: "Рим", coords: [41.9028, 12.4964] },
-      { name: "Мадрид", coords: [40.4168, -3.7038] },
-      { name: "Атина", coords: [37.9838, 23.7275] },
-      { name: "Виена", coords: [48.2082, 16.3738] },
-      { name: "Будапеща", coords: [47.4979, 19.0402] },
-      { name: "Букурещ", coords: [44.4268, 26.1025] },
-      { name: "Прага", coords: [50.0755, 14.4378] },
-      { name: "Варшава", coords: [52.2297, 21.0122] },
-      { name: "Копенхаген", coords: [55.6761, 12.5683] },
-      { name: "Стокхолм", coords: [59.3293, 18.0686] },
-      { name: "Осло", coords: [59.9139, 10.7522] },
-      { name: "Москва", coords: [55.7558, 37.6173] },
-      { name: "Минск", coords: [53.9006, 27.5590] },
-      { name: "Хелзинки", coords: [60.1695, 24.9354] },
-      { name: "Рига", coords: [56.9496, 24.1052] },
-      { name: "Талин", coords: [59.4370, 24.7536] },
-      { name: "Вилнюс", coords: [54.6872, 25.2797] },
-      { name: "Любляна", coords: [46.0569, 14.5058] },
-      { name: "Загреб", coords: [45.8150, 15.9819] },
-      { name: "Белград", coords: [44.8176, 20.4569] },
-      { name: "Скопие", coords: [41.9981, 21.4254] },
-      { name: "Тирана", coords: [41.3275, 19.8189] },
-      { name: "Подгорица", coords: [42.4410, 19.2627] },
-      { name: "Сараево", coords: [43.8563, 18.4131] },
-      { name: "Прищина", coords: [42.6629, 21.1655] },
-      { name: "Дъблин", coords: [53.3498, -6.2603] },
-      { name: "Рейкявик", coords: [64.1355, -21.8954] },
-      { name: "Братислава", coords: [48.1486, 17.1077] },
-      { name: "Люксембург", coords: [49.6117, 6.1319] },
-      { name: "Амстердам", coords: [52.3676, 4.9041] },
-      { name: "Брюксел", coords: [50.8503, 4.3517] },
-      { name: "Лисабон", coords: [38.7169, -9.1390] },
-      { name: "Вадуц", coords: [47.1416, 9.5215] },
-      { name: "Сан Марино", coords: [43.9336, 12.4484] },
-      { name: "Андора ла Веля", coords: [42.5078, 1.5211] },
-      { name: "Ватикана", coords: [41.9029, 12.4534] }
-    ];
-
-  fetch('capitals.geojson')
-  .then(res => res.json())
-  .then(data => {
-    L.geoJSON(data, {
-      onEachFeature: (feature, layer) => {
-        layer.bindPopup(`<strong>${feature.properties.name}</strong>`);
-      }
-    }).addTo(markers);
-    map.fitBounds(markers.getBounds(), { padding: [50, 50] });
-  });
-  .catch(err => console.error('GeoJSON load error:', err));
-  </script>
-    <!-- particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script>
-  <script>
-    particlesJS.load('particles-js','particles.json',function(){
-      console.log('particles.js loaded');
-    });
-  </script>
-  <!-- … предишни секции … -->
-
- 
-
-  <!-- ЗАДЪЛЖИТЕЛНО: Leaflet CSS (в <head>) -->
-  <!--
-  <link 
-    rel="stylesheet" 
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-o9N1jBzq1Vn8nUH1Es1D5v601iGvdw+5U4XhJcJOSmI="
-    crossorigin=""
-  />
-  <link 
-    rel="stylesheet" 
-    href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" 
-  />
-  <link 
-    rel="stylesheet" 
-    href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" 
-  />
-  -->
-
-  <!-- JS библиотеките – задължително в края на body -->
-  <script 
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-XQoYMqMTK8LvdlD/XvXR1rdV/a6HiytOOKam5Q+XvI="
-    crossorigin=""
-  ></script>
-  <script 
-    src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"
-  ></script>
-
-  <!-- Твоят Map Init скрипт -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1) Инициализирай картата в div#map
-      const map = L.map('map').setView([20, 0], 2);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-      }).addTo(map);
-
-      // 2) Създай MarkerCluster група и я добави веднага
-      const markers = L.markerClusterGroup();
-      map.addLayer(markers);
-
-      // 3) Зареди статични точки (пример)
-      const staticPoints = [
-        { coords: [51.5, -0.09], popup: 'London – 5k attacks' },
-        { coords: [40.7, -74.0], popup: 'New York – 3k attacks' },
-        { coords: [35.7, 139.7], popup: 'Tokyo – 4k attacks' }
-      ];
-      staticPoints.forEach(p => {
-        L.marker(p.coords)
-         .bindPopup(`<strong>${p.popup}</strong>`)
-         .addTo(markers);
-      });
-
-      // 4) Зареди GeoJSON (файлът threats.geojson трябва да е в същата папка като index.html)
-      fetch('threats.geojson')
-        .then(res => {
-          if (!res.ok) throw new Error('Не мога да заредя threats.geojson');
-          return res.json();
-        })
-        .then(data => {
-          L.geoJSON(data, {
-            onEachFeature: (feature, layer) => {
-              if (feature.properties?.name) {
-                layer.bindPopup(
-                  `<strong>${feature.properties.name}</strong><br>` +
-                  `Count: ${feature.properties.count || 'n/a'}`
-                );
-              }
-            }
-          }).addTo(markers);
-
-          // 5) Автоматично прецени zoom и център, за да виждаме всички маркери
-          map.fitBounds(markers.getBounds(), { padding: [50, 50] });
-        })
-        .catch(err => console.error(err));
-    });
-  </script>
-
 </body>
 </html>
