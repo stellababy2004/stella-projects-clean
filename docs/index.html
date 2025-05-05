@@ -21,6 +21,10 @@
         <li><a href="#map-section">Live Map</a></li>
         <li><a href="#contact">Contact</a></li>
 		<li><a href="#cv">My CV</a></li>
+		<li><a href="#testimonials">Testimonials</a></li>
+<li><a href="#my-cv">My CV</a></li>
+<li><a href="#contact">Contact</a></li>
+
 
       </ul>
     </nav>
@@ -78,9 +82,13 @@
   function checkPassword() {
     const password = document.getElementById('cvPassword').value;
     if (password === 'cyberpunk2025') {
-      window.location.href = 'CV%20Analyste%20SOC-STOYANOVA.odt';
+if (input === correctPassword) {
+      window.open("CV%20Analyste%20SOC-STOYANOVA.odt", "_blank");
+      message.textContent = "Success! The CV will open in a new tab.";
+      message.style.color = "lime";
     } else {
-      alert('Incorrect password.');
+      message.textContent = "Incorrect password.";
+      message.style.color = "red";
     }
   }
 </script>
