@@ -128,14 +128,28 @@ iframe {
 body > * { position: relative; z-index: 1; }
 
 //* global.css */
-body {
+/* в началото на styles.css */
+html, body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  overflow-x: hidden;
-  background: linear-gradient(270deg, #040d0d, #001f1f, #040d0d);
-  background-size: 600% 600%;
-  animation: neonGradient 20s ease infinite;
+  overflow: hidden; /* за да няма скролбар по хоризонтала */
+}
+/* контейнерът за Vanta.js */
+#top {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; /* за да е заден фон под всичко */
+}
+
+/* съдържанието ти да е върху фона */
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes neonGradient {
