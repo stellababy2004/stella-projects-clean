@@ -1,293 +1,77 @@
-/* 1) Reset & глобални стилове */
-/* Позиционираме particles.js зад останалото съдържание */
-#particles-js {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-/* Всички останали елементи са върху фона */
-body > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Global reset + fullscreen за фон */
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* скриваме хоризонталния скрол */
-}
-
+/* Reset and basic styles */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  overflow-x: hidden;
-  background: linear-gradient(270deg, #040d0d, #001f1f, #040d0d);
-  background-size: 600% 600%;
-  animation: neonGradient 20s ease infinite;
-  font-family: 'Courier New', monospace;
-  color: #00ffee;
-  line-height: 1.6;
-}
-
-/* 2) Анимация на градиента */
-@keyframes neonGradient {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
- /*3. Containers & Layout */
-
-.section {
-  max-width:800px;
-  width:100%;
-  margin:0 auto;
-  padding:50px 20px;
-}
-/* Particles.js Layer
-#particles-js {
-  position:fixed; top:0; left:0;
-  width:100%; height:100%;
-  z-index:0; pointer-events:none;
-}
-body > header,
-body > .section,
-body > footer,
-#backToTop { position:relative; z-index:10; }
-
-/* … останалите ти правила … */
-
-/* Animated Neon Gradient Background */
-
-/* Основен контейнер за секции */
-.section {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 50px 20px;
-  box-sizing: border-box;
-}
-
-/* Гарантира, че canvas & iframe не излизат от рамките */
-canvas,
-iframe {
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  display: block;
-  margin: 0 auto;
-}
-
-
-  @keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-  
-}/* Contact Section Styling */
-
-#contact .section-subtitle {
-  margin: 0 0 30px;
-  color: #00ffee;
-  font-size: 1.2rem;
-  text-shadow: 0 0 5px #00ffee;
-}
-
-.contact-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto 40px;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.contact-list li {
-  margin: 0;
-}
-
-.qr-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.qr-code {
-  width: 150px;
-  border: 2px solid #00ffee;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 255, 238, 0.5);
-  pointer-events: none;
-}
-.qr-code {
-  display:inline-block;
-  width:150px; margin-bottom:20px;
-  border:2px solid #00ffee; border-radius:8px;
-  box-shadow:0 0 10px rgba(0,255,238,0.5);
-  position:relative; z-index:10;
-}                                                                                                                    
-.qr-label {
-  margin-top: 10px;
-  color: #00ffee;
-  font-size: 0.9rem;
-  text-shadow: 0 0 5px #00ffee;
-}
-#particles-js {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-}
-body > * { position: relative; z-index: 1; }
-
-//* global.css */
-/* в началото на styles.css */
 html, body {
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* за да няма скролбар по хоризонтала */
-}
-/* контейнерът за Vanta.js */
-#top {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1; /* за да е заден фон под всичко */
+  overflow-x: hidden;
+  font-family: 'Courier New', monospace;
+  color: #00ffee;
+  background: linear-gradient(270deg, #040d0d, #001f1f, #040d0d);
+  background-size: 600% 600%;
+  animation: neonGradient 20s ease infinite;
 }
 
-/* съдържанието ти да е върху фона */
+@keyframes neonGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
 body > * {
   position: relative;
   z-index: 1;
 }
 
-@keyframes neonGradient {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-
-
-
-  color: #00ffee;
-  font-family: 'Courier New', monospace;
+.section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
   text-align: center;
-  margin: 0;
-  padding: 20px;
-  line-height: 1.6;
 }
 
-/* тук добавяш останалите си стилове... */
-/* particles.js фон */
-#particles-js {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Съдържанието да е над частиците */
-body > header,
-body > .section,
-body > footer,
-#backToTop {
-  position: relative;
-  z-index: 10;
-}
-/* QR код в секцията Contact */
-.qr-code {
-  display: block;
-  margin: 20px auto 0;
-  width: 150px;
-  height: auto;
-  border: 2px solid #00ffee;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 255, 238, 0.5);
-  z-index: 10;       /* за да е над частиците */
-  position: relative;
-}
-/* QR в секцията Contact */
-.qr-wrapper {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.qr-wrapper h3 {
-  margin-bottom: 10px;
-  color: #00ffee;
-  font-size: 1.2rem;
-}
-
-.qr-code {
+.button {
   display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  color: #00ffee;
+  border: 2px solid #00ffee;
+  border-radius: 5px;
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background: #00ffee;
+  color: #040d0d;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+  border: 2px solid #00ffee;
+}
+
+.qr-code {
   width: 150px;
-  height: auto;
+  margin-top: 20px;
   border: 2px solid #00ffee;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,255,238,0.5);
-  margin-bottom: 20px;
-}
-
-/* Групирай бутоните под QR */
-.contact-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-#map {
-  width: 100%;
-  height: 400px;
-  margin: 0 auto;
-  border: 2px solid #00ffee;
-}
-
-/* … твоите вече съществуващи правила … */
-
-/* Навигационни линкове – добави това накрая на файла */
-nav ul li a,
-nav ul li a:visited {
-  color: #00ffee;
-}
-
-nav ul li a:hover,
-nav ul li a:active {
-  color: #00ffee;
-}
-/* Бутони – нормално и visited */
-.button,
-.button:visited {
-  color: #00ffee;
-}
-
-/* При hover/active запазва неоновото синьо */
-.button:hover,
-.button:active {
-  color: #00ffee;
-}
-/* Осигуряваме ширина и височина на картата */
-#map {
-  width: 100%;
-  height: 400px;
-  margin: 0 auto;
 }
