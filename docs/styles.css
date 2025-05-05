@@ -136,7 +136,17 @@ body > * {
   background: rgba(0, 255, 238, 0.1);
 }
 nav ul li a,
-nav ul li a:visited {
-  color: #00ffee;
-  text-decoration: underline;
+nav ul li a:visited,
+.button,
+.button:visited {
+  color: #00ffee !important;
+  text-decoration: none;
+}
+
+nav ul li a:hover,
+nav ul li a:active,
+.button:hover,
+.button:active {
+  color: #00ffee !important;
+  text-shadow: 0 0 5px #00ffee;
 }
