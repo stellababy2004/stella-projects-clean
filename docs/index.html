@@ -128,36 +128,27 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
 <script>
-  const ctx = document.getElementById('threatChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
-      datasets: [{
-        label: 'Cyber Threats (%)',
-        data: [35, 25, 20, 15, 5],
-        backgroundColor: [
-          'rgba(255,99,132,0.6)',
-          'rgba(54,162,235,0.6)',
-          'rgba(255,206,86,0.6)',
-          'rgba(75,192,192,0.6)',
-          'rgba(153,102,255,0.6)'
-        ],
-        borderColor: [
-          'rgba(255,99,132,1)',
-          'rgba(54,162,235,1)',
-          'rgba(255,206,86,1)',
-          'rgba(75,192,192,1)',
-          'rgba(153,102,255,1)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: { y: { beginAtZero: true } }
-    }
-  });
+  const map = L.map('map').setView([20, 0], 2);
+  const markers = L.markerClusterGroup();
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  fetch('capitals_enriched.geojson')
+    .then(res => res.json())
+    .then(data => {
+      L.geoJSON(data, {
+        onEachFeature: (feature, layer) => {
+          const props = feature.properties;
+          const threat = props.threat || 'Unknown';
+          const count = props.count || 'N/A';
+          layer.bindPopup(`<strong>${props.name}</strong><br>Threat: ${threat}<br>Count: ${count}`);
+        }
+      }).addTo(markers);
+      map.addLayer(markers);
+      map.fitBounds(markers.getBounds(), { padding: [50, 50] });
+    });
 </script>
 </body>
 </html>
