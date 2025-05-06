@@ -4,26 +4,9 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Sofia",
-        "region": "Europe",
-        "threat": "Phishing",
-        "count": 33
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          23.3219,
-          42.6977
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "name": "London",
-        "region": "Europe",
         "threat": "Phishing",
-        "count": 253
+        "count": 5000
       },
       "geometry": {
         "type": "Point",
@@ -36,26 +19,9 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Paris",
-        "region": "Europe",
-        "threat": "Phishing",
-        "count": 161
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          2.3522,
-          48.8566
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "name": "Berlin",
-        "region": "Europe",
         "threat": "Phishing",
-        "count": 264
+        "count": 4200
       },
       "geometry": {
         "type": "Point",
@@ -68,96 +34,15 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Rome",
-        "region": "Europe",
-        "threat": "Phishing",
-        "count": 100
+        "name": "New York",
+        "threat": "Ransomware",
+        "count": 4800
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          12.4964,
-          41.9028
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Madrid",
-        "region": "Europe",
-        "threat": "Phishing",
-        "count": 416
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -3.7038,
-          40.4168
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Vienna",
-        "region": "Europe",
-        "threat": "Phishing",
-        "count": 296
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          16.3738,
-          48.2082
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Amsterdam",
-        "region": "Europe",
-        "threat": "Phishing",
-        "count": 286
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.9041,
-          52.3676
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Warsaw",
-        "region": "Europe",
-        "threat": "Phishing",
-        "count": 72
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.0122,
-          52.2297
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Brussels",
-        "region": "Europe",
-        "threat": "Phishing",
-        "count": 21
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.3517,
-          50.8503
+          -74.006,
+          40.7128
         ]
       }
     },
@@ -165,9 +50,8 @@
       "type": "Feature",
       "properties": {
         "name": "Tokyo",
-        "region": "Asia",
         "threat": "DDoS",
-        "count": 363
+        "count": 5100
       },
       "geometry": {
         "type": "Point",
@@ -180,160 +64,30 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Beijing",
-        "region": "Asia",
-        "threat": "DDoS",
-        "count": 21
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          116.4074,
-          39.9042
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "New Delhi",
-        "region": "Asia",
-        "threat": "DDoS",
-        "count": 74
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.209,
-          28.6139
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Jakarta",
-        "region": "Asia",
-        "threat": "DDoS",
-        "count": 382
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          106.8456,
-          -6.2088
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Kabul",
-        "region": "Asia",
-        "threat": "DDoS",
-        "count": 324
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          69.2075,
-          34.5553
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Washington, D.C.",
-        "region": "North America",
-        "threat": "Ransomware",
-        "count": 282
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -77.0369,
-          38.9072
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Ottawa",
-        "region": "North America",
-        "threat": "Ransomware",
-        "count": 41
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -75.6972,
-          45.4215
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Mexico City",
-        "region": "North America",
-        "threat": "Ransomware",
-        "count": 198
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -99.1332,
-          19.4326
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "New York",
-        "region": "North America",
-        "threat": "Ransomware",
-        "count": 169
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -74.0,
-          40.7
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Buenos Aires",
-        "region": "South America",
+        "name": "Moscow",
         "threat": "Spyware",
-        "count": 123
+        "count": 3900
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -58.3816,
-          -34.6037
+          37.6173,
+          55.7558
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "Brasília",
-        "region": "South America",
-        "threat": "Spyware",
-        "count": 279
+        "name": "Delhi",
+        "threat": "DDoS",
+        "count": 3600
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -47.8825,
-          -15.7942
+          77.1025,
+          28.7041
         ]
       }
     },
@@ -341,9 +95,8 @@
       "type": "Feature",
       "properties": {
         "name": "Cairo",
-        "region": "Africa",
         "threat": "Malware",
-        "count": 242
+        "count": 3000
       },
       "geometry": {
         "type": "Point",
@@ -356,48 +109,45 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Algiers",
-        "region": "Africa",
-        "threat": "Malware",
-        "count": 262
+        "name": "São Paulo",
+        "threat": "Ransomware",
+        "count": 2800
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          3.0588,
-          36.7538
+          -46.6333,
+          -23.5505
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "Luanda",
-        "region": "Africa",
-        "threat": "Malware",
-        "count": 383
+        "name": "Beijing",
+        "threat": "DDoS",
+        "count": 4700
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          13.2343,
-          -8.839
+          116.4074,
+          39.9042
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "Canberra",
-        "region": "Oceania",
-        "threat": "Botnet",
-        "count": 289
+        "name": "Paris",
+        "threat": "Phishing",
+        "count": 4000
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          149.13,
-          -35.2809
+          2.3522,
+          48.8566
         ]
       }
     }
