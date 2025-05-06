@@ -5,15 +5,12 @@
   padding: 0;
 }
 
-html, body {
+hbody, html {
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  font-family: 'Courier New', monospace;
-  color: #00ffee;
-  background: linear-gradient(270deg, #040d0d, #001f1f, #040d0d);
-  background-size: 600% 600%;
-  animation: neonGradient 20s ease infinite;
 }
 
 @keyframes neonGradient {
@@ -22,19 +19,19 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-#particles-js {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  pointer-events: none;
-}
 
 body > * {
   position: relative;
   z-index: 1;
+}
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .section {
@@ -217,3 +214,16 @@ canvas {
     });
   }
 </script>
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+body > * {
+  position: relative;
+  z-index: 1;
+}
