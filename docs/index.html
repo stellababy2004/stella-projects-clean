@@ -8,6 +8,24 @@
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <!-- Leaflet CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<!-- Leaflet JS -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+<!-- Leaflet Marker Cluster -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"
+/>
+<script
+  src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js">
+</script>
+
   </head>
 <body id="top">
   <div id="particles-js"></div>
@@ -20,9 +38,7 @@
         <li><a href="#chart">Charts</a></li>
         <li><a href="#map-section">Live Map</a></li>
         <li><a href="#contact">Contact</a></li>
-		<li><a href="#cv">My CV</a></li>
 		<li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#my-cv">My CV</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -39,7 +55,8 @@
       <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
       <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
       <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
-	 <li><a href="#cv" class="button">📄 My CV</a></li>
+	  <li><a href="#cv" class="button">📄 My CV</a></li>
+
     </ul>
   </section>
 
@@ -59,31 +76,56 @@
     <a href="https://www.linkedin.com/in/stella-s-95ba5683/" class="button">🔗 LinkedIn</a>
     <img src="images/linkedin-qr.png" alt="LinkedIn QR Code" class="qr-code" />
   </section>
- <section class="section" id="cv" data-aos="fade-up">
- 
+ <section class="section" id="cv">
+  <h2>Download My CV</h2>
+  <input type="password" id="cvPassword" placeholder="Enter password" class="password-input" />
+  <button onclick="checkPassword()" class="button">📥 Download CV</button>
+  <p id="cvMessage"></p>
+</section>
+
   <script>
     particlesJS.load('particles-js', 'particles.json', function() {
       console.log('particles.js loaded');
     });
   </script>
+<script>
+  const map = L.map('map').setView([20, 0], 2);
+  const markers = L.markerClusterGroup();
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Зареждане на GeoJSON
+  fetch('./capitals.geojson')
+    .then(res => res.json())
+    .then(data => {
+      L.geoJSON(data, {
+        onEachFeature: (feature, layer) => {
+          layer.bindPopup(`<strong>${feature.properties.name}</strong><br>Threats: ${feature.properties.count || 'N/A'}`);
+        }
+      }).addTo(markers);
+      map.addLayer(markers);
+      map.fitBounds(markers.getBounds(), { padding: [50, 50] });
+    });
+</script>
 
 <script>
-  function checkPassword() {
-    const password = document.getElementById('cvPassword').value;
-    if (password === 'cyberpunk2025') {
-if (input === correctPassword) {
-      window.open("CV%20Analyste%20SOC-STOYANOVA.odt", "_blank");
-      message.textContent = "Success! The CV will open in a new tab.";
-      message.style.color = "lime";
-    } else {
-      message.textContent = "Incorrect password.";
-      message.style.color = "red";
-    }
+ function checkPassword() {
+  const password = document.getElementById('cvPassword').value;
+  const message = document.getElementById('cvMessage');
+  if (password === 'cyberpunk2025') {
+    window.open("CV%20Analyste%20SOC-STOYANOVA.odt", "_blank");
+    message.textContent = "Success! The CV will open in a new tab.";
+    message.style.color = "lime";
+  } else {
+    message.textContent = "Incorrect password.";
+    message.style.color = "red";
   }
+}
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
-
 
 <script>
   const ctx = document.getElementById('threatChart').getContext('2d');
