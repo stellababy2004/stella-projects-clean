@@ -12,6 +12,11 @@ hbody, html {
   height: 100%;
   overflow-x: hidden;
 }
+body {
+  background-color: #040d0d;
+  color: #00ffee;
+  font-family: 'Courier New', monospace;
+}
 
 @keyframes neonGradient {
   0% { background-position: 0% 50%; }
@@ -185,6 +190,14 @@ canvas {
   margin-top: 20px;
   box-shadow: 0 0 10px #00ffee;
 }
+#checkpoint-map iframe {
+  width: 100%;
+  height: 600px;
+  border: 2px solid #00ffee;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ffee;
+}
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
