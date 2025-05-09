@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,25 +7,18 @@
   <meta name="description" content="Cybersecurity Portfolio of Stella Barbarella – SOC Analyst, Threat Hunter & Cybersecurity Enthusiast." />
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
 
-  <!-- 🌐 Основен CSS файл -->
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon/favicon-32x32.png" type="image/png" />
 
-  <!-- 🗺️ Leaflet JS & CSS -->
+  <!-- Leaflet JS & Marker Cluster -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- 🔵 Leaflet Marker Cluster -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 
-  <!-- 🌌 particles.js за фоновата анимация -->
+  <!-- Particles.js & Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
-  <!-- 📊 Chart.js за графиките -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
-  <!-- 💡 Икона за таба (по желание) -->
-  <link rel="icon" href="favicon/favicon-32x32.png" type="image/png" />
 </head>
 
 <body id="top">
@@ -37,8 +31,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#chart">Charts</a></li>
         <li><a href="#map-section">Live Map</a></li>
-        <li><a href="#contact">Contact</a></li>
-		<li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -54,16 +47,15 @@
     <ul class="project-list">
       <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
       <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
-      <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
-	  <li><a href="#cv" class="button">📄 My CV</a></li>
-
+      <li><a href="threat-hunting.html" class="button">🧐 Threat Hunting</a></li>
+      <li><a href="#cv" class="button">📄 My CV</a></li>
     </ul>
   </section>
 
-  <section class="section" id="chart" data-aos="fade-up">
+  <section class="section" id="chart">
     <h2>Cyber Threat Analysis</h2>
     <canvas id="threatChart"></canvas>
-   </section>
+  </section>
 
   <section class="section" id="map-section">
     <h2>Global Threat Locations</h2>
@@ -76,124 +68,86 @@
     <a href="https://www.linkedin.com/in/stella-s-95ba5683/" class="button">🔗 LinkedIn</a>
     <img src="images/linkedin-qr.png" alt="LinkedIn QR Code" class="qr-code" />
   </section>
- <section class="section" id="cv">
-  <h2>Download My CV</h2>
-  <input type="password" id="cvPassword" placeholder="Enter password" class="password-input" />
-  <button onclick="checkPassword()" class="button">📥 Download CV</button>
-  <p id="cvMessage"></p>
-</section>
+
+  <section class="section" id="cv">
+    <h2>Download My CV</h2>
+    <input type="password" id="cvPassword" placeholder="Enter password" class="password-input" />
+    <button onclick="checkPassword()" class="button">📥 Download CV</button>
+    <p id="cvMessage"></p>
+  </section>
 
   <script>
-    particlesJS.load('particles-js', 'particles.json', function() {
+    particlesJS.load('particles-js', 'particles.json', function () {
       console.log('particles.js loaded');
     });
-  </script>
-<script>
-  const map = L.map('map').setView([20, 0], 2);
-  const markers = L.markerClusterGroup();
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
-
-  // Зареждане на GeoJSON
-  fetch('./capitals.geojson')
-    .then(res => res.json())
-    .then(data => {
-      L.geoJSON(data, {
-        onEachFeature: (feature, layer) => {
-          layer.bindPopup(`<strong>${feature.properties.name}</strong><br>Threats: ${feature.properties.count || 'N/A'}`);
+    const ctx = document.getElementById('threatChart')?.getContext('2d');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
+          datasets: [{
+            label: 'Cyber Threats (%)',
+            data: [35, 25, 20, 15, 5],
+            backgroundColor: [
+              'rgba(255,99,132,0.6)',
+              'rgba(54,162,235,0.6)',
+              'rgba(255,206,86,0.6)',
+              'rgba(75,192,192,0.6)',
+              'rgba(153,102,255,0.6)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54,162,235,1)',
+              'rgba(255,206,86,1)',
+              'rgba(75,192,192,1)',
+              'rgba(153,102,255,1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: { y: { beginAtZero: true } }
         }
-      }).addTo(markers);
-      map.addLayer(markers);
-      map.fitBounds(markers.getBounds(), { padding: [50, 50] });
-    });
-</script>
+      });
+    }
 
-<script>
- function checkPassword() {
-  const password = document.getElementById('cvPassword').value;
-  const message = document.getElementById('cvMessage');
-  if (password === 'cyberpunk2025') {
-    window.open("CV%20Analyste%20SOC-STOYANOVA.odt", "_blank");
-    message.textContent = "Success! The CV will open in a new tab.";
-    message.style.color = "lime";
-  } else {
-    message.textContent = "Incorrect password.";
-    message.style.color = "red";
-  }
-}
+    const map = L.map('map').setView([20, 0], 2);
+    const markers = L.markerClusterGroup();
 
-</script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
-<script>
-  const map = L.map('map').setView([20, 0], 2);
-  const markers = L.markerClusterGroup();
+    fetch('capitals_enriched.geojson')
+      .then(res => res.json())
+      .then(data => {
+        L.geoJSON(data, {
+          onEachFeature: (feature, layer) => {
+            const props = feature.properties;
+            const threat = props.threat || 'Unknown';
+            const count = props.count || 'N/A';
+            layer.bindPopup(`<strong>${props.name}</strong><br>Threat: ${threat}<br>Count: ${count}`);
+          }
+        }).addTo(markers);
+        map.addLayer(markers);
+        map.fitBounds(markers.getBounds(), { padding: [50, 50] });
+      });
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
-
-  fetch('capitals_enriched.geojson')
-    .then(res => res.json())
-    .then(data => {
-      L.geoJSON(data, {
-        onEachFeature: (feature, layer) => {
-          const props = feature.properties;
-          const threat = props.threat || 'Unknown';
-          const count = props.count || 'N/A';
-          layer.bindPopup(`<strong>${props.name}</strong><br>Threat: ${threat}<br>Count: ${count}`);
-        }
-      }).addTo(markers);
-      map.addLayer(markers);
-      map.fitBounds(markers.getBounds(), { padding: [50, 50] });
-    });
-</script>
-<script>
-  const ctx = document.getElementById('threatChart')?.getContext('2d');
-  if (ctx) {
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
-        datasets: [{
-          label: 'Cyber Threats (%)',
-          data: [35, 25, 20, 15, 5],
-          backgroundColor: [
-            'rgba(255,99,132,0.6)',
-            'rgba(54,162,235,0.6)',
-            'rgba(255,206,86,0.6)',
-            'rgba(75,192,192,0.6)',
-            'rgba(153,102,255,0.6)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54,162,235,1)',
-            'rgba(255,206,86,1)',
-            'rgba(75,192,192,1)',
-            'rgba(153,102,255,1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: { beginAtZero: true }
-        }
+    function checkPassword() {
+      const password = document.getElementById('cvPassword').value;
+      const message = document.getElementById('cvMessage');
+      if (password === 'cyberpunk2025') {
+        window.open("Stella_Barbarella_CV.odt", "_blank");
+        message.textContent = "Success! The CV will open in a new tab.";
+        message.style.color = "lime";
+      } else {
+        message.textContent = "Incorrect password.";
+        message.style.color = "red";
       }
-    });
-  }
-</script>
-
+    }
+  </script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script>
-  particlesJS.load('particles-js', 'particles.json', function () {
-    console.log('particles.js loaded – callback');
-  });
-</script>
-
 </html>
- 
