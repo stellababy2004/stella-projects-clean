@@ -1,59 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#ee0c5d">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <!-- Refresh the page every hour to make sure the connection doesn't hang -->
-    <meta http-equiv="refresh" content="3600">
-    <title>Live Cyber Threat Map | Check Point</title>
-    <link rel="icon" type="image/png" href="https://sc1.checkpoint.com/threatmap/build//images/favicon.ico">
-    <link rel="manifest" href="https://sc1.checkpoint.com/threatmap/build//manifest.json">
-    <style>
-        body {
-            background-color: black;
-            font-family: "Open Sans", sans-serif;
-        }
-    </style>
-  <script type="module" crossorigin src="https://sc1.checkpoint.com/threatmap/build/assets/index-UG5V0d_V.js"></script>
-  <link rel="stylesheet" crossorigin href="https://sc1.checkpoint.com/threatmap/build/assets/index-CwGibJrB.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Cyber Threat Map – Stella Barbarella</title>
+  <meta name="description" content="Live cyber threat map powered by Check Point – integrated in Stella Barbarella's cybersecurity portfolio." />
+  <meta name="keywords" content="SOC Analyst, Threat Map, Cybersecurity, Check Point, Live Map" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon/favicon-32x32.png" type="image/png" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
-<body>
-    <noscript>
-        You need to enable JavaScript to run this app.
-    </noscript>
-    <script>
-        window["appPerformanceDetails"] = {
-            startTime: new Date().getTime()
-        };
-        window["maintenanceTimeout-Message"] = setTimeout(function() {
-            var messageBox = document.createElement("div");
-            messageBox.id = "maintenance-message";
-            messageBox.style.color = "white";
-            messageBox.style.backgroundColor = "black";
-            messageBox.style.position = "absolute";
-            messageBox.style.top = "0";
-            messageBox.style.bottom = "0";
-            messageBox.style.left = "0";
-            messageBox.style.right = "0";
-            messageBox.style.zIndex = "20";
-            messageBox.style.display = "flex";
-            messageBox.style.alignItems = "center";
-            messageBox.style.justifyContent = "center";
-            messageBox.style.flexDirection = "column";
-            messageBox.innerHTML += "<img src='%PUBLIC_URL%/images/check-point-logo.svg' alt='Check Point' style='margin-bottom: 30px'/>";
-            messageBox.innerHTML += "<div style='font-size: 1.5rem'>ThreatMap is currently unavailable. Please try again in a few minutes.</div>";
-            document.body.append(messageBox);
-            // Set another timeout to reload the page in a few minutes
-            window["maintenanceTimeout-Reload"] = setTimeout(function() {
-                location.reload(true);
-            }, 120000);
-        }, 5000);
-    </script>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-5JCRGP');</script>
-    <!-- End Google Tag Manager -->
-    <div id="root"></div>
+<body id="top">
+  <div id="particles-js"></div>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html#about">About Me</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#chart">Charts</a></li>
+        <li><a href="index.html#map-section">Live Map</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h1>🌍 Live Cyber Threat Map</h1>
+    <p>This map visualizes real-time cyber threats detected around the globe by Check Point.</p>
+    <div id="checkpoint-map">
+      <iframe
+        src="https://threatmap.checkpoint.com/"
+        title="Check Point Cyber Threat Map"
+        frameborder="0"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <script>
+    particlesJS.load('particles-js', 'particles.json', function () {
+      console.log('particles.js loaded on cyber-threat-map.html');
+    });
+  </script>
 </body>
 </html>
