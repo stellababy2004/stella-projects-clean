@@ -4,11 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Live Cyber Threat Map – Stella Barbarella</title>
-  <meta name="description" content="Live cyber threat map powered by Check Point – integrated in Stella Barbarella's cybersecurity portfolio." />
-  <meta name="keywords" content="SOC Analyst, Threat Map, Cybersecurity, Check Point, Live Map" />
+  <meta name="description" content="Live cyber threat map powered by Check Point – part of Stella Barbarella's cybersecurity portfolio." />
+  <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Intelligence, Check Point Map, Real-Time Threats, Cyber Threat Map" />
+  <meta name="author" content="Stella Barbarella" />
+  <meta name="robots" content="index, follow" />
 
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Favicon -->
   <link rel="icon" href="favicon/favicon-32x32.png" type="image/png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
 <body id="top">
@@ -28,21 +35,23 @@
 
   <section class="section">
     <h1>🌍 Live Cyber Threat Map</h1>
-    <p>This map visualizes real-time cyber threats detected around the globe by Check Point.</p>
+    <p>This map visualizes real-time cyber threats detected globally, powered by Check Point.</p>
     <div id="checkpoint-map">
       <iframe
         src="https://threatmap.checkpoint.com/"
         title="Check Point Cyber Threat Map"
+        width="100%"
+        height="600"
         frameborder="0"
-        loading="lazy"
-        allowfullscreen>
+        style="border: 2px solid #00ffee; border-radius: 10px; box-shadow: 0 0 10px #00ffee; background: black;"
+        loading="lazy">
       </iframe>
     </div>
   </section>
 
   <script>
     particlesJS.load('particles-js', 'particles.json', function () {
-      console.log('particles.js loaded on cyber-threat-map.html');
+      console.log('particles.js loaded – cyber-threat-map.html');
     });
   </script>
 </body>
