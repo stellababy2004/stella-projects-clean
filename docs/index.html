@@ -247,23 +247,84 @@ if (ipMatch && ipGeoCoords[ip]) {
     index++;
   }, 1500);
 </script>
-const ipGeoMap = {
-  "192.168.1.10": "🇷🇺 Russia",
-  "192.168.1.12": "🇺🇸 USA",
-  "192.168.1.13": "🇨🇳 China",
-  "192.168.1.50": "🇧🇷 Brazil"
-};
-const ipGeoCoords = {
-  "192.168.1.10": [55.751244, 37.618423],   // Moscow
-  "192.168.1.12": [38.9072, -77.0369],      // Washington
-  "192.168.1.13": [39.9042, 116.4074],      // Beijing
-  "192.168.1.50": [-23.5505, -46.6333]      // São Paulo
-};
-const map = L.map('map').setView([20, 0], 2);
+<script>
+  const logs = [
+    "May 10 10:01:45 server sshd[2345]: Failed password for root from 192.168.1.10 port 22",
+    "May 10 10:02:01 server sshd[2345]: Accepted password for user1 from 192.168.1.12 port 22",
+    "May 10 10:02:17 server apache[4321]: SQL injection attempt detected",
+    "May 10 10:03:02 server sshd[2345]: Failed password for invalid user admin from 192.168.1.13",
+    "May 10 10:03:15 server cron[1234]: Job started successfully",
+    "May 10 10:04:05 server firewall[9999]: Port scan detected from 192.168.1.50",
+    "May 10 10:04:30 server apache[4321]: GET /index.php?id=1%20OR%201=1",
+    "May 10 10:05:00 server auditd[8888]: User added to sudo group"
+  ];
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
+  const threatKeywords = ["Failed password", "SQL", "injection", "Port scan", "unauthorized", "invalid user"];
+
+  const ipGeoMap = {
+    "192.168.1.10": "🇷🇺 Russia",
+    "192.168.1.12": "🇺🇸 USA",
+    "192.168.1.13": "🇨🇳 China",
+    "192.168.1.50": "🇧🇷 Brazil"
+  };
+
+  const container = document.getElementById("log-container");
+
+  let index = 0;
+  const interval = setInterval(() => {
+    if (index >= logs.length) {
+      clearInterval(interval);
+      return;
+    }
+
+    const log = logs[index];
+    const logElement = document.createElement("div");
+
+    // Определяне дали логът е заплаха
+    const isThreat = threatKeywords.some(keyword => log.includes(keyword));
+    logElement.style.color = isThreat ? "#f00" : "#0f0";
+
+    // Извличане и добавяне на гео информация
+    const ipMatch = log.match(/\b\d{1,3}(\.\d{1,3}){3}\b/);
+    let displayLog = log;
+    if (ipMatch) {
+      const ip = ipMatch[0];
+      const location = ipGeoMap[ip] || "🌐 Unknown";
+      displayLog += ` → [${location}]`;
+    }
+
+    logElement.textContent = displayLog;
+    container.appendChild(logElement);
+    container.scrollTop = container.scrollHeight;
+    index++;
+  }, 1500);
+</script>
+
+<script>
+  const ipGeoMap = {
+    "192.168.1.10": "RU Russia",
+    "192.168.1.12": "US USA",
+    "192.168.1.13": "CN China",
+    "192.168.1.50": "BR Brazil"
+  };
+
+  const ipGeoCoords = {
+    "192.168.1.10": [55.751244, 37.618423], // Moscow
+    "192.168.1.12": [38.9072, -77.0369],    // Washington
+    "192.168.1.13": [39.9042, 116.4074],    // Beijing
+    "192.168.1.50": [-23.5505, -46.6333]    // São Paulo
+  };
+
+  const map = L.map('map').setView([20, 0], 2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  for (const ip in ipGeoCoords) {
+    const marker = L.marker(ipGeoCoords[ip]).addTo(map);
+    marker.bindPopup(`<strong>${ip}</strong><br>${ipGeoMap[ip]}`);
+  }
+</script>
 
 </body>
 </html>
