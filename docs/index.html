@@ -225,15 +225,6 @@ if (ipMatch) {
   const location = ipGeoMap[ip] || "🌐 Unknown";
   displayLog += ` → [${location}]`;
   logElement.textContent = displayLog;
-if (ipGeoCoords[ip]) {
-    const marker = L.marker(ipGeoCoords[ip]).addTo(map);
-    marker.bindPopup(`<b>${ip}</b><br>${location}<br><span style="color:${isThreat ? 'red' : 'green'}">${isThreat ? '⚠️ Threat' : 'Normal'}</span>`);
-  }
-}
-if (ipMatch && ipGeoCoords[ip]) {
-  const marker = L.marker(ipGeoCoords[ip]).addTo(map);
-  marker.bindPopup(`<b>${ip}</b><br>${location}<br><span style="color:${isThreat ? 'red' : 'green'}">${isThreat ? '⚠️ Threat' : 'Normal'}</span>`);
-}
 
   if (ipGeoCoords[ip]) {
     const marker = L.marker(ipGeoCoords[ip]).addTo(map);
@@ -242,6 +233,7 @@ if (ipMatch && ipGeoCoords[ip]) {
 } else {
   logElement.textContent = log;
 }
+
     container.appendChild(logElement);
     container.scrollTop = container.scrollHeight;
     index++;
