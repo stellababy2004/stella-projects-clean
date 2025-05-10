@@ -190,12 +190,7 @@
 
   const threatKeywords = ["Failed password", "SQL", "injection", "Port scan", "unauthorized", "invalid user"];
   const container = document.getElementById("log-container");
-  const ipGeoMap = {
-  "192.168.1.10": "🇷🇺 Russia",
-  "192.168.1.12": "🇺🇸 USA",
-  "192.168.1.13": "🇨🇳 China",
-  "192.168.1.50": "🇧🇷 Brazil"
-};
+
 
   let index = 0;
   const interval = setInterval(() => {
@@ -253,12 +248,7 @@ if (ipMatch) {
 
   const threatKeywords = ["Failed password", "SQL", "injection", "Port scan", "unauthorized", "invalid user"];
 
-  const ipGeoMap = {
-    "192.168.1.10": "🇷🇺 Russia",
-    "192.168.1.12": "🇺🇸 USA",
-    "192.168.1.13": "🇨🇳 China",
-    "192.168.1.50": "🇧🇷 Brazil"
-  };
+ 
 
   const container = document.getElementById("log-container");
 
@@ -300,12 +290,7 @@ if (ipMatch) {
     "192.168.1.50": "BR Brazil"
   };
 
-  const ipGeoCoords = {
-    "192.168.1.10": [55.751244, 37.618423],
-    "192.168.1.12": [38.9072, -77.0369],
-    "192.168.1.13": [39.9042, 116.4074],
-    "192.168.1.50": [-23.5505, -46.6333]
-  };
+ 
 
   const map = L.map('map').setView([20, 0], 2);
 
@@ -320,6 +305,35 @@ if (ipMatch) {
   }
 </script>
 <script src="ip-map.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('threatChart')?.getContext('2d');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
+        datasets: [{
+          label: 'Cyber Threats (%)',
+          data: [35, 25, 20, 15, 5],
+          backgroundColor: [
+            'rgba(255,99,132,0.6)',
+            'rgba(54,162,235,0.6)',
+            'rgba(255,206,86,0.6)',
+            'rgba(75,192,192,0.6)',
+            'rgba(153,102,255,0.6)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  }
+</script>
 
 </body>
 </html>

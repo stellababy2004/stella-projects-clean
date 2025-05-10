@@ -12,9 +12,13 @@
       "opacity": 0.4,
       "width": 1
     },
-    "move": { "enable": true, "speed": 2 }
+    "move": {
+      "enable": true,
+      "speed": 2
+    }
   }
-}* {
+}
+
   box-sizing: border-box;
   margin: 0;
   padding: 0;
