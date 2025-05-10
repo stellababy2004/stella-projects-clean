@@ -38,9 +38,7 @@
   <p>Explore real-world pentest deliverables from Stella Barbarella.</p>
 
   <ul class="project-links">
-    <li><a href="reports/rapport_test_intrusion.pdf" target="_blank" class="btn-download">📄 Report (FR - PDF)</a></li>
     <li><a href="reports/penetration_test_report_acme_en.pdf" target="_blank" class="btn-download">📄 Report (EN - PDF)</a></li>
-    <li><a href="reports/rapport_test_intrusion.docx" target="_blank" class="btn-download">📝 Report (FR - DOCX)</a></li>
     <li><a href="reports/presentation_pentest_ad_acme.pptx" target="_blank" class="btn-download">📊 Presentation (Standard)</a></li>
     <li><a href="reports/presentation_cyber_pentest_dark.pptx" target="_blank" class="btn-download">🕶 Presentation (Hacker Style)</a></li>
   </ul>
@@ -135,7 +133,8 @@
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    fetch('capitals_enriched.geojson')
+    fetch('threats.geojson')
+
       .then(res => res.json())
       .then(data => {
         L.geoJSON(data, {
