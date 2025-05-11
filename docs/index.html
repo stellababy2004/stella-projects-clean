@@ -71,8 +71,28 @@
   
   <section id="log-analyzer" class="section">
   <h2>Live Log Analyzer</h2>
-  <div id="log-container" style="background:#000; color:#0f0; font-family:monospace; padding:1rem; height:300px; overflow:auto; border:1px solid #0f0;"></div>
+  <div id="log-output" style="white-space: pre-wrap; background:#000; color:#00ffee; font-family: monospace; padding: 1rem; height: 300px; overflow-y: auto; border: 2px solid #00ffee; border-radius: 8px;"></div>
+
+  <script>
+    const logs = [
+      "🔍 Starting scan on host 192.168.1.10",
+      "⚠️  Suspicious traffic detected",
+      "✅ Threat neutralized",
+      "📡 Data exfiltration attempt blocked"
+    ];
+
+    const logElement = document.getElementById("log-output");
+    let index = 0;
+
+    setInterval(() => {
+      if (index < logs.length) {
+        logElement.textContent += logs[index++] + "\n";
+        logElement.scrollTop = logElement.scrollHeight;
+      }
+    }, 2000);
+  </script>
 </section>
+
 
   <section class="section" id="map-section">
     <h2>Global Threat Locations</h2>
