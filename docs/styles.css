@@ -209,3 +209,31 @@ canvas {
     });
   }
 </script>
+/* === Project Links Styling === */
+.project-links {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.project-links li {
+  margin: 10px 0;
+}
+
+.project-links a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #00ffee;
+  background: transparent;
+  border: 2px solid #00ffee;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  transition: background 0.3s, color 0.3s;
+}
+
+.project-links a.button:hover {
+  background: #00ffee;
+  color: #040d0d;
+}
