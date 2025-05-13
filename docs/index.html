@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stella Barbarella – SOC Analyst & Cybersecurity Portfolio</title>
+  <title>Stella Barbarella  SOC Analyst & Cybersecurity Portfolio</title>
   <meta name="description" content="Cybersecurity Portfolio of Stella Barbarella – SOC Analyst, Threat Hunter & Cybersecurity Enthusiast." />
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
   <link rel="stylesheet" href="styles.css" />
@@ -35,7 +35,7 @@
     <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#contact" class="button">Contact</a></li>
 
-<<<<<<< HEAD
+
   <ul class="project-links">
   <li>
     <a href="reports/penetration_test_report_acme_en.pdf" target="_blank" class="button">📄 Report (EN – PDF)</a>
@@ -54,7 +54,7 @@
 =======
   </ul>
 </nav>
->>>>>>> a5b0701 (Feat: Добавена презентация и fallback изображение към threat map)
+
   </header>
 
   <section class="section" id="about">
@@ -101,7 +101,6 @@
 
   </section>
 
-<<<<<<< HEAD
  <script>
   const logs = [
     "🔍 Starting scan on host 192.168.1.10",
@@ -133,7 +132,7 @@
   <div id="map" style="height: 400px; border: 1px solid cyan; border-radius: 10px;"></div>
   <button id="clear-map">🧹 Clear Map</button>
   <button id="play-again">🔁 Play Again</button>
->>>>>>> a5b0701 (Feat: Добавена презентация и fallback изображение към threat map)
+
 </section>
 
 
@@ -149,19 +148,27 @@
   <button onclick="checkPassword()">Submit</button>
   <p id="message"></p>
 </section>
-
-
-
   <script>
     particlesJS.load('particles-js', 'particles.json', function() {
       console.log('particles.js loaded');
     });
   </script>
 
- 
   <script>
+    document.getElementById('phishing-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const url = document.getElementById('url').value;
+      const resultDiv = document.getElementById('phishing-result');
+      resultDiv.textContent = `Checking ${url}...`;
+      // Simulate a phishing check
+      setTimeout(() => {
+        resultDiv.textContent = `${url} is safe!`;
+      }, 2000);
+    });
+  </script>
+ 
 <script>
-  const ctx = document.getElementById('threatChart')?.getContext('2d');
+const ctx = document.getElementById('threatChart')?.getContext('2d');
   if (ctx) {
     new Chart(ctx, {
       type: 'bar',
