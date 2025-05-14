@@ -37,8 +37,7 @@ html, body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0;
-  pointer-events: none;
+  z-index: -1;
 }
 
 body > * {
@@ -236,4 +235,17 @@ canvas {
 .project-links a.button:hover {
   background: #00ffee;
   color: #040d0d;
+}
+
+a.button[href*="Report_EN.pdf"],
+a.button[href*="Presentation_Standard.pdf"] {
+  border: 2px solid #ff00cc;
+  color: #ff00cc;
+  background: #181818;
+}
+
+a.button[href*="Report_EN.pdf"]:hover,
+a.button[href*="Presentation_Standard.pdf"]:hover {
+  background: #ff00cc;
+  color: #181818;
 }
