@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,18 +7,11 @@
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-  <!-- Leaflet Marker Cluster -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
 <body id="top">
@@ -27,11 +19,11 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#chart">Charts</a></li>
-        <li><a href="#map-section">Live Map</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#about" class="button">About Me</a></li>
+        <li><a href="#projects" class="button">Projects</a></li>
+        <li><a href="#chart" class="button">Charts</a></li>
+        <li><a href="#map-section" class="button">Live Map</a></li>
+        <li><a href="#testimonials" class="button">Testimonials</a></li>
         <li><a href="#contact" class="button">Contact</a></li>
       </ul>
       <ul class="project-links">
@@ -42,8 +34,8 @@
           <a href="presentation.html" target="_blank" class="button">📊 View Pentest Presentation</a>
         </li>
       </ul>
-      <div class="logo">
-        <img src="images/logo.png" alt="Stylized logo of Stella Barbarella with a modern design featuring cybersecurity elements and the name Stella Barbarella prominently displayed" />
+      <div class="logo" style="text-align:center; margin: 20px 0;">
+        <img src="images/logo.png" alt="Stella Barbarella Logo" style="max-width:180px; height:auto;" />
       </div>
     </nav>
   </header>
@@ -59,7 +51,7 @@
       <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
       <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
       <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
-      <li><a href="#checkpoint-map">Threat Live</a></li>
+      <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
       <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
     </ul>
   </section>
@@ -76,10 +68,10 @@
   </section>
 
   <section class="section" id="log-analyzer">
-  <h2>Live Log Analyzer</h2>
-  <div id="log-output" style="white-space: pre-wrap; background: black; color: #00ffee; padding: 1em; font-family: monospace; border: 1px solid #00ffee; border-radius: 10px; height: 300px; overflow-y: auto;"></div>
-  <button id="toggle-logs">⏸ Pause Logs</button>
-</section>
+    <h2>Live Log Analyzer</h2>
+    <div id="log-output" style="white-space: pre-wrap; background: black; color: #00ffee; padding: 1em; font-family: monospace; border: 1px solid #00ffee; border-radius: 10px; height: 300px; overflow-y: auto;"></div>
+    <button id="toggle-logs">⏸ Pause Logs</button>
+  </section>
 
   <section class="section" id="testimonials">
     <h2>Testimonials</h2>
@@ -281,4 +273,3 @@
   <script src="docs/ip-map.js"></script>
 </body>
 </html>
-``` 
