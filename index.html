@@ -7,10 +7,10 @@
   <meta name="description" content="Cybersecurity Portfolio of Stella Barbarella – SOC Analyst, Threat Hunter & Cybersecurity Enthusiast." />
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8d7xj1z5l5e5c5e5c5e5c5e5c5e5c5e5c5e" crossorigin="anonymous" /> 
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
@@ -20,11 +20,11 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#chart">Charts</a></li>
-        <li><a href="#map-section">Live Map</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#about" class="button">About Me</a></li>
+        <li><a href="#projects" class="button">Projects</a></li>
+        <li><a href="#chart" class="button">Charts</a></li>
+        <li><a href="#map-section" class="button">Live Map</a></li>
+        <li><a href="#testimonials" class="button">Testimonials</a></li>
         <li><a href="#contact" class="button">Contact</a></li>
       </ul>
       <ul class="project-links">
@@ -35,10 +35,8 @@
           <a href="presentation.html" target="_blank" class="button">📊 View Pentest Presentation</a>
         </li>
       </ul>
-      <div class="logo">
-             <div class="logo">
-        <img src="logo.png" alt="Stella Barbarella Logo" style="height:60px;" />
-      </div>
+      <div class="logo" style="text-align:center; margin: 20px 0;">
+        <img src="images/logo.png" alt="Stella Barbarella Logo" style="max-width:180px; height:auto;" />
       </div>
     </nav>
   </header>
@@ -54,7 +52,7 @@
       <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
       <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
       <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
-      <li><a href="#checkpoint-map">class="button>Threat Live</a></li>
+      <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
       <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
     </ul>
   </section>
@@ -65,16 +63,16 @@
       Explore real-world pentest deliverables from <strong>Stella Barbarella</strong>.
     </p>
     <ul>
-      <li>📄 <a href="reports/Report_EN.pdf" target="_blank">Report (EN  PDF)</a></li>
+      <li>📄 <a href="reports/Report_EN.pdf" target="_blank">Report (EN – PDF)</a></li>
       <li>📊 <a href="reports/Presentation_Standard.pdf" target="_blank">Presentation (Standard)</a></li>
     </ul>
   </section>
 
   <section class="section" id="log-analyzer">
-  <h2>Live Log Analyzer</h2>
-  <div id="log-output" style="white-space: pre-wrap; background: black; color: #00ffee; padding: 1em; font-family: monospace; border: 1px solid #00ffee; border-radius: 10px; height: 300px; overflow-y: auto;"></div>
-  <button id="toggle-logs">⏸ Pause Logs</button>
-</section>
+    <h2>Live Log Analyzer</h2>
+    <div id="log-output" style="white-space: pre-wrap; background: black; color: #00ffee; padding: 1em; font-family: monospace; border: 1px solid #00ffee; border-radius: 10px; height: 300px; overflow-y: auto;"></div>
+    <button id="toggle-logs">⏸ Pause Logs</button>
+  </section>
 
   <section class="section" id="testimonials">
     <h2>Testimonials</h2>
@@ -223,6 +221,7 @@
 
     let logsPaused = false;
     let logIndex = 0;
+    // Prevent redeclaration of markers
     window.markers = window.markers || [];
     const markers = window.markers;
     const map = L.map('map').setView([20, 0], 2);
@@ -266,6 +265,7 @@
       } else {
         logElement.textContent = displayLog;
       }
+
       container.appendChild(logElement);
       container.scrollTop = container.scrollHeight;
       logIndex++;
@@ -274,4 +274,3 @@
   <script src="docs/ip-map.js"></script>
 </body>
 </html>
-``` 
