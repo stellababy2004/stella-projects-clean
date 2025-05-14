@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "../../MySite_Local/docs"
+		}
+	],
+	"settings": {
+		"inlineChat.enableV2": true
+	}
+}
