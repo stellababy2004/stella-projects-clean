@@ -1,0 +1,241 @@
+/* ====================
+   Reset and Base Styles
+==================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Courier New', monospace;
+  color: #00ffee;
+  background: linear-gradient(120deg, #000000, #0f0f0f, #001f1f, #040d0d);
+  background-size: 600% 600%;
+  animation: gradientScroll 20s ease infinite;
+  background-attachment: fixed;
+  line-height: 1.6;
+}
+
+@keyframes gradientScroll {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ====================
+   Particles Background
+==================== */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* ====================
+   Sections
+==================== */
+.section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* ====================
+   Buttons
+==================== */
+.button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  color: #00ffee;
+  border: 2px solid #00ffee;
+  border-radius: 5px;
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background: #00ffee;
+  color: #040d0d;
+}
+
+/* ====================
+   CV Form Input/Button
+==================== */
+#cv input[type="password"],
+#cv button {
+  padding: 10px;
+  border: 2px solid #00ffee;
+  background: black;
+  color: #00ffee;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  margin: 10px 5px;
+}
+
+#cv button:hover {
+  background: rgba(0, 255, 238, 0.1);
+  cursor: pointer;
+}
+
+/* ====================
+   Navigation Links
+==================== */
+nav ul li a,
+nav ul li a:visited,
+.button,
+.button:visited {
+  color: #00ffee !important;
+  text-decoration: none;
+}
+
+nav ul li a:hover,
+nav ul li a:active,
+.button:hover,
+.button:active {
+  color: #00ffee !important;
+  text-shadow: 0 0 5px #00ffee;
+}
+
+/* ====================
+   QR Code
+==================== */
+.qr-code {
+  width: 150px;
+  margin-top: 20px;
+  border: 2px solid #00ffee;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,255,238,0.5);
+}
+
+/* ====================
+   Map Section
+==================== */
+#map {
+  height: 500px;
+  width: 100%;
+  border: 2px solid #00ffee;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px #00ffee;
+}
+
+#checkpoint-map iframe {
+  width: 100%;
+  height: 600px;
+  border: 2px solid #00ffee;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ffee;
+ }
+ 
+ .pentest-intro {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #00ffee;
+}
+
+
+/* ====================
+   Charts & Canvas
+==================== */
+canvas {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto 40px;
+  border: 2px solid #00ffee;
+  box-shadow: 0 0 10px rgba(0, 255, 238, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  position: relative;
+}
+
+#threatChart {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #00ffee;
+  box-shadow: 0 0 15px rgba(0, 255, 238, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('threatChart')?.getContext('2d');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
+        datasets: [{
+          label: 'Cyber Threats (%)',
+          data: [35, 25, 20, 15, 5],
+          backgroundColor: [
+            'rgba(255,99,132,0.6)',
+            'rgba(54,162,235,0.6)',
+            'rgba(255,206,86,0.6)',
+            'rgba(75,192,192,0.6)',
+            'rgba(153,102,255,0.6)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+  }
+</script>
+/* === Project Links Styling === */
+.project-links {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.project-links li {
+  margin: 10px 0;
+}
+
+.project-links a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #00ffee;
+  background: transparent;
+  border: 2px solid #00ffee;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  transition: background 0.3s, color 0.3s;
+}
+
+.project-links a.button:hover {
+  background: #00ffee;
+  color: #040d0d;
+}
