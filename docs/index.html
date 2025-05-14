@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -13,6 +14,20 @@
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <style>
+    .highlight-button {
+      background-color: #00ffee;
+      color: rgb(0, 0, 0);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .highlight-button:hover {
+      background-color: #00ccaa;
+    }
+  </style>
 </head>
 <body id="top">
   <div id="particles-js"></div>
@@ -52,7 +67,13 @@
       <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
       <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
       <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
-      <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
+      <li>
+        <form id="cv-form">
+          <input type="password" id="cvPassword" placeholder="Enter password" />
+          <button type="button" onclick="checkPassword()">🔒 Unlock CV</button>
+        </form>
+        <div id="message"></div>
+      </li>
     </ul>
   </section>
   
@@ -62,8 +83,8 @@
       Explore real-world pentest deliverables from <strong>Stella Barbarella</strong>.
     </p>
     <ul>
-      <li>📄 <a href="reports/Report_EN.pdf" target="_blank">Report (EN – PDF)</a></li>
-      <li>📊 <a href="reports/Presentation_Standard.pdf" target="_blank">Presentation (Standard)</a></li>
+      <li>📄 <a href="reports/Report_EN.pdf" target="_blank" class="highlight-button">Report (EN – PDF)</a></li>
+      <li>📊 <a href="reports/Presentation_Standard.pdf" target="_blank" class="highlight-button">Presentation (Standard)</a></li>
     </ul>
   </section>
 
@@ -105,22 +126,6 @@
     <a href="Stella_Barbarella_SOC_Portfolio.pdf" download class="button">📥 Download Portfolio</a>
     <a href="https://www.linkedin.com/in/stella-s-95ba5683/" class="button">🔗 LinkedIn</a>
     <img src="images/linkedin-qr.png" alt="LinkedIn QR Code" class="qr-code" />
-  </section>
-
-  <section class="section" id="phishing-check">
-    <h2>Phishing Detector</h2>
-    <form id="phishing-form">
-      <input type="text" id="url" placeholder="Enter URL to check" required />
-      <button type="submit">Check URL</button>
-    </form>
-    <div id="phishing-result"></div>
-  </section>
-
-  <section class="section" id="my-cv">
-    <h2>Protected CV Download</h2>
-    <input type="password" id="cvPassword" placeholder="Enter password to unlock CV" />
-    <button onclick="checkPassword()">Submit</button>
-    <p id="message"></p>
   </section>
 
   <script>
@@ -195,7 +200,15 @@
       "May 10 10:03:15 server cron[1234]: Job started successfully",
       "May 10 10:04:05 server firewall[9999]: Port scan detected from 192.168.1.50",
       "May 10 10:04:30 server apache[4321]: GET /index.php?id=1%20OR%201=1",
-      "May 10 10:05:00 server auditd[8888]: User added to sudo group"
+      "May 10 10:05:00 server auditd[8888]: User added to sudo group",
+      "May 10 10:05:30 server sshd[2345]: Failed password for root from 192.168.1.13 port 22",
+      "May 10 10:06:00 server apache[4321]: XSS attempt detected",
+      "May 10 10:06:30 server firewall[9999]: DDoS attack detected from 192.168.1.50",
+      "May 10 10:07:00 server sshd[2345]: Accepted password for user2 from 192.168.1.12 port 22",
+      "May 10 10:07:30 server auditd[8888]: User removed from sudo group",
+      "May 10 10:08:00 server apache[4321]: Directory traversal attempt detected",
+      "May 10 10:08:30 server firewall[9999]: Unauthorized access attempt from 192.168.1.10",
+      "May 10 10:09:00 server sshd[2345]: Failed password for root from 192.168.1.50 port 22"
     ];
 
     const threatKeywords = ["Failed password", "SQL", "injection", "Port scan", "unauthorized", "invalid user"];
@@ -240,8 +253,11 @@
     });
 
     const interval = setInterval(() => {
-      if (logsPaused || logIndex >= logsData.length) return;
-      
+      if (logsPaused) return;
+
+      // Върти логовете безкрайно
+      if (logIndex >= logsData.length) logIndex = 0;
+
       const log = logsData[logIndex];
       const logElement = document.createElement("div");
       const isThreat = threatKeywords.some(keyword => log.includes(keyword));
@@ -270,6 +286,6 @@
       logIndex++;
     }, 1500);
   </script>
-  <script src="docs/ip-map.js"></script>
 </body>
 </html>
+``` 
