@@ -1,4 +1,4 @@
-TYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -17,7 +17,7 @@ TYPE html>
   <style>
     .button {
       display: flex;
-      flex-direction: column; /* добавено за вертикално центриране на много реда */
+      flex-direction: column; /* added for vertical centering of multiple lines */
       align-items: center;
       justify-content: center;
       text-align: center;
@@ -27,8 +27,8 @@ TYPE html>
       min-height: 60px;
       box-sizing: border-box;
       line-height: 1.2;
-      white-space: normal; /* позволява пренасяне на текста */
-      word-break: break-word; /* по-добро пренасяне */
+      white-space: normal; /* allows text wrapping */
+      word-break: break-word; /* better text wrapping */
     }
     .button span, .button strong {
       display: block;
@@ -51,10 +51,14 @@ TYPE html>
       </ul>
       <ul class="project-links">
         <li>
-          <a class="button" href="#"><span>📄 Report (EN – PDF)</span></a>
+          <a class="button" href="penetration_test_report_acme_en.pdf" target="_blank" download>
+            <span>📄 Report (EN – PDF)</span>
+          </a>
         </li>
         <li>
-          <a href="presentation.html" target="_blank" class="button">📊 View Pentest Presentation</a>
+          <a href="presentation.html" target="_blank" class="button">
+            <span>📊 View Pentest Presentation</span>
+          </a>
         </li>
       </ul>
       <div class="logo" style="text-align:center; margin: 20px 0;">
@@ -71,6 +75,18 @@ TYPE html>
   <section class="section" id="projects">
     <h2>Projects</h2>
     <ul class="project-list">
+    </ul>
+  </section>
+
+  <section class="section" id="phishing-check">
+    <h2>Phishing URL Checker</h2>
+    <form id="phishing-form">
+      <label for="url">Enter URL to check:</label>
+      <input type="text" id="url" name="url" placeholder="https://example.com" required />
+      <button type="submit">Check</button>
+    </form>
+    <div id="phishing-result" style="margin-top: 10px; font-weight: bold;"></div>
+  </section>
       <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
       <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
       <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
@@ -252,6 +268,8 @@ TYPE html>
       markers.length = 0;
     });
 
+    const addedMarkers = new Set(); // Track added markers by IP
+
     const interval = setInterval(() => {
       if (logsPaused) return;
 
@@ -272,17 +290,24 @@ TYPE html>
         displayLog += ` → [${location}]`;
         logElement.textContent = displayLog;
 
-        if (ipGeoCoords[ip]) {
+        if (ipGeoCoords[ip] && !addedMarkers.has(ip)) {
           const marker = L.marker(ipGeoCoords[ip]).addTo(map);
           marker.bindPopup(`<b>${ip}</b><br>${location}<br><span style="color:${isThreat ? 'red' : 'green'}">${isThreat ? '⚠️ Threat' : 'Normal'}</span>`);
           markers.push(marker);
+          addedMarkers.add(ip); // Mark this IP as added
         }
       } else {
         logElement.textContent = displayLog;
       }
-
       container.appendChild(logElement);
       container.scrollTop = container.scrollHeight;
+
+      // Limit the number of log entries displayed
+      const maxLogs = 100; // Set the maximum number of logs to display
+      while (container.childNodes.length > maxLogs) {
+        container.removeChild(container.firstChild);
+      }
+
       logIndex++;
     }, 1500);
   </script>
