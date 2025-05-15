@@ -15,8 +15,8 @@ html, body {
   overflow-x: hidden;
   font-family: 'Courier New', monospace;
   color: #00ffee;
-  background: linear-gradient(120deg, #0f2027 0%, #2c5364 100%);
-  background-size: 600% 600%;
+  background: linear-gradient(120deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  background-size: 400% 400%;
   animation: gradientScroll 20s ease infinite;
   background-attachment: fixed;
   line-height: 1.6;
