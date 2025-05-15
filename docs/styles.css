@@ -59,15 +59,17 @@ body > * {
    Buttons
 ==================== */
 .button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 320px;         /* Задайте желаната ширина */
-  height: 70px;         /* Задайте желаната височина */
-  font-size: 1.5rem;    /* Размер на текста */
-  box-sizing: border-box;
-  margin: 10px 0;
   text-align: center;
+  padding: 18px 24px;
+  font-size: 1.3em;
+  min-width: 220px;
+  min-height: 60px;
+  box-sizing: border-box;
+  line-height: 1.2;
+  margin: 10px 0;
   border-radius: 12px;
   border: 2px solid #00ffee;
   background: transparent;
@@ -76,12 +78,19 @@ body > * {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   text-decoration: none;
-  padding: 0;
+  overflow: hidden;
 }
 
-.button:hover {
-  background: #00ffee22;
-  color: #fff;
+/* За по-дълги текстове, ако все пак се налага пренасяне */
+.button span {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.button span, .button strong {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 /* ====================
@@ -233,3 +242,101 @@ a.button[href*="Presentation_Standard.pdf"]:hover {
 }
 /* ====================
    Footer
+==================== */
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  color: #00ffee;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  border-top: 2px solid #00ffee;
+}
+
+footer a {
+  color: #00ffee;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #ff00cc;
+}
+
+footer .social-icons {
+  margin-top: 10px;
+}
+
+footer .social-icons a {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+footer .social-icons a:hover {
+  transform: translateY(-3px);
+}
+
+footer .copyright {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* ====================
+   Media Queries
+==================== */
+@media (max-width: 768px) {
+  .section {
+    padding: 30px 15px;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 1.2rem;
+  }
+
+  #map {
+    height: 400px;
+  }
+
+  #checkpoint-map iframe {
+    height: 400px;
+  }
+
+  canvas {
+    margin: 0 auto 30px;
+  }
+
+  footer {
+    padding: 15px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 20px 10px;
+  }
+
+  .button {
+    height: 60px;
+    font-size: 1rem;
+  }
+
+  #map {
+    height: 300px;
+  }
+
+  #checkpoint-map iframe {
+    height: 300px;
+  }
+
+  canvas {
+    margin: 0 auto 20px;
+  }
+
+  footer {
+    padding: 10px 0;
+  }
+}
