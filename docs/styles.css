@@ -15,7 +15,7 @@ html, body {
   overflow-x: hidden;
   font-family: 'Courier New', monospace;
   color: #00ffee;
-  background: linear-gradient(120deg, #000000, #0f0f0f, #001f1f, #040d0d);
+  background: linear-gradient(120deg, #0f2027 0%, #2c5364 100%);
   background-size: 600% 600%;
   animation: gradientScroll 20s ease infinite;
   background-attachment: fixed;
@@ -49,10 +49,23 @@ body > * {
    Sections
 ==================== */
 .section {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 50px 20px;
+  padding: 24px 16px;
+  background: rgba(10, 20, 30, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 0 24px #00ffee33;
+  margin-bottom: 32px;
+}
+
+.section h1, .section h2 {
+  color: #00ffee;
   text-align: center;
+  margin-bottom: 16px;
+}
+
+.section {
+  margin-bottom: 32px;
 }
 
 /* ====================
@@ -60,6 +73,7 @@ body > * {
 ==================== */
 .button {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -69,16 +83,16 @@ body > * {
   min-height: 60px;
   box-sizing: border-box;
   line-height: 1.2;
-  margin: 10px 0;
-  border-radius: 12px;
+  white-space: normal;
+  word-break: break-word;
+  background: rgba(0, 0, 0, 0.7);
   border: 2px solid #00ffee;
-  background: transparent;
+  border-radius: 16px;
   color: #00ffee;
-  font-family: 'Fira Mono', monospace;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  margin: 12px 0;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 12px #00ffee55;
   text-decoration: none;
-  overflow: hidden;
 }
 
 /* За по-дълги текстове, ако все пак се налага пренасяне */
@@ -91,6 +105,12 @@ body > * {
   display: block;
   width: 100%;
   text-align: center;
+}
+
+.button:hover, .button:focus {
+  background: #00ffee;
+  color: #0f2027;
+  box-shadow: 0 0 24px #00ffee;
 }
 
 /* ====================
@@ -135,11 +155,12 @@ nav ul li a:active,
    QR Code
 ==================== */
 .qr-code {
-  width: 150px;
-  margin-top: 20px;
+  display: block;
+  margin: 24px auto 0 auto;
+  max-width: 160px;
+  border-radius: 12px;
   border: 2px solid #00ffee;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,255,238,0.5);
+  background: #fff;
 }
 
 /* ====================
@@ -338,5 +359,12 @@ footer .copyright {
 
   footer {
     padding: 10px 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  header, nav, .section {
+    max-width: 98vw;
+    padding: 12px 2vw;
   }
 }
