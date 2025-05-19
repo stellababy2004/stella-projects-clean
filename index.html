@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,42 +8,47 @@
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-  <!-- Leaflet Marker Cluster -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
 <body id="top">
   <div id="particles-js"></div>
-
   <header>
-    <h1>Stella Barbarella</h1>
-    <p>SOC Analyst | Cybersecurity Enthusiast | Threat Hunter</p>
-    <div id="log-container">
-      <button id="toggle-logs">⏸ Pause Logs</button>
-      <button id="clear-map">🧹 Clear Map</button>
-      <div id="log-output"></div>
-    </div>
-   <nav>
-  <ul>
-    <li><a href="#about">About Me</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#chart">Charts</a></li>
-    <li><a href="#map-section">Live Map</a></li>
-    <li><a href="#testimonials">Testimonials</a></li>
-    <li><a href="#contact" class="button">Contact</a></li>
-  </ul>
-</nav>
-
+    <nav>
+      <ul>
+        <li><a href="#about" class="button">About Me</a></li>
+        <li><a href="#projects" class="button">Projects</a></li>
+        <li><a href="#chart" class="button">Charts</a></li>
+        <li><a href="#map-section" class="button">Live Map</a></li>
+        <li><a href="#testimonials" class="button">Testimonials</a></li>
+        <li><a href="#contact" class="button">Contact</a></li>
+      </ul>
+      <ul class="project-links">
+        <li>
+          <a href="reports/penetration_test_report_acme_en.pdf" target="_blank" class="button">📄 Report (EN – PDF)</a>
+        </li>
+        <li>
+          <a href="presentation.html" target="_blank" class="button">📊 View Pentest Presentation</a>
+        </li>
+        <li>
+          <form id="book-form" onsubmit="event.preventDefault(); checkBookPassword();">
+            <input type="password" id="bookPassword" placeholder="Enter book password" style="padding:4px; border-radius:5px; border:1px solid #00ffee;">
+            <button type="submit" class="button">📕 Download My Book</button>
+            <span id="book-message" style="margin-left:10px;"></span>
+          </form>
+        </li>
+        <li>
+          <a href="books/fr.docx" download class="button" target="_blank">📕 Download Book</a>
+        </li>
+      </ul>
+      <div class="logo" style="text-align:center; margin: 20px 0;">
+        <img src="images/logo.png" alt="Stella Barbarella Logo" style="max-width:180px; height:auto;" />
+      </div>
+    </nav>
   </header>
 
   <section class="section" id="about">
@@ -57,21 +62,19 @@
       <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
       <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
       <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
-	  <li><a href="#checkpoint-map">Threat Live</a></li>
+      <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
       <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
     </ul>
   </section>
   
   <section class="section" id="pentest-reports">
-  <h2>Pentest Reports</h2>
-  <p class="pentest-intro">
-    Explore real-world pentest deliverables from <strong>Stella Barbarella</strong>.
-  </p>
-  <ul>
-    <li>📄 <a href="reports/Report_EN.pdf" target="_blank">Report (EN – PDF)</a></li>
-    <li>📊 <a href="reports/Presentation_Standard.pdf" target="_blank">Presentation (Standard)</a></li>
-  </ul>
-</section>
+    <h2>Pentest Reports</h2>
+    <p class="pentest-intro">
+      Explore real-world pentest deliverables from <strong>Stella Barbarella</strong>.
+    </p>
+    <ul>
+    </ul>
+  </section>
 
   <section class="section" id="log-analyzer">
     <h2>Live Log Analyzer</h2>
@@ -86,60 +89,32 @@
   </section>
 
   <section class="section" id="checkpoint-map">
-  <h2>Live Threat Map (Check Point)</h2>
-  <iframe 
-    src="https://threatmap.checkpoint.com/" 
-    width="100%" 
-    height="600" 
-    style="border:2px solid #00ffee; border-radius:10px; box-shadow:0 0 10px #00ffee; background-color: black;">
-  </iframe>
-</section>
+    <h2>Live Threat Map (Check Point)</h2>
+    <iframe 
+      src="https://threatmap.checkpoint.com/" 
+      width="100%" 
+      height="600" 
+      style="border:2px solid #00ffee; border-radius:10px; box-shadow:0 0 10px #00ffee; background-color: black;">
+    </iframe>
+  </section>
 
   <section class="section" id="chart">
     <h2>Cyber Threat Analysis</h2>
-	<canvas id="threatChart"></canvas>
+    <canvas id="threatChart"></canvas>
   </section>
 
- <script>
-  const simpleLogs = [ // Renamed from 'logs' to 'simpleLogs'
-    "🔍 Starting scan on host 192.168.1.10",
-    "⚠️  Suspicious traffic detected",
-    "✅ Threat neutralized",
-    "📡 Data exfiltration attempt blocked"
-  ];
-
-  const logElement = document.getElementById("log-output");
-  let logIndex = 0;
-
-  setInterval(() => {
-    logElement.textContent += simpleLogs[logIndex++] + "\n";
-    if (logIndex >= simpleLogs.length) {
-      logIndex = 0;
-      logElement.textContent = '';
-    }
-  }, 2000);
-</script>
-
-<section class="section" id="map-section">
-  <h2>Global Threat Locations</h2>
-  <div id="map" style="height: 400px; border: 1px solid cyan; border-radius: 10px;"></div>
-  <button id="clear-map">🧹 Clear Map</button>
-  <button id="play-again">🔁 Play Again</button>
-</section>
-
+  <section class="section" id="map-section">
+    <h2>Global Threat Locations</h2>
+    <div id="map" style="height: 400px; border: 1px solid #0ff; border-radius: 8px;"></div>
+    <button id="clear-map">🧹 Clear Map</button>
+  </section>
+ 
   <section class="section" id="contact">
     <h2>Contact</h2>
     <a href="Stella_Barbarella_SOC_Portfolio.pdf" download class="button">📥 Download Portfolio</a>
     <a href="https://www.linkedin.com/in/stella-s-95ba5683/" class="button">🔗 LinkedIn</a>
     <img src="images/linkedin-qr.png" alt="LinkedIn QR Code" class="qr-code" />
   </section>
-
-  <section class="section" id="my-cv">
-   <h2>Protected CV Download</h2>
-  <input type="password" id="cvPassword" placeholder="Enter password to unlock CV" />
-  <button onclick="checkPassword()">Submit</button>
-  <p id="message"></p>
-</section>
 
   <script>
     particlesJS.load('particles-js', 'particles.json', function() {
@@ -160,156 +135,210 @@
     });
   </script>
  
-<script>
-const ctx = document.getElementById('threatChart')?.getContext('2d');
-  if (ctx) {
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
-        datasets: [{
-          label: 'Cyber Threats (%)',
-          data: [35, 25, 20, 15, 5],
-          backgroundColor: [
-            'rgba(255,99,132,0.6)',
-            'rgba(54,162,235,0.6)',
-            'rgba(255,206,86,0.6)',
-            'rgba(75,192,192,0.6)',
-            'rgba(153,102,255,0.6)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: { y: { beginAtZero: true } }
-      }
-    });
-  }
-</script>
-
-<script>
-  function checkPassword() {
-    const input = document.getElementById("cvPassword").value;
-    const message = document.getElementById("message");
-    const correctPassword = "cyberpunk2025";
-
-    if (input === correctPassword) {
-      message.innerHTML = `<a href="Stella_Barbarella_CV.odt" download class="button">📄 Download CV</a>`;
-      message.style.color = "#00ffee";
-    } else {
-      message.textContent = "Incorrect password.";
-      message.style.color = "red";
-    }
-  }
-</script>
-
-<script>
-const threatLogs = [ // Renamed from 'logs' to 'threatLogs'
-  "May 10 10:01:45 server sshd[2345]: Failed password for root from 192.168.1.10 port 22",
-  "May 10 10:02:01 server sshd[2345]: Accepted password for user1 from 192.168.1.12 port 22",
-  "May 10 10:02:17 server apache[4321]: SQL injection attempt detected",
-  "May 10 10:03:02 server sshd[2345]: Failed password for invalid user admin from 192.168.1.13",
-  "May 10 10:03:15 server cron[1234]: Job started successfully",
-  "May 10 10:04:05 server firewall[9999]: Port scan detected from 192.168.1.50",
-  "May 10 10:04:30 server apache[4321]: GET /index.php?id=1%20OR%201=1",
-  "May 10 10:05:00 server auditd[8888]: User added to sudo group"
-];
-
-const threatKeywords = ["Failed password", "SQL", "injection", "Port scan", "unauthorized", "invalid user"];
-
-const ipGeoMap = {
-  "192.168.1.10": "🇷🇺 Russia",
-  "192.168.1.12": "🇺🇸 USA",
-  "192.168.1.13": "🇨🇳 China",
-  "192.168.1.50": "🇧🇷 Brazil"
-};
-
-const ipGeoCoords = {
-  "192.168.1.10": [55.751244, 37.618423],
-  "192.168.1.12": [38.9072, -77.0369],
-  "192.168.1.13": [39.9042, 116.4074],
-  "192.168.1.50": [-23.5505, -46.6333]
-};
-
-const container = document.getElementById("log-container");
-const toggleBtn = document.getElementById("toggle-logs");
-const clearBtn = document.getElementById("clear-map");
-
-let logsPaused = false;
-let mapLogIndex = 0;
-const threatMarkers = []; // Renamed from 'markers' to 'threatMarkers'
-
-toggleBtn.addEventListener("click", () => {
-  logsPaused = !logsPaused;
-  toggleBtn.textContent = logsPaused ? "▶ Resume Logs" : "⏸ Pause Logs";
-});
-
-clearBtn.addEventListener("click", () => {
-  threatMarkers.forEach(marker => map.removeLayer(marker));
-  threatMarkers.length = 0;
-});
-
-const interval = setInterval(() => {
-  if (logsPaused || mapLogIndex >= threatLogs.length) return;
-
-  const log = threatLogs[mapLogIndex];
-  const logElement = document.createElement("div");
-  const isThreat = threatKeywords.some(keyword => log.includes(keyword));
-  logElement.style.color = isThreat ? "#f00" : "#0f0";
-
-  const ipMatch = log.match(/\b\d{1,3}(\.\d{1,3}){3}\b/);
-  let displayLog = log;
-
-  if (ipMatch) {
-    const ip = ipMatch[0];
-    const location = ipGeoMap[ip] || "🌐 Unknown";
-    displayLog += ` → [${location}]`;
-    logElement.textContent = displayLog;
-
-    if (ipGeoCoords[ip]) {
-      const marker = L.marker(ipGeoCoords[ip]).addTo(map);
-      marker.bindPopup(`<b>${ip}</b><br>${location}<br><span style="color:${isThreat ? 'red' : 'green'}">${isThreat ? '⚠️ Threat' : 'Normal'}</span>`);
-      threatMarkers.push(marker);
-    }
-  } else {
-    logElement.textContent = displayLog;
-  }
-
-  container.appendChild(logElement);
-  container.scrollTop = container.scrollHeight;
-  mapLogIndex++;
-}, 1500);
-
-document.addEventListener('DOMContentLoaded', () => {
-  const map = L.map('map').setView([20, 0], 2);
-  // и т.н.
-});
-</script>
-<script src="docs/ip-map.js"></script>
-
-<script>
-  const map = L.map('map').setView([20, 0], 2);
-  const clusterMarkers = L.markerClusterGroup(); // Renamed from 'markers' to 'clusterMarkers'
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
-
-  fetch('threats.geojson')
-    .then(res => res.json())
-    .then(data => {
-      L.geoJSON(data, {
-        onEachFeature: (feature, layer) => {
-          const props = feature.properties;
-          const threat = props.threat || 'Unknown';
-          const count = props.count || 'N/A';
-          layer.bindPopup(`<strong>${props.name}</strong><br>Threat: ${threat}<br>Count: ${count}`);
+  <script>
+    const ctx = document.getElementById('threatChart')?.getContext('2d');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
+          datasets: [{
+            label: 'Cyber Threats (%)',
+            data: [35, 25, 20, 15, 5],
+            backgroundColor: [
+              'rgba(255,99,132,0.6)',
+              'rgba(54,162,235,0.6)',
+              'rgba(255,206,86,0.6)',
+              'rgba(75,192,192,0.6)',
+              'rgba(153,102,255,0.6)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: { y: { beginAtZero: true } }
         }
-      }).addTo(clusterMarkers);
-      map.addLayer(clusterMarkers);
-      map.fitBounds(clusterMarkers.getBounds(), { padding: [50, 50] });
+      });
+    }
+  </script>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("cvPassword").value;
+      const message = document.getElementById("message");
+      const correctPassword = "cyberpunk2025";
+
+      if (input === correctPassword) {
+        message.innerHTML = `<a href="Stella_Barbarella_CV.odt" download class="button">📄 Download CV</a>`;
+        message.style.color = "#00ffee";
+      } else {
+        message.textContent = "Incorrect password.";
+        message.style.color = "red";
+      }
+    }
+
+    function checkBookPassword() {
+      const input = document.getElementById("bookPassword").value;
+      const message = document.getElementById("book-message");
+      const correctPassword = "cyberpunk2025";
+
+      if (input === correctPassword) {
+        message.innerHTML = `<a href="books/fr.docx" download class="button" target="_blank">📕 Download Book</a>`;
+        message.style.color = "#00ffee";
+      } else {
+        message.textContent = "Incorrect password.";
+        message.style.color = "red";
+      }
+    }
+  </script>
+
+  <script>
+    const logsData = [
+      "May 10 10:01:45 server sshd[2345]: Failed password for root from 192.168.1.10 port 22",
+      "May 10 10:02:01 server sshd[2345]: Accepted password for user1 from 192.168.1.12 port 22",
+      "May 10 10:03:02 server sshd[2345]: Failed password for invalid user admin from 192.168.1.13",
+      "May 10 10:04:05 server firewall[9999]: Port scan detected from 192.168.1.50",
+      "May 10 10:05:30 server sshd[2345]: Failed password for root from 10.0.0.1 port 22",
+      "May 10 10:06:00 server sshd[2345]: Accepted password for user2 from 10.0.0.2 port 22",
+      "May 10 10:06:30 server sshd[2345]: Connection from 10.0.0.3 port 22",
+      "May 10 10:07:00 server sshd[2345]: Connection from 10.0.0.4 port 22",
+      "May 10 10:07:30 server sshd[2345]: Connection from 10.0.0.5 port 22",
+      "May 10 10:08:00 server sshd[2345]: Connection from 10.0.0.6 port 22",
+      "May 10 10:08:30 server sshd[2345]: Connection from 10.0.0.7 port 22",
+      "May 10 10:09:00 server sshd[2345]: Connection from 10.0.0.8 port 22",
+      "May 10 10:09:30 server sshd[2345]: Connection from 10.0.0.9 port 22",
+      "May 10 10:10:00 server sshd[2345]: Connection from 10.0.0.10 port 22",
+      "May 10 10:10:30 server sshd[2345]: Connection from 10.0.0.11 port 22",
+      "May 10 10:11:00 server sshd[2345]: Connection from 10.0.0.12 port 22",
+      "May 10 10:11:30 server sshd[2345]: Connection from 10.0.0.13 port 22",
+      "May 10 10:12:00 server sshd[2345]: Connection from 10.0.0.14 port 22",
+      "May 10 10:12:30 server sshd[2345]: Connection from 10.0.0.15 port 22",
+      "May 10 10:13:00 server sshd[2345]: Connection from 10.0.0.16 port 22",
+      "May 10 10:13:30 server sshd[2345]: Connection from 10.0.0.17 port 22"
+    ];
+
+    const threatKeywords = ["Failed password", "SQL", "injection", "Port scan", "unauthorized", "invalid user"];
+
+    const ipGeoMap = {
+      "192.168.1.10": "🇷🇺 Moscow",
+      "192.168.1.12": "🇺🇸 Washington D.C.",
+      "192.168.1.13": "🇨🇳 Beijing",
+      "192.168.1.50": "🇧🇷 São Paulo",
+      "10.0.0.1": "🇬🇧 London",
+      "10.0.0.2": "🇫🇷 Paris",
+      "10.0.0.3": "🇩🇪 Berlin",
+      "10.0.0.4": "🇯🇵 Tokyo",
+      "10.0.0.5": "🇦🇺 Sydney",
+      "10.0.0.6": "🇨🇦 Ottawa",
+      "10.0.0.7": "🇮🇳 New Delhi",
+      "10.0.0.8": "🇿🇦 Cape Town",
+      "10.0.0.9": "🇪🇬 Cairo",
+      "10.0.0.10": "🇲🇽 Mexico City",
+      "10.0.0.11": "🇹🇷 Istanbul",
+      "10.0.0.12": "🇸🇬 Singapore",
+      "10.0.0.13": "🇦🇷 Buenos Aires",
+      "10.0.0.14": "🇸🇦 Riyadh",
+      "10.0.0.15": "🇰🇷 Seoul",
+      "10.0.0.16": "🇪🇸 Madrid",
+      "10.0.0.17": "🇧🇬 Sofia"
+    };
+
+    const ipGeoCoords = {
+      "192.168.1.10": [55.751244, 37.618423],      // Moscow
+      "192.168.1.12": [38.9072, -77.0369],         // Washington D.C.
+      "192.168.1.13": [39.9042, 116.4074],         // Beijing
+      "192.168.1.50": [-23.5505, -46.6333],        // São Paulo
+      "10.0.0.1": [51.5074, -0.1278],              // London
+      "10.0.0.2": [48.8566, 2.3522],               // Paris
+      "10.0.0.3": [52.52, 13.4050],                // Berlin
+      "10.0.0.4": [35.6895, 139.6917],             // Tokyo
+      "10.0.0.5": [-33.8688, 151.2093],            // Sydney
+      "10.0.0.6": [45.4215, -75.6997],             // Ottawa
+      "10.0.0.7": [28.6139, 77.2090],              // New Delhi
+      "10.0.0.8": [-33.9249, 18.4241],             // Cape Town
+      "10.0.0.9": [30.0444, 31.2357],              // Cairo
+      "10.0.0.10": [19.4326, -99.1332],            // Mexico City
+      "10.0.0.11": [41.0082, 28.9784],             // Istanbul
+      "10.0.0.12": [1.3521, 103.8198],             // Singapore
+      "10.0.0.13": [-34.6037, -58.3816],           // Buenos Aires
+      "10.0.0.14": [24.7136, 46.6753],             // Riyadh
+      "10.0.0.15": [37.5665, 126.9780],            // Seoul
+      "10.0.0.16": [40.4168, -3.7038],             // Madrid
+      "10.0.0.17": [42.6977, 23.3219]              // Sofia
+    };
+
+    const container = document.getElementById("log-output");
+    const toggleBtn = document.getElementById("toggle-logs");
+    const clearBtn = document.getElementById("clear-map");
+
+    let logsPaused = false;
+    let logIndex = 0;
+    // Prevent redeclaration of markers
+    window.markers = window.markers || [];
+    const markers = window.markers;
+    const map = L.map('map').setView([20, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    Object.entries(ipGeoCoords).forEach(([ip, coords]) => {
+      const location = ipGeoMap[ip] || "🌐 Unknown";
+      const marker = L.marker(coords).addTo(map);
+      marker.bindPopup(`<b>${ip}</b><br>${location}`);
+      markers.push(marker);
     });
-</script>
+
+    toggleBtn.addEventListener("click", () => {
+      logsPaused = !logsPaused;
+      toggleBtn.textContent = logsPaused ? "▶ Resume Logs" : "⏸ Pause Logs";
+    });
+
+    clearBtn.addEventListener("click", () => {
+      markers.forEach(marker => map.removeLayer(marker));
+      markers.length = 0;
+      // Добави всички градове отново
+      Object.entries(ipGeoCoords).forEach(([ip, coords]) => {
+        const location = ipGeoMap[ip] || "🌐 Unknown";
+        const marker = L.marker(coords).addTo(map);
+        marker.bindPopup(`<b>${ip}</b><br>${location}`);
+        markers.push(marker);
+      });
+    });
+
+    const interval = setInterval(() => {
+      if (logsPaused) return;
+
+      // Върти логовете безкрайно
+      if (logIndex >= logsData.length) logIndex = 0;
+
+      const log = logsData[logIndex];
+      const logElement = document.createElement("div");
+      const isThreat = threatKeywords.some(keyword => log.includes(keyword));
+      logElement.style.color = isThreat ? "#f00" : "#0f0";
+
+      const ipMatch = log.match(/\b\d{1,3}(\.\d{1,3}){3}\b/);
+      let displayLog = log;
+
+      if (ipMatch) {
+        const ip = ipMatch[0];
+        const location = ipGeoMap[ip] || "🌐 Unknown";
+        displayLog += ` → [${location}]`;
+        logElement.textContent = displayLog;
+
+        if (ipGeoCoords[ip]) {
+          const marker = L.marker(ipGeoCoords[ip]).addTo(map);
+          marker.bindPopup(`<b>${ip}</b><br>${location}<br><span style="color:${isThreat ? 'red' : 'green'}">${isThreat ? '⚠️ Threat' : 'Normal'}</span>`);
+          markers.push(marker);
+        }
+      } else {
+        logElement.textContent = displayLog;
+      }
+
+      container.appendChild(logElement);
+      container.scrollTop = container.scrollHeight;
+      logIndex++;
+    }, 1500);
+  </script>
 </body>
 </html>

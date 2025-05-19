@@ -1,0 +1,54 @@
+# Code Citations
+
+## License: unknown
+https://github.com/fuhang1999/vue-naive-admin/tree/3f8037baffaa8ad5badfd3080ff75dd8b07a155e/index.html
+
+```
+.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0
+```
+
+
+## License: unknown
+https://github.com/invoiceninja/invoiceninja/tree/28377fa73007aa32f702c0e014a44f9d64430c99/tests/Feature/PdfMaker/example.html
+
+```
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /
+```
+
+
+## License: unknown
+https://github.com/alexhtaylor/backtrack/tree/d77eed9340edcd6eb6fa4c54ac1ad7fd36ab6522/app/views/map/show.html%20copy.erb
+
+```
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9
+```
+
+
+## License: unknown
+https://github.com/dxuboston/dxuboston.github.io/tree/e08646c53bd7c116c44f9e4ae4ab2fc518318dea/leaflet01.html
+
+```
+//unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.
+```
+
+
+## License: unknown
+https://github.com/granett64/granett64-github.io/tree/6e47e99a91fd2786b6f3bf1f264e75d621fabb7c/geocaching/lgadnfsoct21.html
+
+```
+link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js
+```
+
