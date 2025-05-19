@@ -87,14 +87,7 @@
     </form>
     <div id="phishing-result" style="margin-top: 10px; font-weight: bold;"></div>
   </section>
-      <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
-      <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
-      <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
-      <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
-      <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
-    </ul>
-  </section>
-  
+
   <section class="section" id="pentest-reports">
     <h2>Pentest Reports</h2>
     <p class="pentest-intro">
@@ -243,6 +236,63 @@
       "192.168.1.50": [-23.5505, -46.6333]
     };
 
+    const cityAttackData = [
+      { city: "London", country: "🇬🇧 UK", coords: [51.5074, -0.1278], attack: "Phishing", count: 12 },
+      { city: "Paris", country: "🇫🇷 France", coords: [48.8566, 2.3522], attack: "DDoS", count: 7 },
+      { city: "Berlin", country: "🇩🇪 Germany", coords: [52.52, 13.405], attack: "Malware", count: 5 },
+      { city: "Moscow", country: "🇷🇺 Russia", coords: [55.751244, 37.618423], attack: "Ransomware", count: 9 },
+      { city: "New York", country: "🇺🇸 USA", coords: [40.7128, -74.0060], attack: "SQL Injection", count: 14 },
+      { city: "Tokyo", country: "🇯🇵 Japan", coords: [35.6895, 139.6917], attack: "Port Scan", count: 8 },
+      { city: "Beijing", country: "🇨🇳 China", coords: [39.9042, 116.4074], attack: "Brute Force", count: 11 },
+      { city: "Brasilia", country: "🇧🇷 Brazil", coords: [-15.793889, -47.882778], attack: "Spyware", count: 4 },
+      { city: "Sofia", country: "🇧🇬 Bulgaria", coords: [42.6977, 23.3219], attack: "Phishing", count: 3 },
+      { city: "Madrid", country: "🇪🇸 Spain", coords: [40.4168, -3.7038], attack: "DDoS", count: 6 },
+      { city: "Rome", country: "🇮🇹 Italy", coords: [41.9028, 12.4964], attack: "Phishing", count: 5 },
+  { city: "Vienna", country: "🇦🇹 Austria", coords: [48.2082, 16.3738], attack: "Malware", count: 4 },
+  { city: "Prague", country: "🇨🇿 Czechia", coords: [50.0755, 14.4378], attack: "DDoS", count: 3 },
+  { city: "Budapest", country: "🇭🇺 Hungary", coords: [47.4979, 19.0402], attack: "SQL Injection", count: 2 },
+  { city: "Warsaw", country: "🇵🇱 Poland", coords: [52.2297, 21.0122], attack: "Brute Force", count: 6 },
+  { city: "Athens", country: "🇬🇷 Greece", coords: [37.9838, 23.7275], attack: "Phishing", count: 2 },
+  { city: "Bucharest", country: "🇷🇴 Romania", coords: [44.4268, 26.1025], attack: "Malware", count: 3 },
+  { city: "Istanbul", country: "🇹🇷 Turkey", coords: [41.0082, 28.9784], attack: "DDoS", count: 7 },
+  { city: "Cairo", country: "🇪🇬 Egypt", coords: [30.0444, 31.2357], attack: "Spyware", count: 4 },
+  { city: "Dubai", country: "🇦🇪 UAE", coords: [25.2048, 55.2708], attack: "Phishing", count: 5 },
+  { city: "Delhi", country: "🇮🇳 India", coords: [28.6139, 77.2090], attack: "Ransomware", count: 8 },
+  { city: "Bangkok", country: "🇹🇭 Thailand", coords: [13.7563, 100.5018], attack: "SQL Injection", count: 3 },
+  { city: "Seoul", country: "🇰🇷 South Korea", coords: [37.5665, 126.9780], attack: "DDoS", count: 6 },
+  { city: "Sydney", country: "🇦🇺 Australia", coords: [-33.8688, 151.2093], attack: "Phishing", count: 4 },
+  { city: "Buenos Aires", country: "🇦🇷 Argentina", coords: [-34.6037, -58.3816], attack: "Malware", count: 2 },
+  { city: "Ottawa", country: "🇨🇦 Canada", coords: [45.4215, -75.6997], attack: "Port Scan", count: 3 },
+  { city: "Mexico City", country: "🇲🇽 Mexico", coords: [19.4326, -99.1332], attack: "Brute Force", count: 5 },
+  { city: "Lagos", country: "🇳🇬 Nigeria", coords: [6.5244, 3.3792], attack: "Phishing", count: 7 },
+  { city: "Cape Town", country: "🇿🇦 South Africa", coords: [-33.9249, 18.4241], attack: "Spyware", count: 2 },
+  { city: "Stockholm", country: "🇸🇪 Sweden", coords: [59.3293, 18.0686], attack: "DDoS", count: 3 },
+  { city: "Oslo", country: "🇳🇴 Norway", coords: [59.9139, 10.7522], attack: "Malware", count: 2 },
+  { city: "Helsinki", country: "🇫🇮 Finland", coords: [60.1699, 24.9384], attack: "Phishing", count: 1 },
+  { city: "Copenhagen", country: "🇩🇰 Denmark", coords: [55.6761, 12.5683], attack: "SQL Injection", count: 2 },
+  { city: "Brussels", country: "🇧🇪 Belgium", coords: [50.8503, 4.3517], attack: "Ransomware", count: 2 },
+  { city: "Amsterdam", country: "🇳🇱 Netherlands", coords: [52.3676, 4.9041], attack: "Brute Force", count: 3 },
+  { city: "Lisbon", country: "🇵🇹 Portugal", coords: [38.7223, -9.1393], attack: "Phishing", count: 2 },
+  { city: "Bern", country: "🇨🇭 Switzerland", coords: [46.9480, 7.4474], attack: "DDoS", count: 1 },
+  { city: "Dublin", country: "🇮🇪 Ireland", coords: [53.3498, -6.2603], attack: "Malware", count: 2 },
+  { city: "Riyadh", country: "🇸🇦 Saudi Arabia", coords: [24.7136, 46.6753], attack: "Spyware", count: 2 },
+  { city: "Jakarta", country: "🇮🇩 Indonesia", coords: [-6.2088, 106.8456], attack: "Phishing", count: 3 },
+  { city: "Singapore", country: "🇸🇬 Singapore", coords: [1.3521, 103.8198], attack: "DDoS", count: 4 },
+  { city: "Kuala Lumpur", country: "🇲🇾 Malaysia", coords: [3.1390, 101.6869], attack: "Malware", count: 2 },
+  { city: "Hong Kong", country: "🇭🇰 Hong Kong", coords: [22.3193, 114.1694], attack: "SQL Injection", count: 3 },
+  { city: "Tehran", country: "🇮🇷 Iran", coords: [35.6892, 51.3890], attack: "Brute Force", count: 2 },
+  { city: "Baghdad", country: "🇮🇶 Iraq", coords: [33.3152, 44.3661], attack: "Phishing", count: 1 },
+  { city: "Nairobi", country: "🇰🇪 Kenya", coords: [-1.2921, 36.8219], attack: "Spyware", count: 2 },
+  { city: "Hanoi", country: "🇻🇳 Vietnam", coords: [21.0285, 105.8542], attack: "DDoS", count: 2 },
+  { city: "Bangkok", country: "🇹🇭 Thailand", coords: [13.7563, 100.5018], attack: "Malware", count: 2 },
+  { city: "Kiev", country: "🇺🇦 Ukraine", coords: [50.4501, 30.5234], attack: "Phishing", count: 2 },
+  { city: "Belgrade", country: "🇷🇸 Serbia", coords: [44.7866, 20.4489], attack: "SQL Injection", count: 1 },
+  { city: "Zagreb", country: "🇭🇷 Croatia", coords: [45.8150, 15.9819], attack: "DDoS", count: 1 },
+  { city: "Skopje", country: "🇲🇰 North Macedonia", coords: [41.9973, 21.4280], attack: "Malware", count: 1 },
+  { city: "Podgorica", country: "🇲🇪 Montenegro", coords: [42.4304, 19.2594], attack: "Phishing", count: 1 },
+  { city: "Tirana", country: "🇦🇱 Albania", coords: [41.3275, 19.8187], attack: "Spyware", count: 1 }
+];
+
     const container = document.getElementById("log-output");
     const toggleBtn = document.getElementById("toggle-logs");
     const clearBtn = document.getElementById("clear-map");
@@ -310,6 +360,14 @@
 
       logIndex++;
     }, 1500);
+
+    cityAttackData.forEach(({ city, country, coords, attack, count }) => {
+      const marker = L.marker(coords).addTo(map);
+      marker.bindPopup(
+        `<b>${city}, ${country}</b><br>Тип атака: <span style="color:red">${attack}</span><br>Брой: <b>${count}</b>`
+      );
+      markers.push(marker);
+    });
   </script>
 </body>
 </html>
