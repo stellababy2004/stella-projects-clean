@@ -49,13 +49,13 @@ body > * {
    Sections
 ==================== */
 .section {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 24px 16px;
-  background: rgba(10, 20, 30, 0.85);
-  border-radius: 16px;
-  box-shadow: 0 0 24px #00ffee33;
-  margin-bottom: 32px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  border-radius: 24px;
+  background: #121a20;
+  box-shadow: 0 0 32px #00fff966;
+  box-sizing: border-box;
 }
 
 .section h1, .section h2 {
@@ -432,9 +432,91 @@ footer .copyright {
     padding: 12px 2vw;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 >>>>>>> 95639f9 (Уеднаквени всички бутони по размер и стил чрез CSS)
 =======
 }
 >>>>>>> 59cb6e0 (Промених index.txt)
+=======
+}
+.flag-input {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0,0,0,0.4);
+  border-left: 3px solid #0ff;
+  color: #0ff;
+}
+
+.flag-input input[type="text"] {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border: 1px solid #0ff;
+  background: #000;
+  color: #0ff;
+}
+
+/* ====================
+   Attack Simulation Section
+==================== */
+#attack-sim {
+  background: rgba(10, 20, 30, 0.85);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 32px 0;
+  box-shadow: 0 0 24px #00ffee33;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  border-radius: 24px;
+  background: #121a20;
+  box-shadow: 0 0 32px #00fff966;
+  box-sizing: border-box;
+}
+
+#attack-sim h2 {
+  color: #00ffee;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+#attack-sim p {
+  color: #00ffee;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+#attack-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+#attack-buttons .button {
+  flex: 1 1 200px;
+  padding: 16px;
+  font-size: 1.2em;
+  min-width: 150px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#attack-buttons .button:hover {
+  transform: translateY(-3px);
+}
+
+#attack-result {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(0, 255, 238, 0.1);
+  border-radius: 8px;
+  color: #00ffee;
+  text-align: center;
+  display: none;
+}
+#attack-result.success {
+  background: rgba(0, 255, 238, 0.2);
+}
+>>>>>>> 6dc291a (Center Attack Simulation Lab section, update styles, and change attack type prompt to English)
