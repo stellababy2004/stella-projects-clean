@@ -73,6 +73,7 @@ body > * {
 ==================== */
 .button {
 <<<<<<< HEAD
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,29 +115,62 @@ body > * {
   box-shadow: 0 0 24px #00ffee;
 =======
   display: inline-flex;
+=======
+  display: flex;
+>>>>>>> 59cb6e0 (Промених index.txt)
   align-items: center;
-  justify-content: center;
-  width: 320px;         /* Задайте желаната ширина */
-  height: 70px;         /* Задайте желаната височина */
-  font-size: 1.5rem;    /* Размер на текста */
+  gap: 12px;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 18px 24px;
+  font-size: 1.3em;
+  min-width: 220px;
+  min-height: 60px;
   box-sizing: border-box;
-  margin: 10px 0;
-  text-align: center;
-  border-radius: 12px;
+  line-height: 1.2;
+  white-space: normal;
+  word-break: break-word;
+  background: #101617;
   border: 2px solid #00ffee;
-  background: transparent;
+  border-radius: 16px;
   color: #00ffee;
-  font-family: 'Fira Mono', monospace;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  margin: 12px 0;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
+  box-shadow: 0 0 16px #00ffee55;
   text-decoration: none;
-  padding: 0;
 }
 
+<<<<<<< HEAD
 .button:hover {
   background: #00ffee22;
   color: #fff;
 >>>>>>> 95639f9 (Уеднаквени всички бутони по размер и стил чрез CSS)
+=======
+.button:hover, .button:focus {
+  background: #00ffee;
+  color: #101617;
+  box-shadow: 0 0 24px #00ffee;
+  border-color: #00ffee;
+}
+
+.button span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.button span, .button strong {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.button:hover, .button:focus {
+  background: #00ffee;
+  color: #101617;
+  box-shadow: 0 0 24px #00ffee;
+  border-color: #00ffee;
+>>>>>>> 59cb6e0 (Промених index.txt)
 }
 
 /* ====================
@@ -288,6 +322,9 @@ a.button[href*="Presentation_Standard.pdf"]:hover {
   color: #181818;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 59cb6e0 (Промених index.txt)
 /* ====================
    Footer
 ==================== */
@@ -394,6 +431,10 @@ footer .copyright {
     max-width: 98vw;
     padding: 12px 2vw;
   }
+<<<<<<< HEAD
 }
 =======
 >>>>>>> 95639f9 (Уеднаквени всички бутони по размер и стил чрез CSS)
+=======
+}
+>>>>>>> 59cb6e0 (Промених index.txt)
