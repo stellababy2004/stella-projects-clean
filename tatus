@@ -1,0 +1,247 @@
+[33mcommit ec10c298b1283e35257ea6df93440afeae423342[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Merge: ccdcb71 b321ed6
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Mon Apr 28 18:48:22 2025 +0200
+
+    Merged changes from main branch
+    erge branch 'main' of https://github.com/stellababy2004/stella-projects
+
+[33mcommit ccdcb71987efafb9b712532089edada584cb75db[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Mon Apr 28 18:44:14 2025 +0200
+
+    Added Cyber Threat Map page with styles and animations
+
+[33mcommit 16cc2752a7a94f367a035f9b48ef7a03732ec041[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Mon Apr 28 18:39:48 2025 +0200
+
+    Force GitHub Pages rebuild
+
+[33mcommit b321ed65fc492b4a91392e485dfa5c85e3cb7c3c[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sun Apr 27 14:20:42 2025 +0200
+
+    html restauré
+
+[33mcommit 72f49ecda17054e3656069782de89d5b6b6de780[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sun Apr 27 13:58:34 2025 +0200
+
+    Add force-refresh.html to trigger page refresh
+
+[33mcommit f790d09315f26ddbc1ed64a2a6514a2168386abf[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sun Apr 27 12:54:43 2025 +0200
+
+    Trigger GitHub Pages rebuild
+
+[33mcommit 035eab50effdbbd3adab6f2c197f61e780c70be6[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sun Apr 27 12:08:35 2025 +0200
+
+    Force update GitHub Page - sync docs folder
+
+[33mcommit d254c7ca60b0cc3f023888d533d0876ede5c7e28[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sun Apr 27 11:16:13 2025 +0200
+
+    Restore full styled index.html to docs
+
+[33mcommit 6a95173b30eec0e53fd534e7d8e56beb8953b496[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sun Apr 27 11:04:27 2025 +0200
+
+    Force GitHub Pages rebuild
+
+[33mcommit 6aac4730113cf00ea366368b7ef5b82d49547738[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sat Apr 26 11:05:03 2025 +0200
+
+    Create CNAME
+
+[33mcommit 3541c25482400a352cea20aad8c91a349d4bbb5f[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sat Apr 26 11:04:30 2025 +0200
+
+    Delete CNAME
+
+[33mcommit a40c97c4aa631c6fc1fc3e99382b6675b3f6d487[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sat Apr 26 10:56:07 2025 +0200
+
+    Create CNAME
+
+[33mcommit 5743e1afe85e0b6bbd5ca31e9fb90afe1674925c[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sat Apr 26 10:04:59 2025 +0200
+
+    Add Stella Barbarella PDF portfolio to docs
+
+[33mcommit 8103d4496c3d3f37b02c822df081e798b3a9ba98[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sat Apr 26 09:47:02 2025 +0200
+
+    Update threat-hunting.html with neon theme and animations
+
+[33mcommit ae298b477c196d09760858a90c2775331c481bef[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sat Apr 26 09:37:22 2025 +0200
+
+    Update cyber-threat-map.html with neon theme and animations
+
+[33mcommit c642a7b26d09467d0c3d4d142afc9101db18267d[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Sat Apr 26 09:22:02 2025 +0200
+
+    Force GitHub Pages rebuild
+
+[33mcommit 2f611a8582accd082aabeed312bcab7f713ae49a[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 15:45:33 2025 +0200
+
+    Restore docs folder with all project HTML pages
+
+[33mcommit 5fa977ab6149d3668ff55ba6e79f96f64377db5b[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 14:17:55 2025 +0200
+
+    Add animated Projects section via JS and AOS
+
+[33mcommit 320cf63953693f3ea628429818241f34bb9dc893[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 13:46:10 2025 +0200
+
+    Fix index.html layout and restore animations
+
+[33mcommit 55653e8ad79a3ef8dfbd49bea1495e4cd501c5f6[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 13:30:32 2025 +0200
+
+    Add back to top button
+
+[33mcommit 5e3fec9ee7c5047357b3d8f243e51bc1c43a3f14[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 13:12:22 2025 +0200
+
+    Update phishing-detector.html with English description
+
+[33mcommit 4ad80df64b2c596c17132af3281b7811cb7c7782[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 12:08:57 2025 +0200
+
+    Force GitHub Pages rebuild
+
+[33mcommit 55b292f8823bdb9f605f6795f7bac15c6ba9df7e[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 10:21:27 2025 +0200
+
+    Add phiching-detector.html project page
+
+[33mcommit 03002307dbc343ddfeb07ebab09f5868e0d4f2ec[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 09:50:32 2025 +0200
+
+    Add threat-hunting.html project page
+
+[33mcommit f67b1d5c1399344243a4d3c9504b473b3756eaa0[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 09:32:34 2025 +0200
+
+    Add AOS fade-up animation to Projects section
+
+[33mcommit d036fe5d6031713bd3a6a7047ac107f71f3bdaea[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 08:55:12 2025 +0200
+
+    Add working index.html with JS project list
+
+[33mcommit 4f34d93339d96bd7ecf2c709d88fc074fafd0c6d[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Fri Apr 25 08:53:21 2025 +0200
+
+    Rebuild docs folder with working index.html for GitHub Pages
+
+[33mcommit 66a9137df804629cff565a6f3a67d7ab5413bf11[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Wed Apr 23 18:41:27 2025 +0200
+
+    Force GitHub Pages rebuild
+
+[33mcommit aacc2f09d9bdeb1b5631d27f216f5c850a07e4a6[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Wed Apr 23 18:26:53 2025 +0200
+
+    Move index.html to docs folder and remove temp file
+
+[33mcommit 9984d7427bb177346aef80a4528f166b8d0a7c65[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Wed Apr 23 14:48:02 2025 +0200
+
+    Clean root, remove docs folder and push all updated HTML files to GitHub Pages root
+
+[33mcommit 16280d8d095bfbb922dcdcbb36b27acce08077b4[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Wed Apr 23 10:26:14 2025 +0200
+
+    Add project HTML files to docs folder
+
+[33mcommit 37f150ea347c546f42e0cc7f569cf6c9d8336eb2[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Wed Apr 23 10:19:06 2025 +0200
+
+    Restore clean docs folder with correct project HTML files
+
+[33mcommit bd326d5260f15a5bad82a8931a2a075c6d1ba6b7[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Wed Apr 23 10:08:55 2025 +0200
+
+    Restore cyber-threat-map.html in docs folder
+
+[33mcommit 8d58c34eeeb13e02d7321e153e781f4581af699c[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Wed Apr 23 09:53:23 2025 +0200
+
+    Add dark mode toggle with persistent them switch
+
+[33mcommit ee07a00d64979133a0cf88492b0c1e0bc1f5b6f6[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Wed Apr 23 00:00:14 2025 +0200
+
+    Clean root, remove docs folder and push all updated HTML files to GitHub Pages root
+
+[33mcommit 13cabaa5d0b78fa6b198a1234cb4a586f9a9f343[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Tue Apr 22 23:54:25 2025 +0200
+
+    Clean up structure, move all HTML files to root and remove docs/
+
+[33mcommit 9e68dc9475c0ef16d34cf9d0069ff5c740951077[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Tue Apr 22 23:34:02 2025 +0200
+
+    Move cyber-threat-map.html to root for GitHub Pages
+
+[33mcommit 44e3d06331a2b71e1168ee9ad3c17c2c2e115f3b[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Tue Apr 22 23:24:24 2025 +0200
+
+    Delete docs/cyber-threat-map
+
+[33mcommit e0270ebfdba6be37265922667b499f0744a3d656[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Tue Apr 22 22:53:04 2025 +0200
+
+    Update something
+
+[33mcommit b53b66e8a1983d7cf3e44bc7ca41b19a99c7685c[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Tue Apr 22 09:19:43 2025 +0200
+
+    Trigger GitHub Pages rebuild
+
+[33mcommit 7f56374056508da678eec8efdb0ea598471bd48c[m
+Author: stellababy2004 <stiliana.stoyanova@orange.fr>
+Date:   Tue Apr 22 09:15:26 2025 +0200
+
+ 

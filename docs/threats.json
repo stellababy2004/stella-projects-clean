@@ -1,0 +1,272 @@
+
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kabul \u2013 Ransomware",
+        "count": 178
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.2075,
+          34.5553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tirana \u2013 Spyware",
+        "count": 680
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.817,
+          41.3275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Algiers \u2013 Spyware",
+        "count": 1343
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.0588,
+          36.7538
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Luanda \u2013 Malware",
+        "count": 396
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2343,
+          -8.839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Buenos Aires \u2013 DDoS",
+        "count": 2620
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3816,
+          -34.6037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canberra \u2013 DDoS",
+        "count": 1925
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          149.13,
+          -35.2809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Beijing \u2013 Malware",
+        "count": 2871
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4074,
+          39.9042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cairo \u2013 DDoS",
+        "count": 2096
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.2357,
+          30.0444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Delhi \u2013 Phishing",
+        "count": 2051
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.209,
+          28.6139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jakarta \u2013 Ransomware",
+        "count": 835
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.8456,
+          -6.2088
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rome \u2013 Ransomware",
+        "count": 3848
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4964,
+          41.9028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tokyo \u2013 Spyware",
+        "count": 2968
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.6917,
+          35.6895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mexico City \u2013 Spyware",
+        "count": 1617
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.1332,
+          19.4326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ottawa \u2013 Malware",
+        "count": 4474
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6972,
+          45.4215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Washington, D.C. \u2013 Spyware",
+        "count": 3884
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0369,
+          38.9072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bras\u00edlia \u2013 Phishing",
+        "count": 1111
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -47.8825,
+          -15.7942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London \u2013 Spyware",
+        "count": 2221
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1278,
+          51.5074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Paris \u2013 Ransomware",
+        "count": 136
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3522,
+          48.8566
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Berlin \u2013 Spyware",
+        "count": 1611
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.405,
+          52.52
+        ]
+      }
+    }
+  ]
+}
