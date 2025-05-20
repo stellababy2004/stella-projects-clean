@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Threat Hunting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    body {
+      background-color: #040d0d;
+      color: #00ffee;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    h1, h2 {
+      color: #00ffee;
+      text-shadow: 0 0 10px #00ffee;
+    }
+    p, li {
+      font-size: 1.1em;
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    ul li::before {
+      content: "➤ ";
+      color: #00ffee;
+      margin-right: 8px;
+    }
+    a {
+      color: #00ffee;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #ffffff;
+    }
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: 2px solid #00ffee;
+      background: transparent;
+      color: #00ffee;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .button:hover {
+      background: #00ffee;
+      color: #040d0d;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1 data-aos="fade-up">🧠 Threat Hunting</h1>
+
+  <p data-aos="fade-up" data-aos-delay="100">
+    Proactive threat detection using detection engineering, hunting queries, and hypothesis-driven investigations.
+  </p>
+
+  <h2 data-aos="fade-right" data-aos-delay="200">Key Focus Areas</h2>
+  <ul data-aos="fade-up" data-aos-delay="300">
+    <li>🛡️ Hypothesis-Based Hunting</li>
+    <li>🔍 MITRE ATT&CK Mapping</li>
+    <li>📊 Building Threat Hunting Queries (KQL, SPL, Sigma)</li>
+    <li>⚙️ Developing Detection Logic and Use Cases</li>
+  </ul>
+
+  <h2 data-aos="fade-right" data-aos-delay="400">Tech Stack</h2>
+  <ul data-aos="fade-up" data-aos-delay="500">
+    <li>SIEM Platforms: Splunk, Sentinel, Elastic SIEM</li>
+    <li>Hunting Tools: Sigma rules, Zeek, Suricata, YARA</li>
+    <li>Frameworks: MITRE ATT&CK, D3FEND</li>
+  </ul>
+
+  <a href="index.html" class="button" data-aos="zoom-in" data-aos-delay="600">⬅️ Back to Portfolio</a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+</html>
