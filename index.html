@@ -7,8 +7,6 @@
   <meta name="description" content="Cybersecurity Portfolio of Stella Barbarella – SOC Analyst, Threat Hunter & Cybersecurity Enthusiast." />
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
   <link rel="stylesheet" href="styles.css" />
-
- 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
@@ -16,7 +14,6 @@
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
   <style>
     .button {
       display: flex;
@@ -121,29 +118,13 @@
       </ul>
       <ul class="project-links">
         <li>
-
           <a class="button" href="penetration_test_report_acme_en.pdf" target="_blank" download>
-
-          <a class="button" href="Stella_Barbarella_Report_EN.pdf" target="_blank" download>
-
-
-          <a class="button" href="penetration_test_report_acme_en.pdf" target="_blank" download>
-
             <span>📄 Report (EN – PDF)</span>
           </a>
         </li>
         <li>
-
-          <a href="presentation.html" target="_blank" class="button">
-            <span>📊 View Pentest Presentation</span>
-
           <a class="button" href="presentation.html" target="_blank">
-            <span>📄 View Pentest Presentation</span>
-
-
-          <a href="presentation.html" target="_blank" class="button">
             <span>📊 View Pentest Presentation</span>
-
           </a>
         </li>
       </ul>
@@ -152,13 +133,11 @@
       </div>
     </nav>
   </header>
-
   <main>
     <section class="section" id="about">
       <h1>Stella Barbarella</h1>
       <p>SOC Analyst | Cybersecurity Enthusiast | Threat Hunter</p>
     </section>
-
     <section class="section" id="projects">
       <h2>Projects</h2>
       <ul class="project-list">
@@ -169,13 +148,11 @@
         <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
       </ul>
     </section>
-
     <section class="section" id="phishing-check">
       <h2>Phishing URL Checker</h2>
       <form id="phishing-form">
         <label for="url">Enter URL to check:</label>
         <input type="text" id="url" name="url" placeholder="https://example.com" required />
-
         <button type="submit">Check</button>
       </form>
       <div id="phishing-result" style="margin-top: 10px; font-weight: bold;"></div>
@@ -183,25 +160,22 @@
       <p style="font-size: 0.9em; color: gray; margin-top: 5px;">
         Note: This is a simulation and does not perform actual phishing detection.
       </p>
-
     </section>
-  
     <section class="section" id="pentest-reports">
       <h2>Pentest Reports</h2>
       <p class="pentest-intro">
         Explore real-world pentest deliverables from <strong>Stella Barbarella</strong>.
       </p>
       <ul>
-    
+        <li>📄 <a href="reports/Report_EN.pdf" target="_blank">Report (EN – PDF)</a></li>
+        <li>📊 <a href="reports/Presentation_Standard.pdf" target="_blank">Presentation (Standard)</a></li>
       </ul>
     </section>
-
     <section class="section" id="log-analyzer">
       <h2>Live Log Analyzer</h2>
       <button id="toggle-logs">⏸ Pause Logs</button>
       <pre id="log-output" style="background:#111; color:#00ffee; padding:10px; min-height:120px; border-radius:8px; margin-top:10px; max-height:200px; overflow:auto;"></pre>
     </section>
-
     <section class="section" id="attack-sim">
       <h2>Attack Simulation Lab</h2>
       <p>Select an attack type to simulate:</p>
@@ -213,13 +187,11 @@
       </div>
       <div id="attack-result" style="margin-top:20px;"></div>
     </section>
-
     <section class="section" id="testimonials">
       <h2>Testimonials</h2>
       <p>"Stella's attention to detail and analytical skills are unmatched!" - <strong>John Doe, Cybersecurity Expert</strong></p>
       <p>"Her passion for cybersecurity is evident in her work." - <strong>Jane Smith, SOC Manager</strong></p>
     </section>
-
     <section class="section" id="checkpoint-map">
       <h2>Live Threat Map (Check Point)</h2>
       <iframe 
@@ -229,253 +201,257 @@
         style="border:2px solid #00ffee; border-radius:10px; box-shadow:0 0 10px #00ffee; background-color: black;">
       </iframe>
     </section>
-
     <section class="section" id="chart">
       <h2>Cyber Threat Analysis</h2>
       <div style="width:100%;max-width:800px;margin:auto;">
         <canvas id="threatChart" height="200"></canvas>
       </div>
     </section>
-
     <section class="section" id="map-section">
       <h2>Global Threat Locations</h2>
       <div id="map" style="height: 400px; border: 1px solid #0ff; border-radius: 8px;"></div>
       <button id="clear-map">🧹 Clear Map</button>
     </section>
-
     <section class="section" id="contact">
       <h2>Contact</h2>
       <a href="Stella_Barbarella_SOC_Portfolio.pdf" download class="button">📥 Download Portfolio</a>
       <a href="https://www.linkedin.com/in/stella-s-95ba5683/" class="button">🔗 LinkedIn</a>
+      <img src="images/linkedin-qr.png" alt="LinkedIn QR Code" class="qr-code" />
+    </section>
+    <section class="section" id="my-cv">
+      <h2>Protected CV Download</h2>
+      <input type="password" id="cvPassword" placeholder="Enter password to unlock CV" />
+      <button onclick="checkPassword()">Submit</button>
+      <p id="message"></p>
     </section>
   </main>
-
   <script>
-
-  document.addEventListener("DOMContentLoaded", function () {
-    var mapDiv = document.getElementById('map');
-    if (mapDiv) {
-      var map = L.map('map').setView([42.7, 23.3], 3);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '© OpenStreetMap contributors'
-      }).addTo(map);
-
-      // Example markers (remove these)
-      L.marker([42.7, 23.3]).addTo(map).bindPopup('Sofia, Bulgaria');
-      L.marker([51.5, -0.09]).addTo(map).bindPopup('London, UK');
-      L.marker([40.7, -74.0]).addTo(map).bindPopup('New York, USA');
-      L.marker([48.85, 2.35]).addTo(map).bindPopup('Paris, France');
-      L.marker([35.68, 139.76]).addTo(map).bindPopup('Tokyo, Japan');
-      L.marker([55.75, 37.62]).addTo(map).bindPopup('Moscow, Russia');
-      L.marker([52.52, 13.40]).addTo(map).bindPopup('Berlin, Germany');
-      L.marker([34.05, -118.24]).addTo(map).bindPopup('Los Angeles, USA');
-      L.marker([-33.87, 151.21]).addTo(map).bindPopup('Sydney, Australia');
-      L.marker([19.43, -99.13]).addTo(map).bindPopup('Mexico City, Mexico');
-    }
-  });
+    particlesJS.load('particles-js', 'particles.json', function() {
+      console.log('particles.js loaded');
+    });
   </script>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    document.getElementById('phishing-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const url = document.getElementById('url').value;
+      const resultDiv = document.getElementById('phishing-result');
+      resultDiv.textContent = `Checking ${url}...`;
+      setTimeout(() => {
+        resultDiv.textContent = `${url} is safe!`;
+      }, 2000);
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var mapDiv = document.getElementById('map');
+      if (mapDiv) {
+        var map = L.map('map').setView([42.7, 23.3], 3);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        // Example markers (remove or replace as needed)
+        L.marker([42.7, 23.3]).addTo(map).bindPopup('Sofia, Bulgaria');
+        L.marker([51.5, -0.09]).addTo(map).bindPopup('London, UK');
+        L.marker([40.7, -74.0]).addTo(map).bindPopup('New York, USA');
+        L.marker([48.85, 2.35]).addTo(map).bindPopup('Paris, France');
+        L.marker([35.68, 139.76]).addTo(map).bindPopup('Tokyo, Japan');
+        L.marker([55.75, 37.62]).addTo(map).bindPopup('Moscow, Russia');
+        L.marker([52.52, 13.40]).addTo(map).bindPopup('Berlin, Germany');
+        L.marker([34.05, -118.24]).addTo(map).bindPopup('Los Angeles, USA');
+        L.marker([-33.87, 151.21]).addTo(map).bindPopup('Sydney, Australia');
+        L.marker([19.43, -99.13]).addTo(map).bindPopup('Mexico City, Mexico');
+      }
+    });
+  </script>
   <script>
     (function () {
-  const logOutput = document.getElementById('log-output');
-  const toggleBtn = document.getElementById('toggle-logs');
-  let paused = false;
-  let logInterval;
-
-  const logs = [
-    "[INFO]  Connection from 192.168.1.10 accepted.",
-    "[ALERT]  Suspicious login attempt detected from 203.0.113.5.",
-    "[WARNING]  Multiple failed logins for user 'admin'.",
-    "[INFO]  Malware signature updated successfully.",
-    "[CRITICAL]  Ransomware activity detected on host 10.0.0.23.",
-    "[INFO]  Outbound traffic to 8.8.8.8 allowed.",
-    "[ALERT]  Phishing email detected and quarantined.",
-    "[INFO]  User 'stella' changed password.",
-    "[WARNING]  Unusual data transfer detected.",
-    "[INFO]  System scan completed. No threats found.",
-    "[NOTICE]  New device registered: 10.1.1.5.",
-    "[DEBUG]  Packet dropped due to invalid checksum.",
-    "[ERROR]  Failed to update antivirus definitions.",
-    "[SUCCESS]  Backup completed successfully.",
-    "[FAIL]  Backup failed: disk full.",
-    "[INFO]  User 'admin' logged out.",
-    "[ALERT]  Port scan detected from 185.23.44.12.",
-    "[CRITICAL]  Data exfiltration attempt blocked.",
-    "[WARNING]  High CPU usage detected on server01.",
-    "[NOTICE]  Scheduled maintenance started.",
-    "[SUCCESS]  Patch applied to all endpoints."
-  ];
-
-  function addLog() {
-    if (!paused) {
-      const log = logs[Math.floor(Math.random() * logs.length)];
-      const now = new Date().toLocaleTimeString();
-
-    
-      let color = "#00ffee";
-      if (log.includes("CRITICAL")) color = "#ff1744";
-      else if (log.includes("ALERT")) color = "#ffea00";
-      else if (log.includes("WARNING")) color = "#ff9100";
-      else if (log.includes("ERROR") || log.includes("FAIL")) color = "#ff1744";
-      else if (log.includes("SUCCESS")) color = "#00e676";
-      else if (log.includes("NOTICE")) color = "#00b0ff";
-      else if (log.includes("DEBUG")) color = "#bdbdbd";
-      else if (log.includes("INFO")) color = "#00ffee";
-
-     
-      const span = document.createElement('span');
-      span.textContent = `[${now}] ${log}\n`;
-      span.style.color = color;
-      logOutput.appendChild(span);
-      logOutput.scrollTop = logOutput.scrollHeight;
-    }
-  }
-
-  function startLogs() {
-    logInterval = setInterval(addLog, 1200);
-  }
-
-  function stopLogs() {
-    clearInterval(logInterval);
-  }
-
-  if (logOutput && toggleBtn) {
-    startLogs();
-    toggleBtn.addEventListener('click', function () {
-      paused = !paused;
-      if (paused) {
-        stopLogs();
-        toggleBtn.textContent = "▶ Resume Logs";
-      } else {
+      const logOutput = document.getElementById('log-output');
+      const toggleBtn = document.getElementById('toggle-logs');
+      let paused = false;
+      let logInterval;
+      const logs = [
+        "[INFO]  Connection from 192.168.1.10 accepted.",
+        "[ALERT]  Suspicious login attempt detected from 203.0.113.5.",
+        "[WARNING]  Multiple failed logins for user 'admin'.",
+        "[INFO]  Malware signature updated successfully.",
+        "[CRITICAL]  Ransomware activity detected on host 10.0.0.23.",
+        "[INFO]  Outbound traffic to 8.8.8.8 allowed.",
+        "[ALERT]  Phishing email detected and quarantined.",
+        "[INFO]  User 'stella' changed password.",
+        "[WARNING]  Unusual data transfer detected.",
+        "[INFO]  System scan completed. No threats found.",
+        "[NOTICE]  New device registered: 10.1.1.5.",
+        "[DEBUG]  Packet dropped due to invalid checksum.",
+        "[ERROR]  Failed to update antivirus definitions.",
+        "[SUCCESS]  Backup completed successfully.",
+        "[FAIL]  Backup failed: disk full.",
+        "[INFO]  User 'admin' logged out.",
+        "[ALERT]  Port scan detected from 185.23.44.12.",
+        "[CRITICAL]  Data exfiltration attempt blocked.",
+        "[WARNING]  High CPU usage detected on server01.",
+        "[NOTICE]  Scheduled maintenance started.",
+        "[SUCCESS]  Patch applied to all endpoints."
+      ];
+      function addLog() {
+        if (!paused) {
+          const log = logs[Math.floor(Math.random() * logs.length)];
+          const now = new Date().toLocaleTimeString();
+          let color = "#00ffee";
+          if (log.includes("CRITICAL")) color = "#ff1744";
+          else if (log.includes("ALERT")) color = "#ffea00";
+          else if (log.includes("WARNING")) color = "#ff9100";
+          else if (log.includes("ERROR") || log.includes("FAIL")) color = "#ff1744";
+          else if (log.includes("SUCCESS")) color = "#00e676";
+          else if (log.includes("NOTICE")) color = "#00b0ff";
+          else if (log.includes("DEBUG")) color = "#bdbdbd";
+          else if (log.includes("INFO")) color = "#00ffee";
+          const span = document.createElement('span');
+          span.textContent = `[${now}] ${log}\n`;
+          span.style.color = color;
+          logOutput.appendChild(span);
+          logOutput.scrollTop = logOutput.scrollHeight;
+        }
+      }
+      function startLogs() {
+        logInterval = setInterval(addLog, 1200);
+      }
+      function stopLogs() {
+        clearInterval(logInterval);
+      }
+      if (logOutput && toggleBtn) {
         startLogs();
-        toggleBtn.textContent = "⏸ Pause Logs";
+        toggleBtn.addEventListener('click', function () {
+          paused = !paused;
+          if (paused) {
+            stopLogs();
+            toggleBtn.textContent = "▶ Resume Logs";
+          } else {
+            startLogs();
+            toggleBtn.textContent = "⏸ Pause Logs";
+          }
+        });
       }
-    });
-  }
-})();
+    })();
   </script>
-
   <script>
-
-document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll('#attack-buttons .button');
-  const result = document.getElementById('attack-result');
-  const logOutput = document.getElementById('log-output');
-  const threatChart = window.threatChartInstance;
-  const mapDiv = document.getElementById('map');
-  let map = window.attackSimMap;
-
-
-  const attackDescriptions = {
-    "phishing": "Simulation: A phishing email was sent to an employee. The SOC detects a suspicious link and blocks access.",
-    "brute-force": "Simulation: Multiple failed login attempts detected. The system temporarily blocks the IP address.",
-    "malware": "Simulation: A malicious file was uploaded. The antivirus system isolates it and alerts the SOC team.",
-    "ddos": "Simulation: High traffic volume detected towards the server. DDoS protection limits attacking IPs."
-  };
-
-
-  const attackLogs = {
-    "phishing": "[ALERT]  Phishing email detected and quarantined.",
-    "brute-force": "[WARNING]  Multiple failed logins for user 'admin'.",
-    "malware": "[CRITICAL]  Malware detected and isolated.",
-    "ddos": "[ALERT]  DDoS attack detected. Traffic filtered."
-  };
-
-
-  const attackLocations = {
-    "phishing": [51.5, -0.09],        // London
-    "brute-force": [40.7, -74.0],     // New York
-    "malware": [48.85, 2.35],         // Paris
-    "ddos": [35.68, 139.76]           // Tokyo
-  };
-
-
-  const chartIndex = {
-    "phishing": 0,
-    "malware": 1,
-    "ddos": 3,
-    "brute-force": 4
-  };
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', function () {
-      const type = btn.getAttribute('data-attack');
-      result.style.display = "none"; // Hide previous result
-      result.textContent = attackDescriptions[type] || "No information for this attack type.";
-      result.style.display = "block";
-
-  
-      if (logOutput && attackLogs[type]) {
-        const now = new Date().toLocaleTimeString();
-        const span = document.createElement('span');
-        span.textContent = `[${now}] ${attackLogs[type]}\n`;
-        span.style.color = "#ffea00";
-        logOutput.appendChild(span);
-        logOutput.scrollTop = logOutput.scrollHeight;
-      }
-
-     
-      if (mapDiv && window.L && attackLocations[type]) {
-        if (!window.attackSimMap) {
-          window.attackSimMap = L.map('map').setView([42.7, 23.3], 3);
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '© OpenStreetMap contributors'
-          }).addTo(window.attackSimMap);
-        }
-        L.marker(attackLocations[type]).addTo(window.attackSimMap)
-          .bindPopup(`${type.charAt(0).toUpperCase() + type.slice(1)} attack`).openPopup();
-      }
-
-      if (window.threatChartInstance && chartIndex[type] !== undefined) {
-        window.threatChartInstance.data.datasets[0].data[chartIndex[type]] += 1;
-        window.threatChartInstance.update();
-      }
+    document.addEventListener("DOMContentLoaded", function () {
+      const buttons = document.querySelectorAll('#attack-buttons .button');
+      const result = document.getElementById('attack-result');
+      const logOutput = document.getElementById('log-output');
+      const threatChart = window.threatChartInstance;
+      const mapDiv = document.getElementById('map');
+      let map = window.attackSimMap;
+      const attackDescriptions = {
+        "phishing": "Simulation: A phishing email was sent to an employee. The SOC detects a suspicious link and blocks access.",
+        "brute-force": "Simulation: Multiple failed login attempts detected. The system temporarily blocks the IP address.",
+        "malware": "Simulation: A malicious file was uploaded. The antivirus system isolates it and alerts the SOC team.",
+        "ddos": "Simulation: High traffic volume detected towards the server. DDoS protection limits attacking IPs."
+      };
+      const attackLogs = {
+        "phishing": "[ALERT]  Phishing email detected and quarantined.",
+        "brute-force": "[WARNING]  Multiple failed logins for user 'admin'.",
+        "malware": "[CRITICAL]  Malware detected and isolated.",
+        "ddos": "[ALERT]  DDoS attack detected. Traffic filtered."
+      };
+      const attackLocations = {
+        "phishing": [51.5, -0.09],        // London
+        "brute-force": [40.7, -74.0],     // New York
+        "malware": [48.85, 2.35],         // Paris
+        "ddos": [35.68, 139.76]           // Tokyo
+      };
+      const chartIndex = {
+        "phishing": 0,
+        "malware": 1,
+        "ddos": 3,
+        "brute-force": 4
+      };
+      buttons.forEach(btn => {
+        btn.addEventListener('click', function () {
+          const type = btn.getAttribute('data-attack');
+          result.style.display = "none";
+          result.textContent = attackDescriptions[type] || "No information for this attack type.";
+          result.style.display = "block";
+          if (logOutput && attackLogs[type]) {
+            const now = new Date().toLocaleTimeString();
+            const span = document.createElement('span');
+            span.textContent = `[${now}] ${attackLogs[type]}\n`;
+            span.style.color = "#ffea00";
+            logOutput.appendChild(span);
+            logOutput.scrollTop = logOutput.scrollHeight;
+          }
+          if (mapDiv && window.L && attackLocations[type]) {
+            if (!window.attackSimMap) {
+              window.attackSimMap = L.map('map').setView([42.7, 23.3], 3);
+              L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '© OpenStreetMap contributors'
+              }).addTo(window.attackSimMap);
+            }
+            L.marker(attackLocations[type]).addTo(window.attackSimMap)
+              .bindPopup(`${type.charAt(0).toUpperCase() + type.slice(1)} attack`).openPopup();
+          }
+          if (window.threatChartInstance && chartIndex[type] !== undefined) {
+            window.threatChartInstance.data.datasets[0].data[chartIndex[type]] += 1;
+            window.threatChartInstance.update();
+          }
+        });
+      });
     });
-  });
   </script>
-
   <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const ctx = document.getElementById('threatChart').getContext('2d');
-  window.threatChartInstance = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Phishing', 'Malware', 'Ransomware', 'DDoS', 'Brute Force'],
-      datasets: [{
-        label: 'Detected Threats',
-        data: [12, 8, 4, 10, 6], // Примерни данни
-        backgroundColor: [
-          '#00ffeecc',
-          '#ff00ccbb',
-          '#ffaa00bb',
-          '#00ff88bb',
-          '#ffea00bb'
-        ],
-        borderColor: '#00ffee',
-        borderWidth: 2
-      }]
-    },
-    options: {
-      plugins: {
-        legend: { display: false }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: { color: '#00ffee' },
-          grid: { color: '#222' }
+    document.addEventListener("DOMContentLoaded", function () {
+      const ctx = document.getElementById('threatChart').getContext('2d');
+      window.threatChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Phishing', 'Malware', 'Ransomware', 'DDoS', 'Brute Force'],
+          datasets: [{
+            label: 'Detected Threats',
+            data: [12, 8, 4, 10, 6],
+            backgroundColor: [
+              '#00ffeecc',
+              '#ff00ccbb',
+              '#ffaa00bb',
+              '#00ff88bb',
+              '#ffea00bb'
+            ],
+            borderColor: '#00ffee',
+            borderWidth: 2
+          }]
         },
-        x: {
-          ticks: { color: '#00ffee' },
-          grid: { color: '#222' }
+        options: {
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { color: '#00ffee' },
+              grid: { color: '#222' }
+            },
+            x: {
+              ticks: { color: '#00ffee' },
+              grid: { color: '#222' }
+            }
+          }
         }
+      });
+    });
+  </script>
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("cvPassword").value;
+      const message = document.getElementById("message");
+      const correctPassword = "cyberpunk2025";
+      if (input === correctPassword) {
+        message.innerHTML = `<a href="Stella_Barbarella_CV.odt" download class="button">📄 Download CV</a>`;
+        message.style.color = "#00ffee";
+      } else {
+        message.textContent = "Incorrect password.";
+        message.style.color = "red";
       }
     }
-  });
-});
-</script>
+  </script>
 </body>
 </html>
