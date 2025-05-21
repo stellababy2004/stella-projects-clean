@@ -373,5 +373,66 @@
       }
     });
   </script>
+
+  <style>
+    header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row; /* добави това */
+  padding: 10px;
+}
+
+nav ul {
+  display: flex; /* добави това */
+  flex-direction: row; /* добави това */
+  gap: 10px; /* добави това */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+main, .section {
+  padding-top: 100px; /* добави това, за да не се закрива съдържанието */
+}
+
+    .button, nav ul li a {
+  font-family: inherit;
+  font-size: 1em;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00ffee;
+  color: #00ffee;
+  border-radius: 10px;
+  box-shadow: 0 0 8px #00ffee33;
+  padding: 10px 18px;
+  margin: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+}
+
+nav ul li a:hover, .button:hover {
+  background: #00ffee;
+  color: #181f23;
+  box-shadow: 0 0 16px #00ffee;
+}
+
+nav ul li {
+  margin: 0 6px;
+}
+  </style>
 </body>
 </html>
