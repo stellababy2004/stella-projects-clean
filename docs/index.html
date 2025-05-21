@@ -15,25 +15,137 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <style>
-    .button {
-      display: flex;
-      flex-direction: column; /* added for vertical centering of multiple lines */
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 18px 24px;
-      font-size: 1.3em;
-      min-width: 220px;
-      min-height: 60px;
-      box-sizing: border-box;
-      line-height: 1.2;
-      white-space: normal; /* allows text wrapping */
-      word-break: break-word; /* better text wrapping */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      background-color: #000;
     }
-    .button span, .button strong {
-      display: block;
+    header {
+      position: fixed;
+      top: 0;
       width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul.project-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    nav a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00ffee;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    nav a.button:hover {
+      background-color: #00b3b3;
+    }
+
+    .logo {
       text-align: center;
+      margin: 20px 0;
+    }
+
+    .logo img {
+      max-width: 180px;
+      height: auto;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      color: #00ffee;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00ffee;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #00b3b3;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    #log-output {
+      white-space: pre-wrap;
+      background: black;
+      color: #00ffee;
+      padding: 1em;
+      font-family: monospace;
+      border: 1px solid #00ffee;
+      border-radius: 10px;
+      height: 300px;
+      overflow-y: auto;
+    }
+
+    .qr-code {
+      max-width: 100px;
+      height: auto;
+      margin-top: 10px;
+    }
+
+    /* Map container */
+    #map {
+      height: 400px;
+      border: 1px solid #0ff;
+      border-radius: 8px;
+    }
+
+    /* Chart.js styles */
+    #threatChart {
+      max-width: 800px;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -51,14 +163,17 @@
       </ul>
       <ul class="project-links">
         <li>
-          <a class="button" href="penetration_test_report_acme_en.pdf" target="_blank" download>
-            <span>📄 Report (EN – PDF)</span>
-          </a>
+          <a href="reports/penetration_test_report_acme_en.pdf" target="_blank" class="button">📄 Report (EN – PDF)</a>
         </li>
         <li>
-          <a href="presentation.html" target="_blank" class="button">
-            <span>📊 View Pentest Presentation</span>
-          </a>
+          <a href="presentation.html" target="_blank" class="button">📊 View Pentest Presentation</a>
+        </li>
+        <li>
+          <form id="book-form" onsubmit="event.preventDefault(); checkBookPassword();">
+            <input type="password" id="bookPassword" placeholder="Enter book password" style="padding:4px; border-radius:5px; border:1px solid #00ffee;">
+            <button type="submit" class="button">📕 Download My Book</button>
+            <span id="book-message" style="margin-left:10px;"></span>
+          </form>
         </li>
       </ul>
       <div class="logo" style="text-align:center; margin: 20px 0;">
@@ -75,18 +190,6 @@
   <section class="section" id="projects">
     <h2>Projects</h2>
     <ul class="project-list">
-    </ul>
-  </section>
-
-  <section class="section" id="phishing-check">
-    <h2>Phishing URL Checker</h2>
-    <form id="phishing-form">
-      <label for="url">Enter URL to check:</label>
-      <input type="text" id="url" name="url" placeholder="https://example.com" required />
-      <button type="submit">Check</button>
-    </form>
-    <div id="phishing-result" style="margin-top: 10px; font-weight: bold;"></div>
-  </section>
       <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
       <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
       <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
@@ -151,19 +254,6 @@
   </script>
 
   <script>
-    document.getElementById('phishing-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const url = document.getElementById('url').value;
-      const resultDiv = document.getElementById('phishing-result');
-      resultDiv.textContent = `Checking ${url}...`;
-      // Simulate a phishing check
-      setTimeout(() => {
-        resultDiv.textContent = `${url} is safe!`;
-      }, 2000);
-    });
-  </script>
- 
-  <script>
     const ctx = document.getElementById('threatChart')?.getContext('2d');
     if (ctx) {
       new Chart(ctx, {
@@ -205,42 +295,95 @@
         message.style.color = "red";
       }
     }
+
+    function checkBookPassword() {
+      const input = document.getElementById("bookPassword").value;
+      const message = document.getElementById("book-message");
+      const correctPassword = "cyberpunk2025";
+
+      if (input === correctPassword) {
+        message.innerHTML = `<a href="books/fr.docx" download class="button" target="_blank">📕 Download Book</a>`;
+        message.style.color = "#00ffee";
+      } else {
+        message.textContent = "Incorrect password.";
+        message.style.color = "red";
+      }
+    }
   </script>
 
   <script>
     const logsData = [
       "May 10 10:01:45 server sshd[2345]: Failed password for root from 192.168.1.10 port 22",
       "May 10 10:02:01 server sshd[2345]: Accepted password for user1 from 192.168.1.12 port 22",
-      "May 10 10:02:17 server apache[4321]: SQL injection attempt detected",
       "May 10 10:03:02 server sshd[2345]: Failed password for invalid user admin from 192.168.1.13",
-      "May 10 10:03:15 server cron[1234]: Job started successfully",
       "May 10 10:04:05 server firewall[9999]: Port scan detected from 192.168.1.50",
-      "May 10 10:04:30 server apache[4321]: GET /index.php?id=1%20OR%201=1",
-      "May 10 10:05:00 server auditd[8888]: User added to sudo group",
-      "May 10 10:05:30 server sshd[2345]: Failed password for root from 192.168.1.13 port 22",
-      "May 10 10:06:00 server apache[4321]: XSS attempt detected",
-      "May 10 10:06:30 server firewall[9999]: DDoS attack detected from 192.168.1.50",
-      "May 10 10:07:00 server sshd[2345]: Accepted password for user2 from 192.168.1.12 port 22",
-      "May 10 10:07:30 server auditd[8888]: User removed from sudo group",
-      "May 10 10:08:00 server apache[4321]: Directory traversal attempt detected",
-      "May 10 10:08:30 server firewall[9999]: Unauthorized access attempt from 192.168.1.10",
-      "May 10 10:09:00 server sshd[2345]: Failed password for root from 192.168.1.50 port 22"
+      "May 10 10:05:30 server sshd[2345]: Failed password for root from 10.0.0.1 port 22",
+      "May 10 10:06:00 server sshd[2345]: Accepted password for user2 from 10.0.0.2 port 22",
+      "May 10 10:06:30 server sshd[2345]: Connection from 10.0.0.3 port 22",
+      "May 10 10:07:00 server sshd[2345]: Connection from 10.0.0.4 port 22",
+      "May 10 10:07:30 server sshd[2345]: Connection from 10.0.0.5 port 22",
+      "May 10 10:08:00 server sshd[2345]: Connection from 10.0.0.6 port 22",
+      "May 10 10:08:30 server sshd[2345]: Connection from 10.0.0.7 port 22",
+      "May 10 10:09:00 server sshd[2345]: Connection from 10.0.0.8 port 22",
+      "May 10 10:09:30 server sshd[2345]: Connection from 10.0.0.9 port 22",
+      "May 10 10:10:00 server sshd[2345]: Connection from 10.0.0.10 port 22",
+      "May 10 10:10:30 server sshd[2345]: Connection from 10.0.0.11 port 22",
+      "May 10 10:11:00 server sshd[2345]: Connection from 10.0.0.12 port 22",
+      "May 10 10:11:30 server sshd[2345]: Connection from 10.0.0.13 port 22",
+      "May 10 10:12:00 server sshd[2345]: Connection from 10.0.0.14 port 22",
+      "May 10 10:12:30 server sshd[2345]: Connection from 10.0.0.15 port 22",
+      "May 10 10:13:00 server sshd[2345]: Connection from 10.0.0.16 port 22",
+      "May 10 10:13:30 server sshd[2345]: Connection from 10.0.0.17 port 22"
     ];
 
     const threatKeywords = ["Failed password", "SQL", "injection", "Port scan", "unauthorized", "invalid user"];
 
     const ipGeoMap = {
-      "192.168.1.10": "🇷🇺 Russia",
-      "192.168.1.12": "🇺🇸 USA",
-      "192.168.1.13": "🇨🇳 China",
-      "192.168.1.50": "🇧🇷 Brazil"
+      "192.168.1.10": "🇷🇺 Moscow",
+      "192.168.1.12": "🇺🇸 Washington D.C.",
+      "192.168.1.13": "🇨🇳 Beijing",
+      "192.168.1.50": "🇧🇷 São Paulo",
+      "10.0.0.1": "🇬🇧 London",
+      "10.0.0.2": "🇫🇷 Paris",
+      "10.0.0.3": "🇩🇪 Berlin",
+      "10.0.0.4": "🇯🇵 Tokyo",
+      "10.0.0.5": "🇦🇺 Sydney",
+      "10.0.0.6": "🇨🇦 Ottawa",
+      "10.0.0.7": "🇮🇳 New Delhi",
+      "10.0.0.8": "🇿🇦 Cape Town",
+      "10.0.0.9": "🇪🇬 Cairo",
+      "10.0.0.10": "🇲🇽 Mexico City",
+      "10.0.0.11": "🇹🇷 Istanbul",
+      "10.0.0.12": "🇸🇬 Singapore",
+      "10.0.0.13": "🇦🇷 Buenos Aires",
+      "10.0.0.14": "🇸🇦 Riyadh",
+      "10.0.0.15": "🇰🇷 Seoul",
+      "10.0.0.16": "🇪🇸 Madrid",
+      "10.0.0.17": "🇧🇬 Sofia"
     };
 
     const ipGeoCoords = {
-      "192.168.1.10": [55.751244, 37.618423],
-      "192.168.1.12": [38.9072, -77.0369],
-      "192.168.1.13": [39.9042, 116.4074],
-      "192.168.1.50": [-23.5505, -46.6333]
+      "192.168.1.10": [55.751244, 37.618423],      // Moscow
+      "192.168.1.12": [38.9072, -77.0369],         // Washington D.C.
+      "192.168.1.13": [39.9042, 116.4074],         // Beijing
+      "192.168.1.50": [-23.5505, -46.6333],        // São Paulo
+      "10.0.0.1": [51.5074, -0.1278],              // London
+      "10.0.0.2": [48.8566, 2.3522],               // Paris
+      "10.0.0.3": [52.52, 13.4050],                // Berlin
+      "10.0.0.4": [35.6895, 139.6917],             // Tokyo
+      "10.0.0.5": [-33.8688, 151.2093],            // Sydney
+      "10.0.0.6": [45.4215, -75.6997],             // Ottawa
+      "10.0.0.7": [28.6139, 77.2090],              // New Delhi
+      "10.0.0.8": [-33.9249, 18.4241],             // Cape Town
+      "10.0.0.9": [30.0444, 31.2357],              // Cairo
+      "10.0.0.10": [19.4326, -99.1332],            // Mexico City
+      "10.0.0.11": [41.0082, 28.9784],             // Istanbul
+      "10.0.0.12": [1.3521, 103.8198],             // Singapore
+      "10.0.0.13": [-34.6037, -58.3816],           // Buenos Aires
+      "10.0.0.14": [24.7136, 46.6753],             // Riyadh
+      "10.0.0.15": [37.5665, 126.9780],            // Seoul
+      "10.0.0.16": [40.4168, -3.7038],             // Madrid
+      "10.0.0.17": [42.6977, 23.3219]              // Sofia
     };
 
     const container = document.getElementById("log-output");
@@ -253,10 +396,16 @@
     window.markers = window.markers || [];
     const markers = window.markers;
     const map = L.map('map').setView([20, 0], 2);
-
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
     }).addTo(map);
+
+    Object.entries(ipGeoCoords).forEach(([ip, coords]) => {
+      const location = ipGeoMap[ip] || "🌐 Unknown";
+      const marker = L.marker(coords).addTo(map);
+      marker.bindPopup(`<b>${ip}</b><br>${location}`);
+      markers.push(marker);
+    });
 
     toggleBtn.addEventListener("click", () => {
       logsPaused = !logsPaused;
@@ -266,9 +415,14 @@
     clearBtn.addEventListener("click", () => {
       markers.forEach(marker => map.removeLayer(marker));
       markers.length = 0;
+      // Добави всички градове отново
+      Object.entries(ipGeoCoords).forEach(([ip, coords]) => {
+        const location = ipGeoMap[ip] || "🌐 Unknown";
+        const marker = L.marker(coords).addTo(map);
+        marker.bindPopup(`<b>${ip}</b><br>${location}`);
+        markers.push(marker);
+      });
     });
-
-    const addedMarkers = new Set(); // Track added markers by IP
 
     const interval = setInterval(() => {
       if (logsPaused) return;
@@ -290,24 +444,17 @@
         displayLog += ` → [${location}]`;
         logElement.textContent = displayLog;
 
-        if (ipGeoCoords[ip] && !addedMarkers.has(ip)) {
+        if (ipGeoCoords[ip]) {
           const marker = L.marker(ipGeoCoords[ip]).addTo(map);
           marker.bindPopup(`<b>${ip}</b><br>${location}<br><span style="color:${isThreat ? 'red' : 'green'}">${isThreat ? '⚠️ Threat' : 'Normal'}</span>`);
           markers.push(marker);
-          addedMarkers.add(ip); // Mark this IP as added
         }
       } else {
         logElement.textContent = displayLog;
       }
+
       container.appendChild(logElement);
       container.scrollTop = container.scrollHeight;
-
-      // Limit the number of log entries displayed
-      const maxLogs = 100; // Set the maximum number of logs to display
-      while (container.childNodes.length > maxLogs) {
-        container.removeChild(container.firstChild);
-      }
-
       logIndex++;
     }, 1500);
   </script>
