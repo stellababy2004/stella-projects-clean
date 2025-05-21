@@ -7,6 +7,32 @@
     body {
       margin: 0;
       background: #000;
+<<<<<<< HEAD
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .not-found {
+      padding: 2em;
+      text-align: center;
+      color: #ff8080;
+    }
+    .download-btn {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 1em 2em;
+      background: #222;
+      color: #0ff;
+      border: 2px solid #0ff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: background 0.2s;
+    }
+    .download-btn:hover {
+      background: #0ff;
+      color: #222;
+=======
+>>>>>>> 694cf335d67f092669afe59cad2c2af6f335cd4e
     }
     iframe {
       width: 100%;
@@ -16,6 +42,15 @@
   </style>
 </head>
 <body>
+<<<<<<< HEAD
+  <!-- Проверете дали файлът съществува! -->
+  <iframe src="reports/presentation_pentest_ad_acme.pdf" onerror="this.style.display='none';document.getElementById('nofile').style.display='block';"></iframe>
+  <div id="nofile" class="not-found" style="display:none;">
+    PDF файлът не е наличен.<br>
+    <a href="reports/presentation_pentest_ad_acme.pdf" class="download-btn" target="_blank">Изтегли PDF</a>
+  </div>
+=======
   <iframe src="reports/presentation_pentest_ad_acme.pdf"></iframe>
+>>>>>>> 694cf335d67f092669afe59cad2c2af6f335cd4e
 </body>
 </html>

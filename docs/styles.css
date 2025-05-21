@@ -15,8 +15,8 @@ html, body {
   overflow-x: hidden;
   font-family: 'Courier New', monospace;
   color: #00ffee;
-  background: linear-gradient(120deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-  background-size: 400% 400%;
+  background: linear-gradient(120deg, #000000, #0f0f0f, #001f1f, #040d0d);
+  background-size: 600% 600%;
   animation: gradientScroll 20s ease infinite;
   background-attachment: fixed;
   line-height: 1.6;
@@ -45,72 +45,38 @@ body > * {
   z-index: 1;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ====================
    Sections
 ==================== */
 .section {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 24px 16px;
-  background: rgba(10, 20, 30, 0.85);
-  border-radius: 16px;
-  box-shadow: 0 0 24px #00ffee33;
-  margin-bottom: 32px;
-}
-
-.section h1, .section h2 {
-  color: #00ffee;
+  padding: 50px 20px;
   text-align: center;
-  margin-bottom: 16px;
-}
-
-.section {
-  margin-bottom: 32px;
 }
 
 /* ====================
    Buttons
 ==================== */
 .button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 18px 24px;
-  font-size: 1.3em;
-  min-width: 220px;
-  min-height: 60px;
-  box-sizing: border-box;
-  line-height: 1.2;
-  white-space: normal;
-  word-break: break-word;
-  background: rgba(0, 0, 0, 0.7);
-  border: 2px solid #00ffee;
-  border-radius: 16px;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
   color: #00ffee;
-  margin: 12px 0;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 0 12px #00ffee55;
+  border: 2px solid #00ffee;
+  border-radius: 5px;
   text-decoration: none;
+  background: transparent;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* За по-дълги текстове, ако все пак се налага пренасяне */
-.button span {
-  white-space: normal;
-  word-break: break-word;
-}
-
-.button span, .button strong {
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-
-.button:hover, .button:focus {
+.button:hover {
   background: #00ffee;
-  color: #0f2027;
-  box-shadow: 0 0 24px #00ffee;
+  color: #040d0d;
 }
 
 /* ====================
@@ -155,12 +121,11 @@ nav ul li a:active,
    QR Code
 ==================== */
 .qr-code {
-  display: block;
-  margin: 24px auto 0 auto;
-  max-width: 160px;
-  border-radius: 12px;
+  width: 150px;
+  margin-top: 20px;
   border: 2px solid #00ffee;
-  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,255,238,0.5);
 }
 
 /* ====================
@@ -261,6 +226,7 @@ a.button[href*="Presentation_Standard.pdf"]:hover {
   background: #ff00cc;
   color: #181818;
 }
+
 /* ====================
    Footer
 ==================== */
@@ -367,4 +333,99 @@ footer .copyright {
     max-width: 98vw;
     padding: 12px 2vw;
   }
+}
+
+@media (max-width: 700px) {
+  .section {
+    padding: 18px 4px;
+  }
+
+  .button {
+    min-width: 120px;
+    font-size: 1em;
+    padding: 10px 8px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+.flag-input {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0,0,0,0.4);
+  border-left: 3px solid #0ff;
+  color: #0ff;
+}
+
+.flag-input input[type="text"] {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border: 1px solid #0ff;
+  background: #000;
+  color: #0ff;
+}
+
+#attack-sim {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  border-radius: 24px;
+  background: #121a20;
+  box-shadow: 0 0 32px #00fff966;
+  box-sizing: border-box;
+}
+
+#attack-sim h2 {
+  color: #00ffee;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+#attack-sim p {
+  color: #00ffee;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+#attack-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+#attack-buttons .button {
+  flex: 1 1 200px;
+  padding: 16px;
+  font-size: 1.2em;
+  min-width: 150px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#attack-buttons .button:hover {
+  transform: translateY(-3px);
+}
+
+#attack-result {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(0, 255, 238, 0.1);
+  border-radius: 8px;
+  color: #00ffee;
+  text-align: center;
+  display: none;
+}
+#attack-result.success {
+  background: rgba(0, 255, 238, 0.2);
+}
+
+/* Скриване на header, навигация и лого */
+header,
+nav,
+.logo {
+  display: none !important;
 }
