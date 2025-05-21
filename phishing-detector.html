@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Email Check</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .form-section {
+      max-width: 500px;
+      margin: 80px auto;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00ffee;
+    }
+    .form-section input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #00ffee;
+      border-radius: 4px;
+      background: #121212;
+      color: #00ffee;
+    }
+    .form-section button {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #00ffee;
+      background: transparent;
+      color: #00ffee;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .form-section button:hover {
+      background: #00ffee;
+      color: #121212;
+    }
+    #result {
+      margin-top: 15px;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body id="top">
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="phishing-check.html">Phishing Check</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="form-section" data-aos="fade-up">
+    <h2>Phishing Email Check</h2>
+    <p>Въведи адреса на подател или URL за проверка:</p>
+    <input type="text" id="inputValue" placeholder="example@domain.com или https://..." />
+    <button id="checkBtn">Провери за фишинг</button>
+    <div id="result"></div>
+  </section>
+
+  <script>
+    document.getElementById('checkBtn').addEventListener('click', () => {
+      const val = document.getElementById('inputValue').value.trim();
+      const resultEl = document.getElementById('result');
+      if (!val) {
+        resultEl.textContent = 'Моля, въведи валиден адрес.';
+        return;
+      }
+      resultEl.textContent = 'Провеждам проверка…';
+
+      // TODO: Тук можеш да интегрираш реално API (PhishTank, VirusTotal и т.н.)
+      // За демонстрация – ще покажем фиктивен отговор:
+      setTimeout(() => {
+        const isPhish = Math.random() < 0.3;  // 30% шанс „фишинг“
+        if (isPhish) {
+          resultEl.innerHTML = '<span style="color:#ff4d4d;">⚠️ Възможен фишинг!</span>';
+        } else {
+          resultEl.innerHTML = '<span style="color:#4dff4d;">✅ Няма признаци на фишинг.</span>';
+        }
+      }, 1200);
+    });
+  </script>
+</body>
+</html>
