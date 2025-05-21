@@ -307,6 +307,56 @@
 
       logIndex++;
     }, 1500);
+
+    // Chart.js - Cyber Threat Analysis Chart
+    document.addEventListener("DOMContentLoaded", function () {
+      const ctx = document.getElementById('threatChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Phishing', 'Malware', 'Brute Force', 'DDoS', 'Insider'],
+          datasets: [{
+            label: 'Threats Detected',
+            data: [12, 19, 7, 5, 3],
+            backgroundColor: [
+              'rgba(0,255,238,0.7)',
+              'rgba(255,0,204,0.7)',
+              'rgba(0,255,100,0.7)',
+              'rgba(255,255,0,0.7)',
+              'rgba(0,150,255,0.7)'
+            ],
+            borderColor: [
+              '#00ffee',
+              '#ff00cc',
+              '#00ff64',
+              '#ffff00',
+              '#0096ff'
+            ],
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: '#00ffee33' },
+              ticks: { color: '#00ffee' }
+            },
+            x: {
+              grid: { color: '#00ffee33' },
+              ticks: { color: '#00ffee' }
+            }
+          }
+        }
+      });
+    });
   </script>
 </body>
 </html>
