@@ -369,11 +369,6 @@ footer .copyright {
 }
 
 #attack-sim {
-  background: rgba(10, 20, 30, 0.85);
-  border-radius: 16px;
-  padding: 24px;
-  margin: 32px 0;
-  box-shadow: 0 0 24px #00ffee33;
   max-width: 1200px;
   margin: 40px auto;
   padding: 32px 24px;
