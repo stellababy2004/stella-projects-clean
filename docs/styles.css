@@ -53,11 +53,6 @@ html {
    Sections
 ==================== */
 .section {
-<<<<<<< HEAD
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 50px 20px;
-=======
   max-width: 1200px;
   margin: 40px auto;
   padding: 32px 24px;
@@ -69,7 +64,6 @@ html {
 
 .section h1, .section h2 {
   color: #00ffee;
->>>>>>> 6c498508cfb0e06fb8c5ee7d07c9b0e89eb507f0
   text-align: center;
 }
 
@@ -77,13 +71,6 @@ html {
    Buttons
 ==================== */
 .button {
-<<<<<<< HEAD
-  display: inline-block;
-  margin: 10px;
-  padding: 10px 20px;
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,42 +87,6 @@ html {
   background: rgba(0, 0, 0, 0.7);
   border: 2px solid #00ffee;
   border-radius: 16px;
->>>>>>> 6c498508cfb0e06fb8c5ee7d07c9b0e89eb507f0
-  color: #00ffee;
-  border: 2px solid #00ffee;
-  border-radius: 5px;
-  text-decoration: none;
-  background: transparent;
-  transition: background 0.3s, color 0.3s;
-}
-
-.button:hover {
-  background: #00ffee;
-<<<<<<< HEAD
-  color: #040d0d;
-=======
-  color: #0f2027;
-  box-shadow: 0 0 24px #00ffee;
-=======
-  display: inline-flex;
-=======
-  display: flex;
->>>>>>> 59cb6e0 (Промених index.txt)
-  align-items: center;
-  gap: 12px;
-  justify-content: flex-start;
-  text-align: left;
-  padding: 18px 24px;
-  font-size: 1.3em;
-  min-width: 220px;
-  min-height: 60px;
-  box-sizing: border-box;
-  line-height: 1.2;
-  white-space: normal;
-  word-break: break-word;
-  background: #101617;
-  border: 2px solid #00ffee;
-  border-radius: 16px;
   color: #00ffee;
   margin: 12px 0;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
@@ -143,17 +94,10 @@ html {
   text-decoration: none;
 }
 
-<<<<<<< HEAD
 .button:hover {
-  background: #00ffee22;
-  color: #fff;
->>>>>>> 95639f9 (Уеднаквени всички бутони по размер и стил чрез CSS)
-=======
-.button:hover, .button:focus {
   background: #00ffee;
-  color: #101617;
+  color: #0f2027;
   box-shadow: 0 0 24px #00ffee;
-  border-color: #00ffee;
 }
 
 .button span {
@@ -166,15 +110,6 @@ html {
   display: block;
   width: 100%;
   text-align: center;
-}
-
-.button:hover, .button:focus {
-  background: #00ffee;
-  color: #101617;
-  box-shadow: 0 0 24px #00ffee;
-  border-color: #00ffee;
->>>>>>> 59cb6e0 (Промених index.txt)
->>>>>>> 6c498508cfb0e06fb8c5ee7d07c9b0e89eb507f0
 }
 
 /* ====================
@@ -324,14 +259,7 @@ a.button[href*="Presentation_Standard.pdf"]:hover {
   background: #ff00cc;
   color: #181818;
 }
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 59cb6e0 (Промених index.txt)
->>>>>>> 6c498508cfb0e06fb8c5ee7d07c9b0e89eb507f0
 /* ====================
    Footer
 ==================== */
@@ -438,7 +366,6 @@ footer .copyright {
     max-width: 98vw;
     padding: 12px 2vw;
   }
-<<<<<<< HEAD
 }
 
 @media (max-width: 700px) {
@@ -458,37 +385,38 @@ footer .copyright {
   }
 }
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
-=======
->>>>>>> 95639f9 (Уеднаквени всички бутони по размер и стил чрез CSS)
-=======
-}
->>>>>>> 59cb6e0 (Промених index.txt)
-=======
-}
->>>>>>> 6c498508cfb0e06fb8c5ee7d07c9b0e89eb507f0
-.flag-input {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: rgba(0,0,0,0.4);
-  border-left: 3px solid #0ff;
-  color: #0ff;
+/* ====================
+   Header and Navigation
+==================== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
 }
 
-.flag-input input[type="text"] {
-  padding: 0.5rem;
-  margin-right: 0.5rem;
-  border: 1px solid #0ff;
-  background: #000;
-  color: #0ff;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px;
 }
 
-<<<<<<< HEAD
-#attack-sim {
-=======
+nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+main, .section {
+  padding-top: 100px; /* За да не се закрива съдържанието от фиксирания header */
+}
+
 /* ====================
    Attack Simulation Section
 ==================== */
@@ -498,7 +426,6 @@ footer .copyright {
   padding: 24px;
   margin: 32px 0;
   box-shadow: 0 0 24px #00ffee33;
->>>>>>> 6c498508cfb0e06fb8c5ee7d07c9b0e89eb507f0
   max-width: 1200px;
   margin: 40px auto;
   padding: 32px 24px;
@@ -552,14 +479,12 @@ footer .copyright {
 #attack-result.success {
   background: rgba(0, 255, 238, 0.2);
 }
-<<<<<<< HEAD
 
 /* Скриване на header, навигация и лого */
+/*
 header,
 nav,
 .logo {
   display: none !important;
 }
-=======
->>>>>>> 6dc291a (Center Attack Simulation Lab section, update styles, and change attack type prompt to English)
->>>>>>> 6c498508cfb0e06fb8c5ee7d07c9b0e89eb507f0
+*/
