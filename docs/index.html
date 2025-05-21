@@ -132,8 +132,13 @@
 
     <section class="section" id="contact">
       <h2>Contact</h2>
-      <a href="Stella_Barbarella_SOC_Portfolio.pdf" download class="button">📥 Download Portfolio</a>
-      <a href="https://www.linkedin.com/in/stella-s-95ba5683/" class="button">🔗 LinkedIn</a>
+      <form id="cv-form" style="display:inline-block; margin-bottom:12px;">
+        <input type="password" id="cv-password" placeholder="Enter password" style="padding:8px; border-radius:6px; border:1px solid #00ffee; background:#181f23; color:#00ffee; margin-right:8px;">
+        <button type="submit" class="button">⬇️ Download CV</button>
+      </form>
+      <br>
+      <a href="portfolio.pdf" class="button" download>📁 Download Portfolio</a>
+      <a href="https://linkedin.com/in/yourprofile" class="button" target="_blank">🔗 LinkedIn</a>
     </section>
   </main>
 
@@ -356,6 +361,16 @@
           }
         }
       });
+    });
+
+    document.getElementById('cv-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const password = document.getElementById('cv-password').value;
+      if (password === 'cyberpunk2025') {
+        window.location.href = 'cv.pdf'; // смени с реалния път до твоето CV
+      } else {
+        alert('Wrong password!');
+      }
     });
   </script>
 </body>
