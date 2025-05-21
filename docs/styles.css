@@ -15,7 +15,7 @@ html, body {
   overflow-x: hidden;
   font-family: 'Courier New', monospace;
   color: #00ffee;
-  background: linear-gradient(120deg, #000000, #0f0f0f, #001f1f, #040d0d);
+  background: linear-gradient(120deg, #0a161b, #181f23 80%);
   background-size: 600% 600%;
   animation: gradientScroll 20s ease infinite;
   background-attachment: fixed;
@@ -53,55 +53,56 @@ html {
    Sections
 ==================== */
 .section {
-  max-width: 1200px;
-  margin: 40px auto;
+  max-width: 700px;
+  margin: 48px auto;
   padding: 32px 24px;
   border-radius: 24px;
-  background: #121a20;
+  background: #181f23;
   box-shadow: 0 0 32px #00fff966;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .section h1, .section h2 {
   color: #00ffee;
   text-align: center;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
 }
 
 .section p {
   text-align: center;
+  margin-bottom: 18px;
+  color: #bff;
+  font-size: 1.1em;
 }
 
 /* ====================
    Buttons
 ==================== */
 .button {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 18px 24px;
-  font-size: 1.3em;
-  min-width: 220px;
-  min-height: 60px;
-  box-sizing: border-box;
-  line-height: 1.2;
-  white-space: normal;
-  word-break: break-word;
+  padding: 10px 18px;
+  font-size: 1em;
+  min-width: 120px;
+  min-height: 40px;
+  border-radius: 10px;
+  margin: 0 4px;
   background: rgba(0, 0, 0, 0.7);
   border: 2px solid #00ffee;
-  border-radius: 16px;
   color: #00ffee;
-  margin: 12px 0;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
-  box-shadow: 0 0 16px #00ffee55;
+  box-shadow: 0 0 8px #00ffee33;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .button:hover {
   background: #00ffee;
-  color: #0f2027;
-  box-shadow: 0 0 24px #00ffee;
+  color: #181f23;
+  box-shadow: 0 0 16px #00ffee;
 }
 
 .button span {
@@ -396,8 +397,9 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background: rgba(10, 20, 30, 0.98);
   z-index: 1000;
+  box-shadow: 0 2px 16px #00ffee33;
 }
 
 nav {
@@ -406,19 +408,26 @@ nav {
   align-items: center;
   flex-direction: row;
   padding: 10px;
+  background: rgba(0,0,0,0.92);
+  box-shadow: 0 2px 16px #00ffee33;
 }
 
 nav ul {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 18px;
   list-style-type: none;
   margin: 0;
   padding: 0;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0;
 }
 
 main, .section {
-  padding-top: 100px; /* За да не се закрива съдържанието от фиксирания header */
+  padding-top: 80px; /* За да не се закрива съдържанието от фиксирания header */
 }
 
 /* ====================
