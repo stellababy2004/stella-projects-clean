@@ -3,151 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stella Barbarella  SOC Analyst & Cybersecurity Portfolio</title>
+  <title>Stella Barbarella SOC Analyst & Cybersecurity Portfolio</title>
   <meta name="description" content="Cybersecurity Portfolio of Stella Barbarella – SOC Analyst, Threat Hunter & Cybersecurity Enthusiast." />
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
   <link rel="stylesheet" href="styles.css" />
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- External Libraries -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #fff;
-      background-color: #000;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 1000;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-    }
-    nav ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul.project-links {
-      display: flex;
-      gap: 10px;
-    }
-
-    nav a.button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #00ffee;
-      color: #000;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-
-    nav a.button:hover {
-      background-color: #00b3b3;
-    }
-
-    .logo {
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    .logo img {
-      max-width: 180px;
-      height: auto;
-    }
-
-    .section {
-      padding: 60px 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    h1, h2 {
-      color: #00ffee;
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.5em;
-    }
-
-    h2 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-    }
-
-    p {
-      line-height: 1.6;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #00ffee;
-      color: #000;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-
-    .button:hover {
-      background-color: #00b3b3;
-    }
-
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-
-    #log-output {
-      white-space: pre-wrap;
-      background: black;
-      color: #00ffee;
-      padding: 1em;
-      font-family: monospace;
-      border: 1px solid #00ffee;
-      border-radius: 10px;
-      height: 300px;
-      overflow-y: auto;
-    }
-
-    .qr-code {
-      max-width: 100px;
-      height: auto;
-      margin-top: 10px;
-    }
-
-    /* Map container */
-    #map {
-      height: 400px;
-      border: 1px solid #0ff;
-      border-radius: 8px;
-    }
-
-    /* Chart.js styles */
-    #threatChart {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-  </style>
 </head>
 <body id="top">
   <div id="particles-js"></div>
@@ -157,6 +24,7 @@
         <li><a href="#about" class="button">About Me</a></li>
         <li><a href="#projects" class="button">Projects</a></li>
         <li><a href="#chart" class="button">Charts</a></li>
+        <li><a href="attack-sim.html" class="button">AttackSim</a></li>
         <li><a href="#map-section" class="button">Live Map</a></li>
         <li><a href="#testimonials" class="button">Testimonials</a></li>
         <li><a href="#contact" class="button">Contact</a></li>
@@ -176,140 +44,103 @@
           </form>
         </li>
       </ul>
-      <div class="logo" style="text-align:center; margin: 20px 0;">
+      <div class="logo">
         <img src="images/logo.png" alt="Stella Barbarella Logo" style="max-width:180px; height:auto;" />
       </div>
     </nav>
   </header>
 
-  <section class="section" id="about">
-    <h1>Stella Barbarella</h1>
-    <p>SOC Analyst | Cybersecurity Enthusiast | Threat Hunter</p>
-  </section>
+  <main>
+    <section class="section" id="about">
+      <h1>Stella Barbarella</h1>
+      <p>SOC Analyst | Cybersecurity Enthusiast | Threat Hunter</p>
+    </section>
 
-  <section class="section" id="projects">
-    <h2>Projects</h2>
-    <ul class="project-list">
-      <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
-      <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
-      <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
-      <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
-      <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
-    </ul>
-  </section>
-  
-  <section class="section" id="pentest-reports">
-    <h2>Pentest Reports</h2>
-    <p class="pentest-intro">
-      Explore real-world pentest deliverables from <strong>Stella Barbarella</strong>.
-    </p>
-    <ul>
-    </ul>
-  </section>
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+      <ul class="project-list">
+        <!-- Project items can be dynamically inserted here -->
+      </ul>
+    </section>
 
-  <section class="section" id="log-analyzer">
-    <h2>Live Log Analyzer</h2>
-    <div id="log-output" style="white-space: pre-wrap; background: black; color: #00ffee; padding: 1em; font-family: monospace; border: 1px solid #00ffee; border-radius: 10px; height: 300px; overflow-y: auto;"></div>
-    <button id="toggle-logs">⏸ Pause Logs</button>
-  </section>
+    <section class="section" id="phishing-check">
+      <h2>Phishing URL Checker</h2>
+      <form id="phishing-form">
+        <label for="url">Enter URL to check:</label>
+        <input type="text" id="url" name="url" placeholder="https://example.com" required />
+        <button type="submit">Check</button>
+      </form>
+      <div id="phishing-result" style="margin-top: 10px; font-weight: bold;"></div>
+    </section>
 
-  <section class="section" id="testimonials">
-    <h2>Testimonials</h2>
-    <p>"Stella's attention to detail and analytical skills are unmatched!" - <strong>John Doe, Cybersecurity Expert</strong></p>
-    <p>"Her passion for cybersecurity is evident in her work." - <strong>Jane Smith, SOC Manager</strong></p>
-  </section>
+    <section class="section" id="pentest-reports">
+      <h2>Pentest Reports</h2>
+      <p class="pentest-intro">
+        Explore real-world pentest deliverables from <strong>Stella Barbarella</strong>.
+      </p>
+      <ul>
+        <!-- Pentest report links can be added here -->
+      </ul>
+    </section>
 
-  <section class="section" id="checkpoint-map">
-    <h2>Live Threat Map (Check Point)</h2>
-    <iframe 
-      src="https://threatmap.checkpoint.com/" 
-      width="100%" 
-      height="600" 
-      style="border:2px solid #00ffee; border-radius:10px; box-shadow:0 0 10px #00ffee; background-color: black;">
-    </iframe>
-  </section>
+    <section class="section" id="log-analyzer">
+      <h2>Live Log Analyzer</h2>
+      <button id="toggle-logs">⏸ Pause Logs</button>
+      <pre id="log-output" style="background:#111; color:#00ffee; padding:10px; min-height:120px; border-radius:8px; margin-top:10px; max-height:200px; overflow:auto;"></pre>
+    </section>
 
-  <section class="section" id="chart">
-    <h2>Cyber Threat Analysis</h2>
-    <canvas id="threatChart"></canvas>
-  </section>
+    <section class="section" id="attack-sim">
+      <h2>Attack Simulation Lab</h2>
+      <p>Select an attack type to simulate:</p>
+      <div id="attack-buttons">
+        <button class="button" data-attack="phishing">Phishing</button>
+        <button class="button" data-attack="brute-force">Brute Force</button>
+        <button class="button" data-attack="malware">Malware</button>
+        <button class="button" data-attack="ddos">DDoS</button>
+      </div>
+      <div id="attack-result" style="margin-top:20px;"></div>
+    </section>
 
-  <section class="section" id="map-section">
-    <h2>Global Threat Locations</h2>
-    <div id="map" style="height: 400px; border: 1px solid #0ff; border-radius: 8px;"></div>
-    <button id="clear-map">🧹 Clear Map</button>
-  </section>
- 
-  <section class="section" id="contact">
-    <h2>Contact</h2>
-    <a href="Stella_Barbarella_SOC_Portfolio.pdf" download class="button">📥 Download Portfolio</a>
-    <a href="https://www.linkedin.com/in/stella-s-95ba5683/" class="button">🔗 LinkedIn</a>
-    <img src="images/linkedin-qr.png" alt="LinkedIn QR Code" class="qr-code" />
-  </section>
+    <section class="section" id="testimonials">
+      <h2>Testimonials</h2>
+      <p>"Stella's attention to detail and analytical skills are unmatched!" - <strong>John Doe, Cybersecurity Expert</strong></p>
+      <p>"Her passion for cybersecurity is evident in her work." - <strong>Jane Smith, SOC Manager</strong></p>
+    </section>
 
-  <script>
-    particlesJS.load('particles-js', 'particles.json', function() {
-      console.log('particles.js loaded');
-    });
-  </script>
+    <section class="section" id="checkpoint-map">
+      <h2>Live Threat Map (Check Point)</h2>
+      <iframe 
+        src="https://threatmap.checkpoint.com/" 
+        width="100%" 
+        height="600" 
+        style="border:2px solid #00ffee; border-radius:10px; box-shadow:0 0 10px #00ffee; background-color: black;">
+      </iframe>
+    </section>
 
-  <script>
-    const ctx = document.getElementById('threatChart')?.getContext('2d');
-    if (ctx) {
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ['Ransomware', 'Phishing', 'DDoS', 'Malware', 'Spyware'],
-          datasets: [{
-            label: 'Cyber Threats (%)',
-            data: [35, 25, 20, 15, 5],
-            backgroundColor: [
-              'rgba(255,99,132,0.6)',
-              'rgba(54,162,235,0.6)',
-              'rgba(255,206,86,0.6)',
-              'rgba(75,192,192,0.6)',
-              'rgba(153,102,255,0.6)'
-            ],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          scales: { y: { beginAtZero: true } }
-        }
-      });
-    }
-  </script>
+    <section class="section" id="chart">
+      <h2>Cyber Threat Analysis</h2>
+      <div style="width:100%;max-width:800px;margin:auto;">
+        <canvas id="threatChart" height="200"></canvas>
+      </div>
+    </section>
 
-  <script>
-    function checkPassword() {
-      const input = document.getElementById("cvPassword").value;
-      const message = document.getElementById("message");
-      const correctPassword = "cyberpunk2025";
+    <section class="section" id="map-section">
+      <h2>Global Threat Locations</h2>
+      <div id="map" style="height: 400px; border: 1px solid #0ff; border-radius: 8px;"></div>
+      <button id="clear-map">🧹 Clear Map</button>
+    </section>
 
-      if (input === correctPassword) {
-        message.innerHTML = `<a href="Stella_Barbarella_CV.odt" download class="button">📄 Download CV</a>`;
-        message.style.color = "#00ffee";
-      } else {
-        message.textContent = "Incorrect password.";
-        message.style.color = "red";
-      }
-    }
-
-    function checkBookPassword() {
-      const input = document.getElementById("bookPassword").value;
-      const message = document.getElementById("book-message");
-      const correctPassword = "cyberpunk2025";
-
-      if (input === correctPassword) {
-        message.innerHTML = `<a href="books/fr.docx" download class="button" target="_blank">📕 Download Book</a>`;
-        message.style.color = "#00ffee";
-      } else {
-        message.textContent = "Incorrect password.";
-        message.style.color = "red";
-      }
-    }
-  </script>
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <form id="cv-form" style="display:inline-block; margin-bottom:12px;">
+        <input type="password" id="cv-password" placeholder="Enter password" style="padding:8px; border-radius:6px; border:1px solid #00ffee; background:#181f23; color:#00ffee; margin-right:8px;">
+        <button type="submit" class="button">⬇️ Download CV</button>
+      </form>
+      <br>
+      <a href="Stella_Barbarella_SOC_Portfolio.pdf" class="button" download>📁 Download Portfolio</a>
+      <a href="https://linkedin.com/in/yourprofile" class="button" target="_blank">🔗 LinkedIn</a>
+    </section>
+  </main>
 
   <script>
     const logsData = [
@@ -396,9 +227,24 @@
     window.markers = window.markers || [];
     const markers = window.markers;
     const map = L.map('map').setView([20, 0], 2);
+    
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
     }).addTo(map);
+    
+    // Initialize a marker cluster group
+    const markerClusterGroup = L.markerClusterGroup();
+    map.addLayer(markerClusterGroup);
+
+    // Dynamically adjust the map view based on markers
+    const bounds = L.latLngBounds([]);
+    Object.values(ipGeoCoords).forEach(coords => bounds.extend(coords));
+    if (bounds.isValid()) {
+      map.fitBounds(bounds, { padding: [20, 20] });
+    } else {
+      // Fallback to a specific initial view if no markers are present
+      map.setView([20, 0], 2);
+    }
 
     Object.entries(ipGeoCoords).forEach(([ip, coords]) => {
       const location = ipGeoMap[ip] || "🌐 Unknown";
@@ -424,17 +270,16 @@
       });
     });
 
+    const addedMarkers = new Set(); // Track added markers by IP
+
     const interval = setInterval(() => {
       if (logsPaused) return;
 
-      // Върти логовете безкрайно
+      // Loop logs endlessly
       if (logIndex >= logsData.length) logIndex = 0;
 
       const log = logsData[logIndex];
-      const logElement = document.createElement("div");
       const isThreat = threatKeywords.some(keyword => log.includes(keyword));
-      logElement.style.color = isThreat ? "#f00" : "#0f0";
-
       const ipMatch = log.match(/\b\d{1,3}(\.\d{1,3}){3}\b/);
       let displayLog = log;
 
@@ -442,21 +287,234 @@
         const ip = ipMatch[0];
         const location = ipGeoMap[ip] || "🌐 Unknown";
         displayLog += ` → [${location}]`;
-        logElement.textContent = displayLog;
 
-        if (ipGeoCoords[ip]) {
-          const marker = L.marker(ipGeoCoords[ip]).addTo(map);
+        // Add marker to the map
+        if (!addedMarkers.has(ip)) {
+          const marker = L.marker(ipGeoCoords[ip]);
           marker.bindPopup(`<b>${ip}</b><br>${location}<br><span style="color:${isThreat ? 'red' : 'green'}">${isThreat ? '⚠️ Threat' : 'Normal'}</span>`);
-          markers.push(marker);
+          markerClusterGroup.addLayer(marker);
+          addedMarkers.add(ip);
         }
-      } else {
-        logElement.textContent = displayLog;
       }
 
+      // Добавяне на лог с цвят
+      const logElement = document.createElement('div');
+      logElement.textContent = displayLog;
+      logElement.style.color = isThreat ? 'red' : 'green';
       container.appendChild(logElement);
       container.scrollTop = container.scrollHeight;
+
+      // Limit the number of log entries displayed
+      const maxLogs = 100;
+      while (container.childNodes.length > maxLogs) {
+        container.removeChild(container.firstChild);
+      }
+
       logIndex++;
     }, 1500);
+
+    // Chart.js - Cyber Threat Analysis Chart
+    document.addEventListener("DOMContentLoaded", function () {
+      const ctx = document.getElementById('threatChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Phishing', 'Malware', 'Brute Force', 'DDoS', 'Insider'],
+          datasets: [{
+            label: 'Threats Detected',
+            data: [12, 19, 7, 5, 3],
+            backgroundColor: [
+              'rgba(0,255,238,0.7)',
+              'rgba(255,0,204,0.7)',
+              'rgba(0,255,100,0.7)',
+              'rgba(255,255,0,0.7)',
+              'rgba(0,150,255,0.7)'
+            ],
+            borderColor: [
+              '#00ffee',
+              '#ff00cc',
+              '#00ff64',
+              '#ffff00',
+              '#0096ff'
+            ],
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: '#00ffee33' },
+              ticks: { color: '#00ffee' }
+            },
+            x: {
+              grid: { color: '#00ffee33' },
+              ticks: { color: '#00ffee' }
+            }
+          }
+        }
+      });
+    });
+
+    document.getElementById('cv-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const password = document.getElementById('cv-password').value;
+      if (password === 'cyberpunk2025') {
+        window.location.href = 'Stella_Barbarella_CV.odt';
+      } else {
+        alert('Wrong password!');
+      }
+    });
+
+    function checkBookPassword() {
+      const password = document.getElementById('bookPassword').value;
+      const message = document.getElementById('book-message');
+      if (password === 'cyberpunk2025') {
+        window.location.href = 'books/fr.docx'; // смени пътя, ако файлът е друг
+      } else {
+        message.textContent = 'Wrong password!';
+        message.style.color = 'red';
+      }
+    }
+
+    document.querySelectorAll('#attack-buttons .button').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const attack = this.getAttribute('data-attack');
+    const resultDiv = document.getElementById('attack-result');
+    let html = '';
+    switch (attack) {
+      case 'phishing':
+        html = `<b>Phishing Simulation</b><br>
+          <span style="color:#ff00cc;">A fake email was sent to the victim, trying to steal credentials.</span><br>
+          <code>From: it-support@fake.com<br>Subject: Password Reset Required</code>
+          <br><b>Defense:</b> Always check sender address and never click suspicious links.`;
+        break;
+      case 'brute-force':
+        html = `<b>Brute Force Simulation</b><br>
+          <span style="color:#ffae00;">Multiple login attempts detected from one IP.</span><br>
+          <code>May 21 12:01:01 sshd[1234]: Failed password for root from 203.0.113.5</code>
+          <br><b>Defense:</b> Use strong passwords and enable account lockout.`;
+        break;
+      case 'malware':
+        html = `<b>Malware Simulation</b><br>
+          <span style="color:#00ffee;">A suspicious file was downloaded and executed.</span><br>
+          <code>malware.exe started, connecting to C2 server...</code>
+          <br><b>Defense:</b> Use antivirus and never open unknown attachments.`;
+        break;
+      case 'ddos':
+        html = `<b>DDoS Simulation</b><br>
+          <span style="color:#ff4444;">High traffic detected from multiple sources.</span><br>
+          <code>Web server response time: 10s (normal: 0.2s)</code>
+          <br><b>Defense:</b> Use rate limiting and DDoS protection services.`;
+        break;
+      default:
+        html = 'Select an attack type to simulate.';
+    }
+    resultDiv.innerHTML = html;
+  });
+});
+
+let openPhishList = [];
+
+// Зареждане на списъка с фишинг адреси при стартиране
+fetch('openphish.txt')
+  .then(res => res.text())
+  .then(text => {
+    openPhishList = text.split('\n').map(url => url.trim()).filter(Boolean);
+  });
+
+async function checkPhishing(url) {
+  // Проверява дали въведеният URL е в списъка на OpenPhish
+  return openPhishList.includes(url.trim());
+}
+
+document.getElementById('phishing-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const url = document.getElementById('url').value;
+  const resultDiv = document.getElementById('phishing-result');
+  resultDiv.textContent = 'Проверка...';
+  try {
+    const isPhishing = await checkPhishing(url);
+    if (isPhishing) {
+      resultDiv.textContent = '⚠️ Опасен/фишинг сайт!';
+      resultDiv.style.color = 'red';
+    } else {
+      resultDiv.textContent = '✅ Сайтът изглежда безопасен.';
+      resultDiv.style.color = 'lime';
+    }
+  } catch (err) {
+    resultDiv.textContent = 'Грешка при проверката!';
+    resultDiv.style.color = 'orange';
+  }
+});
   </script>
+
+  <style>
+    header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row; /* добави това */
+  padding: 10px;
+}
+
+nav ul {
+  display: flex; /* добави това */
+  flex-direction: row; /* добави това */
+  gap: 10px; /* добави това */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+main, .section {
+  padding-top: 100px; /* добави това, за да не се закрива съдържанието */
+}
+
+    .button, nav ul li a {
+  font-family: inherit;
+  font-size: 1em;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00ffee;
+  color: #00ffee;
+  border-radius: 10px;
+  box-shadow: 0 0 8px #00ffee33;
+  padding: 10px 18px;
+  margin: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+}
+
+nav ul li a:hover, .button:hover {
+  background: #00ffee;
+  color: #181f23;
+  box-shadow: 0 0 16px #00ffee;
+}
+
+nav ul li {
+  margin: 0 6px;
+}
+  </style>
 </body>
 </html>
