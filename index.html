@@ -431,8 +431,12 @@ fetch('openphish.txt')
   });
 
 async function checkPhishing(url) {
+  let testUrl = url.trim();
+  if (!/^https?:\/\//i.test(testUrl)) {
+    testUrl = 'https://' + testUrl;
+  }
   // Проверява дали въведеният URL е в списъка на OpenPhish
-  return openPhishList.includes(url.trim());
+  return openPhishList.includes(testUrl);
 }
 
 document.getElementById('phishing-form').addEventListener('submit', async function(e) {
