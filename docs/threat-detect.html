@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Threat Detection</title>
+  <style>
+    body { background: #101820; color: #00ffee; font-family: monospace; }
+    #threats { margin: 40px auto; max-width: 600px; background: #18232a; border-radius: 12px; padding: 24px; }
+    .threat { margin-bottom: 16px; padding: 12px; border-left: 4px solid #00ffee; background: #11212a; border-radius: 8px; }
+    /* Добавен стил за модалния прозорец */
+    #threatModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #modalContent {
+      background: #18232a;
+      color: #00ffee;
+      padding: 32px;
+      border-radius: 12px;
+      min-width: 300px;
+      max-width: 90vw;
+      position: relative;
+    }
+    #closeModal {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #00ffee;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Real-Time Threat Detection</h2>
+  <div style="margin-bottom: 16px;">
+    <label for="filterType">Филтър по тип:</label>
+    <select id="filterType">
+      <option value="">Всички</option>
+      <option value="DDoS">DDoS</option>
+      <option value="Malware">Malware</option>
+      <option value="Phishing">Phishing</option>
+      <!-- Добавете още типове при нужда -->
+    </select>
+    <button id="sortBtn">Сортирай по време</button>
+    <input type="text" id="searchIp" placeholder="Търси по IP" style="margin-left:10px;">
+  </div>
+  <div id="threats"></div>
+
+  <!-- Модален прозорец за детайли на заплахата -->
+  <div id="threatModal">
+    <div id="modalContent">
+      <button id="closeModal">&times;</button>
+      <div id="modalDetails"></div>
+    </div>
+  </div>
+
+  <!-- Примерна секция за анализ на заплахи -->
+  <div class="section" style="margin-top:40px;">
+    <h2>Cyber Threat Analysis</h2>
+    <div style="border:2px solid #00ffee; border-radius:16px; box-shadow:0 0 24px #00ffee99; padding:32px; background:#101820;">
+      <ul style="font-size:1.1em;">
+        <li><b>Top Threat Type:</b> DDoS</li>
+        <li><b>Most Targeted Country:</b> Bulgaria</li>
+        <li><b>Highest Risk IP:</b> 192.168.1.1</li>
+        <li><b>Last Detected:</b> 2025-05-20 12:05:00</li>
+        <li><b>Summary:</b> Recent activity shows increased DDoS and Malware attempts. Monitor high-risk IPs and update firewall rules.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // const ws = new WebSocket('ws://localhost:8080'); // закоментирайте този ред
+
+    const threats = [
+      {
+        time: '2025-05-20 12:00:00',
+        type: 'DDoS',
+        ip: '192.168.1.1',
+        description: 'Massive traffic detected',
+        risk: 'High',
+        geo: 'Bulgaria'
+      },
+      {
+        time: '2025-05-20 12:05:00',
+        type: 'Malware',
+        ip: '10.0.0.2',
+        description: 'Suspicious file download',
+        risk: 'Medium',
+        geo: 'Germany'
+      }
+    ];
+    let sortAsc = false;
+
+    function renderThreats() {
+      const filterType = document.getElementById('filterType').value;
+      const searchIp = document.getElementById('searchIp').value.trim();
+      let filtered = threats;
+      if (filterType) {
+        filtered = filtered.filter(t => t.type === filterType);
+      }
+      if (searchIp) {
+        filtered = filtered.filter(t => t.ip.includes(searchIp));
+      }
+      filtered = filtered.slice().sort((a, b) => {
+        return sortAsc
+          ? new Date(a.time) - new Date(b.time)
+          : new Date(b.time) - new Date(a.time);
+      });
+      const container = document.getElementById('threats');
+      container.innerHTML = '';
+      filtered.forEach(data => {
+        const div = document.createElement('div');
+        div.className = 'threat';
+        div.textContent = `[${data.time}] ${data.type} from ${data.ip}`;
+        div.style.cursor = 'pointer';
+        div.onclick = () => showThreatDetails(data);
+        container.appendChild(div);
+      });
+    }
+
+    // Функция за показване на детайли за заплахата в модалния прозорец
+    function showThreatDetails(data) {
+      const modal = document.getElementById('threatModal');
+      const details = document.getElementById('modalDetails');
+      details.innerHTML = `
+        <h3>Детайли за заплахата</h3>
+        <p><b>Време:</b> ${data.time}</p>
+        <p><b>Тип:</b> ${data.type}</p>
+        <p><b>IP адрес:</b> ${data.ip}</p>
+        <p><b>Описание:</b> ${data.description || 'Няма информация'}</p>
+        <p><b>Ниво на риск:</b> ${data.risk || 'Неизвестно'}</p>
+        <p><b>Геолокация:</b> ${data.geo || 'Неизвестно'}</p>
+      `;
+      modal.style.display = 'flex';
+    }
+
+    // ws.onmessage = (event) => {
+    //   const data = JSON.parse(event.data);
+    //   threats.push(data);
+    //   renderThreats();
+    // };
+
+    document.getElementById('filterType').addEventListener('change', renderThreats);
+    document.getElementById('sortBtn').addEventListener('click', () => {
+      sortAsc = !sortAsc;
+      renderThreats();
+    });
+    document.getElementById('searchIp').addEventListener('input', renderThreats);
+
+    // Затваряне на модалния прозорец при кликване на бутона за затваряне
+    document.getElementById('closeModal').onclick = function() {
+      document.getElementById('threatModal').style.display = 'none';
+    };
+    document.getElementById('threatModal').onclick = function(e) {
+      if (e.target === this) this.style.display = 'none';
+    };
+
+    // Покажете примерните данни при зареждане:
+    renderThreats();
+  </script>
+</body>
+</html>
