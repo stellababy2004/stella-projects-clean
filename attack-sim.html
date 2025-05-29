@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attack Simulator – Stella Barbarella</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+</head>
+<body class="neon-theme">
+  <header>
+    <h1 data-aos="fade-down">Attack Simulation Lab</h1>
+    <p data-aos="fade-up">Real-world scenarios. Real-time responses.</p>
+  </header>
+
+  <main>
+    <section id="sim1" data-aos="fade-right">
+      <h2>Simulation #1: SSH Brute Force Attack</h2>
+      
+  <div class="log-box">
+    <h3>Sample Logs:</h3>
+    <pre>
+May 18 04:21:17 server sshd[1924]: Failed password for invalid user admin from 203.0.113.42 port 42412 ssh2
+May 18 04:21:19 server sshd[1924]: Failed password for invalid user test from 203.0.113.42 port 42413 ssh2
+May 18 04:21:21 server sshd[1924]: Failed password for invalid user root from 203.0.113.42 port 42414 ssh2
+May 18 04:21:23 server sshd[1924]: Failed password for invalid user guest from 203.0.113.42 port 42415 ssh2
+May 18 04:21:25 server sshd[1924]: Failed password for invalid user oracle from 203.0.113.42 port 42416 ssh2
+    </pre>
+  </div>
+
+  <div class="challenge-box">
+  <div class="flag-input">
+  <label for="flag1">Enter the Flag:</label>
+  <input type="text" id="flag1" placeholder="Flag{...}" />
+  <button onclick="checkFlag1()">Submit</button>
+  <p id="flag1-result"></p>
+</div>
+
+    <h3>Challenge:</h3>
+    <p>
+      Analyze the logs and extract the flag hidden in the pattern of failed attempts.  
+      Hint: count how many unique usernames were tried before blocking.
+    </p>
+  </div>
+
+  <div class="hint-box">
+    <h3>Hint:</h3>
+    <ul>
+      <li>There are 5 attempts from the same IP.</li>
+      <li>The flag format is <code>Flag{SSH_Brute_&#x3C;number&#x3E;}</code>.</li>
+    </ul>
+  </div>
+
+  <div class="flag-input">
+    <label for="flag1">Enter the Flag:</label>
+    <input type="text" id="flag1" placeholder="Flag{...}" />
+    <button onclick="checkFlag1()">Submit</button>
+    <p id="flag1-result"></p>
+  </div>
+</section>
+    </section>
+
+    <section id="sim2" data-aos="fade-left">
+      <h2>Simulation #2: Phishing Email Analysis</h2>
+      <p>Email with suspicious attachment and spoofed sender...</p>
+      <!-- Място за анализ и препоръки -->
+    </section>
+
+    <section id="sim3" data-aos="fade-right">
+      <h2>Simulation #3: DNS Exfiltration</h2>
+      <p>Large volumes of DNS queries with suspicious patterns...</p>
+      <!-- Място за Packet Capture / логове -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Stella Barbarella</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  function checkFlag1() {
+  const user = document.getElementById("flag1").value.trim();
+  const result = document.getElementById("flag1-result");
+  const correct = "Flag{SSH_Brute_5}";
+
+  if (user === correct) {
+    result.textContent = "✅ Correct! You identified all 5 unique brute-force attempts.";
+    result.style.color = "#0f0";
+  } else {
+    result.textContent = "❌ Incorrect, try again.";
+    result.style.color = "#f00";
+  }
+}
+
+</body>
+</html>

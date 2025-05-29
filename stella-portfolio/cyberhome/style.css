@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0c0c0c;
+  color: #f0f0f0;
+}
+
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+h1, h2 {
+  color: #00ffe7;
+  text-shadow: 0 0 10px #00ffe7;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #ff007f;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ff007f;
+  transition: background 0.3s;
+}
+
+.cta-button:hover {
+  background: #e6006b;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+  font-size: 1.1em;
+  color: #c0c0c0;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+button {
+  padding: 12px;
+  background: #00ffe7;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  display: none;
+  font-size: 24px;
+  background-color: #00ffe7;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 15px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ffe7;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+#backToTop:hover {
+  background-color: #00c4b4;
+}
+
+#darkModeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px 14px;
+  font-size: 14px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1001;
+  box-shadow: 0 0 8px #00ffe7;
+  transition: all 0.3s;
+}
+
+#darkModeToggle:hover {
+  background: #444;
+}
+
+body.dark-mode {
+  background: #ffffff;
+  color: #000000;
+}
+
+body.dark-mode h1, 
+body.dark-mode h2 {
+  color: #ff007f;
+  text-shadow: none;
+}
+
+body.dark-mode #backToTop {
+  background-color: #ff007f;
+  color: #fff;
+  box-shadow: 0 0 10px #ff007f;
+}
+
+body.dark-mode #backToTop:hover {
+  background-color: #c20063;
+}
+
+body.dark-mode #darkModeToggle {
+  background: #f0f0f0;
+  color: #000;
+  box-shadow: 0 0 8px #ff007f;
+}
+
+.pdf-preview {
+  padding: 60px 20px;
+  text-align: center;
+  background: #111;
+}
+
+.pdf-preview h2 {
+  color: #00ffe7;
+}
+
+.badges {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.badges img {
+  height: 32px;
+}
