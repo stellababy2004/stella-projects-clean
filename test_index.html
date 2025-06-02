@@ -1,0 +1,134 @@
+// __tests__/phishing-checker.test.js
+
+/**
+ * @jest-environment jsdom
+ */
+
+import '@testing-library/jest-dom';
+import { fireEvent } from '@testing-library/dom';
+
+// Mock fetch globally
+global.fetch = jest.fn();
+
+const apiKey = 'YOUR_GOOGLE_API_KEY';
+const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`;
+
+// Copy the checkPhishing function from your code
+async function checkPhishing(url) {
+  const body = {
+    client: {
+      clientId: "yourcompany",
+      clientVersion: "1.0"
+    },
+    threatInfo: {
+      threatTypes: ["MALWARE", "SOCIAL_ENGINEERING", "UNWANTED_SOFTWARE", "POTENTIALLY_HARMFUL_APPLICATION"],
+      platformTypes: ["ANY_PLATFORM"],
+      threatEntryTypes: ["URL"],
+      threatEntries: [{ url }]
+    }
+  };
+  const res = await fetch(apiUrl, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" }
+  });
+  const data = await res.json();
+  return data && data.matches ? true : false;
+}
+
+describe('checkPhishing', () => {
+  beforeEach(() => {
+    fetch.mockClear();
+  });
+
+  it('returns true if matches found', async () => {
+    fetch.mockResolvedValueOnce({
+      json: async () => ({ matches: [{ threatType: "MALWARE" }] })
+    });
+    const result = await checkPhishing('http://malicious.com');
+    expect(result).toBe(true);
+    expect(fetch).toHaveBeenCalledWith(apiUrl, expect.any(Object));
+  });
+
+  it('returns false if no matches', async () => {
+    fetch.mockResolvedValueOnce({
+      json: async () => ({})
+    });
+    const result = await checkPhishing('http://safe.com');
+    expect(result).toBe(false);
+  });
+
+  it('throws on fetch error', async () => {
+    fetch.mockRejectedValueOnce(new Error('Network error'));
+    await expect(checkPhishing('http://fail.com')).rejects.toThrow('Network error');
+  });
+});
+
+describe('Phishing form integration', () => {
+  let form, urlInput, resultDiv;
+
+  beforeEach(() => {
+    document.body.innerHTML = `
+      <form id="phishing-form">
+        <input type="text" id="url" />
+        <button type="submit">Check</button>
+      </form>
+      <div id="phishing-result"></div>
+    `;
+    form = document.getElementById('phishing-form');
+    urlInput = document.getElementById('url');
+    resultDiv = document.getElementById('phishing-result');
+    // Attach the event handler as in your code
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const url = urlInput.value;
+      resultDiv.textContent = 'Проверка...';
+      try {
+        const isPhishing = await checkPhishing(url);
+        if (isPhishing) {
+          resultDiv.textContent = '⚠️ Опасен/фишинг сайт!';
+          resultDiv.style.color = 'red';
+        } else {
+          resultDiv.textContent = '✅ Сайтът изглежда безопасен.';
+          resultDiv.style.color = 'lime';
+        }
+      } catch (err) {
+        resultDiv.textContent = 'Грешка при проверката!';
+        resultDiv.style.color = 'orange';
+      }
+    });
+    fetch.mockClear();
+  });
+
+  it('shows phishing warning for malicious URL', async () => {
+    fetch.mockResolvedValueOnce({
+      json: async () => ({ matches: [{ threatType: "MALWARE" }] })
+    });
+    urlInput.value = 'http://malicious.com';
+    fireEvent.submit(form);
+    // Wait for async
+    await new Promise(r => setTimeout(r, 0));
+    expect(resultDiv).toHaveTextContent('⚠️ Опасен/фишинг сайт!');
+    expect(resultDiv.style.color).toBe('red');
+  });
+
+  it('shows safe message for clean URL', async () => {
+    fetch.mockResolvedValueOnce({
+      json: async () => ({})
+    });
+    urlInput.value = 'http://safe.com';
+    fireEvent.submit(form);
+    await new Promise(r => setTimeout(r, 0));
+    expect(resultDiv).toHaveTextContent('✅ Сайтът изглежда безопасен.');
+    expect(resultDiv.style.color).toBe('lime');
+  });
+
+  it('shows error message on fetch failure', async () => {
+    fetch.mockRejectedValueOnce(new Error('Network error'));
+    urlInput.value = 'http://fail.com';
+    fireEvent.submit(form);
+    await new Promise(r => setTimeout(r, 0));
+    expect(resultDiv).toHaveTextContent('Грешка при проверката!');
+    expect(resultDiv.style.color).toBe('orange');
+  });
+});

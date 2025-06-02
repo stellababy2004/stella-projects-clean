@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Force Refresh - Stella Barbarella</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #111;
+            color: #0ff;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        p {
+            font-size: 1.5em;
+        }
+        .button {
+            background-color: #0ff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #111;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .button:hover {
+            background-color: #00cc99;
+        }
+    </style>
+</head>
+<body>
+    <h1 data-aos="fade-up">Force Refresh GitHub Pages</h1>
+    <p data-aos="fade-up" data-aos-delay="300">The page is being refreshed. Please wait...</p>
+    <button class="button" data-aos="zoom-in" data-aos-delay="600" onclick="location.reload();">Refresh Now</button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
