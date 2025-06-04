@@ -8,21 +8,14 @@
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
   <link rel="stylesheet" href="styles.css" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Only include each library ONCE -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
 
   <style>
     .button {
@@ -167,14 +160,10 @@
         <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
         <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
         <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
-
        <li><a href="cyberhome/index.html" class="button" target="_blank">🧪 Live Demo: Cyber Page</a></li>
        <li><a href="chat.html" class="button">🤖 AI Chatbot</a></li>
-       <li>
-  <a class="button" href="https://github.com/stellababy2004/stella-projects/blob/main/stella_deploy_ready.zip?raw=true" target="_blank">
-    📦 Download AI Chatbot (.zip)
-  </a>
-</li>
+       <li>  <a class="button" href="https://github.com/stellababy2004/stella-projects/blob/main/stella_deploy_ready.zip?raw=true" target="_blank">
+    📦 Download AI Chatbot (.zip)  </a></li>
       </ul>
     </section>
 
@@ -189,18 +178,8 @@
       <div id="phishing-result" style="margin-top: 10px; font-weight: bold;"></div>
       <img src="images/logo.png" alt="Stella Barbarella Logo" style="max-width:180px; height:auto;" loading="lazy" />
       <p style="font-size: 0.9em; color: gray; margin-top: 5px;">
-        Note: This is a simulation and does not perform actual phishing detection.
-      </p>
-
-        <button type="submit" id="phishing-submit">Check</button>
-      </form>
-      <div id="phishing-warning" style="color:orange; font-size:0.95em; margin-top:6px; display:none;"></div>
-      <div id="phishing-result" style="margin-top: 10px; font-weight: bold;"></div>
-      <img src="images/logo.png" alt="Stella Barbarella Logo" style="max-width:180px; height:auto;" loading="lazy" />
-      <p style="font-size: 0.9em; color: gray; margin-top: 5px;">
         Note: This tool checks against a static list of known phishing URLs for demonstration and educational purposes only. It is not a real-time or comprehensive phishing detection service.
       </p>
-
     </section>
   
     <section class="section" id="pentest-reports">
@@ -268,6 +247,13 @@
 
     <section class="section" id="cybersec-chatbot">
       <h2>CyberSec AI Chat</h2>
+      <iframe
+    src="https://happy-ocean-1234.gradio.app"
+    width="100%"
+    height="600"
+    frameborder="0"
+    style="border-radius: 12px; overflow: hidden;">
+  </iframe>
       <div id="ai-chat-box" style="background:#111; color:#00ffee; padding:16px; border-radius:10px; min-height:120px; max-height:300px; overflow-y:auto; margin-bottom:10px;"></div>
       <form id="ai-chat-form" style="display:flex; gap:10px;">
         <input id="ai-chat-input" type="text" placeholder="Ask a cybersecurity question..." style="flex:1; padding:10px; border-radius:8px; border:1px solid #00ffee; background:#222; color:#00ffee;">
@@ -278,29 +264,7 @@
   </main>
 
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var mapDiv = document.getElementById('map');
-    if (mapDiv) {
-      var map = L.map('map').setView([42.7, 23.3], 3);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '© OpenStreetMap contributors'
-      }).addTo(map);
-
-      // Example markers (remove these)
-      L.marker([42.7, 23.3]).addTo(map).bindPopup('Sofia, Bulgaria');
-      L.marker([51.5, -0.09]).addTo(map).bindPopup('London, UK');
-      L.marker([40.7, -74.0]).addTo(map).bindPopup('New York, USA');
-      L.marker([48.85, 2.35]).addTo(map).bindPopup('Paris, France');
-      L.marker([35.68, 139.76]).addTo(map).bindPopup('Tokyo, Japan');
-      L.marker([55.75, 37.62]).addTo(map).bindPopup('Moscow, Russia');
-      L.marker([52.52, 13.40]).addTo(map).bindPopup('Berlin, Germany');
-      L.marker([34.05, -118.24]).addTo(map).bindPopup('Los Angeles, USA');
-      L.marker([-33.87, 151.21]).addTo(map).bindPopup('Sydney, Australia');
-      L.marker([19.43, -99.13]).addTo(map).bindPopup('Mexico City, Mexico');
-  </main>
-
-  <script>
+  // Map initialization and clear button
   window.attackSimMap = null;
   window.attackSimMarkers = [];
 
@@ -313,7 +277,7 @@
         attribution: '© OpenStreetMap contributors'
       }).addTo(window.attackSimMap);
     }
-  
+
     var clearBtn = document.getElementById('clear-map');
     if (clearBtn && window.attackSimMap) {
       clearBtn.addEventListener('click', function () {
@@ -328,176 +292,92 @@
   });
   </script>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-
   <script>
-    (function () {
-  const logOutput = document.getElementById('log-output');
-  const toggleBtn = document.getElementById('toggle-logs');
-  let paused = false;
-  let logInterval;
+  // Live Log Analyzer
+  (function () {
+    const logOutput = document.getElementById('log-output');
+    const toggleBtn = document.getElementById('toggle-logs');
+    let paused = false;
+    let logInterval;
 
-  const logs = [
-    "[INFO]  Connection from 192.168.1.10 accepted.",
-    "[ALERT]  Suspicious login attempt detected from 203.0.113.5.",
-    "[WARNING]  Multiple failed logins for user 'admin'.",
-    "[INFO]  Malware signature updated successfully.",
-    "[CRITICAL]  Ransomware activity detected on host 10.0.0.23.",
-    "[INFO]  Outbound traffic to 8.8.8.8 allowed.",
-    "[ALERT]  Phishing email detected and quarantined.",
-    "[INFO]  User 'stella' changed password.",
-    "[WARNING]  Unusual data transfer detected.",
-    "[INFO]  System scan completed. No threats found.",
-    "[NOTICE]  New device registered: 10.1.1.5.",
-    "[DEBUG]  Packet dropped due to invalid checksum.",
-    "[ERROR]  Failed to update antivirus definitions.",
-    "[SUCCESS]  Backup completed successfully.",
-    "[FAIL]  Backup failed: disk full.",
-    "[INFO]  User 'admin' logged out.",
-    "[ALERT]  Port scan detected from 185.23.44.12.",
-    "[CRITICAL]  Data exfiltration attempt blocked.",
-    "[WARNING]  High CPU usage detected on server01.",
-    "[NOTICE]  Scheduled maintenance started.",
-    "[SUCCESS]  Patch applied to all endpoints."
-  ];
+    const logs = [
+      "[INFO]  Connection from 192.168.1.10 accepted.",
+      "[ALERT]  Suspicious login attempt detected from 203.0.113.5.",
+      "[WARNING]  Multiple failed logins for user 'admin'.",
+      "[INFO]  Malware signature updated successfully.",
+      "[CRITICAL]  Ransomware activity detected on host 10.0.0.23.",
+      "[INFO]  Outbound traffic to 8.8.8.8 allowed.",
+      "[ALERT]  Phishing email detected and quarantined.",
+      "[INFO]  User 'stella' changed password.",
+      "[WARNING]  Unusual data transfer detected.",
+      "[INFO]  System scan completed. No threats found.",
+      "[NOTICE]  New device registered: 10.1.1.5.",
+      "[DEBUG]  Packet dropped due to invalid checksum.",
+      "[ERROR]  Failed to update antivirus definitions.",
+      "[SUCCESS]  Backup completed successfully.",
+      "[FAIL]  Backup failed: disk full.",
+      "[INFO]  User 'admin' logged out.",
+      "[ALERT]  Port scan detected from 185.23.44.12.",
+      "[CRITICAL]  Data exfiltration attempt blocked.",
+      "[WARNING]  High CPU usage detected on server01.",
+      "[NOTICE]  Scheduled maintenance started.",
+      "[SUCCESS]  Patch applied to all endpoints."
+    ];
 
-  function addLog() {
-    if (!paused) {
-      const log = logs[Math.floor(Math.random() * logs.length)];
-      const now = new Date().toLocaleTimeString();
-
-    
-      let color = "#00ffee";
-      if (log.includes("CRITICAL")) color = "#ff1744";
-      else if (log.includes("ALERT")) color = "#ffea00";
-      else if (log.includes("WARNING")) color = "#ff9100";
-      else if (log.includes("ERROR") || log.includes("FAIL")) color = "#ff1744";
-      else if (log.includes("SUCCESS")) color = "#00e676";
-      else if (log.includes("NOTICE")) color = "#00b0ff";
-      else if (log.includes("DEBUG")) color = "#bdbdbd";
-      else if (log.includes("INFO")) color = "#00ffee";
-
-     
-      const span = document.createElement('span');
-      span.textContent = `[${now}] ${log}\n`;
-      span.style.color = color;
-      logOutput.appendChild(span);
-      logOutput.scrollTop = logOutput.scrollHeight;
-    }
-  }
-
-  function startLogs() {
-    logInterval = setInterval(addLog, 1200);
-  }
-
-  function stopLogs() {
-    clearInterval(logInterval);
-  }
-
-  if (logOutput && toggleBtn) {
-    startLogs();
-    toggleBtn.addEventListener('click', function () {
-      paused = !paused;
-      if (paused) {
-        stopLogs();
-        toggleBtn.textContent = "▶ Resume Logs";
-      } else {
-        startLogs();
-        toggleBtn.textContent = "⏸ Pause Logs";
-      }
-    });
-  }
-})();
-  </script>
-
-  <script>
-
-document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll('#attack-buttons .button');
-  const result = document.getElementById('attack-result');
-  const logOutput = document.getElementById('log-output');
-  const threatChart = window.threatChartInstance;
-  const mapDiv = document.getElementById('map');
-  let map = window.attackSimMap;
-
-
-  const attackDescriptions = {
-    "phishing": "Simulation: A phishing email was sent to an employee. The SOC detects a suspicious link and blocks access.",
-    "brute-force": "Simulation: Multiple failed login attempts detected. The system temporarily blocks the IP address.",
-    "malware": "Simulation: A malicious file was uploaded. The antivirus system isolates it and alerts the SOC team.",
-    "ddos": "Simulation: High traffic volume detected towards the server. DDoS protection limits attacking IPs."
-  };
-
-
-  const attackLogs = {
-    "phishing": "[ALERT]  Phishing email detected and quarantined.",
-    "brute-force": "[WARNING]  Multiple failed logins for user 'admin'.",
-    "malware": "[CRITICAL]  Malware detected and isolated.",
-    "ddos": "[ALERT]  DDoS attack detected. Traffic filtered."
-  };
-
-
-  const attackLocations = {
-    "phishing": [51.5, -0.09],        // London
-    "brute-force": [40.7, -74.0],     // New York
-    "malware": [48.85, 2.35],         // Paris
-    "ddos": [35.68, 139.76]           // Tokyo
-  };
-
-
-  const chartIndex = {
-    "phishing": 0,
-    "malware": 1,
-    "ddos": 3,
-    "brute-force": 4
-  };
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', function () {
-      const type = btn.getAttribute('data-attack');
-      result.style.display = "none"; // Hide previous result
-      result.textContent = attackDescriptions[type] || "No information for this attack type.";
-      result.style.display = "block";
-
-  
-      if (logOutput && attackLogs[type]) {
+    function addLog() {
+      if (!paused) {
+        const log = logs[Math.floor(Math.random() * logs.length)];
         const now = new Date().toLocaleTimeString();
+
+        let color = "#00ffee";
+        if (log.includes("CRITICAL")) color = "#ff1744";
+        else if (log.includes("ALERT")) color = "#ffea00";
+        else if (log.includes("WARNING")) color = "#ff9100";
+        else if (log.includes("ERROR") || log.includes("FAIL")) color = "#ff1744";
+        else if (log.includes("SUCCESS")) color = "#00e676";
+        else if (log.includes("NOTICE")) color = "#00b0ff";
+        else if (log.includes("DEBUG")) color = "#bdbdbd";
+        else if (log.includes("INFO")) color = "#00ffee";
+
         const span = document.createElement('span');
-        span.textContent = `[${now}] ${attackLogs[type]}\n`;
-        span.style.color = "#ffea00";
+        span.textContent = `[${now}] ${log}\n`;
+        span.style.color = color;
         logOutput.appendChild(span);
         logOutput.scrollTop = logOutput.scrollHeight;
       }
+    }
 
-     
-      if (mapDiv && window.L && attackLocations[type]) {
-        if (!window.attackSimMap) {
-          window.attackSimMap = L.map('map').setView([42.7, 23.3], 3);
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '© OpenStreetMap contributors'
-          }).addTo(window.attackSimMap);
+    function startLogs() {
+      logInterval = setInterval(addLog, 1200);
+    }
+
+    function stopLogs() {
+      clearInterval(logInterval);
+    }
+
+    if (logOutput && toggleBtn) {
+      startLogs();
+      toggleBtn.addEventListener('click', function () {
+        paused = !paused;
+        if (paused) {
+          stopLogs();
+          toggleBtn.textContent = "▶ Resume Logs";
+        } else {
+          startLogs();
+          toggleBtn.textContent = "⏸ Pause Logs";
         }
-        L.marker(attackLocations[type]).addTo(window.attackSimMap)
-          .bindPopup(`${type.charAt(0).toUpperCase() + type.slice(1)} attack`).openPopup();
-      }
+      });
+    }
+  })();
+  </script>
 
-      if (window.threatChartInstance && chartIndex[type] !== undefined) {
-        window.threatChartInstance.data.datasets[0].data[chartIndex[type]] += 1;
-        window.threatChartInstance.update();
-      }
-    });
-  });
-}); 
-
+  <script>
+  // Attack Simulation Lab
   document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll('#attack-buttons .button');
     const result = document.getElementById('attack-result');
     const logOutput = document.getElementById('log-output');
-    const threatChart = window.threatChartInstance;
     const mapDiv = document.getElementById('map');
-    // Use the globally initialized map
     let map = window.attackSimMap;
 
     const attackDescriptions = {
@@ -507,14 +387,12 @@ document.addEventListener("DOMContentLoaded", function () {
       "ddos": "Simulation: High traffic volume detected towards the server. DDoS protection limits attacking IPs."
     };
 
-
     const attackLogs = {
       "phishing": "[ALERT]  Phishing email detected and quarantined.",
       "brute-force": "[WARNING]  Multiple failed logins for user 'admin'.",
       "malware": "[CRITICAL]  Malware detected and isolated.",
       "ddos": "[ALERT]  DDoS attack detected. Traffic filtered."
     };
-
 
     const attackLocations = {
       "phishing": [51.5, -0.09],        // London
@@ -523,10 +401,10 @@ document.addEventListener("DOMContentLoaded", function () {
       "ddos": [35.68, 139.76]           // Tokyo
     };
 
-
     const chartIndex = {
       "phishing": 0,
       "malware": 1,
+      "ransomware": 2,
       "ddos": 3,
       "brute-force": 4
     };
@@ -565,154 +443,59 @@ document.addEventListener("DOMContentLoaded", function () {
   </script>
 
   <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const ctx = document.getElementById('threatChart').getContext('2d');
-  window.threatChartInstance = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Phishing', 'Malware', 'Ransomware', 'DDoS', 'Brute Force'],
-      datasets: [{
-        label: 'Detected Threats',
-        data: [12, 8, 4, 10, 6], // Примерни данни
-        backgroundColor: [
-          '#00ffeecc',
-          '#ff00ccbb',
-          '#ffaa00bb',
-          '#00ff88bb',
-          '#ffea00bb'
-        ],
-        borderColor: '#00ffee',
-        borderWidth: 2
-      }]
-    },
-    options: {
-      plugins: {
-        legend: { display: false }
+  // Chart.js Threat Chart
+  document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById('threatChart').getContext('2d');
+    window.threatChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Phishing', 'Malware', 'Ransomware', 'DDoS', 'Brute Force'],
+        datasets: [{
+          label: 'Detected Threats',
+          data: [12, 8, 4, 10, 6],
+          backgroundColor: [
+            '#00ffeecc',
+            '#ff00ccbb',
+            '#ffaa00bb',
+            '#00ff88bb',
+            '#ffea00bb'
+          ],
+          borderColor: '#00ffee',
+          borderWidth: 2
+        }]
       },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: { color: '#00ffee' },
-          grid: { color: '#222' }
+      options: {
+        plugins: {
+          legend: { display: false }
         },
-        x: {
-          ticks: { color: '#00ffee' },
-          grid: { color: '#222' }
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { color: '#00ffee' },
+            grid: { color: '#222' }
+          },
+          x: {
+            ticks: { color: '#00ffee' },
+            grid: { color: '#222' }
+          }
         }
       }
-    }
+    });
   });
-});
-</script>
-<script>
-<<<<<<< HEAD
-let openPhishList = [];
+  </script>
 
-fetch('openphish.txt')
-  .then(res => res.text())
-  .then(text => {
-    openPhishList = text.split('\n').map(url => url.trim()).filter(Boolean);
-  });
-
-function normalizeUrl(url) {
-  return url.trim().replace(/^https?:\/\//i, '').replace(/\/$/, '').toLowerCase();
-}
-
-async function checkPhishing(url) {
-  const testUrl = normalizeUrl(url);
-  return openPhishList.some(phishUrl => normalizeUrl(phishUrl) === testUrl);
-}
-
-document.getElementById('phishing-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const url = document.getElementById('url').value;
-  const resultDiv = document.getElementById('phishing-result');
-  resultDiv.textContent = 'Checking...';
-  const isPhishing = await checkPhishing(url);
-  if (isPhishing) {
-    resultDiv.textContent = '⚠️ Dangerous/phishing site!';
-    resultDiv.style.color = 'red';
-  } else {
-    resultDiv.textContent = '✅ The site appears safe.';
-    resultDiv.style.color = 'lime';
-  }
-});
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const chatBox = document.getElementById('ai-chat-box');
-  const chatForm = document.getElementById('ai-chat-form');
-  const chatInput = document.getElementById('ai-chat-input');
-
-  const answers = [
-    { q: /phishing/i, a: "Phishing is a type of cyber attack where attackers trick users into revealing sensitive information. Always check URLs and never click suspicious links." },
-    { q: /siem/i, a: "SIEM stands for Security Information and Event Management. It helps SOC analysts detect and respond to threats." },
-    { q: /threat hunting/i, a: "Threat hunting is the proactive search for cyber threats that are lurking undetected in a network." },
-    { q: /portfolio/i, a: "You can download my cybersecurity portfolio from the Contact section above!" },
-    { q: /hello|hi|hey/i, a: "Hello! How can I help you with cybersecurity today?" }
-  ];
-
-  chatForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const userQ = chatInput.value;
-    chatBox.innerHTML += `<div><strong>You:</strong> ${userQ}</div>`;
-    let found = false;
-    for (const pair of answers) {
-      if (pair.q.test(userQ)) {
-        chatBox.innerHTML += `<div><strong>Stella AI:</strong> ${pair.a}</div>`;
-        found = true;
-        break;
-      }
-    }
-    if (!found) {
-      chatBox.innerHTML += `<div><strong>Stella AI:</strong> Sorry, I don't have an answer for that yet. Try asking about phishing, SIEM, or threat hunting!</div>`;
-    }
-    chatBox.scrollTop = chatBox.scrollHeight;
-    chatInput.value = '';
-  });
-});
-</script>
-</body>
-</html>
-=======
-document.addEventListener("DOMContentLoaded", function () {
+  <script>
+  // Phishing URL Checker logic
   let openPhishList = [];
-  let phishingListLoaded = false;
-  const phishingWarning = document.getElementById('phishing-warning');
-  const phishingSubmit = document.getElementById('phishing-submit');
-  if (phishingSubmit) phishingSubmit.disabled = true;
 
-fetch('openphish.txt')
-  .then(res => {
-    if (!res.ok) throw new Error('Phishing list not found');
-    return res.text();
-  })
-  .then(text => {
-    openPhishList = text.split('\n').map(url => url.trim()).filter(Boolean);
-    phishingListLoaded = true;
-    if (phishingSubmit) phishingSubmit.disabled = false;
-  })
-  .catch(err => {
-    phishingListLoaded = false;
-    if (phishingWarning) {
-      phishingWarning.textContent = '⚠️ Unable to load phishing URL list. The checker may not work.';
-      phishingWarning.style.display = 'block';
-    }
-    if (phishingSubmit) phishingSubmit.disabled = false;
-  });
+  fetch('openphish.txt')
+    .then(res => res.text())
+    .then(text => {
+      openPhishList = text.split('\n').map(url => url.trim()).filter(Boolean);
+    });
 
   function normalizeUrl(url) {
     return url.trim().replace(/^https?:\/\//i, '').replace(/\/$/, '').toLowerCase();
-  }
-
-  function isValidUrl(url) {
-    try {
-      new URL(url);
-      return true;
-    } catch {
-      return false;
-    }
   }
 
   async function checkPhishing(url) {
@@ -722,24 +505,8 @@ fetch('openphish.txt')
 
   document.getElementById('phishing-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const url = document.getElementById('url').value.trim();
+    const url = document.getElementById('url').value;
     const resultDiv = document.getElementById('phishing-result');
-    resultDiv.style.color = '';
-    if (!url) {
-      resultDiv.textContent = 'Please enter a URL.';
-      resultDiv.style.color = 'orange';
-      return;
-    }
-    if (!isValidUrl(url)) {
-      resultDiv.textContent = 'Invalid URL format.';
-      resultDiv.style.color = 'orange';
-      return;
-    }
-    if (!phishingListLoaded) {
-      resultDiv.textContent = 'Phishing list not loaded. Cannot check.';
-      resultDiv.style.color = 'orange';
-      return;
-    }
     resultDiv.textContent = 'Checking...';
     const isPhishing = await checkPhishing(url);
     if (isPhishing) {
@@ -750,13 +517,42 @@ fetch('openphish.txt')
       resultDiv.style.color = 'lime';
     }
   });
-});
-</script>
-<script>
-  particlesJS.load('particles-js', 'particles.json', function() {
-    console.log('callback - particles.js config loaded');
+  </script>
+
+  <script>
+  // Simple AI Chatbot
+  document.addEventListener("DOMContentLoaded", function () {
+    const chatBox = document.getElementById('ai-chat-box');
+    const chatForm = document.getElementById('ai-chat-form');
+    const chatInput = document.getElementById('ai-chat-input');
+
+    const answers = [
+      { q: /phishing/i, a: "Phishing is a type of cyber attack where attackers trick users into revealing sensitive information. Always check URLs and never click suspicious links." },
+      { q: /siem/i, a: "SIEM stands for Security Information and Event Management. It helps SOC analysts detect and respond to threats." },
+      { q: /threat hunting/i, a: "Threat hunting is the proactive search for cyber threats that are lurking undetected in a network." },
+      { q: /portfolio/i, a: "You can download my cybersecurity portfolio from the Contact section above!" },
+      { q: /hello|hi|hey/i, a: "Hello! How can I help you with cybersecurity today?" }
+    ];
+
+    chatForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const userQ = chatInput.value;
+      chatBox.innerHTML += `<div><strong>You:</strong> ${userQ}</div>`;
+      let found = false;
+      for (const pair of answers) {
+        if (pair.q.test(userQ)) {
+          chatBox.innerHTML += `<div><strong>Stella AI:</strong> ${pair.a}</div>`;
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        chatBox.innerHTML += `<div><strong>Stella AI:</strong> Sorry, I don't have an answer for that yet. Try asking about phishing, SIEM, or threat hunting!</div>`;
+      }
+      chatBox.scrollTop = chatBox.scrollHeight;
+      chatInput.value = '';
+    });
   });
-</script>
+  </script>
 </body>
 </html>
->>>>>>> 871d14f879b332bc4e1329c93e1ef50fa0e9e366
