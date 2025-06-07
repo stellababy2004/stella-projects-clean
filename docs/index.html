@@ -6,7 +6,7 @@
   <title>Stella Barbarella SOC Analyst & Cybersecurity Portfolio</title>
   <meta name="description" content="Cybersecurity Portfolio of Stella Barbarella – SOC Analyst, Threat Hunter & Cybersecurity Enthusiast." />
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
-  <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css" />
 
  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -115,6 +115,7 @@
         <li><a href="#projects" class="button">Projects</a></li>
         <li><a href="#chart" class="button">Charts</a></li>
         <li><a href="attack-sim.html" class="button">AttackSim</a></li>
+        <li><a href="https://huggingface.co/spaces/stellababy2004/cyber-chat" target="_blank" class="button">🤖 AI Chatbot</a></li>
         <li><a href="#map-section" class="button">Live Map</a></li>
         <li><a href="#testimonials" class="button">Testimonials</a></li>
         <li><a href="#contact" class="button">Contact</a></li>
@@ -184,17 +185,18 @@
       <button id="toggle-logs">⏸ Pause Logs</button>
       <pre id="log-output" style="background:#111; color:#00ffee; padding:10px; min-height:120px; border-radius:8px; margin-top:10px; max-height:200px; overflow:auto;"></pre>
     </section>
-<section id="cybersec-chatbot" class="section">
+<section class="section" id="cybersec-chatbot">
   <h2>CyberSec AI Chat</h2>
-  <iframe 
-    src="https://stellababy2004-chatbot.hf.space" 
-    width="100%" 
-    height="600px" 
+  <iframe
+    src="https://hf.space/embed/stellababy2004/cyber-chat?__theme=dark"
+    width="100%"
+    height="650"
     frameborder="0"
-    style="border-radius: 12px; overflow: hidden;">
+    sandbox="allow-scripts allow-same-origin"
+    style="border-radius:12px; overflow:hidden;">
   </iframe>
 </section>
-
+>
     <section class="section" id="attack-sim">
       <h2>Attack Simulation Lab</h2>
       <p>Select an attack type to simulate:</p>
