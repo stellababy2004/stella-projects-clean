@@ -1,0 +1,24 @@
+fetch('openphish.txt')
+  .then(r => r.ok ? r.text() : Promise.reject())
+  .then(text => {
+    window.phishList = text.split('\n').map(u=>u.trim()).filter(Boolean);
+  })
+  .catch(() => {
+    document.getElementById('phishing-result').innerText = '⚠️ Unable to load list';
+    document.getElementById('url').disabled = true;
+  });
+
+document.getElementById('phishing-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const url = document.getElementById('url').value;
+  const norm = url.replace(/^https?:\/\//,'').replace(/\/$/,'').toLowerCase();
+  const isPhish = window.phishList.includes(norm);
+  const resEl = document.getElementById('phishing-result');
+  if (isPhish) {
+    resEl.innerText = '⚠️ Dangerous/phishing site!';
+    resEl.style.color = 'red';
+  } else {
+    resEl.innerText = '✅ Site appears safe.';
+    resEl.style.color = 'lime';
+  }
+});

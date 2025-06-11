@@ -124,7 +124,7 @@
     <canvas id="threatChart"></canvas>
   </section>
 
-  <section class="section" id="map-section">
+  <section class="section" id="leaflet-map-section">
     <h2>Global Threat Locations</h2>
     <div id="map" style="height: 400px; border: 1px solid #0ff; border-radius: 8px;"></div>
     <button id="clear-map">🧹 Clear Map</button>
