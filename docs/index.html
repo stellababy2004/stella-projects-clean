@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -186,17 +188,14 @@
       <pre id="log-output" style="background:#111; color:#00ffee; padding:10px; min-height:120px; border-radius:8px; margin-top:10px; max-height:200px; overflow:auto;"></pre>
     </section>
 <section class="section" id="cybersec-chatbot">
-  <h2>CyberSec AI Chat</h2>
-  <iframe
-    src="https://hf.space/embed/stellababy2004/cyber-chat?__theme=dark"
-    width="100%"
-    height="650"
-    frameborder="0"
-    sandbox="allow-scripts allow-same-origin"
-    style="border-radius:12px; overflow:hidden;">
-  </iframe>
+  <h2>CyberSec AI Chat 🤖</h2>
+  <div class="gradio-embed"
+       data-gradio-app="https://hf.space/embed/stellababy2004/cyber-chat"
+       data-theme="dark"
+       style="height:650px;">
+  </div>
+  <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
 </section>
->
     <section class="section" id="attack-sim">
       <h2>Attack Simulation Lab</h2>
       <p>Select an attack type to simulate:</p>
@@ -482,7 +481,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let openPhishList = [];
 let phishingListLoaded = false;
 
-fetch('openphish.txt')
+fetch('docs/openphish.txt')
   .then(res => {
     if (!res.ok) throw new Error('List not found');
     return res.text();
