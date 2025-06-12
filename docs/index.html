@@ -183,14 +183,17 @@
       <button id="toggle-logs">⏸ Pause Logs</button>
       <pre id="log-output" style="background:#111; color:#00ffee; padding:10px; min-height:120px; border-radius:8px; margin-top:10px; max-height:200px; overflow:auto;"></pre>
     </section>
+
 <section class="section" id="cybersec-chatbot">
   <h2>CyberSec AI Chat 🤖</h2>
   <div class="gradio-embed"
-       data-gradio-app="https://hf.space/embed/stellababy2004/cyber-chat"
+       data-gradio-app="stellababy2004/cyber-chat"
        data-theme="dark"
        style="height:650px;">
   </div>
+  <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
 </section>
+
 <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
 
 
@@ -441,53 +444,63 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   </script>
 
- 
-  <script>
-  let openPhishList = [];
-  let phishingListLoaded = false;
+ <script>
+let openPhishList = [];
+let phishingListLoaded = false;
 
-document.addEventListener("DOMContentLoaded", () => {
-  let listOK = false;
-  let list = [];
-
-  fetch('./openphish.txt')
-    .then(r => {
-      if (!r.ok) throw new Error();
-      return r.text();
-    })
-    .then(t => {
-      list = t.split('\n').map(u => u.trim()).filter(Boolean);
-      listOK = true;
-    })
-    .catch(() => {
-      const d = document.getElementById('phishing-result');
-      d.textContent = '⚠️ Checker disabled';
-      d.style.color = 'orange';
-      document.getElementById('url').disabled = true;
-      document.querySelector('#phishing-form button').disabled = true;
-    });
-
-  function clean(u) {
-    return u.trim().replace(/^https?:\/\//, '').replace(/\/$/, '');
-  }
-
-  document.getElementById('phishing-form').addEventListener('submit', async e => {
-    e.preventDefault();
-    if (!listOK) return;
-    const url = clean(document.getElementById('url').value);
-    const d   = document.getElementById('phishing-result');
-    d.textContent = 'Checking…';
-    const bad = list.some(x => clean(x) === url);
-    if (bad) {
-      d.textContent = '⚠️ Dangerous!';
-      d.style.color = 'red';
-    } else {
-      d.textContent = '✅ Safe';
-      d.style.color = 'lime';
-    }
+fetch('openphish.txt')
+  .then(res => {
+    if (!res.ok) throw new Error('List not found');
+    return res.text();
+  })
+  .then(text => {
+    openPhishList = text.split('\n').map(u => u.trim()).filter(Boolean);
+    phishingListLoaded = true;
+  })
+  .catch(() => {
+    phishingListLoaded = false;
+    const r = document.getElementById('phishing-result');
+    r.textContent = '⚠️ Unable to load phishing list. Checker disabled.';
+    r.style.color = 'orange';
+    document.getElementById('url').disabled = true;
+    document.querySelector('#phishing-form button').disabled = true;
   });
+
+function normalizeUrl(url) {
+  return url.trim()
+            .replace(/^https?:\/\//i, '')
+            .replace(/\/$/, '')
+            .toLowerCase();
+}
+
+async function checkPhishing(url) {
+  const testUrl = normalizeUrl(url);
+  return openPhishList.some(ph => normalizeUrl(ph) === testUrl);
+}
+
+document.getElementById('phishing-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  if (!phishingListLoaded) return;
+  const url = document.getElementById('url').value;
+  const resultDiv = document.getElementById('phishing-result');
+  resultDiv.textContent = 'Checking…';
+  const isPhish = await checkPhishing(url);
+  if (isPhish) {
+    resultDiv.textContent = '⚠️ Dangerous/phishing site!';
+    resultDiv.style.color = 'red';
+  } else {
+    resultDiv.textContent = '✅ The site appears safe.';
+    resultDiv.style.color = 'lime';
+  }
 });
 </script>
+
+  <script src="particles.js"></script>
+  <script>
+    particlesJS.load('particles-js', 'particles.json', function() {
+      console.log('Particles.js loaded');
+    });
+  </script>
 
 </body>
 </html>
