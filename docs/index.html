@@ -166,24 +166,7 @@
   </form>
   <div id="phishing-result" style="margin-top:10px;font-weight:bold;"></div>
 </section>
-<script>
-  let openPhishList = [], loaded = false;
-  fetch('openphish.txt').then(r=>r.text()).then(t=>{
-    openPhishList = t.split('\n').map(u=>u.trim()).filter(Boolean);
-    loaded = true;
-  }).catch(_=>loaded=false);
 
-  document.getElementById('phishing-form').addEventListener('submit', async e => {
-    e.preventDefault();
-    if (!loaded) return;
-    const url = document.getElementById('url').value.trim().replace(/^https?:\/\//,'').replace(/\/$/,'').toLowerCase();
-    const out = openPhishList.some(u=>u.replace(/^https?:\/\//,'').replace(/\/$/,'').toLowerCase()===url)
-      ? '⚠️ Dangerous/phishing site!' : '✅ The site appears safe.';
-    const div = document.getElementById('phishing-result');
-    div.textContent = out;
-    div.style.color = out.startsWith('⚠️') ? 'red' : 'lime';
-  });
-</script>
 
     <section class="section" id="pentest-reports">
       <h2>Pentest Reports</h2>
@@ -207,8 +190,11 @@
        data-theme="dark"
        style="height:650px;">
   </div>
-  <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
 </section>
+<script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
+
+
+
     <section class="section" id="attack-sim">
       <h2>Attack Simulation Lab</h2>
       <p>Select an attack type to simulate:</p>
@@ -254,51 +240,28 @@
    <p>Email: <a href="mailto:stiliana.stoyanova@orange.fr">stiliana.stoyanova@orange.fr</a></p>
  </section>
 
+<script>
+// Initialize Leaflet map for attack simulation and global threat locations
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof L === "undefined") return;
+  const map = L.map('map').setView([20, 0], 2);
+  window.attackSimMap = map;
+  window.globalMapMarkers = [];
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
 
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var mapDiv = document.getElementById('map');
-    if (mapDiv && window.L) {
-            if (!window.attackSimMap) {
-        window.attackSimMap = L.map('map').setView([42.7, 23.3], 3);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 18,
-          attribution: '© OpenStreetMap contributors'
-        }).addTo(window.attackSimMap);
-      }
- 
-      window.globalMapMarkers = [];
-
-
-      const initialMarkers = [
-        { coords: [42.7, 23.3], popup: 'Sofia, Bulgaria' },
-        { coords: [51.5, -0.09], popup: 'London, UK' },
-        { coords: [40.7, -74.0], popup: 'New York, USA' },
-        { coords: [48.85, 2.35], popup: 'Paris, France' },
-        { coords: [35.68, 139.76], popup: 'Tokyo, Japan' },
-        { coords: [55.75, 37.62], popup: 'Moscow, Russia' },
-        { coords: [52.52, 13.40], popup: 'Berlin, Germany' },
-        { coords: [34.05, -118.24], popup: 'Los Angeles, USA' },
-        { coords: [-33.87, 151.21], popup: 'Sydney, Australia' },
-        { coords: [19.43, -99.13], popup: 'Mexico City, Mexico' }
-      ];
-      initialMarkers.forEach(m => {
-        const marker = L.marker(m.coords).addTo(window.attackSimMap).bindPopup(m.popup);
-        window.globalMapMarkers.push(marker);
-      });
-
-      const clearBtn = document.getElementById('clear-map');
-      if (clearBtn) {
-        clearBtn.addEventListener('click', function () {
-          if (window.globalMapMarkers) {
-            window.globalMapMarkers.forEach(marker => window.attackSimMap.removeLayer(marker));
-            window.globalMapMarkers = [];
-          }
-        });
-      }
+  document.getElementById('clear-map').addEventListener('click', function () {
+    if (window.globalMapMarkers && Array.isArray(window.globalMapMarkers)) {
+      window.globalMapMarkers.forEach(marker => map.removeLayer(marker));
+      window.globalMapMarkers.length = 0;
     }
   });
-  </script>
+});
+</script>
+
+
+<!-- Removed duplicate attack simulation event listener script to prevent conflicts -->
 
   <script>
     (function () {
@@ -381,7 +344,6 @@
 
   </script>
 
-  <!-- ===== Attack Simulation Lab логика ===== -->
   <script>
   document.addEventListener("DOMContentLoaded", function () {
     const buttons   = document.querySelectorAll('#attack-buttons .button');
@@ -421,11 +383,10 @@
     buttons.forEach(btn => {
       btn.addEventListener('click', function () {
         const type = btn.getAttribute('data-attack');
-        // Покажи текста
-        result.style.display = "block";
+         result.style.display = "block";
         result.textContent = attackDescriptions[type] || "No information for this attack type.";
 
-        // Добави лог
+
         if (attackLogs[type]) {
           const now = new Date().toLocaleTimeString();
           const span = document.createElement('span');
@@ -435,7 +396,6 @@
           logOutput.scrollTop = logOutput.scrollHeight;
         }
 
-        // Маркер на картата
         if (attackMap && attackLocations[type]) {
           const marker = L.marker(attackLocations[type])
             .addTo(attackMap)
@@ -445,7 +405,6 @@
           window.globalMapMarkers = attackMarkers;
         }
 
-        // Актуализирай диаграмата
         if (window.threatChartInstance && chartIndex[type] !== undefined) {
           window.threatChartInstance.data.datasets[0].data[chartIndex[type]] += 1;
           window.threatChartInstance.update();
@@ -482,55 +441,53 @@
   });
   </script>
 
-  <!-- ===== Phishing URL Checker ===== -->
+ 
   <script>
   let openPhishList = [];
   let phishingListLoaded = false;
 
-  fetch('openphish.txt')
-    .then(res => {
-      if (!res.ok) throw new Error('List not found');
-      return res.text();
+document.addEventListener("DOMContentLoaded", () => {
+  let listOK = false;
+  let list = [];
+
+  fetch('./openphish.txt')
+    .then(r => {
+      if (!r.ok) throw new Error();
+      return r.text();
     })
-    .then(text => {
-      openPhishList = text.split('\n').map(u => u.trim()).filter(Boolean);
-      phishingListLoaded = true;
+    .then(t => {
+      list = t.split('\n').map(u => u.trim()).filter(Boolean);
+      listOK = true;
     })
     .catch(() => {
-      phishingListLoaded = false;
-      const r = document.getElementById('phishing-result');
-      r.textContent = '⚠️ Unable to load phishing list. Checker disabled.';
-      r.style.color = 'orange';
+      const d = document.getElementById('phishing-result');
+      d.textContent = '⚠️ Checker disabled';
+      d.style.color = 'orange';
       document.getElementById('url').disabled = true;
       document.querySelector('#phishing-form button').disabled = true;
     });
 
-  function normalizeUrl(url) {
-    return url.trim().replace(/^https?:\/\//i,'').replace(/\/$/,'').toLowerCase();
+  function clean(u) {
+    return u.trim().replace(/^https?:\/\//, '').replace(/\/$/, '');
   }
 
-  async function checkPhishing(url) {
-    const test = normalizeUrl(url);
-    return openPhishList.some(ph => normalizeUrl(ph) === test);
-  }
-
-  document.getElementById('phishing-form').addEventListener('submit', async function(e) {
+  document.getElementById('phishing-form').addEventListener('submit', async e => {
     e.preventDefault();
-    if (!phishingListLoaded) return;
-    const url    = document.getElementById('url').value;
-    const result = document.getElementById('phishing-result');
-    result.textContent = 'Checking…';
-    const isBad = await checkPhishing(url);
-    result.textContent = isBad
-      ? '⚠️ Dangerous/phishing site!'
-      : '✅ The site appears safe.';
-    result.style.color = isBad ? 'red' : 'lime';
+    if (!listOK) return;
+    const url = clean(document.getElementById('url').value);
+    const d   = document.getElementById('phishing-result');
+    d.textContent = 'Checking…';
+    const bad = list.some(x => clean(x) === url);
+    if (bad) {
+      d.textContent = '⚠️ Dangerous!';
+      d.style.color = 'red';
+    } else {
+      d.textContent = '✅ Safe';
+      d.style.color = 'lime';
+    }
   });
-  </script>
+});
+</script>
 
-  <!-- ===== HF Space widget за чатбот ===== -->
-  <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
-  <!-- ===== HF Space widget за чатбот ===== -->
-  <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
 </body>
 </html>
