@@ -1,13 +1,9 @@
 fetch('openphish.txt')
-  .then(r => r.ok ? r.text() : Promise.reject())
-  .then(text => {
-    window.phishList = text.split('\n').map(u=>u.trim()).filter(Boolean);
+  .then(res => {
+    if (!res.ok) throw new Error('List not found');
+    return res.text();
   })
-  .catch(() => {
-    document.getElementById('phishing-result').innerText = '⚠️ Unable to load list';
-    document.getElementById('url').disabled = true;
-  });
-
+ 
 document.getElementById('phishing-form').addEventListener('submit', async e => {
   e.preventDefault();
   const url = document.getElementById('url').value;
