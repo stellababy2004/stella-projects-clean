@@ -6,12 +6,13 @@
   <title>Stella Barbarella SOC Analyst & Cybersecurity Portfolio</title>
   <meta name="description" content="Cybersecurity Portfolio of Stella Barbarella – SOC Analyst, Threat Hunter & Cybersecurity Enthusiast." />
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
-    <link rel="stylesheet" href="styles.css" />
-
- 
+    
+  
+  <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -25,6 +26,8 @@
       justify-content: center;
       text-align: center;
       padding: 18px 24px;
+
+
       font-size: 1.3em;
       min-width: 220px;
       min-height: 60px;
@@ -238,6 +241,10 @@
   </section>
   </main>
 
+<!-- Move all scripts to just before </body> and ensure only one DOMContentLoaded per script -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   // Map initialization
@@ -333,177 +340,191 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   })();
-});
-</script>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const buttons   = document.querySelectorAll('#attack-buttons .button');
-    const result    = document.getElementById('attack-result');
-    const logOutput = document.getElementById('log-output');
-    const attackMap = window.attackSimMap;
-    const attackMarkers = window.globalMapMarkers || [];
+  // Attack Simulation
+  const buttons   = document.querySelectorAll('#attack-buttons .button');
+  const result    = document.getElementById('attack-result');
+  const logOutput = document.getElementById('log-output');
+  const attackMap = window.attackSimMap;
+  const attackMarkers = window.globalMapMarkers || [];
 
-    const attackDescriptions = {
-      phishing:   "Simulation: A phishing email was sent to an employee. The SOC detects a suspicious link and blocks access.",
-      "brute-force": "Simulation: Multiple failed login attempts detected. The system temporarily blocks the IP address.",
-      malware:    "Simulation: A malicious file was uploaded. The antivirus system isolates it and alerts the SOC team.",
-      ddos:       "Simulation: High traffic volume detected towards the server. DDoS protection limits attacking IPs."
-    };
+  const attackDescriptions = {
+    phishing:   "Simulation: A phishing email was sent to an employee. The SOC detects a suspicious link and blocks access.",
+    "brute-force": "Simulation: Multiple failed login attempts detected. The system temporarily blocks the IP address.",
+    malware:    "Simulation: A malicious file was uploaded. The antivirus system isolates it and alerts the SOC team.",
+    ddos:       "Simulation: High traffic volume detected towards the server. DDoS protection limits attacking IPs."
+  };
 
-    const attackLogs = {
-      phishing:   "[ALERT]  Phishing email detected and quarantined.",
-      "brute-force": "[WARNING]  Multiple failed logins for user 'admin'.",
-      malware:    "[CRITICAL]  Malware detected and isolated.",
-      ddos:       "[ALERT]  DDoS attack detected. Traffic filtered."
-    };
+  const attackLogs = {
+    phishing:   "[ALERT]  Phishing email detected and quarantined.",
+    "brute-force": "[WARNING]  Multiple failed logins for user 'admin'.",
+    malware:    "[CRITICAL]  Malware detected and isolated.",
+    ddos:       "[ALERT]  DDoS attack detected. Traffic filtered."
+  };
 
-    const attackLocations = {
-      phishing:      [51.5, -0.09],
-      "brute-force": [40.7, -74.0],
-      malware:       [48.85, 2.35],
-      ddos:          [35.68, 139.76]
-    };
+  const attackLocations = {
+    phishing:      [51.5, -0.09],
+    "brute-force": [40.7, -74.0],
+    malware:       [48.85, 2.35],
+    ddos:          [35.68, 139.76]
+  };
 
-    const chartIndex = {
-      phishing:      0,
-      malware:       1,
-      ddos:          3,
-      "brute-force": 4
-    };
+  const chartIndex = {
+    phishing:      0,
+    malware:       1,
+    ddos:          3,
+    "brute-force": 4
+  };
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', function () {
-        const type = btn.getAttribute('data-attack');
-         result.style.display = "block";
-        result.textContent = attackDescriptions[type] || "No information for this attack type.";
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const type = btn.getAttribute('data-attack');
+      result.style.display = "block";
+      result.textContent = attackDescriptions[type] || "No information for this attack type.";
 
+      if (attackLogs[type]) {
+        const now = new Date().toLocaleTimeString();
+        const span = document.createElement('span');
+        span.textContent = `[${now}] ${attackLogs[type]}\n`;
+        // Set color based on log severity
+        let color = "#00ffee";
+        if (attackLogs[type].includes("CRITICAL")) color = "#ff1744";
+        else if (attackLogs[type].includes("ALERT")) color = "#ffea00";
+        else if (attackLogs[type].includes("WARNING")) color = "#ff9100";
+        else if (attackLogs[type].includes("ERROR") || attackLogs[type].includes("FAIL")) color = "#ff1744";
+        else if (attackLogs[type].includes("SUCCESS")) color = "#00e676";
+        else if (attackLogs[type].includes("NOTICE")) color = "#00b0ff";
+        else if (attackLogs[type].includes("DEBUG")) color = "#bdbdbd";
+        else if (attackLogs[type].includes("INFO")) color = "#00ffee";
+        span.style.color = color;
+        logOutput.appendChild(span);
+        logOutput.scrollTop = logOutput.scrollHeight;
+      }
 
-        if (attackLogs[type]) {
-          const now = new Date().toLocaleTimeString();
-          const span = document.createElement('span');
-          span.textContent = `[${now}] ${attackLogs[type]}\n`;
-          // Set color based on log severity
-          let color = "#00ffee";
-          if (attackLogs[type].includes("CRITICAL")) color = "#ff1744";
-          else if (attackLogs[type].includes("ALERT")) color = "#ffea00";
-          else if (attackLogs[type].includes("WARNING")) color = "#ff9100";
-          else if (attackLogs[type].includes("ERROR") || attackLogs[type].includes("FAIL")) color = "#ff1744";
-          else if (attackLogs[type].includes("SUCCESS")) color = "#00e676";
-          else if (attackLogs[type].includes("NOTICE")) color = "#00b0ff";
-          else if (attackLogs[type].includes("DEBUG")) color = "#bdbdbd";
-          else if (attackLogs[type].includes("INFO")) color = "#00ffee";
-          span.style.color = color;
-          logOutput.appendChild(span);
-          logOutput.scrollTop = logOutput.scrollHeight;
-        }
+      if (attackMap && attackLocations[type]) {
+        const marker = L.marker(attackLocations[type])
+          .addTo(attackMap)
+          .bindPopup(`${type.charAt(0).toUpperCase()}${type.slice(1)} attack`)
+          .openPopup();
+        attackMarkers.push(marker);
+        window.globalMapMarkers = attackMarkers;
+      }
 
-        if (attackMap && attackLocations[type]) {
-          const marker = L.marker(attackLocations[type])
-            .addTo(attackMap)
-            .bindPopup(`${type.charAt(0).toUpperCase()}${type.slice(1)} attack`)
-            .openPopup();
-          attackMarkers.push(marker);
-          window.globalMapMarkers = attackMarkers;
-        }
-
-        if (window.threatChartInstance && chartIndex[type] !== undefined) {
-          window.threatChartInstance.data.datasets[0].data[chartIndex[type]] += 1;
-          window.threatChartInstance.update();
-        }
-      });
-    });
-  });
-  </script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const ctx = document.getElementById('threatChart').getContext('2d');
-    window.threatChartInstance = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Phishing', 'Malware', 'Ransomware', 'DDoS', 'Brute Force'],
-        datasets: [{
-          label: 'Detected Threats',
-          data: [12, 8, 4, 10, 6],
-          backgroundColor: [
-            '#00ffeecc','#ff00ccbb','#ffaa00bb','#00ff88bb','#ffea00bb'
-          ],
-          borderColor: '#00ffee',
-          borderWidth: 2
-        }]
-      },
-      options: {
-        plugins: { legend: { display: false } },
-        scales: {
-          y: { beginAtZero: true, ticks: { color: '#00ffee' }, grid: { color: '#222' } },
-          x: { ticks: { color: '#00ffee' }, grid: { color: '#222' } }
-        }
+      if (window.threatChartInstance && chartIndex[type] !== undefined) {
+        window.threatChartInstance.data.datasets[0].data[chartIndex[type]] += 1;
+        window.threatChartInstance.update();
       }
     });
   });
-  </script>
 
- <script>
-let openPhishList = [];
-let phishingListLoaded = false;
-
-fetch('openphish.txt')
-  .then(res => {
-    if (!res.ok) throw new Error('List not found');
-    return res.text();
-  })
-  .then(text => {
-    openPhishList = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-    phishingListLoaded = true;
-  })
-  .catch(() => {
-    phishingListLoaded = false;
-    const r = document.getElementById('phishing-result');
-    r.textContent = '⚠️ Unable to load phishing list. Checker disabled.';
-    r.style.color = 'orange';
-    document.getElementById('url').disabled = true;
-    document.querySelector('#phishing-form button').disabled = true;
+  // Chart.js
+  const ctx = document.getElementById('threatChart').getContext('2d');
+  window.threatChartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Phishing', 'Malware', 'Ransomware', 'DDoS', 'Brute Force'],
+      datasets: [{
+        label: 'Detected Threats',
+        data: [12, 8, 4, 10, 6],
+        backgroundColor: [
+          '#00ffeecc','#ff00ccbb','#ffaa00bb','#00ff88bb','#ffea00bb'
+        ],
+        borderColor: '#00ffee',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, ticks: { color: '#00ffee' }, grid: { color: '#222' } },
+        x: { ticks: { color: '#00ffee' }, grid: { color: '#222' } }
+      }
+    }
   });
 
-function normalizeUrl(url) {
-  return url.trim()
-            .replace(/^https?:\/\//i, '')
-            .replace(/\/$/, '')
-            .toLowerCase();
-}
+  // Phishing URL Checker
+  let openPhishList = [];
+  let phishingListLoaded = false;
 
-async function checkPhishing(url) {
-  const testUrl = normalizeUrl(url);
-  return openPhishList.some(ph => normalizeUrl(ph) === testUrl);
-}
+  fetch('openphish.txt')
+    .then(res => {
+      if (!res.ok) throw new Error('List not found');
+      return res.text();
+    })
+    .then(text => {
+      openPhishList = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      phishingListLoaded = true;
+    })
+    .catch(() => {
+      phishingListLoaded = false;
+      const r = document.getElementById('phishing-result');
+      r.textContent = '⚠️ Unable to load phishing list. Checker disabled.';
+      r.style.color = 'orange';
+      document.getElementById('url').disabled = true;
+      document.querySelector('#phishing-form button').disabled = true;
+    });
 
-document.getElementById('phishing-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  if (!phishingListLoaded) return;
-  const url = document.getElementById('url').value;
-  const resultDiv = document.getElementById('phishing-result');
-  resultDiv.textContent = 'Checking…';
-  const isPhish = await checkPhishing(url);
-  if (isPhish) {
-    resultDiv.textContent = '⚠️ Dangerous/phishing site!';
-    resultDiv.style.color = 'red';
-  } else {
-    resultDiv.textContent = '✅ The site appears safe.';
-    resultDiv.style.color = 'lime';
+  function normalizeUrl(url) {
+    return url.trim()
+              .replace(/^https?:\/\//i, '')
+              .replace(/\/$/, '')
+              .toLowerCase();
   }
-});
-</script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      if (typeof particlesJS !== "undefined") {
-        particlesJS.load('particles-js', 'particles.json', function() {
-          console.log('Particles.js loaded');
-        });
+  async function checkPhishing(url) {
+    const testUrl = normalizeUrl(url);
+    return openPhishList.some(ph => normalizeUrl(ph) === testUrl);
+  }
+
+  document.getElementById('phishing-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (!phishingListLoaded) return;
+    const url = document.getElementById('url').value;
+    const resultDiv = document.getElementById('phishing-result');
+    resultDiv.textContent = 'Checking…';
+    const isPhish = await checkPhishing(url);
+    if (isPhish) {
+      resultDiv.textContent = '⚠️ Dangerous/phishing site!';
+      resultDiv.style.color = 'red';
+    } else {
+      resultDiv.textContent = '✅ The site appears safe.';
+      resultDiv.style.color = 'lime';
+    }
+  });
+
+  // Particles.js
+  if (typeof particlesJS !== "undefined") {
+    particlesJS.load('particles-js', 'particles.json', function() {
+      console.log('Particles.js loaded');
+    });
+
+  // Fetch example
+  fetch('https://huggingface.co/spaces/stellababy2004/stellababy2004cyber_chatbot')
+    .then(response => response.text()) // Вземаме текста, не директно JSON
+    .then(text => {
+      console.log('Сървърът върна:', text); // Показваме какво връща сървърът
+      try {
+        const data = JSON.parse(text); // Опитваме да го парснем като JSON
+        console.log('Парснат JSON:', data);
+      } catch (e) {
+        console.error('Грешка при парсване на JSON:', e);
       }
     });
-  </script>
-  <!-- Only load particles.js once; remove duplicate if present -->
 
+  fetch('data.json')
+    .then(response => response.text())
+    .then(text => {
+      console.log('Сървърът върна:', text);
+      // Махаме ```json и ```
+      const cleaned = text.replace(/```json|```/g, '').trim();
+      try {
+        const data = JSON.parse(cleaned);
+        console.log('Парснат JSON:', data);
+      } catch (e) {
+        console.error('Грешка при парсване на JSON:', e);
+      }
+    });
+});
+</script>
 </body>
 </html>
