@@ -1,0 +1,7 @@
+<div
+  class="gradio-embed"
+  data-gradio-app="https://hf.space/embed/stellababy2004/cyber-chat"
+  data-theme="dark"
+  style="width:100%; height:650px; overflow:hidden; border-radius:12px;"
+></div>
+<script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
