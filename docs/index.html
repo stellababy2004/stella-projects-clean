@@ -232,111 +232,109 @@
       <div id="map" style="height: 400px; border: 1px solid #0ff; border-radius: 8px;"></div>
       <button id="clear-map">🧹 Clear Map</button>
     </section>
+  <section class="section" id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:stiliana.stoyanova@orange.fr">stiliana.stoyanova@orange.fr</a></p>
+  </section>
   </main>
- <section class="section" id="contact">
-   <h2>Contact Me</h2>
-   <p>Email: <a href="mailto:stiliana.stoyanova@orange.fr">stiliana.stoyanova@orange.fr</a></p>
- </section>
 
 <script>
-
 document.addEventListener("DOMContentLoaded", function () {
-  if (typeof L === "undefined") return;
-  const map = L.map('map').setView([20, 0], 2);
-  window.attackSimMap = map;
-  window.globalMapMarkers = [];
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
+  // Map initialization
+  if (typeof L !== "undefined") {
+    const map = L.map('map').setView([20, 0], 2);
+    window.attackSimMap = map;
+    window.globalMapMarkers = [];
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
-  document.getElementById('clear-map').addEventListener('click', function () {
-    if (window.globalMapMarkers && Array.isArray(window.globalMapMarkers)) {
-      window.globalMapMarkers.forEach(marker => map.removeLayer(marker));
-      window.globalMapMarkers.length = 0;
-    }
-  });
-});
-</script>
-  <script>
-    (function () {
-  const logOutput = document.getElementById('log-output');
-  const toggleBtn = document.getElementById('toggle-logs');
-  let paused = false;
-  let logInterval;
-
-  const logs = [
-    "[INFO]  Connection from 192.168.1.10 accepted.",
-    "[ALERT]  Suspicious login attempt detected from 203.0.113.5.",
-    "[WARNING]  Multiple failed logins for user 'admin'.",
-    "[INFO]  Malware signature updated successfully.",
-    "[CRITICAL]  Ransomware activity detected on host 10.0.0.23.",
-    "[INFO]  Outbound traffic to 8.8.8.8 allowed.",
-    "[ALERT]  Phishing email detected and quarantined.",
-    "[INFO]  User 'stella' changed password.",
-    "[WARNING]  Unusual data transfer detected.",
-    "[INFO]  System scan completed. No threats found.",
-    "[NOTICE]  New device registered: 10.1.1.5.",
-    "[DEBUG]  Packet dropped due to invalid checksum.",
-    "[ERROR]  Failed to update antivirus definitions.",
-    "[SUCCESS]  Backup completed successfully.",
-    "[FAIL]  Backup failed: disk full.",
-    "[INFO]  User 'admin' logged out.",
-    "[ALERT]  Port scan detected from 185.23.44.12.",
-    "[CRITICAL]  Data exfiltration attempt blocked.",
-    "[WARNING]  High CPU usage detected on server01.",
-    "[NOTICE]  Scheduled maintenance started.",
-    "[SUCCESS]  Patch applied to all endpoints."
-  ];
-
-  function addLog() {
-    if (!paused) {
-      const log = logs[Math.floor(Math.random() * logs.length)];
-      const now = new Date().toLocaleTimeString();
-
-    
-      let color = "#00ffee";
-      if (log.includes("CRITICAL")) color = "#ff1744";
-      else if (log.includes("ALERT")) color = "#ffea00";
-      else if (log.includes("WARNING")) color = "#ff9100";
-      else if (log.includes("ERROR") || log.includes("FAIL")) color = "#ff1744";
-      else if (log.includes("SUCCESS")) color = "#00e676";
-      else if (log.includes("NOTICE")) color = "#00b0ff";
-      else if (log.includes("DEBUG")) color = "#bdbdbd";
-      else if (log.includes("INFO")) color = "#00ffee";
-
-     
-      const span = document.createElement('span');
-      span.textContent = `[${now}] ${log}\n`;
-      span.style.color = color;
-      logOutput.appendChild(span);
-      logOutput.scrollTop = logOutput.scrollHeight;
-    }
-  }
-
-  function startLogs() {
-    logInterval = setInterval(addLog, 1200);
-  }
-
-  function stopLogs() {
-    clearInterval(logInterval);
-  }
-
-  if (logOutput && toggleBtn) {
-    startLogs();
-    toggleBtn.addEventListener('click', function () {
-      paused = !paused;
-      if (paused) {
-        stopLogs();
-        toggleBtn.textContent = "▶ Resume Logs";
-      } else {
-        startLogs();
-        toggleBtn.textContent = "⏸ Pause Logs";
+    document.getElementById('clear-map').addEventListener('click', function () {
+      if (window.globalMapMarkers && Array.isArray(window.globalMapMarkers)) {
+        window.globalMapMarkers.forEach(marker => map.removeLayer(marker));
+        window.globalMapMarkers.length = 0;
       }
     });
   }
-})();
 
-  </script>
+  // Log Analyzer
+  (function () {
+    const logOutput = document.getElementById('log-output');
+    const toggleBtn = document.getElementById('toggle-logs');
+    let paused = false;
+    let logInterval;
+
+    const logs = [
+      "[INFO]  Connection from 192.168.1.10 accepted.",
+      "[ALERT]  Suspicious login attempt detected from 203.0.113.5.",
+      "[WARNING]  Multiple failed logins for user 'admin'.",
+      "[INFO]  Malware signature updated successfully.",
+      "[CRITICAL]  Ransomware activity detected on host 10.0.0.23.",
+      "[INFO]  Outbound traffic to 8.8.8.8 allowed.",
+      "[ALERT]  Phishing email detected and quarantined.",
+      "[INFO]  User 'stella' changed password.",
+      "[WARNING]  Unusual data transfer detected.",
+      "[INFO]  System scan completed. No threats found.",
+      "[NOTICE]  New device registered: 10.1.1.5.",
+      "[DEBUG]  Packet dropped due to invalid checksum.",
+      "[ERROR]  Failed to update antivirus definitions.",
+      "[SUCCESS]  Backup completed successfully.",
+      "[FAIL]  Backup failed: disk full.",
+      "[INFO]  User 'admin' logged out.",
+      "[ALERT]  Port scan detected from 185.23.44.12.",
+      "[CRITICAL]  Data exfiltration attempt blocked.",
+      "[WARNING]  High CPU usage detected on server01.",
+      "[NOTICE]  Scheduled maintenance started.",
+      "[SUCCESS]  Patch applied to all endpoints."
+    ];
+
+    function addLog() {
+      if (!paused) {
+        const log = logs[Math.floor(Math.random() * logs.length)];
+        const now = new Date().toLocaleTimeString();
+
+        let color = "#00ffee";
+        if (log.includes("CRITICAL")) color = "#ff1744";
+        else if (log.includes("ALERT")) color = "#ffea00";
+        else if (log.includes("WARNING")) color = "#ff9100";
+        else if (log.includes("ERROR") || log.includes("FAIL")) color = "#ff1744";
+        else if (log.includes("SUCCESS")) color = "#00e676";
+        else if (log.includes("NOTICE")) color = "#00b0ff";
+        else if (log.includes("DEBUG")) color = "#bdbdbd";
+        else if (log.includes("INFO")) color = "#00ffee";
+
+        const span = document.createElement('span');
+        span.textContent = `[${now}] ${log}\n`;
+        span.style.color = color;
+        logOutput.appendChild(span);
+        logOutput.scrollTop = logOutput.scrollHeight;
+      }
+    }
+
+    function startLogs() {
+      logInterval = setInterval(addLog, 1200);
+    }
+
+    function stopLogs() {
+      clearInterval(logInterval);
+    }
+
+    if (logOutput && toggleBtn) {
+      startLogs();
+      toggleBtn.addEventListener('click', function () {
+        paused = !paused;
+        if (paused) {
+          stopLogs();
+          toggleBtn.textContent = "▶ Resume Logs";
+        } else {
+          startLogs();
+          toggleBtn.textContent = "⏸ Pause Logs";
+        }
+      });
+    }
+  })();
+});
+</script>
 
   <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -385,7 +383,17 @@ document.addEventListener("DOMContentLoaded", function () {
           const now = new Date().toLocaleTimeString();
           const span = document.createElement('span');
           span.textContent = `[${now}] ${attackLogs[type]}\n`;
-          span.style.color = "#ffea00";
+          // Set color based on log severity
+          let color = "#00ffee";
+          if (attackLogs[type].includes("CRITICAL")) color = "#ff1744";
+          else if (attackLogs[type].includes("ALERT")) color = "#ffea00";
+          else if (attackLogs[type].includes("WARNING")) color = "#ff9100";
+          else if (attackLogs[type].includes("ERROR") || attackLogs[type].includes("FAIL")) color = "#ff1744";
+          else if (attackLogs[type].includes("SUCCESS")) color = "#00e676";
+          else if (attackLogs[type].includes("NOTICE")) color = "#00b0ff";
+          else if (attackLogs[type].includes("DEBUG")) color = "#bdbdbd";
+          else if (attackLogs[type].includes("INFO")) color = "#00ffee";
+          span.style.color = color;
           logOutput.appendChild(span);
           logOutput.scrollTop = logOutput.scrollHeight;
         }
@@ -445,7 +453,7 @@ fetch('openphish.txt')
     return res.text();
   })
   .then(text => {
-    openPhishList = text.split('\n').map(u => u.trim()).filter(Boolean);
+    openPhishList = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
     phishingListLoaded = true;
   })
   .catch(() => {
@@ -495,7 +503,7 @@ document.getElementById('phishing-form').addEventListener('submit', async functi
       }
     });
   </script>
-  <script src="particles.js"></script>
+  <!-- Only load particles.js once; remove duplicate if present -->
 
 </body>
 </html>
