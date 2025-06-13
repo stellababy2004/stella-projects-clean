@@ -1,0 +1,16 @@
+// Примерен файл: data.json
+{
+  "name": "CyberSec AI Chat",
+  "version": "1.0",
+  "description": "Чат за киберсигурност",
+  "users": [
+    {
+      "id": 1,
+      "username": "admin"
+    },
+    {
+      "id": 2,
+      "username": "guest"
+    }
+  ]
+}
