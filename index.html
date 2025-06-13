@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -149,12 +147,11 @@
     <section class="section" id="projects">
       <h2>Projects</h2>
       <ul class="project-list">
-        <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
-        <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
-        <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
-        <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
-        <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
-      </ul>
+              <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
+              <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
+              <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
+              <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
+            </ul>
     </section>
 
 <section class="section" id="phishing-checker">
@@ -166,24 +163,7 @@
   </form>
   <div id="phishing-result" style="margin-top:10px;font-weight:bold;"></div>
 </section>
-<script>
-  let openPhishList = [], loaded = false;
-  fetch('openphish.txt').then(r=>r.text()).then(t=>{
-    openPhishList = t.split('\n').map(u=>u.trim()).filter(Boolean);
-    loaded = true;
-  }).catch(_=>loaded=false);
 
-  document.getElementById('phishing-form').addEventListener('submit', async e => {
-    e.preventDefault();
-    if (!loaded) return;
-    const url = document.getElementById('url').value.trim().replace(/^https?:\/\//,'').replace(/\/$/,'').toLowerCase();
-    const out = openPhishList.some(u=>u.replace(/^https?:\/\//,'').replace(/\/$/,'').toLowerCase()===url)
-      ? '⚠️ Dangerous/phishing site!' : '✅ The site appears safe.';
-    const div = document.getElementById('phishing-result');
-    div.textContent = out;
-    div.style.color = out.startsWith('⚠️') ? 'red' : 'lime';
-  });
-</script>
 
     <section class="section" id="pentest-reports">
       <h2>Pentest Reports</h2>
@@ -200,16 +180,19 @@
       <button id="toggle-logs">⏸ Pause Logs</button>
       <pre id="log-output" style="background:#111; color:#00ffee; padding:10px; min-height:120px; border-radius:8px; margin-top:10px; max-height:200px; overflow:auto;"></pre>
     </section>
+
 <section class="section" id="cybersec-chatbot">
   <h2>CyberSec AI Chat 🤖</h2>
-  <div class="gradio-embed"
-       data-gradio-app="https://hf.space/embed/stellababy2004/cyber-chat"
-       data-theme="dark"
-       style="height:650px;">
-  </div>
+  <div
+    class="gradio-embed"
+    data-gradio-app="https://hf.space/embed/stellababy2004/cyber-chat"
+    data-theme="dark"
+    style="width:100%; height:650px; overflow:hidden; border-radius:12px;"
+  ></div>
   <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
 </section>
-    <section class="section" id="attack-sim">
+
+<section class="section" id="attack-sim">
       <h2>Attack Simulation Lab</h2>
       <p>Select an attack type to simulate:</p>
       <div id="attack-buttons">
@@ -249,57 +232,31 @@
       <div id="map" style="height: 400px; border: 1px solid #0ff; border-radius: 8px;"></div>
       <button id="clear-map">🧹 Clear Map</button>
     </section>
+  </main>
  <section class="section" id="contact">
    <h2>Contact Me</h2>
    <p>Email: <a href="mailto:stiliana.stoyanova@orange.fr">stiliana.stoyanova@orange.fr</a></p>
  </section>
 
+<script>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var mapDiv = document.getElementById('map');
-    if (mapDiv && window.L) {
-            if (!window.attackSimMap) {
-        window.attackSimMap = L.map('map').setView([42.7, 23.3], 3);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 18,
-          attribution: '© OpenStreetMap contributors'
-        }).addTo(window.attackSimMap);
-      }
- 
-      window.globalMapMarkers = [];
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof L === "undefined") return;
+  const map = L.map('map').setView([20, 0], 2);
+  window.attackSimMap = map;
+  window.globalMapMarkers = [];
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
 
-
-      const initialMarkers = [
-        { coords: [42.7, 23.3], popup: 'Sofia, Bulgaria' },
-        { coords: [51.5, -0.09], popup: 'London, UK' },
-        { coords: [40.7, -74.0], popup: 'New York, USA' },
-        { coords: [48.85, 2.35], popup: 'Paris, France' },
-        { coords: [35.68, 139.76], popup: 'Tokyo, Japan' },
-        { coords: [55.75, 37.62], popup: 'Moscow, Russia' },
-        { coords: [52.52, 13.40], popup: 'Berlin, Germany' },
-        { coords: [34.05, -118.24], popup: 'Los Angeles, USA' },
-        { coords: [-33.87, 151.21], popup: 'Sydney, Australia' },
-        { coords: [19.43, -99.13], popup: 'Mexico City, Mexico' }
-      ];
-      initialMarkers.forEach(m => {
-        const marker = L.marker(m.coords).addTo(window.attackSimMap).bindPopup(m.popup);
-        window.globalMapMarkers.push(marker);
-      });
-
-      const clearBtn = document.getElementById('clear-map');
-      if (clearBtn) {
-        clearBtn.addEventListener('click', function () {
-          if (window.globalMapMarkers) {
-            window.globalMapMarkers.forEach(marker => window.attackSimMap.removeLayer(marker));
-            window.globalMapMarkers = [];
-          }
-        });
-      }
+  document.getElementById('clear-map').addEventListener('click', function () {
+    if (window.globalMapMarkers && Array.isArray(window.globalMapMarkers)) {
+      window.globalMapMarkers.forEach(marker => map.removeLayer(marker));
+      window.globalMapMarkers.length = 0;
     }
   });
-  </script>
-
+});
+</script>
   <script>
     (function () {
   const logOutput = document.getElementById('log-output');
@@ -381,7 +338,6 @@
 
   </script>
 
-  <!-- ===== Attack Simulation Lab логика ===== -->
   <script>
   document.addEventListener("DOMContentLoaded", function () {
     const buttons   = document.querySelectorAll('#attack-buttons .button');
@@ -421,11 +377,10 @@
     buttons.forEach(btn => {
       btn.addEventListener('click', function () {
         const type = btn.getAttribute('data-attack');
-        // Покажи текста
-        result.style.display = "block";
+         result.style.display = "block";
         result.textContent = attackDescriptions[type] || "No information for this attack type.";
 
-        // Добави лог
+
         if (attackLogs[type]) {
           const now = new Date().toLocaleTimeString();
           const span = document.createElement('span');
@@ -435,7 +390,6 @@
           logOutput.scrollTop = logOutput.scrollHeight;
         }
 
-        // Маркер на картата
         if (attackMap && attackLocations[type]) {
           const marker = L.marker(attackLocations[type])
             .addTo(attackMap)
@@ -445,7 +399,6 @@
           window.globalMapMarkers = attackMarkers;
         }
 
-        // Актуализирай диаграмата
         if (window.threatChartInstance && chartIndex[type] !== undefined) {
           window.threatChartInstance.data.datasets[0].data[chartIndex[type]] += 1;
           window.threatChartInstance.update();
@@ -482,55 +435,67 @@
   });
   </script>
 
-  <!-- ===== Phishing URL Checker ===== -->
-  <script>
-  let openPhishList = [];
-  let phishingListLoaded = false;
+ <script>
+let openPhishList = [];
+let phishingListLoaded = false;
 
-  fetch('openphish.txt')
-    .then(res => {
-      if (!res.ok) throw new Error('List not found');
-      return res.text();
-    })
-    .then(text => {
-      openPhishList = text.split('\n').map(u => u.trim()).filter(Boolean);
-      phishingListLoaded = true;
-    })
-    .catch(() => {
-      phishingListLoaded = false;
-      const r = document.getElementById('phishing-result');
-      r.textContent = '⚠️ Unable to load phishing list. Checker disabled.';
-      r.style.color = 'orange';
-      document.getElementById('url').disabled = true;
-      document.querySelector('#phishing-form button').disabled = true;
-    });
-
-  function normalizeUrl(url) {
-    return url.trim().replace(/^https?:\/\//i,'').replace(/\/$/,'').toLowerCase();
-  }
-
-  async function checkPhishing(url) {
-    const test = normalizeUrl(url);
-    return openPhishList.some(ph => normalizeUrl(ph) === test);
-  }
-
-  document.getElementById('phishing-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    if (!phishingListLoaded) return;
-    const url    = document.getElementById('url').value;
-    const result = document.getElementById('phishing-result');
-    result.textContent = 'Checking…';
-    const isBad = await checkPhishing(url);
-    result.textContent = isBad
-      ? '⚠️ Dangerous/phishing site!'
-      : '✅ The site appears safe.';
-    result.style.color = isBad ? 'red' : 'lime';
+fetch('openphish.txt')
+  .then(res => {
+    if (!res.ok) throw new Error('List not found');
+    return res.text();
+  })
+  .then(text => {
+    openPhishList = text.split('\n').map(u => u.trim()).filter(Boolean);
+    phishingListLoaded = true;
+  })
+  .catch(() => {
+    phishingListLoaded = false;
+    const r = document.getElementById('phishing-result');
+    r.textContent = '⚠️ Unable to load phishing list. Checker disabled.';
+    r.style.color = 'orange';
+    document.getElementById('url').disabled = true;
+    document.querySelector('#phishing-form button').disabled = true;
   });
-  </script>
 
-  <!-- ===== HF Space widget за чатбот ===== -->
-  <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
-  <!-- ===== HF Space widget за чатбот ===== -->
-  <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
+function normalizeUrl(url) {
+  return url.trim()
+            .replace(/^https?:\/\//i, '')
+            .replace(/\/$/, '')
+            .toLowerCase();
+}
+
+async function checkPhishing(url) {
+  const testUrl = normalizeUrl(url);
+  return openPhishList.some(ph => normalizeUrl(ph) === testUrl);
+}
+
+document.getElementById('phishing-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  if (!phishingListLoaded) return;
+  const url = document.getElementById('url').value;
+  const resultDiv = document.getElementById('phishing-result');
+  resultDiv.textContent = 'Checking…';
+  const isPhish = await checkPhishing(url);
+  if (isPhish) {
+    resultDiv.textContent = '⚠️ Dangerous/phishing site!';
+    resultDiv.style.color = 'red';
+  } else {
+    resultDiv.textContent = '✅ The site appears safe.';
+    resultDiv.style.color = 'lime';
+  }
+});
+</script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof particlesJS !== "undefined") {
+        particlesJS.load('particles-js', 'particles.json', function() {
+          console.log('Particles.js loaded');
+        });
+      }
+    });
+  </script>
+  <script src="particles.js"></script>
+
 </body>
 </html>
