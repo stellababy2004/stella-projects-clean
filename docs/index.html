@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   })();
 
-  // Attack Simulation
+
   const buttons   = document.querySelectorAll('#attack-buttons .button');
   const result    = document.getElementById('attack-result');
   const logOutput = document.getElementById('log-output');
@@ -512,17 +512,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   fetch('data.json')
-    .then(response => response.text())
-    .then(text => {
-      console.log('Сървърът върна:', text);
-      // Махаме ```json и ```
-      const cleaned = text.replace(/```json|```/g, '').trim();
-      try {
-        const data = JSON.parse(cleaned);
-        console.log('Парснат JSON:', data);
-      } catch (e) {
-        console.error('Грешка при парсване на JSON:', e);
-      }
+    .then(response => response.json())
+    .then(data => {
+      console.log('Парснат JSON:', data);
+    })
+    .catch(e => {
+      console.error('Грешка при парсване на JSON:', e);
     });
 });
 </script>
