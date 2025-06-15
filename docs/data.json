@@ -1,16 +1,15 @@
-
 {
-  "name": "CyberSec AI Chat",
-  "version": "1.0",
-  "description": "Чат за киберсигурност",
-  "users": [
-    {
-      "id": 1,
-      "username": "admin"
-    },
-    {
-      "id": 2,
-      "username": "guest"
-    }
-  ]
+  "particles": {
+    "number": { "value": 60 },
+    "color": { "value": "#00ffee" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5 },
+    "size": { "value": 3 },
+    "line_linked": { "enable": true, "distance": 150, "color": "#00ffee", "opacity": 0.4, "width": 1 },
+    "move": { "enable": true, "speed": 2 }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": { "onhover": { "enable": true, "mode": "repulse" } }
+  }
 }
