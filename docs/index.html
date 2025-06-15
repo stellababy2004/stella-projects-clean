@@ -495,8 +495,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Particles.js
   if (typeof particlesJS !== "undefined") {
     particlesJS.load('particles-js', 'particles.json', function() {
-      console.log('Particles.js loaded');
+      console.log('particles.js config loaded');
     });
+  }
 
   // Fetch example
   fetch('https://huggingface.co/spaces/stellababy2004/stellababy2004cyber_chatbot')
@@ -511,7 +512,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-  fetch('docs/data.json')
+  fetch('data.json')
     .then(response => response.json())
     .then(data => {
       console.log('Парснат JSON:', data);
