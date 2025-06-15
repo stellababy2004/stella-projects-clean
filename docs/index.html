@@ -214,13 +214,8 @@
     </section>
 
     <section class="section" id="checkpoint-map">
-      <h2>Live Threat Map (Check Point)</h2>
-      <iframe 
-        src="https://threatmap.checkpoint.com/" 
-        width="100%" 
-        height="600" 
-        style="border:2px solid #00ffee; border-radius:10px; box-shadow:0 0 10px #00ffee; background-color: black;">
-      </iframe>
+      <h2>Global Threat Map</h2>
+      <div id="map" style="height: 400px; width: 100%;"></div>
     </section>
 
     <section class="section" id="chart">
@@ -258,26 +253,54 @@ document.addEventListener("DOMContentLoaded", function () {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Примерни маркери за глобални заплахи (може да добавите реални данни)
+    // Цветове по тип заплаха
+    const threatColors = {
+      "Phishing": "#e67e22",
+      "Brute Force": "#e74c3c",
+      "Malware": "#9b59b6",
+      "DDoS": "#2980b9",
+      "APT": "#16a085",
+      "Ransomware": "#c0392b",
+      "Botnet": "#34495e",
+      "SQL Injection": "#f1c40f",
+      "Zero-Day": "#2ecc71",
+      "Spyware": "#8e44ad",
+      "Trojan": "#d35400",
+      "Worm": "#27ae60"
+    };
+
+    // Още повече локации
     const threatLocations = [
-      { lat: 51.5, lng: -0.09, label: "Phishing (London)" },
-      { lat: 40.7, lng: -74.0, label: "Brute Force (New York)" },
-      { lat: 48.85, lng: 2.35, label: "Malware (Paris)" },
-      { lat: 35.68, lng: 139.76, label: "DDoS (Tokyo)" }
+      { lat: 51.5, lng: -0.09, city: "London", type: "Phishing" },
+      { lat: 40.7, lng: -74.0, city: "New York", type: "Brute Force" },
+      { lat: 48.85, lng: 2.35, city: "Paris", type: "Malware" },
+      { lat: 35.68, lng: 139.76, city: "Tokyo", type: "DDoS" },
+      { lat: 55.75, lng: 37.62, city: "Moscow", type: "APT" },
+      { lat: 34.05, lng: -118.24, city: "Los Angeles", type: "Ransomware" },
+      { lat: 28.61, lng: 77.21, city: "Delhi", type: "Phishing" },
+      { lat: -33.87, lng: 151.21, city: "Sydney", type: "Botnet" },
+      { lat: 52.52, lng: 13.40, city: "Berlin", type: "SQL Injection" },
+      { lat: 41.90, lng: 12.49, city: "Rome", type: "Zero-Day" },
+      { lat: 19.43, lng: -99.13, city: "Mexico City", type: "DDoS" },
+      { lat: 39.90, lng: 116.40, city: "Beijing", type: "Malware" },
+      { lat: 37.77, lng: -122.42, city: "San Francisco", type: "Spyware" },
+      { lat: 1.35, lng: 103.82, city: "Singapore", type: "Trojan" },
+      { lat: 31.23, lng: 121.47, city: "Shanghai", type: "Worm" },
+      { lat: 50.45, lng: 30.52, city: "Kyiv", type: "APT" },
+      { lat: 35.68, lng: 51.41, city: "Tehran", type: "Ransomware" },
+      { lat: 59.93, lng: 30.31, city: "Saint Petersburg", type: "Botnet" },
+      { lat: 25.20, lng: 55.27, city: "Dubai", type: "Phishing" },
+      { lat: 43.65, lng: -79.38, city: "Toronto", type: "Zero-Day" }
     ];
 
     threatLocations.forEach(loc => {
+      const color = threatColors[loc.type] || "#333";
       const marker = L.marker([loc.lat, loc.lng])
         .addTo(map)
-        .bindPopup(loc.label);
+        .bindPopup(
+          `<b>${loc.city}</b><br>Threat: <span style="color:${color};font-weight:bold">${loc.type}</span>`
+        );
       window.globalMapMarkers.push(marker);
-    });
-
-    document.getElementById('clear-map').addEventListener('click', function () {
-      if (window.globalMapMarkers && Array.isArray(window.globalMapMarkers)) {
-        window.globalMapMarkers.forEach(marker => map.removeLayer(marker));
-        window.globalMapMarkers.length = 0;
-      }
     });
   }
 
