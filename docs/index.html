@@ -247,14 +247,31 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  // Map initialization
-  if (typeof L !== "undefined") {
-    const map = L.map('map').setView([20, 0], 2);
-    window.attackSimMap = map;
+  // --- GLOBAL THREAT MAP FIX ---
+  // Инициализация на картата само ако още не е инициализирана
+  if (typeof L !== "undefined" && !window.globalThreatMap) {
+    const map = L.map('map', { zoomControl: true }).setView([20, 0], 2);
+    window.globalThreatMap = map;
     window.globalMapMarkers = [];
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
+
+    // Примерни маркери за глобални заплахи (може да добавите реални данни)
+    const threatLocations = [
+      { lat: 51.5, lng: -0.09, label: "Phishing (London)" },
+      { lat: 40.7, lng: -74.0, label: "Brute Force (New York)" },
+      { lat: 48.85, lng: 2.35, label: "Malware (Paris)" },
+      { lat: 35.68, lng: 139.76, label: "DDoS (Tokyo)" }
+    ];
+
+    threatLocations.forEach(loc => {
+      const marker = L.marker([loc.lat, loc.lng])
+        .addTo(map)
+        .bindPopup(loc.label);
+      window.globalMapMarkers.push(marker);
+    });
 
     document.getElementById('clear-map').addEventListener('click', function () {
       if (window.globalMapMarkers && Array.isArray(window.globalMapMarkers)) {
