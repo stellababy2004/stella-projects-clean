@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stella Barbarella SOC Analyst & Cybersecurity Portfolio</title>
-  <meta name="description" content="Cybersecurity Portfolio of Stella Barbarella – SOC Analyst, Threat Hunter & Cybersecurity Enthusiast." />
-  <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts" />
-    
+  <meta name="description" content="Cybersecurity Portfolio of Stella Barbarella - SOC Analyst, Threat Hunter & Cybersecurity Enthusiast.">
+  <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts">
+  <meta name="robots" content="index, follow">
   
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-  
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css">
+  <!-- scripts moved to end of body for correct initialization -->
 
   <style>
     .button {
@@ -111,27 +107,21 @@
 </head>
 <body id="top">
   <div id="particles-js" style="position: absolute; width: 100%; height: 100%;"></div>
-  <script>
-  particlesJS.load('particles-js', 'particles.json', function() {
-    console.log('particles.js config loaded');
-  });
-  </script>
   <header>
     <nav>
       <ul>
         <li><a href="#about" class="button">About Me</a></li>
-        <li><a href="#projects" class="button">Projects</a></li>
         <li><a href="#chart" class="button">Charts</a></li>
         <li><a href="attack-sim.html" class="button">AttackSim</a></li>
         <li><a href="https://huggingface.co/spaces/stellababy2004/cyber-chat" target="_blank" class="button">🤖 AI Chatbot</a></li>
-        <li><a href="#map-section" class="button">Live Map</a></li>
+        <li><a href="#checkpoint-map-section" class="button">Live Map</a></li>
         <li><a href="#testimonials" class="button">Testimonials</a></li>
         <li><a href="#contact" class="button">Contact</a></li>
       </ul>
       <ul class="project-links">
         <li>
           <a class="button" href="penetration_test_report_acme_en.pdf" target="_blank" download>
-            <span>📄 Report (EN – PDF)</span>
+            <span>📄 Report (EN - PDF)</span>
           </a>
         </li>
         <li>
@@ -141,7 +131,7 @@
         </li>
       </ul>
       <div class="logo">
-        <img src="images/logo.png" alt="Stella Barbarella Logo" style="max-width:180px; height:auto;" />
+        <img src="images/logo.png" alt="Stella Barbarella Logo" style="max-width:180px; height:auto;">
       </div>
     </nav>
   </header>
@@ -157,7 +147,7 @@
       <ul class="project-list">
               <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
               <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
-              <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
+              <li><a href="#checkpoint-map-section" class="button">🌐 Threat Live</a></li>
               <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
             </ul>
     </section>
@@ -165,10 +155,10 @@
 <section class="section" id="phishing-checker">
   <h2>Phishing URL Checker</h2>
   <form id="phishing-form">
-    <label for="url">Enter URL to check:</label>
-    <input type="text" id="url" placeholder="https://example.com" required />
-    <button type="submit">Check</button>
-  </form>
+      <label for="phishing-url">Enter URL to check:</label>
+      <input type="text" id="phishing-url" placeholder="https://example.com" required>
+      <button type="submit">Check</button>
+    </form>
   <div id="phishing-result" style="margin-top:10px;font-weight:bold;"></div>
 </section>
 
@@ -197,10 +187,9 @@
     data-theme="dark"
     style="width:100%; height:650px; overflow:hidden; border-radius:12px;"
   ></div>
-  <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
 </section>
 
-<section class="section" id="attack-sim">
+<section class="section" id="attack-sim-section">
       <h2>Attack Simulation Lab</h2>
       <p>Select an attack type to simulate:</p>
       <div id="attack-buttons">
@@ -218,9 +207,9 @@
       <p>"Her passion for cybersecurity is evident in her work." - <strong>Jane Smith, SOC Manager</strong></p>
     </section>
 
-    <section class="section" id="checkpoint-map">
+    <section class="section" id="checkpoint-map-section">
       <h2>Global Threat Map</h2>
-      <div id="map" style="height: 400px; width: 100%;"></div>
+      <div id="checkpoint-map-container" style="height: 400px; width: 100%;"></div>
     </section>
 
     <section class="section" id="chart">
@@ -232,46 +221,227 @@
 
     <section class="section" id="map-section">
       <h2>Global Threat Locations</h2>
-      <div id="map" style="height: 400px; border: 1px solid #0ff; border-radius: 8px;"></div>
+      <div id="map-section-map2" style="height: 400px; border: 1px solid #0ff; border-radius: 8px;"></div>
       <button id="clear-map">🧹 Clear Map</button>
     </section>
-  <section class="section" id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:stiliana.stoyanova@orange.fr">stiliana.stoyanova@orange.fr</a></p>
-  </section>
+    <section class="section" id="contact">
+      <h2>Contact Me</h2>
+      <form id="contact-form" action="mailto:your.email@example.com" method="POST" enctype="text/plain">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
   </main>
+  <!-- Scripts moved to just before </body> and only one DOMContentLoaded per script -->
 
-<!-- Move all scripts to just before </body> and ensure only one DOMContentLoaded per script -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initialize checkpointMap for the Global Threat Map
+    var checkpointMapContainer = document.getElementById('checkpoint-map-container');
+    var checkpointMap = null;
+    if (checkpointMapContainer) {
+      checkpointMap = L.map('checkpoint-map-container', { zoomControl: true }).setView([20, 0], 2);
+      window.globalThreatMap = checkpointMap;
+      window.globalMapMarkers = [];
 
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors &amp; others'
+      }).addTo(checkpointMap);
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  if (typeof L !== "undefined" && !window.globalThreatMap) {
-    const map = L.map('map', { zoomControl: true }).setView([20, 0], 2);
-    window.globalThreatMap = map;
-    window.globalMapMarkers = [];
+      const threatLocations = [
+        { lat: 51.5, lng: -0.09, city: "London", type: "Phishing" },
+        { lat: 40.7, lng: -74.0, city: "New York", type: "Brute Force" },
+        { lat: 48.85, lng: 2.35, city: "Paris", type: "Malware" },
+        { lat: 35.68, lng: 139.76, city: "Tokyo", type: "DDoS" }
+      ];
+      // ... more locations ...
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+      threatLocations.forEach(function(loc) {
+        const marker = L.marker([loc.lat, loc.lng])
+          .addTo(checkpointMap)
+          .bindPopup('<b>' + loc.city + '</b><br>Threat: <span style="color:#e74c3c">' + loc.type + '</span>');
+        window.globalMapMarkers.push(marker);
+      });
+    }
 
-    const threatLocations = [
-      { lat: 51.5, lng: -0.09, city: "London", type: "Phishing" },
-      { lat: 40.7, lng: -74.0, city: "New York", type: "Brute Force" },
-      { lat: 48.85, lng: 2.35, city: "Paris", type: "Malware" },
-      { lat: 35.68, lng: 139.76, city: "Tokyo", type: "DDoS" }
-      // ... още локации ...
-    ];
+    // Optionally, initialize a separate map for map-section if needed
+    if (!window.mapSectionMap && document.getElementById('map-section-map2')) {
+      const mapSectionMap = L.map('map-section-map2', { zoomControl: true }).setView([20, 0], 2);
+      window.mapSectionMap = mapSectionMap;
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors &amp; others'
+      }).addTo(mapSectionMap);
+      // Add example markers to mapSectionMap and track them
+      window.mapSectionMarkers = window.mapSectionMarkers || [];
+      const mapSectionThreats = [
+        { lat: 34.05, lng: -118.25, city: "Los Angeles", type: "Phishing" },
+        { lat: 55.75, lng: 37.62, city: "Moscow", type: "Malware" },
+        { lat: 28.61, lng: 77.21, city: "Delhi", type: "DDoS" }
+      ];
+      mapSectionThreats.forEach(function(loc) {
+        const marker = L.marker([loc.lat, loc.lng])
+          .addTo(mapSectionMap)
+          .bindPopup('<b>' + loc.city + '</b><br>Threat: <span style="color:#e74c3c">' + loc.type + '</span>');
+        window.mapSectionMarkers.push(marker);
+      });
 
-    threatLocations.forEach(loc => {
-      const marker = L.marker([loc.lat, loc.lng])
-        .addTo(map)
-        .bindPopup(`<b>${loc.city}</b><br>Threat: <span style="color:#e74c3c">${loc.type}</span>`);
-      window.globalMapMarkers.push(marker);
+      // Clear map button logic
+      const clearBtn = document.getElementById('clear-map');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+          window.mapSectionMarkers.forEach(function(marker) {
+            mapSectionMap.removeLayer(marker);
+          });
+          window.mapSectionMarkers = [];
+        });
+      }
+    }
+
+    // Phishing URL Checker logic
+    const phishingForm = document.getElementById('phishing-form');
+    if (phishingForm) {
+      phishingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const url = document.getElementById('phishing-url').value.trim();
+        const resultDiv = document.getElementById('phishing-result');
+        // Simple fake check for demonstration
+        if (!/^https?:\/\//i.test(url)) {
+          resultDiv.textContent = "Please enter a valid URL (must start with http:// or https://)";
+          resultDiv.style.color = "#e74c3c";
+          return;
+        }
+        // Simulate phishing detection
+        if (url.includes("login") || url.includes("secure") || url.includes("verify")) {
+          resultDiv.textContent = "⚠️ Warning: This URL may be a phishing attempt!";
+          resultDiv.style.color = "#e74c3c";
+        } else {
+          resultDiv.textContent = "✅ This URL appears safe (no phishing detected).";
+          resultDiv.style.color = "#00ffee";
+        }
+      });
+    }
+
+    // Log Analyzer simulation
+    const logOutput = document.getElementById('log-output');
+    const toggleLogsBtn = document.getElementById('toggle-logs');
+    let logsPaused = false;
+    let logInterval;
+    function startLogs() {
+      logInterval = setInterval(() => {
+        if (!logsPaused && logOutput) {
+          const now = new Date().toISOString();
+          const msg = `[${now}] INFO: System running. Threats detected: ${Math.floor(Math.random()*3)}\n`;
+          logOutput.textContent += msg;
+          logOutput.scrollTop = logOutput.scrollHeight;
+        }
+      }, 1500);
+    }
+    if (toggleLogsBtn && logOutput) {
+      toggleLogsBtn.addEventListener('click', function() {
+        logsPaused = !logsPaused;
+        toggleLogsBtn.textContent = logsPaused ? "▶️ Resume Logs" : "⏸ Pause Logs";
+      });
+      startLogs();
+    }
+
+    // Attack Simulation Lab logic
+    const attackButtons = document.querySelectorAll('#attack-buttons .button');
+    const attackResult = document.getElementById('attack-result');
+    if (attackButtons && attackResult) {
+      attackButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const attack = btn.getAttribute('data-attack');
+          let msg = "";
+          switch (attack) {
+            case "phishing":
+              msg = "Simulating phishing attack... User receives a suspicious email with a malicious link.";
+              break;
+            case "brute-force":
+              msg = "Simulating brute-force attack... Multiple login attempts detected from a single IP.";
+              break;
+            case "malware":
+              msg = "Simulating malware attack... Malicious file detected and quarantined.";
+              break;
+            case "ddos":
+              msg = "Simulating DDoS attack... High traffic detected, service response slowed.";
+              break;
+            default:
+              msg = "Unknown attack type.";
+          }
+          attackResult.textContent = msg;
+        });
+      });
+    }
+
+    // Initialize particles.js after it is loaded
+    if (window.particlesJS) {
+      particlesJS.load('particles-js', 'particles.json', function() {
+        console.log('particles.js config loaded');
+      });
+    } else {
+      console.warn('particles.js not loaded');
+    }
+    // If particles.json does not exist, fallback to inline config
+    fetch('particles.json').catch(() => {
+      if (window.particlesJS) {
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 60, density: { enable: true, value_area: 800 } },
+            color: { value: "#00ffee" },
+            shape: { type: "circle" },
+            opacity: { value: 0.3, random: true },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 120, color: "#00ffee", opacity: 0.2, width: 1 },
+            move: { enable: true, speed: 1.5, direction: "none", random: false, straight: false, out_mode: "out" }
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+            modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+          },
+          retina_detect: true
+        });
+      }
     });
-  }
-});
-</script>
+
+    // Chart.js initialization for #threatChart
+    var ctx = document.getElementById('threatChart');
+    if (ctx && window.Chart) {
+      var chartCtx = ctx.getContext && ctx.getContext('2d');
+      if (chartCtx) {
+        new Chart(chartCtx, {
+          type: 'bar',
+          data: {
+            labels: ['Phishing', 'Brute Force', 'Malware', 'DDoS'],
+            datasets: [
+              { label: "A", data: [1, 2, 3, 4], backgroundColor: "#00ffee99" },
+              { label: "B", data: [4, 5, 6, 7], backgroundColor: "#e74c3c99" }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              title: { display: false }
+            },
+            scales: {
+              y: { beginAtZero: true }
+            }
+          }
+        });
+      }
+    }
+  });
+  </script>
 </body>
 </html>
