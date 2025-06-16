@@ -1,4 +1,5 @@
 {
+  "name": "CyberSec AI Chat",
   "particles": {
     "number": { "value": 60 },
     "color": { "value": "#00ffee" },
