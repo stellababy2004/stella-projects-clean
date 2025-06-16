@@ -12,5 +12,16 @@
   "interactivity": {
     "detect_on": "canvas",
     "events": { "onhover": { "enable": true, "mode": "repulse" } }
+  },
+  "style": {
+    ".centered-header": {
+      "text-align": "center"
+    }
+  },
+  "content": {
+    "header": {
+      "name": "Stella Barbarella",
+      "title": "SOC Analyst | Cybersecurity Enthusiast | Threat Hunter"
+    }
   }
 }
