@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stella Barbarella SOC Analyst & Cybersecurity Portfolio</title>
-  <meta name="description" content="Cybersecurity Portfolio of Stella Barbarella - SOC Analyst, Threat Hunter & Cybersecurity Enthusiast.">
+  <meta name="description" content="Portfolio of Stella Barbarella - SOC Analyst, Threat Hunter & Cybersecurity Enthusiast.">
   <meta name="keywords" content="SOC Analyst, Cybersecurity, Threat Hunting, Phishing Detector, Cyber Threat Map, Charts">
   <meta name="robots" content="index, follow">
   <link rel="icon" href="favicon.ico">
@@ -105,6 +105,19 @@
       background: #101820 !important;
       border-radius: 8px;
     }
+
+    /* Move inline styles here */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .gradio-embed {
+      width: 100%;
+      height: 650px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
   </style>
 
   <!-- Open Graph за Facebook и други -->
@@ -121,7 +134,7 @@
 <meta name="twitter:image" content="images/logo.png">
 </head>
 <body id="top">
-  <div id="particles-js" style="position: absolute; width: 100%; height: 100%;"></div>
+  <div id="particles-js"></div>
   <header>
     <nav>
       <ul>
@@ -146,7 +159,7 @@
         </li>
       </ul>
       <div class="logo">
-        <img src="images/logo.png" alt="Stella Barbarella Logo">
+        <img src="images/logo.png" alt="Stella Barbarella Logo - SOC Analyst Portfolio">
       </div>
     </nav>
   </header>
@@ -203,9 +216,7 @@
     class="gradio-embed"
     data-gradio-app="stellababy2004/cyber-chat"
     data-theme="dark"
-    style="width:100%; height:650px; border-radius:12px; overflow:hidden;"
   ></div>
-  <script src="https://gradio.app/js/embed.js"></script>
 </section>
 <section class="section" id="attack-sim-section">
       <h2>Attack Simulation Lab</h2>
@@ -245,167 +256,175 @@
     <section class="section" id="contact">
       <h2>Contact Me</h2>
       <!-- Contact Form (Formspree) -->
-<form id="contact-form"
-  action="https://formspree.io/f/mdkzdooa"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message" required></textarea>
-  </label>
-  <button type="submit">Send</button>
-</form>
-<script>
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  const email = document.querySelector('input[name="email"]').value.trim();
-  const message = document.querySelector('textarea[name="message"]').value.trim();
-  if (!email || !message) {
-    alert('Моля, попълнете всички полета!');
-    e.preventDefault();
-  }
-});
-</script>
+      <form id="contact-form"
+        action="https://formspree.io/f/mdkzdooa"
+        method="POST"
+      >
+        <label>
+          Your email:
+          <input type="email" name="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+        </label>
+        <label>
+          Your message:
+          <textarea name="message" required></textarea>
+        </label>
+        <button type="submit">Send</button>
+      </form>
     </section>
   </main>
-  <!-- Scripts moved to just before </body> and only one DOMContentLoaded per script -->
 
+  <!-- Consolidated script includes -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js" defer></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="https://gradio.app/js/embed.js" defer></script>
+  <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+  <script src="scripts/main.js" defer></script>
+
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Initialize checkpointMap for the Global Threat Map
-    var checkpointMapContainer = document.getElementById('checkpoint-map-container');
-    var checkpointMap = null;
-    if (checkpointMapContainer) {
-      checkpointMap = L.map('checkpoint-map-container', { zoomControl: true }).setView([20, 0], 2);
-      window.globalThreatMap = checkpointMap;
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize global variables
       window.globalMapMarkers = [];
+      window.mapSectionMarkers = [];
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors &amp; others'
-      }).addTo(checkpointMap);
+      // Initialize the checkpoint map
+      const checkpointMapContainer = document.getElementById('checkpoint-map-container');
+      if (checkpointMapContainer) {
+        if (window.checkpointMap) {
+          window.checkpointMap.remove();
+        }
+        checkpointMapContainer.innerHTML = ""; // Clear container
+        const checkpointMap = L.map('checkpoint-map-container', { zoomControl: true }).setView([34.05, 0], 2);
+        window.checkpointMap = checkpointMap;
 
-      const threatLocations = [
-        { lat: 51.5, lng: -0.09, city: "London", type: "Phishing" },
-        { lat: 40.7, lng: -74.0, city: "New York", type: "Brute Force" },
-        { lat: 48.85, lng: 2.35, city: "Paris", type: "Malware" },
-        { lat: 35.68, lng: 139.76, city: "Tokyo", type: "DDoS" }
-      ];
-      // ... more locations ...
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(checkpointMap);
 
-      threatLocations.forEach(function(loc) {
-        const marker = L.marker([loc.lat, loc.lng])
-          .addTo(checkpointMap)
-          .bindPopup('<b>' + loc.city + '</b><br>Threat: <span style="color:#e74c3c">' + loc.type + '</span>');
-        window.globalMapMarkers.push(marker);
-      });
-    }
+        const checkpointThreats = [
+          { lat: 34.05, lng: -118.25, city: "Los Angeles", type: "Phishing" },
+          { lat: 55.75, lng: 37.62, city: "Moscow", type: "Malware" },
+          { lat: 28.61, lng: 77.21, city: "Delhi", type: "DDoS" }
+        ];
 
-    // Optionally, initialize a separate map for map-section if needed
-    var mapSectionMapContainer = document.getElementById('map-section-map');
-    if (!window.mapSectionMap && mapSectionMapContainer) {
-      // Prevent Leaflet from throwing an error if the map was already initialized
-      if (mapSectionMapContainer._leaflet_id) {
-        mapSectionMapContainer.removeAttribute('data-map-initialized');
-        mapSectionMapContainer.innerHTML = "";
-      }
-      const mapSectionMap = L.map('map-section-map', { zoomControl: true }).setView([20, 0], 2);
-      window.mapSectionMap = mapSectionMap;
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors &amp; others'
-      }).addTo(mapSectionMap);
-      // Add example markers to mapSectionMap and track them
-      window.mapSectionMarkers = window.mapSectionMarkers || [];
-      const mapSectionThreats = [
-        { lat: 34.05, lng: -118.25, city: "Los Angeles", type: "Phishing" },
-        { lat: 55.75, lng: 37.62, city: "Moscow", type: "Malware" },
-        { lat: 28.61, lng: 77.21, city: "Delhi", type: "DDoS" }
-      ];
-      mapSectionThreats.forEach(function(loc) {
-        const marker = L.marker([loc.lat, loc.lng])
-          .addTo(mapSectionMap)
-          .bindPopup('<b>' + loc.city + '</b><br>Threat: <span style="color:#e74c3c">' + loc.type + '</span>');
-        window.mapSectionMarkers.push(marker);
-      });
-
-      // Clear map button logic
-      const clearBtn = document.getElementById('clear-map');
-      if (clearBtn) {
-        clearBtn.addEventListener('click', function() {
-          window.mapSectionMarkers.forEach(function(marker) {
-            mapSectionMap.removeLayer(marker);
-          });
-          window.mapSectionMarkers = [];
+        checkpointThreats.forEach(loc => {
+          const marker = L.marker([loc.lat, loc.lng])
+            .addTo(checkpointMap)
+            .bindPopup(`<b>${loc.city}</b><br>Threat: <span style="color:#e74c3c">${loc.type}</span>`);
+          window.globalMapMarkers.push(marker);
         });
       }
-    }
 
-    // Phishing URL Checker logic
-    const phishingForm = document.getElementById('phishing-form');
-    if (phishingForm) {
-      phishingForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const url = document.getElementById('phishing-url').value.trim();
-        const resultDiv = document.getElementById('phishing-result');
-        // Simple fake check for demonstration
-        if (!/^https?:\/\//i.test(url)) {
-          resultDiv.textContent = "Please enter a valid URL (must start with http:// or https://)";
-          resultDiv.style.color = "#e74c3c";
-          return;
-        }
-        // Simulate phishing detection
-        if (url.includes("login") || url.includes("secure") || url.includes("verify")) {
-          resultDiv.textContent = "⚠️ Warning: This URL may be a phishing attempt!";
-          resultDiv.style.color = "#e74c3c";
-        } else {
-          resultDiv.textContent = "✅ This URL appears safe (no phishing detected).";
-          resultDiv.style.color = "#00ffee";
-        }
-      });
-    }
+      // Phishing URL Checker logic
+      const phishingForm = document.getElementById('phishing-form');
+      if (phishingForm) {
+        phishingForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const url = document.getElementById('phishing-url').value.trim();
+          const resultDiv = document.getElementById('phishing-result');
+          if (!/^https?:\/\//i.test(url)) {
+            resultDiv.textContent = "Please enter a valid URL (must start with http:// or https://)";
+            resultDiv.style.color = "#e74c3c";
+            return;
+          }
+          if (url.includes("login") || url.includes("secure") || url.includes("verify")) {
+            resultDiv.textContent = "⚠️ Warning: This URL may be a phishing attempt!";
+            resultDiv.style.color = "#e74c3c";
+          } else {
+            resultDiv.textContent = "✅ This URL appears safe (no phishing detected).";
+            resultDiv.style.color = "#00ffee";
+          }
+        });
+      }
 
-    // Log Analyzer simulation
-    const logOutput = document.getElementById('log-output');
-    const toggleLogsBtn = document.getElementById('toggle-logs');
-    let logsPaused = false;
-    let logInterval;
-    function startLogs() {
-      logInterval = setInterval(() => {
-        if (!logsPaused && logOutput) {
-          const now = new Date().toISOString();
-          const msg = `[${now}] INFO: System running. Threats detected: ${Math.floor(Math.random()*3)}\n`;
-          logOutput.textContent += msg;
-          logOutput.scrollTop = logOutput.scrollHeight;
-        }
-      }, 1500);
-    }
-    if (toggleLogsBtn && logOutput) {
-      toggleLogsBtn.addEventListener('click', function() {
-        logsPaused = !logsPaused;
-        toggleLogsBtn.textContent = logsPaused ? "▶️ Resume Logs" : "⏸ Pause Logs";
-      });
-      startLogs();
-    }
+      // Log Analyzer simulation
+      const logOutput = document.getElementById('log-output');
+      const toggleLogsBtn = document.getElementById('toggle-logs');
+      let logsPaused = false;
+      if (toggleLogsBtn && logOutput) {
+        toggleLogsBtn.addEventListener('click', function() {
+          logsPaused = !logsPaused;
+          toggleLogsBtn.textContent = logsPaused ? "▶️ Resume Logs" : "⏸ Pause Logs";
+        });
 
-    // Attack Simulation Lab logic
-    const attackButtons = document.querySelectorAll('#attack-buttons .button');
-    const attackResult = document.getElementById('attack-result');
-    if (attackButtons && attackResult) {
-      attackButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-          const attack = btn.getAttribute('data-attack');
-          let msg = "";
-          switch (attack) {
-            case "phishing":
-              msg = "Simulating phishing attack... User receives a suspicious email with a malicious link.";
-              break;
-            case "brute-force":
+        setInterval(() => {
+          if (!logsPaused && logOutput) {
+            const now = new Date().toISOString();
+            logOutput.textContent += `[${now}] INFO: System running. Threats detected: ${Math.floor(Math.random() * 3)}\n`;
+            logOutput.scrollTop = logOutput.scrollHeight;
+          }
+        }, 1500);
+      }
+
+      // Attack Simulation Lab logic
+      const attackButtons = document.querySelectorAll('#attack-buttons .button');
+      const attackResult = document.getElementById('attack-result');
+      if (attackButtons && attackResult) {
+        attackButtons.forEach(btn => {
+          btn.addEventListener('click', function() {
+            const attack = btn.getAttribute('data-attack');
+            const messages = {
+              phishing: "Simulating phishing attack... User receives a suspicious email with a malicious link.",
+              "brute-force": "Simulating brute-force attack... Multiple login attempts detected from a single IP.",
+              malware: "Simulating malware attack... Malicious file detected and quarantined.",
+              ddos: "Simulating DDoS attack... High traffic detected, service response slowed."
+            };
+            attackResult.textContent = messages[attack] || "Unknown attack type.";
+          });
+        });
+      }
+
+      // Initialize particles.js
+      if (window.particlesJS) {
+        particlesJS.load('particles-js', 'particles.json', function() {
+          console.log('particles.js config loaded');
+        });
+      } else {
+        document.getElementById('particles-js').innerHTML = "<p style='color:#fff;text-align:center;'>Animated background failed to load.</p>";
+      }
+
+      // Chart.js initialization
+      const ctx = document.getElementById('threatChart');
+      if (ctx && window.Chart) {
+        new Chart(ctx.getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: ['Phishing', 'Brute Force', 'Malware', 'DDoS'],
+            datasets: [
+              { label: "A", data: [1, 2, 3, 4], backgroundColor: "#00ffee99" },
+              { label: "B", data: [4, 5, 6, 7], backgroundColor: "#e74c3c99" }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              title: { display: false }
+            },
+            scales: {
+              y: { beginAtZero: true }
+            }
+          }
+        });
+      }
+
+      // Contact form validation
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          const email = document.querySelector('input[name="email"]').value.trim();
+          const message = document.querySelector('textarea[name="message"]').value.trim();
+          if (!email || !message) {
+            alert('Please fill out all fields!');
+            e.preventDefault();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
               msg = "Simulating brute-force attack... Multiple login attempts detected from a single IP.";
               break;
             case "malware":
@@ -481,39 +500,99 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
         });
       }
     }
+
+    // Contact form validation (Formspree)
+    var contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        const email = document.querySelector('input[name="email"]').value.trim();
+        const message = document.querySelector('textarea[name="message"]').value.trim();
+        if (!email || !message) {
+          alert('Моля, попълнете всички полета!');
+          e.preventDefault();
+        }
+      });
+    }
   });
   </script>
 
   <!-- Formspree Formbutton (постави го преди </body>) -->
-<script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
-<script>
-  window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
-  formbutton("create", {
-    action: "https://formspree.io/f/mdkzdooa",
-    title: "How can we help?",
-    fields: [
-      { 
-        type: "email", 
-        label: "Email:", 
-        name: "email",
-        required: true,
-        placeholder: "your@email.com"
-      },
-      {
-        type: "textarea",
-        label: "Message:",
-        name: "message",
-        placeholder: "What's on your mind?",
-      },
-      { type: "submit" }      
-    ],
-    styles: {
-      title: {
-        backgroundColor: "gray"
-      },
-      button: {
-        backgroundColor: "gray"
+  <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+  <script>
+    window.formbutton = window.formbutton || function() { (formbutton.q = formbutton.q || []).push(arguments) };
+    formbutton("create", {
+      action: "https://formspree.io/f/mdkzdooa",
+      title: "How can we help?",
+      fields: [
+        { 
+          type: "email", 
+          label: "Email:", 
+          name: "email",
+          required: true,
+          placeholder: "your@email.com"
+        },
+        {
+          type: "textarea",
+          label: "Message:",
+          name: "message",
+          placeholder: "What's on your mind?"
+        },
+        { type: "submit" }
+      ],
+      styles: {
+        title: { backgroundColor: "gray" },
+        button: { backgroundColor: "gray" }
       }
+    });
+  </script>
+</body>
+</html>
+    });
+  </script>
+</body>
+</html>
+      }
+    }
+  });
+</script>
+</body>
+</html>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize global variables
+    window.globalMapMarkers = [];
+    window.mapSectionMarkers = [];
+
+    // Initialize the checkpoint map
+    var checkpointMapContainer = document.getElementById('checkpoint-map-container');
+    if (checkpointMapContainer) {
+      // Properly destroy any existing map instance before creating a new one
+      if (window.checkpointMap) {
+        window.checkpointMap.remove();
+        window.checkpointMap = null;
+      }
+      checkpointMapContainer.innerHTML = ""; // Clear container
+      window.globalMapMarkers = Array.isArray(window.globalMapMarkers) ? window.globalMapMarkers : [];
+      // Initialize the checkpointMap before adding markers
+      var checkpointMap = L.map('checkpoint-map-container', { zoomControl: true }).setView([34.05, 0], 2);
+      window.checkpointMap = checkpointMap;
+      const checkpointThreats = [
+        { lat: 34.05, lng: -118.25, city: "Los Angeles", type: "Phishing" },
+        { lat: 55.75, lng: 37.62, city: "Moscow", type: "Malware" },
+        { lat: 28.61, lng: 77.21, city: "Delhi", type: "DDoS" }
+      ];
+      // Add tile layer
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors & others'
+      }).addTo(checkpointMap);
+      // Add example markers to checkpointMap and track them
+      checkpointThreats.forEach(function(loc) {
+        const marker = L.marker([loc.lat, loc.lng])
+          .addTo(checkpointMap)
+          .bindPopup('<b>' + loc.city + '</b><br>Threat: <span style="color:#e74c3c">' + loc.type + '</span>');
+        window.globalMapMarkers.push(marker);
+      });
     }
   });
 </script>

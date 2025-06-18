@@ -12,7 +12,11 @@ html, body {
   overflow-x: hidden;
   font-family: 'Courier New', monospace;
   color: #00ffee;
-  background: linear-gradient(120deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  background: #0f2027;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
   background-size: 400% 400%;
   animation: gradientScroll 20s ease infinite;
   background-attachment: fixed;
@@ -91,9 +95,10 @@ ul.project-links li { display: inline-block; }
   text-decoration: none;
 }
 .button:hover, .button:focus {
-  background: rgba(0, 255, 238, 0.1);
-  color: #00ffee;
+  background: #00ffee;
+  color: #101617;
   box-shadow: 0 0 24px #00ffee;
+  border-color: #00ffee;
 }
 .button span {
   display: flex;
@@ -107,13 +112,6 @@ ul.project-links li { display: inline-block; }
   display: block;
   width: 100%;
   text-align: center;
-}
-
-.button:hover, .button:focus {
-  background: #00ffee;
-  color: #101617;
-  box-shadow: 0 0 24px #00ffee;
-  border-color: #00ffee;
 }
 
 
@@ -393,17 +391,12 @@ footer .copyright {
 }
 
 #attack-sim {
-  background: rgba(10, 20, 30, 0.85);
-  border-radius: 16px;
-  padding: 24px;
-  margin: 32px 0;
-  box-shadow: 0 0 24px #00ffee33;
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 32px 24px;
-  border-radius: 24px;
   background: #121a20;
+  border-radius: 24px;
+  padding: 32px 24px;
+  margin: 40px auto;
   box-shadow: 0 0 32px #00fff966;
+  max-width: 1200px;
   box-sizing: border-box;
 }
 
@@ -452,24 +445,10 @@ footer .copyright {
   background: rgba(0, 255, 238, 0.2);
 }
 
-/* Remove or comment out this line to allow project links to display */
-/* .project-links {
-  display: none !important;
-} */
-
-/* Remove or comment out this rule at the end unless you want to hide header, nav, and logo everywhere */
-/*
-header,
-nav,
-.logo {
-  display: none !important;
-}
-*/
+/* Project links and header/nav/logo are now visible by default. */
 
 .centered-header {
   text-align: center;
 }
-
-<script src="particles.js"></script>
 
 
