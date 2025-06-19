@@ -1,0 +1,25 @@
+
+# Pentest Reports – Internal Active Directory Assessment
+
+This folder contains various formats of a simulated internal penetration test report for the fictional domain `acme.local`, conducted by Stella Barbarella.
+
+## Files Included
+
+| File Name                                     | Description                                  | Language |
+|----------------------------------------------|----------------------------------------------|----------|
+| `rapport_test_intrusion.pdf`                 | Full report in PDF format                    | French   |
+| `penetration_test_report_acme_en.pdf`        | Full report in PDF format                    | English  |
+| `rapport_test_intrusion.docx`                | Editable report in Word format               | French   |
+| `presentation_pentest_ad_acme.pptx`          | PowerPoint for executive debrief             | French   |
+| `presentation_cyber_pentest_dark.pptx`       | PowerPoint in hacker/cyber dark theme style  | French   |
+
+## Summary
+
+- Initial access via standard domain user `ituser`
+- Privilege escalation to Domain Admin via `GenericAll` rights
+- Hash dumping and WinRM exploitation
+- Recommendations provided for ACL hardening, WinRM restrictions, and SIEM deployment
+
+> Author: Stella Barbarella  
+> Website: [https://stellabarbarella.com](https://stellabarbarella.com)
+
