@@ -1,0 +1,14 @@
+// ...existing code...
+fetch('data.json')
+  .then(response => response.text())
+  .then(text => {
+    // Махаме ```json и ```
+    const cleaned = text.replace(/```json|```/g, '').trim();
+    try {
+      const data = JSON.parse(cleaned);
+      console.log('Парснат JSON:', data);
+    } catch (e) {
+      console.error('Грешка при парсване на JSON:', e);
+    }
+  });
+// ...existing code...

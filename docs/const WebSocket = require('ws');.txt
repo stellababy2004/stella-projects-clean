@@ -1,0 +1,15 @@
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 8080 });
+
+setInterval(() => {
+  const threat = {
+    type: 'Suspicious login',
+    ip: '192.168.1.' + Math.floor(Math.random() * 255),
+    time: new Date().toLocaleTimeString()
+  };
+  wss.clients.forEach(client => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify(threat));
+    }
+  });
+}, 3000); // изпраща събитие на всеки 3 секунди

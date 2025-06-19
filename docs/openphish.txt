@@ -1,0 +1,20 @@
+fetch('openphish.txt')
+  .then(res => {
+    if (!res.ok) throw new Error('List not found');
+    return res.text();
+  })
+ 
+document.getElementById('phishing-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const url = document.getElementById('url').value;
+  const norm = url.replace(/^https?:\/\//,'').replace(/\/$/,'').toLowerCase();
+  const isPhish = window.phishList.includes(norm);
+  const resEl = document.getElementById('phishing-result');
+  if (isPhish) {
+    resEl.innerText = '⚠️ Dangerous/phishing site!';
+    resEl.style.color = 'red';
+  } else {
+    resEl.innerText = '✅ Site appears safe.';
+    resEl.style.color = 'lime';
+  }
+});
