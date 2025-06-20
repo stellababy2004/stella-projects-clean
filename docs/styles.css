@@ -12,7 +12,15 @@ html, body {
   overflow-x: hidden;
   font-family: 'Courier New', monospace;
   color: #00ffee;
+<<<<<<< HEAD
   background: linear-gradient(120deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+=======
+  background: #0f2027;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
   background-size: 400% 400%;
   animation: gradientScroll 20s ease infinite;
   background-attachment: fixed;
@@ -91,9 +99,16 @@ ul.project-links li { display: inline-block; }
   text-decoration: none;
 }
 .button:hover, .button:focus {
+<<<<<<< HEAD
   background: rgba(0, 255, 238, 0.1);
   color: #00ffee;
   box-shadow: 0 0 24px #00ffee;
+=======
+  background: #00ffee;
+  color: #101617;
+  box-shadow: 0 0 24px #00ffee;
+  border-color: #00ffee;
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
 }
 .button span {
   display: flex;
@@ -109,6 +124,7 @@ ul.project-links li { display: inline-block; }
   text-align: center;
 }
 
+<<<<<<< HEAD
 .button:hover, .button:focus {
   background: #00ffee;
   color: #101617;
@@ -116,6 +132,8 @@ ul.project-links li { display: inline-block; }
   border-color: #00ffee;
 }
 
+=======
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
 
 #cv input[type="password"],
 #cv button {
@@ -393,6 +411,7 @@ footer .copyright {
 }
 
 #attack-sim {
+<<<<<<< HEAD
   background: rgba(10, 20, 30, 0.85);
   border-radius: 16px;
   padding: 24px;
@@ -404,6 +423,14 @@ footer .copyright {
   border-radius: 24px;
   background: #121a20;
   box-shadow: 0 0 32px #00fff966;
+=======
+  background: #121a20;
+  border-radius: 24px;
+  padding: 32px 24px;
+  margin: 40px auto;
+  box-shadow: 0 0 32px #00fff966;
+  max-width: 1200px;
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
   box-sizing: border-box;
 }
 
@@ -452,6 +479,7 @@ footer .copyright {
   background: rgba(0, 255, 238, 0.2);
 }
 
+<<<<<<< HEAD
 /* Remove or comment out this line to allow project links to display */
 /* .project-links {
   display: none !important;
@@ -465,5 +493,135 @@ nav,
   display: none !important;
 }
 */
+=======
+/* Project links and header/nav/logo are now visible by default. */
+
+.centered-header {
+  text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: rgba(30, 40, 50, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 4px 32px #0008;
+    padding: 32px 24px;
+    border: 2px solid #00fff7;
+}
+
+h1, h2, h3 {
+    color: #00fff7;
+    margin-top: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+a {
+    color: #00fff7;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+input, textarea {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #00fff7;
+    background: #222c;
+    color: #e0f7fa;
+    font-size: 1em;
+}
+
+button, input[type="submit"] {
+    background: #00fff7;
+    color: #222;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+button:hover, input[type="submit"]:hover {
+    background: #00bfae;
+}
+
+/* === Chatbot Styles === */
+#chat-box {
+  background: #181c20;
+  color: #00ffee;
+  border: 2px solid #00ffee;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  min-height: 200px;
+  padding: 18px 14px;
+  margin: 0 auto 18px auto;
+  box-shadow: 0 0 18px #00ffee44;
+  font-family: 'Courier New', monospace;
+  font-size: 1.08em;
+  overflow-y: auto;
+}
+
+.chat-message {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.chat-message.user b {
+  color: #ff00cc;
+}
+.chat-message.user span {
+  color: #fff;
+}
+
+.chat-message.bot b {
+  color: #00ffee;
+}
+.chat-message.bot span {
+  color: #fff;
+}
+
+#chat-controls {
+  display: flex;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#user-message {
+  flex: 1;
+  background: #101820;
+  color: #00ffee;
+  border: 1px solid #00ffee;
+  border-radius: 7px;
+  padding: 10px;
+  font-size: 1em;
+}
+
+#send-btn {
+  background: #00ffee;
+  color: #181c20;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#send-btn:hover {
+  background: #00bfae;
+}
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
 
 

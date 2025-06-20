@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
+=======
+<html lang="bg">
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +19,11 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<<<<<<< HEAD
   <!-- <script src="particles.js"></script> -->
+=======
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
 
   <style>
     .button {
@@ -104,6 +112,28 @@
       background: #101820 !important;
       border-radius: 8px;
     }
+<<<<<<< HEAD
+=======
+
+    #chat-box {
+      max-height: 300px;
+      overflow-y: auto;
+      background: #111;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 10px;
+      color: #00ffee;
+    }
+    .chat-message {
+      margin-bottom: 10px;
+    }
+    .chat-message.user {
+      text-align: right;
+    }
+    .chat-message.bot {
+      text-align: left;
+    }
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
   </style>
 </head>
 <body id="top">
@@ -115,7 +145,11 @@
         <li><a href="#projects" class="button">Projects</a></li>
         <li><a href="#chart" class="button">Charts</a></li>
         <li><a href="attack-sim.html" class="button">AttackSim</a></li>
+<<<<<<< HEAD
         <li><a href="https://huggingface.co/spaces/stellababy2004/cyber-chat" target="_blank" class="button">🤖 AI Chatbot</a></li>
+=======
+        <li><a href="https://huggingface.co/spaces/stellababy2004/chat-AI" target="_blank" class="button">🤖 AI Chatbot</a></li>
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
         <li><a href="#map-section" class="button">Live Map</a></li>
         <li><a href="#testimonials" class="button">Testimonials</a></li>
         <li><a href="#contact" class="button">Contact</a></li>
@@ -147,6 +181,7 @@
     <section class="section" id="projects">
       <h2>Projects</h2>
       <ul class="project-list">
+<<<<<<< HEAD
         <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
         <li><a href="phishing-check.html" class="button">📧 Check for Phishing</a></li>
         <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
@@ -170,6 +205,26 @@
       </p>
     </section>
   
+=======
+              <li><a href="cyber-threat-map.html" class="button">🔍 Cyber Threat Map</a></li>
+              <li><a href="threat-hunting.html" class="button">🧠 Threat Hunting</a></li>
+              <li><a href="#checkpoint-map" class="button">🌐 Threat Live</a></li>
+              <li><a href="Stella_Barbarella_CV.odt" download class="button">📄 My CV</a></li>
+            </ul>
+    </section>
+
+<section class="section" id="phishing-checker">
+  <h2>Phishing URL Checker</h2>
+  <form id="phishing-form">
+    <label for="url">Enter URL to check:</label>
+    <input type="text" id="url" placeholder="https://example.com" required />
+    <button type="submit">Check</button>
+  </form>
+  <div id="phishing-result" style="margin-top:10px;font-weight:bold;"></div>
+</section>
+
+
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
     <section class="section" id="pentest-reports">
       <h2>Pentest Reports</h2>
       <p class="pentest-intro">
@@ -185,6 +240,7 @@
       <button id="toggle-logs">⏸ Pause Logs</button>
       <pre id="log-output" style="background:#111; color:#00ffee; padding:10px; min-height:120px; border-radius:8px; margin-top:10px; max-height:200px; overflow:auto;"></pre>
     </section>
+<<<<<<< HEAD
 <section class="section" id="cybersec-chatbot">
   <h2>CyberSec AI Chat 🤖</h2>
   <div class="gradio-embed"
@@ -195,6 +251,19 @@
   <script src="https://hf.space/embed/stellababy2004/cyber-chat/widget.js"></script>
 </section>
     <section class="section" id="attack-sim">
+=======
+
+<section class="section" id="cybersec-chatbot">
+  <h2 class="centered-header">CyberSec AI Chat 🤖</h2>
+  <div id="chat-box"></div>
+  <div id="chat-controls">
+    <input id="user-message" type="text" placeholder="Въведи съобщение">
+    <button id="send-btn" onclick="sendMessage()">Изпрати</button>
+  </div>
+</section>
+
+<section class="section" id="attack-sim">
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
       <h2>Attack Simulation Lab</h2>
       <p>Select an attack type to simulate:</p>
       <div id="attack-buttons">
@@ -234,6 +303,7 @@
       <div id="map" style="height: 400px; border: 1px solid #0ff; border-radius: 8px;"></div>
       <button id="clear-map">🧹 Clear Map</button>
     </section>
+<<<<<<< HEAD
 
     <section class="section" id="contact">
       <h2>Contact Me</h2>
@@ -284,6 +354,78 @@
   });
   </script>
 
+=======
+  </main>
+ <section class="section" id="contact">
+   <h2>Contact Me</h2>
+   <form action="stiliana.stoyanova@orange.fr" method="POST">
+  <label for="name">Име:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Имейл:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Съобщение:</label>
+  <textarea id="message" name="message" required></textarea>
+
+  <button type="submit">Изпрати</button>
+</form>
+ </section>
+
+ <!-- Примерен HTML код -->
+<div>
+  <input id="user-message" type="text" placeholder="Въведи съобщение">
+  <button onclick="sendMessage()">Изпрати</button>
+  <div id="chat-response"></div>
+</div>
+<div id="chat-box"></div>
+<div id="chat-controls">
+  <input id="user-message" type="text" placeholder="Въведи съобщение">
+  <button id="send-btn" onclick="sendMessage()">Изпрати</button>
+</div>
+<script>
+async function sendMessage() {
+  const message = document.getElementById('user-message').value;
+  const chatBox = document.getElementById('chat-box');
+  if(message.trim() === "") return;
+  chatBox.innerHTML += `<div class="chat-message user"><b>Ти:</b> <span>${message}</span></div>`;
+  document.getElementById('user-message').value = '';
+  chatBox.scrollTop = chatBox.scrollHeight;
+  const res = await fetch('http://127.0.0.1:8000/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message })
+  });
+  const data = await res.json();
+  chatBox.innerHTML += `<div class="chat-message bot"><b>Бот:</b> <span>${data.response}</span></div>`;
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+</script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof L === "undefined") return;
+  const map = L.map('map').setView([20, 0], 2);
+  window.attackSimMap = map;
+  window.globalMapMarkers = [];
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  document.getElementById('clear-map').addEventListener('click', function () {
+    if (window.globalMapMarkers && Array.isArray(window.globalMapMarkers)) {
+      window.globalMapMarkers.forEach(marker => {
+        if (map.hasLayer(marker)) {
+          map.removeLayer(marker);
+        }
+      });
+      window.globalMapMarkers = [];
+    }
+  });
+});
+</script>
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
   <script>
     (function () {
   const logOutput = document.getElementById('log-output');
@@ -366,6 +508,7 @@
   </script>
 
   <script>
+<<<<<<< HEAD
 
 document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll('#attack-buttons .button');
@@ -480,16 +623,124 @@ let openPhishList = [];
 let phishingListLoaded = false;
 
 fetch('docs/openphish.txt')
+=======
+  document.addEventListener("DOMContentLoaded", function () {
+    const buttons   = document.querySelectorAll('#attack-buttons .button');
+    const result    = document.getElementById('attack-result');
+    const logOutput = document.getElementById('log-output');
+    const attackMap = window.attackSimMap;
+    const attackMarkers = window.globalMapMarkers || [];
+
+    const attackDescriptions = {
+      phishing:   "Simulation: A phishing email was sent to an employee. The SOC detects a suspicious link and blocks access.",
+      "brute-force": "Simulation: Multiple failed login attempts detected. The system temporarily blocks the IP address.",
+      malware:    "Simulation: A malicious file was uploaded. The antivirus system isolates it and alerts the SOC team.",
+      ddos:       "Simulation: High traffic volume detected towards the server. DDoS protection limits attacking IPs."
+    };
+
+    const attackLogs = {
+      phishing:   "[ALERT]  Phishing email detected and quarantined.",
+      "brute-force": "[WARNING]  Multiple failed logins for user 'admin'.",
+      malware:    "[CRITICAL]  Malware detected and isolated.",
+      ddos:       "[ALERT]  DDoS attack detected. Traffic filtered."
+    };
+
+    const attackLocations = {
+      phishing:      [51.5, -0.09],
+      "brute-force": [40.7, -74.0],
+      malware:       [48.85, 2.35],
+      ddos:          [35.68, 139.76]
+    };
+
+    const chartIndex = {
+      phishing:      0,
+      malware:       1,
+      ddos:          3,
+      "brute-force": 4
+    };
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function () {
+        const type = btn.getAttribute('data-attack');
+         result.style.display = "block";
+        result.textContent = attackDescriptions[type] || "No information for this attack type.";
+
+
+        if (attackLogs[type]) {
+          const now = new Date().toLocaleTimeString();
+          const span = document.createElement('span');
+          span.textContent = `[${now}] ${attackLogs[type]}\n`;
+          span.style.color = "#ffea00";
+          logOutput.appendChild(span);
+          logOutput.scrollTop = logOutput.scrollHeight;
+        }
+
+        if (attackMap && attackLocations[type]) {
+          const marker = L.marker(attackLocations[type])
+            .addTo(attackMap)
+            .bindPopup(`${type.charAt(0).toUpperCase()}${type.slice(1)} attack`)
+            .openPopup();
+          attackMarkers.push(marker);
+          window.globalMapMarkers = attackMarkers;
+        }
+
+        if (window.threatChartInstance && chartIndex[type] !== undefined) {
+          window.threatChartInstance.data.datasets[0].data[chartIndex[type]] += 1;
+          window.threatChartInstance.update();
+        }
+      });
+    });
+  });
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById('threatChart').getContext('2d');
+    window.threatChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Phishing', 'Malware', 'Ransomware', 'DDoS', 'Brute Force'],
+        datasets: [{
+          label: 'Detected Threats',
+          data: [12, 8, 4, 10, 6],
+          backgroundColor: [
+            '#00ffeecc','#ff00ccbb','#ffaa00bb','#00ff88bb','#ffea00bb'
+          ],
+          borderColor: '#00ffee',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, ticks: { color: '#00ffee' }, grid: { color: '#222' } },
+          x: { ticks: { color: '#00ffee' }, grid: { color: '#222' } }
+        }
+      }
+    });
+  });
+  </script>
+
+ <script>
+let openPhishList = [];
+let phishingListLoaded = false;
+
+fetch('openphish.txt')
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
   .then(res => {
     if (!res.ok) throw new Error('List not found');
     return res.text();
   })
   .then(text => {
+<<<<<<< HEAD
     openPhishList = text.split('\n').map(url => url.trim()).filter(Boolean);
+=======
+    openPhishList = text.split('\n').map(u => u.trim()).filter(Boolean);
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
     phishingListLoaded = true;
   })
   .catch(() => {
     phishingListLoaded = false;
+<<<<<<< HEAD
     const resultDiv = document.getElementById('phishing-result');
     resultDiv.textContent = '⚠️ Unable to load phishing list. Checker disabled.';
     resultDiv.style.color = 'orange';
@@ -499,11 +750,29 @@ fetch('docs/openphish.txt')
 
 function normalizeUrl(url) {
   return url.trim().replace(/^https?:\/\//i, '').replace(/\/$/, '').toLowerCase();
+=======
+    const r = document.getElementById('phishing-result');
+    r.textContent = '⚠️ Unable to load phishing list. Please try again later.';
+    r.style.color = 'orange';
+    document.getElementById('url').disabled = true;
+    document.querySelector('#phishing-form button').disabled = true;
+  });
+
+function normalizeUrl(url) {
+  return url.trim()
+            .replace(/^https?:\/\//i, '')
+            .replace(/\/$/, '')
+            .toLowerCase();
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
 }
 
 async function checkPhishing(url) {
   const testUrl = normalizeUrl(url);
+<<<<<<< HEAD
   return openPhishList.some(phishUrl => normalizeUrl(phishUrl) === testUrl);
+=======
+  return openPhishList.some(ph => normalizeUrl(ph) === testUrl);
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
 }
 
 document.getElementById('phishing-form').addEventListener('submit', async function(e) {
@@ -511,6 +780,7 @@ document.getElementById('phishing-form').addEventListener('submit', async functi
   if (!phishingListLoaded) return;
   const url = document.getElementById('url').value;
   const resultDiv = document.getElementById('phishing-result');
+<<<<<<< HEAD
   resultDiv.textContent = 'Checking...';
   const isPhishing = await checkPhishing(url);
   if (isPhishing) {
@@ -518,9 +788,45 @@ document.getElementById('phishing-form').addEventListener('submit', async functi
     resultDiv.style.color = 'red';
   } else {
     resultDiv.textContent = '✅ The site appears safe (not in sample list).';
+=======
+  resultDiv.textContent = 'Checking…';
+  const isPhish = await checkPhishing(url);
+  if (isPhish) {
+    resultDiv.textContent = '⚠️ Dangerous/phishing site!';
+    resultDiv.style.color = 'red';
+  } else {
+    resultDiv.textContent = '✅ The site appears safe.';
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
     resultDiv.style.color = 'lime';
   }
 });
 </script>
+<<<<<<< HEAD
+=======
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof particlesJS !== "undefined") {
+        particlesJS.load('particles-js', 'particles.json', function() {
+          console.log('Particles.js loaded');
+        }, function() {
+          console.error('Failed to load particles.json');
+          const particlesDiv = document.getElementById('particles-js');
+          if (particlesDiv) {
+            particlesDiv.style.display = 'none';
+          }
+        });
+      }
+    });
+  </script>
+<script>
+fetch('particles.json')
+  .then(response => response.json())
+  .then(data => {
+    // използвай data
+    console.log(data);
+  });
+</script>
+>>>>>>> bca74ca78fd15384b1f9ff7d21bb805b35f6e0f3
 </body>
 </html>
