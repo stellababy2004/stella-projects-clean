@@ -1,0 +1,16 @@
+<div id="chat-box" style="width:400px;min-height:200px;border:1px solid #ccc;padding:10px;margin-bottom:10px;"></div>
+<input id="user-message" type="text" placeholder="Въведи съобщение">
+<button onclick="sendMessage()">Изпрати</button>
+<script>
+async function sendMessage() {
+  const message = document.getElementById('user-message').value;
+  const chatBox = document.getElementById('chat-box');
+  chatBox.innerHTML += `<div><b>Ти:</b> ${message}</div>`;
+  const res = await fetch('http://127.0.0.1:8000/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message })
+  });
+  const data = await res.json();
+  chatBox.innerHTML += `<div><b>Бот:</b> ${data.response}</div>`;
+  document.getElementById('user

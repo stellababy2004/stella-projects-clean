@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
+=======
+  "name": "CyberSec AI Chat",
+>>>>>>> a13c101beeaaf378f0e80796752378e1493bfd50
   "particles": {
     "number": { "value": 60 },
     "color": { "value": "#00ffee" },
